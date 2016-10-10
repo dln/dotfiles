@@ -54,15 +54,10 @@ export CGCC_FORCE_COLOR=1
 
 ## Go
 export GOPATH=$HOME
-# export GOROOT=$mylib/go
-# export GOPATH=$HOME/workspace
-# export GOSRC=$mylib/go/src
-# export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 ## Rust
-export PATH=$mylib/rust/bin:$PATH
 export PATH=$HOME/.vim/bundle/racer/target/release:$PATH
-export RUST_SRC_PATH=$HOME/workspace/src/github.com/rust-lang/rust/src
+export RUST_SRC_PATH=$HOME/src/github.com/rust-lang/rust/src
 
 ## grep
 export GREP_COLOR='38;5;232;48;5;214;1'
