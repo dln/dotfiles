@@ -1,0 +1,8 @@
+[Unit]
+Description=Start VirtualBox clipboard service
+
+[Service]
+ExecStart=/usr/bin/VBoxClient --nodaemon --clipboard
+
+[Install]
+WantedBy=multi-user.target
