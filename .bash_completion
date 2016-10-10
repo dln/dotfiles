@@ -1,0 +1,6 @@
+# Bazel
+[ -f /usr/local/lib/bazel/bin/bazel-complete.bash ] && source /usr/local/lib/bazel/bin/bazel-complete.bash
+
+# Rust
+[ -f /usr/local/etc/bash_completion.d/cargo ] && source /usr/local/etc/bash_completion.d/cargo
+

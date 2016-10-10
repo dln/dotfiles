@@ -1,0 +1,79 @@
+#!/bin/bash
+
+mylib=$HOME/lib
+
+export REALNAME="Daniel Lundin"
+export EMAIL="dln@eintr.org"
+
+export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
+
+## Shell stuff
+export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
+export LANG=en_US.UTF-8
+export HISTCONTROL=ignoreboth
+export HISTSIZE=3000
+export WORDCHARS='*?_[]~=&;!#$%^(){}'
+export EDITOR=vim
+
+# ssh
+export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
+
+## Parquet
+export PATH=$mylib/parquet-tools:$PATH
+
+## Packer
+export PATH=$mylib/packer:$PATH
+
+## Terraform
+export PATH=$mylib/terraform:$PATH
+
+## Pager
+export LESS='-BNJFXRgiM -h512 -x2'
+export PAGER='less -nL'
+export ACK_PAGER='less -nLR'
+
+## Git
+export GIT_AUTHOR_NAME=$REALNAME
+export GIT_AUTHOR_EMAIL=$EMAIL
+export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
+export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+export GIT_PAGER='less -nBJFXRgiM -h512'
+
+## Java
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+export IDEA_VM_OPTIONS="$HOME/Dropbox/dotfiles/idea.vmoptions"
+export IDEA_JDK=$HOME/lib/jdk-8u5-tuxjdk-b08
+
+## CMake
+export CTEST_OUTPUT_ON_FAILURE=1
+
+## GTest
+export GTEST_COLOR=1
+
+## GCC
+export CGCC_FORCE_COLOR=1
+
+## Go
+export GOROOT=$mylib/go
+export GOPATH=$HOME/workspace
+export GOSRC=$mylib/go/src
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+
+## Rust
+export PATH=$mylib/rust/bin:$PATH
+export PATH=$HOME/.vim/bundle/racer/target/release:$PATH
+export RUST_SRC_PATH=$HOME/workspace/src/github.com/rust-lang/rust/src
+
+## grep
+export GREP_COLOR='38;5;232;48;5;214;1'
+
+if [ "$TERM" != "dumb" ]; then
+    if [ -x /usr/bin/pygmentize ]; then
+        export LESSOPEN="|/usr/bin/pygmentize -f terminal256 -O style=tango %s"
+    elif [ -x /usr/local/bin/lesspipe.sh ]; then
+        export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+    elif [ -x /usr/bin/lesspipe.sh ]; then
+        export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+    fi
+fi
+
