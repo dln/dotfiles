@@ -1,0 +1,73 @@
+#!/bin/sh
+# Fancy prompt
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+unset GIT_PS1_SHOWUPSTREAM
+export GIT_PS1_SHOWSTASHSTATE=1
+
+if [ -f "$HOME/.bash_completion" ] ; then
+    source ~/.bash_completion
+fi
+
+if [ -f "/usr/share/git/completion/git-completion.bash" ] ; then
+  source /usr/share/git/completion/git-completion.bash
+elif [ -f "/etc/bash_completion.d/git" ] ; then
+  source /etc/bash_completion.d/git
+fi
+
+if [ -f "/usr/share/git/git-prompt.sh" ] ; then
+  source /usr/share/git/git-prompt.sh
+elif [ -f "/usr/share/git/completion/git-prompt.sh" ] ; then
+  source /usr/share/git/completion/git-prompt.sh
+elif [ -f "/etc/bash_completion.d/git-prompt" ] ; then
+  source /etc/bash_completion.d/git-prompt
+fi
+
+function short_pwd {
+  echo $PWD | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):"
+}
+
+function prompt_command {
+    banner="$HOSTNAME"
+    let prompt_x=$(tput cols)-$(expr length ${banner})-3
+    tput sc
+    tput cup 0 ${prompt_x}
+    if [ "$USER" = "root" ]; then
+        echo -ne " \e[38;5;228;48;5;160m ${banner} \e[0m"
+    else
+        echo -ne " \e[38;5;195;48;5;33m ${banner} \e[0m"
+    fi
+    tput rc
+    #tmux rename-window `basename $PWD`
+    tmux rename-window $(short_pwd) 2>/dev/null
+    eval $(tmux switch-client \; show-environment -s 2>/dev/null)
+}
+
+export PROMPT_COMMAND=prompt_command
+
+#PS1_EXTRA=";38;5;22"
+PS1_EXTRA=""
+PS1_TITLE="\[\e]2;\w\a\e[0m\]"
+if [ "$SSH_TTY" ]; then
+	HOST_NAME=$(hostname -f | sed 's/.tvoli.com//')
+    PS1_PREFIX="\u@${HOST_NAME}: "
+    PS1_TITLE="\[\e]2;\u@\h : \w\a\e[0m\]"
+fi
+# Root has red inverse prompt
+PS1_ROOT="\[\e[38;5;228;48;5;196m\] ### ROOT ### "
+
+case "$TERM" in
+    putty|putty*|xterm|xterm*|screen|screen.xterm|screen-bce|rxvt|rxvt-unicode)
+    PS1="\[\e[1${PS1_EXTRA}m\]\$(__git_ps1 2>/dev/null)\$([ "\$USER" = "root" ] && echo -e \"$PS1_ROOT\") ${PS1_PREFIX}\W\\$\[\e[0m\]${PS1_TITLE} "
+    ;;
+*)
+    PS1="${PS1_PREFIX}\w\\$ "
+    ;;
+esac
+
+export PS1
+
+#export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+
+# Automatically update DISPLAY, ssh agent
+tmux_env() { $(tmux show-env 2>/dev/null | grep '^SSH_AUTH_SOCK\|DISPLAY' | xargs echo export); }

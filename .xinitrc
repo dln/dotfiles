@@ -8,7 +8,7 @@ fi
 
 . $HOME/.bashrc
 
-xsetroot -solid \#010101
+xsetroot -solid \#579
 
 xmodmap $DOTFILES/.Xmodmap
 setxkbmap -option ctrl:nocaps,grp:switch,grp_led:scroll us,se

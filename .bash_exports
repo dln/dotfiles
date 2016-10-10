@@ -54,10 +54,11 @@ export GTEST_COLOR=1
 export CGCC_FORCE_COLOR=1
 
 ## Go
-export GOROOT=$mylib/go
-export GOPATH=$HOME/workspace
-export GOSRC=$mylib/go/src
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+export GOPATH=$HOME
+# export GOROOT=$mylib/go
+# export GOPATH=$HOME/workspace
+# export GOSRC=$mylib/go/src
+# export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 ## Rust
 export PATH=$mylib/rust/bin:$PATH

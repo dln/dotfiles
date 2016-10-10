@@ -5,9 +5,11 @@ call vundle#begin()
 " Plugins
 Plugin 'VundleVim/Vundle.vim'
 " Plugin 'bling/vim-airline'
+Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'itchyny/lightline.vim'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Valloric/YouCompleteMe'
 
@@ -330,11 +332,10 @@ endif
 " \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 " \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" let g:jellybeans_background_color_256 = "234"
-let g:jellybeans_background_color_256 = "0"
-let g:jellybeans_use_lowcolor_black = 1
-let g:jellybeans_overrides = {
-\ 'Comment': { 'ctermfg': 'Yellow', 'ctermbg': '', 'attr': 'italic' },
-\}
-colorscheme dln-jellybeans
+
+
+set background=light
+let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
+
+" color PaperColor
 
