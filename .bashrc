@@ -107,6 +107,8 @@ stty speed 115200 >> /dev/null 2>&1
 #fi
 #. /tmp/gpg-agent.env
 
+source <(kubectl completion bash)
+
 source $HOME/.bash_aliases
 source $HOME/.bash_exports
 source $HOME/.bash_prompt
