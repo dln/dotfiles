@@ -2,7 +2,7 @@
 set -ex
 case `hostname` in
   dice-dlundin2)
-    exec st.x86_64 -f "Roboto Mono-11" $@
+    exec st.x86_64 -f "Roboto Mono:pixelsize=13" $@
     ;;
   dredd)
     exec st.x86_64 -f "Roboto Mono-18" $@
