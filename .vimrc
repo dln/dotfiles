@@ -332,10 +332,8 @@ endif
 " \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 " \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-
-
 set background=light
 let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
-" color PaperColor
+color dln-light
 
