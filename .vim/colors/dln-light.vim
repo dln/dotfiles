@@ -17,11 +17,12 @@ endif
 
 let colors_name = "dln-light"
 
-hi LineNr ctermfg=250 cterm=italic
-hi CursorLine ctermfg=229 ctermbg=25 cterm=NONE
+hi LineNr ctermfg=252 cterm=italic
 hi Visual ctermbg=220
 hi Search ctermbg=226
 
+hi CursorLine ctermbg=255 cterm=NONE
+hi CursorLineNr ctermfg=245 ctermbg=255 cterm=italic
 
 hi Type ctermfg=5 cterm=NONE
 " hi Comment ctermfg=243 cterm=italic
@@ -30,5 +31,9 @@ hi String ctermfg=2 cterm=italic
 " hi Statement ctermfg=4 cterm=NONE
 hi Statement ctermfg=17 cterm=bold
 hi Constant ctermfg=6 cterm=NONE
+hi PreProc ctermfg=25 cterm=bold
 
+hi rustFuncName ctermfg=124 cterm=bold
+hi rustCommentLineDoc ctermfg=137 cterm=italic
+hi rustModPath ctermfg=4 cterm=NONE
 " vim: sw=2
