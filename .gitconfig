@@ -6,6 +6,9 @@ editor = vim
 name = Daniel Lundin
 email = dln@eintr.org
 
+[column]
+	ui = auto
+
 [push]
 default = tracking
 
