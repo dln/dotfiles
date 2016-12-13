@@ -49,6 +49,7 @@ kdiff3 = difftool -d -t kdiff3
 
 guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -rn; }; f"
 scat = show $1:`git ls-files --full-name $2`
+	serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
 [merge]
 tool = meld
