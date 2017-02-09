@@ -337,10 +337,6 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 set background=light
 let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
-let g:lightline = {
-  \ 'colorscheme': 'seoul256',
-  \ }
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -349,6 +345,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+set g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ 'component': {
+  \   'readonly': '%{&readonly?"":""}',
+  \ }
+  \ }
 
 color dln-light
 

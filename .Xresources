@@ -6,4 +6,10 @@ Xft.autohint: 0
 Xft.hintstyle:  hintfull
 Xft.lcdfilter:  lcddefault
 
+XTerm*metaSendsEscape: true
+XTerm.VT100.translations: #override \
+Meta <Key> minus: smaller-vt-font() \n\
+Meta <Key> plus: larger-vt-font() \n\
+Super <Key> minus: smaller-vt-font() \n\
+Super <Key> plus: larger-vt-font() \n\
 

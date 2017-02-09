@@ -5,7 +5,7 @@ case `hostname` in
     exec st.x86_64 -f "Roboto Mono:pixelsize=14" $@
     ;;
   dredd)
-    exec st.x86_64 -f "Roboto Mono-18" $@
+    exec st.x86_64 -f "Roboto Mono-15" $@
     ;;
 esac
 exec st.x86_64 $@

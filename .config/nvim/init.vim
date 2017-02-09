@@ -4,10 +4,12 @@ call vundle#begin()
 
 " Plugins
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'b4b4r07/vim-hcl'
 " Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'hashivim/vim-terraform'
 Plugin 'itchyny/lightline.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'rust-lang/rust.vim'
@@ -322,7 +324,17 @@ let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
 let g:lightline = {
   \ 'colorscheme': 'seoul256',
+  \ 'component': { 'readonly': '%{&readonly?"":""}' },
+  \ 'component_function': {
+  \   'filename': 'LightLineFilename'
   \ }
+  \ }
+  " \ 'separator': { 'left': '', 'right': '' },
+  " \ 'subseparator': { 'left': '', 'right': '' }
+
+function! LightLineFilename()
+  return expand('%:p:~')
+endfunction
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

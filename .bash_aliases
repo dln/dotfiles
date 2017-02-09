@@ -10,7 +10,7 @@ alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
 alias tree='tree -C'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias vimdiff='vimdiff -R'
-alias vim='nvim'
+alias vim=nvim
 
 ls --group-directories-first >/dev/null 2>&1
 if [ $? -gt 0 ] ; then
