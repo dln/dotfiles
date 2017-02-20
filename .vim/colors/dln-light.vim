@@ -1,4 +1,5 @@
 " Vim color file
+color s
 " Maintainer:	Daniel Lundin <dln@eintr.org>
 " Last Change: Mon Oct 17 13:18:58 CEST 2016
 

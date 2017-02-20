@@ -11,6 +11,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'hashivim/vim-terraform'
 Plugin 'itchyny/lightline.vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
@@ -345,5 +348,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-color dln-light
+let g:onedark_termcolors = 256
+let g:onedark_use_term_italics = 1
+let g:onedark_terminal_italics = 0
+
+let g:jellybeans_use_term_italics = 1
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\    'Comment': { 'ctermfg': '25', 'cterm': 'italic' },
+\    'LineNr': { 'ctermfg': '252', 'cterm': 'italic' },
+\}
+
+" color dln-light
+color jellybeans
 
