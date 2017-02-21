@@ -3,12 +3,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugins
+Plugin 'airblade/vim-gitgutter'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'b4b4r07/vim-hcl'
-" Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
 Plugin 'hashivim/vim-terraform'
 Plugin 'itchyny/lightline.vim'
 Plugin 'joshdick/onedark.vim'
@@ -18,6 +19,7 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -149,8 +151,6 @@ au BufWritePre * let &backupext = substitute(expand("%:p"), "\/", "_", "g")
 
 "" CtrlP
 let g:ctrlp_match_window = 'top'
-" let g:ctrlp_custom_ignore = '\v[\/](.DS_Store|.sass-cache|.bundle|.git|.hg|.svn|node_modules|vendor|bower_components)$'
-" let g:ctrlp_custom_ignore = '\v[\/]\.(DS_Storegit|hg|svn|optimized|compiled|node_modules|bower_components)$'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/target/*,*/.git/*"
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -170,6 +170,7 @@ map <silent> ,q :CtrlPQuickfix<cr>
 map <silent> ,/ :CtrlPLine<cr>
 map <silent> ,m :CtrlPBookmarkDir<cr>
 map <silent> ,<C-m> :CtrlPBookmarkDirAdd<cr>
+map <silent> ,n :CtrlPBookmarkDirAdd<cr>
 
 "" Key bindings
 imap <silent>  <c-w>
@@ -322,43 +323,120 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-set background=light
+set background=dark
 let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
 let g:lightline = {
-  \ 'colorscheme': 'seoul256',
-  \ 'component': { 'readonly': '%{&readonly?"":""}' },
+  \ 'colorscheme': 'jellybeans',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste'],
+  \             [ 'fugitive', 'filename', 'modified'],
+  \             [ 'go'] ],
+  \   'right': [ [ 'lineinfo' ], 
+  \              [ 'percent' ], 
+  \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+  \ },
   \ 'component_function': {
-  \   'filename': 'LightLineFilename'
+  \   'fileencoding': 'LightLineFileencoding',
+  \   'fileformat': 'LightLineFileformat',
+  \   'filename': 'LightLineFilename',
+  \   'filetype': 'LightLineFiletype',
+  \   'fugitive': 'LightLineFugitive',
+  \   'go': 'LightLineGo',
+  \   'lineinfo': 'LightLineInfo',
+  \   'mode': 'LightLineMode',
+  \   'modified': 'LightLineModified',
+  \   'percent': 'LightLinePercent',
   \ }
   \ }
-  " \ 'separator': { 'left': '', 'right': '' },
-  " \ 'subseparator': { 'left': '', 'right': '' }
+
+function! LightLineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineInfo()
+  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
+endfunction
+
+function! LightLinePercent()
+  return &ft =~? (100 * line('.') / line('$')) . '%'
+endfunction
+
+function! LightLineFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineGo()
+  " return ''
+  return exists('*go#jobcontrol#Statusline') ? go#jobcontrol#Statusline() : ''
+endfunction
+
+function! LightLineMode()
+  return lightline#mode()
+endfunction
 
 function! LightLineFilename()
   return expand('%:p:~')
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? '' : ''
 endfunction
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_added = '🞥'
+let g:gitgutter_sign_modified = '▲'
+let g:gitgutter_sign_removed = '🞬'
+let g:gitgutter_sign_removed_first_line = '🞬'
+let g:gitgutter_sign_modified_removed = '🞬'
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:onedark_termcolors = 256
-let g:onedark_use_term_italics = 1
-let g:onedark_terminal_italics = 0
-
+let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 \    'Comment': { 'ctermfg': '25', 'cterm': 'italic' },
 \    'LineNr': { 'ctermfg': '252', 'cterm': 'italic' },
+\    'Visual': { 'ctermbg': '220' },
 \}
 
 " color dln-light
 color jellybeans
+
+highlight LineNr ctermfg=236 ctermbg=234
+highlight CursorLine ctermfg=159 ctermbg=24
+highlight SignColumn ctermbg=234
+highlight Search ctermbg=237 ctermfg=none cterm=none
+
+highlight GitGutterAdd ctermbg=234 ctermfg=64
+highlight GitGutterChange ctermbg=234 ctermfg=220
+highlight GitGutterDelete ctermbg=234 ctermfg=124
+highlight GitGutterChangeDelete ctermbg=234 ctermfg=88
 
