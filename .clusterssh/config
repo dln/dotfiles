@@ -2,4 +2,4 @@ auto_close=2
 ssh_args=-o StrictHostKeyChecking=no -o ForwardAgent=yes
 terminal=xterm
 terminal_args=-fa "xft:Ubuntu Mono:size=15"
-terminal_bg_style=light
+terminal_bg_style=dark
