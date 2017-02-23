@@ -35,9 +35,7 @@ export ACK_PAGER='less -nLR'
 
 ## Git
 export GIT_AUTHOR_NAME=$REALNAME
-export GIT_AUTHOR_EMAIL=$EMAIL
 export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
-export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
 export GIT_PAGER='/usr/share/git/diff-highlight/diff-highlight | less -+F -x8 -nBJXRgiM -h512'
 
 ## Java
