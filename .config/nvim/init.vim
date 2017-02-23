@@ -435,7 +435,7 @@ highlight CursorLine ctermfg=159 ctermbg=24
 highlight SignColumn ctermbg=234
 highlight Search ctermbg=237 ctermfg=none cterm=none
 
-highlight GitGutterAdd ctermbg=234 ctermfg=64
+highlight GitGutterAdd ctermbg=234 ctermfg=58
 highlight GitGutterChange ctermbg=234 ctermfg=220
 highlight GitGutterDelete ctermbg=234 ctermfg=124
 highlight GitGutterChangeDelete ctermbg=234 ctermfg=88
