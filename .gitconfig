@@ -1,6 +1,7 @@
 [core]
 excludesfile = "~/.gitignore"
 editor = nvim
+pager = diff-so-fancy | less -+R -nBJFXRgiM -h512 -x4
 
 [user]
 name = Daniel Lundin
@@ -25,6 +26,7 @@ fa = fetch --all
 t = tag
 d = diff --stat -p -C
 ds = diff --staged --stat -p -C
+patch = !git --no-pager diff --no-color
 co = checkout
 st = status -sb
 stu = status -sb --untracked=no
@@ -120,3 +122,6 @@ pp-commit = magenta default bold
 diff-chunk = magenta default bold
 
 # vim: ft=conf:
+[diff-so-fancy]
+	useUnicodeRuler = true
+	stripLeadingSymbols = true
