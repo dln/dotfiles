@@ -102,6 +102,7 @@ stty speed 115200 >> /dev/null 2>&1
 # Terminal setup
 tput smkx
 
+
 # OpenPGP applet support for YubiKey NEO
 #if [ ! -f /tmp/gpg-agent.env ]; then
 #    killall gpg-agent;

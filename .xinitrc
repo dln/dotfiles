@@ -9,5 +9,6 @@ fi
 . $HOME/.bashrc
 xsetroot -solid \#282a2e
 xmodmap $HOME/.Xmodmap
+feh --bg-fill $HOME/Images/desktop.jpg || true
 setxkbmap -option ctrl:nocaps,grp:switch,grp_led:scroll us,se
 exec dwm

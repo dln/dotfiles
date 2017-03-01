@@ -8,4 +8,4 @@ case `hostname` in
     exec st.dark -f "Roboto Mono-15" $@
     ;;
 esac
-exec st.x86_64 $@
+exec st.dark $@
