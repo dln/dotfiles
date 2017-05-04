@@ -146,6 +146,7 @@ let g:explDetailedHelp=1
 
 "" Backup 
 set backup
+set backupcopy=yes
 set backupdir=~/.vim/backup,~/.tmp,~/tmp,/var/tmp,/tmp"
 set directory=~/.vim/backup,~/.tmp,~/tmp,/var/tmp,/tmp"
 let myvar = strftime("%y%m%d-%H%M")
