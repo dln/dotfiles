@@ -1,6 +1,20 @@
+function _src {
+  [ -f $1 ] && source $1
+}
+
+# Bash
+_src /etc/bash_completion
+
 # Bazel
-[ -f /usr/local/lib/bazel/bin/bazel-complete.bash ] && source /usr/local/lib/bazel/bin/bazel-complete.bash
+_src /usr/local/lib/bazel/bin/bazel-complete.bash
 
 # Rust
-[ -f /usr/local/etc/bash_completion.d/cargo ] && source /usr/local/etc/bash_completion.d/cargo
+_src /usr/local/etc/bash_completion.d/cargo
+
+# fzf
+_src /usr/share/fzf/completion.bash
+_src /usr/share/fzf/key-bindings.bash
+
+# Kubernetes
+source <(kubectl completion bash)
 

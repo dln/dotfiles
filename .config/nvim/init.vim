@@ -287,6 +287,11 @@ au FileType xml
     \ set makeprg=tidy\ -qe\ -access\ 3\ % |
     \ set errorformat=line\ %l\ column\ %c\ \-\ %m
 
+"" fzf
+
+let g:fzf_layout = { 'up': '~40%' }
+
+
 ""
 "" Color theme
 ""

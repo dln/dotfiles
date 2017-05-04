@@ -22,12 +22,6 @@ if [ -f "$HOME/.bash_completion_git" ] ; then
     source ~/.bash_completion_git
 fi
 
-# Check for interactive shell.
-if [ -n "$PS1" ]; then
-    if [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-    fi
-fi
 unset bash bminor bmajor
 
 # Bash settings
@@ -110,9 +104,11 @@ tput smkx
 #fi
 #. /tmp/gpg-agent.env
 
-source <(kubectl completion bash)
+# Check for interactive shell.
+if [ -n "$PS1" ]; then
+  source $HOME/.bash_completion
+fi
 
 source $HOME/.bash_aliases
 source $HOME/.bash_exports
 source $HOME/.bash_prompt
-source $HOME/.bash_completion
