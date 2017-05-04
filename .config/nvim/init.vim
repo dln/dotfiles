@@ -3,19 +3,23 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugins
-Plugin 'airblade/vim-gitgutter'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'b4b4r07/vim-hcl'
+Plugin 'cespare/vim-toml'
 Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
+Plugin 'godlygeek/tabular'
 Plugin 'hashivim/vim-terraform'
 Plugin 'itchyny/lightline.vim'
 Plugin 'joshdick/onedark.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
@@ -149,28 +153,18 @@ let myvar = "set backupext=_". myvar
 execute myvar 
 au BufWritePre * let &backupext = substitute(expand("%:p"), "\/", "_", "g")
 
-"" CtrlP
-let g:ctrlp_match_window = 'top'
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/target/*,*/.git/*"
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = 'node_modules$\|.lock$\|.gitkeep$\|tmp/\|bower_components$\|dist$'
 
 
-let g:ctrlp_working_path_mode = 'ra'
-
-map <silent> <space> :CtrlPBuffer<cr>
-map <silent> ,` :CtrlPBuffer<cr>
-map <silent> ,; :CtrlPChange<cr>
-map <silent> ,e :CtrlPRoot<cr>
-map <silent> ,d :CtrlPCurWD<cr>
-map <silent> ,f :CtrlPMRUFiles<cr>
-map <silent> ,g :CtrlPLine<cr>
-map <silent> ,q :CtrlPQuickfix<cr>
-map <silent> ,/ :CtrlPLine<cr>
-map <silent> ,m :CtrlPBookmarkDir<cr>
-map <silent> ,<C-m> :CtrlPBookmarkDirAdd<cr>
-map <silent> ,n :CtrlPBookmarkDirAdd<cr>
+map <silent> <space> :Buffers<cr>
+map <silent> ,` :Buffers<cr>
+map <silent> ,; :Commits<cr>
+map <silent> ,e :GitFiles<cr>
+map <silent> ,d :Files<cr>
+map <silent> ,f :History<cr>
+map <silent> ,g :BLines<cr>
+map <silent> ,/ :Ag<cr>
+map <silent> ,m :Marks<cr>
 
 "" Key bindings
 imap <silent>  <c-w>
@@ -406,6 +400,10 @@ endfunction
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+" Hugo
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
 
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '🞥'
