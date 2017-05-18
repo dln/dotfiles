@@ -11,6 +11,7 @@ alias tree='tree -C'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias vimdiff='vimdiff -R'
 alias vim=nvim
+alias v='nvim $(fzf-tmux)'
 
 ls --group-directories-first >/dev/null 2>&1
 if [ $? -gt 0 ] ; then
