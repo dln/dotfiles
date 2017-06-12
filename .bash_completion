@@ -17,4 +17,5 @@ _src /usr/share/fzf/key-bindings.bash
 
 # Kubernetes
 source <(kubectl completion bash)
+source <(kops completion bash)
 
