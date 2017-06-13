@@ -62,6 +62,8 @@ export RUST_SRC_PATH=$HOME/src/github.com/rust-lang/rust/src
 ## grep
 export GREP_COLOR='38;5;232;48;5;214;1'
 
+export TERM=st-256color
+
 if [ "$TERM" != "dumb" ]; then
     if [ -x /usr/bin/pygmentize ]; then
         export LESSOPEN="|/usr/bin/pygmentize -f terminal256 -O style=tango %s"

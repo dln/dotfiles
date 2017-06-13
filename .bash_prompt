@@ -57,7 +57,7 @@ fi
 PS1_ROOT="\[\e[38;5;228;48;5;196m\] ### ROOT ### "
 
 case "$TERM" in
-    putty|putty*|xterm|xterm*|screen|screen.xterm|screen-bce|rxvt|rxvt-unicode)
+    putty|putty*|xterm|xterm*|screen|screen.xterm|screen-bce|rxvt|rxvt-unicode|st|st-*)
     PS1="\[\e[1${PS1_EXTRA}m\]\$(__git_ps1 2>/dev/null)\$([ "\$USER" = "root" ] && echo -e \"$PS1_ROOT\") ${PS1_PREFIX}\W\\$\[\e[0m\]${PS1_TITLE} "
     ;;
 *)
