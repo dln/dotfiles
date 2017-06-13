@@ -125,3 +125,5 @@ diff-chunk = magenta default bold
 [diff-so-fancy]
 	useUnicodeRuler = true
 	stripLeadingSymbols = true
+[hub]
+	protocol = git
