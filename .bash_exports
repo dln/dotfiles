@@ -77,3 +77,6 @@ if [ "$TERM" != "dumb" ]; then
     fi
 fi
 
+# local exports
+[ -f $HOME/.bash_exports_local ] && source <($HOME/.bash_exports_local)
+
