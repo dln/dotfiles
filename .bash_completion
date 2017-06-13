@@ -19,3 +19,6 @@ _src /usr/share/fzf/key-bindings.bash
 source <(kubectl completion bash)
 source <(kops completion bash)
 
+# kops
+[ -f $HOME/bin/kops ] && source <($HOME/bin/kops completion bash)
+
