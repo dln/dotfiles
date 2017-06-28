@@ -2,10 +2,10 @@
 set -ex
 case `hostname` in
   dice-dlundin2)
-    exec st.dark -f "Roboto Mono:pixelsize=14" $@
+    exec st.dark -f "Source Code Pro-16" $@
     ;;
   dredd)
-    exec st.dark -f "Roboto Mono-15" $@
+    exec st.dark -f "Source Code Pro-16" $@
     ;;
 esac
 exec st.dark $@

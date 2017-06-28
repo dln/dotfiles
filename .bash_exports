@@ -36,6 +36,10 @@ export LESS='-BNJFXRgiM -h512 -x2'
 export PAGER='less -nL'
 export ACK_PAGER='less -nLR'
 
+## fzf
+export FZF_TMUX=1
+export FZF_COMPLETION_TRIGGER="."
+
 ## Git
 export GIT_AUTHOR_NAME=$REALNAME
 export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
