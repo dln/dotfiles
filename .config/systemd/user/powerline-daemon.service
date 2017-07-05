@@ -1,0 +1,10 @@
+[Unit]
+Description=Daemon that improves powerline performance
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/powerline-daemon --foreground --replace
+Restart=always
+
+[Install]
+WantedBy=default.target
