@@ -5,11 +5,6 @@
 				"only_if_ssh": true
 			}
 		},
-		"user": {
-			"args": {
-				"only_if_ssh": true
-			}
-		},
 		"branch": {
 			"args": {
 				"status_colors": true
