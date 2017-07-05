@@ -463,7 +463,7 @@ endif
 color jellybeans
 " color one
 
-highlight LineNr ctermfg=236 ctermbg=234
+highlight LineNr ctermfg=31 ctermbg=234 cterm=italic
 highlight CursorLine ctermfg=159 ctermbg=24
 highlight SignColumn ctermbg=234
 highlight Search ctermbg=237 ctermfg=none cterm=none
