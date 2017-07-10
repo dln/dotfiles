@@ -106,11 +106,14 @@ alias cd=cd_func
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
 ## fzf
-
 export FZF_TMUX=1
 export FZF_COMPLETION_TRIGGER="."
 . /usr/share/fzf/completion.zsh
 . /usr/share/fzf/key-bindings.zsh
+
+# Kubernetes
+source <(kubectl completion zsh)
+[ -f $HOME/bin/kops ] && source <($HOME/bin/kops completion zsh)
 
 ## Aliases
 
