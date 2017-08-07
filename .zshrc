@@ -116,7 +116,6 @@ source <(kubectl completion zsh)
 [ -f $HOME/bin/kops ] && source <($HOME/bin/kops completion zsh)
 
 ## Aliases
-
 alias ag='ag --pager less'
 alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
