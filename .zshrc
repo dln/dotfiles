@@ -115,6 +115,8 @@ export FZF_COMPLETION_TRIGGER="."
 source <(kubectl completion zsh)
 [ -f $HOME/bin/kops ] && source <($HOME/bin/kops completion zsh)
 
+[ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
+
 ## Aliases
 alias ag='ag --pager less'
 alias cdiff='colordiff -u'
