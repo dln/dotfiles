@@ -7,7 +7,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 . $HOME/.bashrc
-xsetroot -solid \#282a2e
+xsetroot -solid \#668899
 xmodmap $HOME/.Xmodmap
 feh --bg-fill $HOME/Images/desktop.jpg || true
 setxkbmap -option ctrl:nocaps,grp:switch,grp_led:scroll us,se
