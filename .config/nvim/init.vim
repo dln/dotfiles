@@ -22,11 +22,11 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rakr/vim-one'
 Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tyrannicaltoucan/vim-quantum'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
@@ -424,6 +424,10 @@ let g:go_auto_type_info = 0
 let g:go_info_mode = 'guru'
 let g:go_updatetime = 500
 
+" ALE
+let g:ale_sign_column_always = 1
+
+
 " Hugo
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
@@ -434,19 +438,6 @@ let g:gitgutter_sign_modified = '▲'
 let g:gitgutter_sign_removed = '🞬'
 let g:gitgutter_sign_removed_first_line = '🞬'
 let g:gitgutter_sign_modified_removed = '🞬'
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:jellybeans_use_term_background_color = 1
-let g:jellybeans_use_term_italics = 1
-let g:jellybeans_overrides = {
-\    'Comment': { 'ctermfg': '25', 'cterm': 'italic' },
-\    'LineNr': { 'ctermfg': '252', 'cterm': 'italic' },
-\    'Visual': { 'ctermbg': '220' },
-\}
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
