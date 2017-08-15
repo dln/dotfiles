@@ -469,3 +469,5 @@ highlight GitGutterChange ctermbg=234 ctermfg=220
 highlight GitGutterDelete ctermbg=234 ctermfg=124
 highlight GitGutterChangeDelete ctermbg=234 ctermfg=88
 
+map ,m :color dln<CR>
+
