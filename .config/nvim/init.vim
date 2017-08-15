@@ -426,6 +426,8 @@ let g:go_updatetime = 500
 
 " ALE
 let g:ale_sign_column_always = 1
+" let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
+let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
 
 
 " Hugo
