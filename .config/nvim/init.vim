@@ -1,37 +1,46 @@
 "" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'b4b4r07/vim-hcl'
-Plugin 'cespare/vim-toml'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular'
-Plugin 'hashivim/vim-terraform'
-Plugin 'itchyny/lightline.vim'
-Plugin 'joshdick/onedark.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'Matt-Deacalion/vim-systemd-syntax'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'rakr/vim-one'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'w0rp/ale'
+Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'b4b4r07/vim-hcl'
+Plug 'cespare/vim-toml'
+Plug 'djoshea/vim-autoread'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'plasticboy/vim-markdown'
+Plug 'rakr/vim-one'
+Plug 'roxma/nvim-completion-manager'
+Plug 'rust-lang/rust.vim'
+Plug 'sebdah/vim-delve'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 
-call vundle#end()
+call plug#end()
 
-set timeoutlen=250
-set ttimeoutlen=200
+set ttimeout
+set ttimeoutlen=0
+" set timeoutlen=150
+" set ttimeoutlen=100
 
 filetype on " detect the type of file
 filetype plugin indent on " load filetype plugins
@@ -92,6 +101,9 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set splitbelow " Preview window
+set splitright
+
+" let mapleader=","
 
 "" Session
 let g:session_autosave = 'no'
@@ -165,7 +177,7 @@ map <silent> ,; :Commits<cr>
 map <silent> ,e :GitFiles<cr>
 map <silent> ,d :Files<cr>
 map <silent> ,f :History<cr>
-map <silent> ,g :BLines<cr>
+" map <silent> ,g :BLines<cr>
 map <silent> ,/ :Ag<cr>
 map <silent> ,m :Marks<cr>
 
@@ -325,7 +337,7 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-set background=light
+set background=dark
 let g:one_allow_italics=1
 let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
@@ -406,34 +418,61 @@ function! LightLineReadonly()
   return &ft !~? 'help' && &readonly ? '' : ''
 endfunction
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " Golang
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_types = 1
 let g:go_highlight_build_constraints = 1  
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 0
+" let g:go_def_mapping_enabled = 0
 let g:go_info_mode = 'guru'
-let g:go_updatetime = 500
+let g:go_updatetime = 20
+let g:go_snippet_engine = "neosnippet"
+
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <S-k> <Plug>(go-doc)
+autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+
 
 " ALE
 let g:ale_sign_column_always = 1
 " let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
-let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
+" let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
+let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+let g:airline#extensions#ale#enabled = 1
 
+"" Neosnippet
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-k>":"\<CR>")
+"
+imap <c-j>     <Plug>(neosnippet_expand_or_jump)
+vmap <c-j>     <Plug>(neosnippet_expand_or_jump)
+inoremap <silent> <c-u> <c-r>=cm#sources#neosnippet#trigger_or_popup("\<Plug>(neosnippet_expand_or_jump)")<cr>
+vmap <c-u>     <Plug>(neosnippet_expand_target)
+" expand parameters
+let g:neosnippet#enable_completed_snippet=1
 
 " Hugo
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 
+
+"" Git
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '🞥'
 let g:gitgutter_sign_modified = '▲'
@@ -441,16 +480,19 @@ let g:gitgutter_sign_removed = '🞬'
 let g:gitgutter_sign_removed_first_line = '🞬'
 let g:gitgutter_sign_modified_removed = '🞬'
 
+"" Airline
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='distinguished'
+
+"" Terminal
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-" let base16colorspace=256
 
 " color dln-light
-" color jellybeans
-" color one
-color base16-tomorrow
+color dln-dark
 
 " highlight LineNr ctermfg=31 ctermbg=234 cterm=italic
 " highlight CursorLine ctermfg=159 ctermbg=24
@@ -462,5 +504,5 @@ highlight GitGutterChange ctermbg=234 ctermfg=220
 highlight GitGutterDelete ctermbg=234 ctermfg=124
 highlight GitGutterChangeDelete ctermbg=234 ctermfg=88
 
-map ,m :color dln<CR>
+map ,l :color dln-dark<CR>
 
