@@ -4,7 +4,7 @@ editor = nvim
 pager = diff-so-fancy | less -+R -nBJFXRgiM -h512 -x4
 
 [user]
-name = Daniel Lundin
+	name = Daniel Lundin
 email = dln@eintr.org
 
 [column]

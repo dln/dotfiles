@@ -177,6 +177,7 @@ command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 command -v kops >/dev/null 2>&1 && source <(kops completion zsh)
 command -v helm >/dev/null 2>&1 && source <(helm completion zsh)
 
+[ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
 
 # Pager
