@@ -88,7 +88,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/git-extras
   zgen oh-my-zsh plugins/history-substring-search
 
-  zgen load uvaes/fzf-marks
   zgen load miekg/lean
 
   zgen save
@@ -144,15 +143,27 @@ bindkey "^[[B" history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
-cd_func ()
-{
+cd_func () {
+  local dir
   if [[ $1 ==  "--" ]]; then
-    dirs -v
+    _jump || return 1
     return 0
+  elif [[ -z "$1" ]]; then
+    dir="$HOME"
+  else
+    dir="$@"
   fi
-  "cd" "$@"
+  "cd" "${dir}"
+  fasd -A $PWD
 }
 alias cd=cd_func
+
+_jump() {
+  dir="$(fasd -Rdl | fzf -1 -0 --no-sort +m --height 10)" && cd_func "${dir}"
+  zle && zle redraw-prompt
+}
+zle -N _jump
+bindkey '^g' _jump
 
 ## vim
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
