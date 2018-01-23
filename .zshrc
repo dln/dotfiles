@@ -68,7 +68,7 @@ function _dln_prompt_left {
 }
 
 function _dln_prompt_right {
-  _tmux_win=`tmux display-message -p "#I"`
+  _tmux_win=`tmux display-message -p "#I" 2>/dev/null`
   echo -e " %{\e[38;5;16;48;5;30m%} ${_tmux_win} %{\e[0m%}"
 }
 
