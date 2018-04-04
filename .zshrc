@@ -7,7 +7,42 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
+
 ZSH_THEME="robbyrussell"
+
+export HISTFILE=~/.zsh_history
+export SAVEHIST=9000
+export LPASS_AGENT_TIMEOUT=900
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+export ZSH_HIGHLIGHT_STYLES[command]='fg=155'
+export ZSH_HIGHLIGHT_STYLES[builtin]='fg=190'
+
+setopt append_history
+setopt share_history
+
+
+source ~/.zplug/init.zsh
+
+zplug "miekg/lean"
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/history-substring-search", from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "~/.zsh", from:local
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -56,8 +91,6 @@ ZSH_THEME="robbyrussell"
 # source $ZSH/oh-my-zsh.sh
 # source ~/.oh-my-zsh/plugins/zsh-titles/titles.plugin.zsh
 
-source "${HOME}/.zgen/zgen.zsh"
-
 function short_pwd {
   echo $PWD | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):"
 }
@@ -74,24 +107,11 @@ function _dln_prompt_right {
 
 export PROMPT_LEAN_COLOR1=78
 export PROMPT_LEAN_COLOR2=67
-export PROMPT_LEAN_TMUX=''
+export PROMPT_LEAN_TMUX=" "
 export PROMPT_LEAN_PATH_PERCENT=50
 export PROMPT_LEAN_LEFT=_dln_prompt_left
 # export PROMPT_LEAN_RIGHT=_dln_prompt_right
 
-# if the init scipt doesn't exist
-if ! zgen saved; then
-
-  zgen oh-my-zsh
-  zgen oh-my-zsh plugins/command-not-found
-  zgen oh-my-zsh plugins/git
-  zgen oh-my-zsh plugins/git-extras
-  zgen oh-my-zsh plugins/history-substring-search
-
-  zgen load miekg/lean
-
-  zgen save
-fi
 
 function prompt_command {
   banner="$USER@$HOST"
@@ -138,10 +158,13 @@ function prompt_command {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias ls='ls --color=auto --group-directories-first --human-readable --almost-all'
+
+bindkey -e
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+bindkey -M emacs '^P' history-beginning-search-backward
+bindkey -M emacs '^N' history-beginning-search-forward
 
 cd_func () {
   local dir
@@ -158,10 +181,20 @@ cd_func () {
 }
 alias cd=cd_func
 
+redraw-prompt() {
+    local precmd
+    for precmd in $precmd_functions; do
+        $precmd
+    done
+    zle reset-prompt
+}
+zle -N redraw-prompt
+
 _jump() {
   dir="$(fasd -Rdl | fzf -1 -0 --no-sort +m --height 10)" && cd_func "${dir}"
   zle && zle redraw-prompt
 }
+
 zle -N _jump
 bindkey '^g' _jump
 
@@ -185,8 +218,9 @@ export FZF_COMPLETION_TRIGGER=";"
 
 # Kubernetes
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
-command -v kops >/dev/null 2>&1 && source <(kops completion zsh)
-command -v helm >/dev/null 2>&1 && source <(helm completion zsh)
+command -v kops    >/dev/null 2>&1 && source <(kops completion zsh)
+command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
+command -v direnv  >/dev/null 2>&1 && source <(direnv hook zsh)
 
 [ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc

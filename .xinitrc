@@ -11,5 +11,5 @@ xsetroot -solid \#202020
 xmodmap $HOME/.Xmodmap
 feh --bg-fill $HOME/Images/desktop.jpg || true
 setxkbmap -option ctrl:nocaps,grp:switch,grp_led:scroll us,se
-st tmux attach -t0 &
+st &
 exec dwm
