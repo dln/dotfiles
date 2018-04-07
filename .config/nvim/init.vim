@@ -448,9 +448,9 @@ autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
 
 " ALE
 let g:ale_sign_column_always = 1
-" let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
+let g:ale_linters = {'go': ['gofmt']}
 " let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
-let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
+" let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1
