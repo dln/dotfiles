@@ -33,6 +33,10 @@ window:
   # Setting this to false will result in window without borders and title bar.
   decorations: false
 
+dpi:
+  x: 96.0
+  y: 96.0
+
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
 
@@ -75,7 +79,7 @@ font:
     style: Italic
 
   # Point size of the font
-  size: 16
+  size: 18
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -210,7 +214,7 @@ mouse:
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  faux_scrollback_lines: 0
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
