@@ -11,6 +11,7 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 ZSH_THEME="robbyrussell"
 
+export DIRENV_LOG_FORMAT= 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 export HISTFILE=~/.zsh_history
@@ -24,7 +25,6 @@ export ZSH_HIGHLIGHT_STYLES[builtin]='fg=190'
 
 setopt append_history
 setopt share_history
-
 
 source ~/.zplug/init.zsh
 
@@ -180,6 +180,7 @@ cd_func () {
   fi
   "cd" "${dir}"
   fasd -A $PWD
+  eval $(direnv export zsh)
 }
 alias cd=cd_func
 
@@ -222,7 +223,6 @@ export FZF_COMPLETION_TRIGGER=";"
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 command -v kops    >/dev/null 2>&1 && source <(kops completion zsh)
 command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
-command -v direnv  >/dev/null 2>&1 && source <(direnv hook zsh)
 
 [ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
