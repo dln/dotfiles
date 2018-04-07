@@ -11,12 +11,14 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 ZSH_THEME="robbyrussell"
 
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
 export HISTFILE=~/.zsh_history
 export SAVEHIST=9000
 export LPASS_AGENT_TIMEOUT=900
 
 typeset -A ZSH_HIGHLIGHT_STYLES
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 export ZSH_HIGHLIGHT_STYLES[command]='fg=155'
 export ZSH_HIGHLIGHT_STYLES[builtin]='fg=190'
 
