@@ -26,6 +26,13 @@ export ZSH_HIGHLIGHT_STYLES[command]='fg=155'
 export ZSH_HIGHLIGHT_STYLES[function]='fg=155'
 export ZSH_HIGHLIGHT_STYLES[path]='fg=116'
 
+export PROMPT_LEAN_COLOR1=78
+export PROMPT_LEAN_COLOR2=67
+export PROMPT_LEAN_TMUX=""
+export PROMPT_LEAN_PATH_PERCENT=50
+export PROMPT_LEAN_LEFT=_dln_prompt_left
+# export PROMPT_LEAN_RIGHT=_dln_prompt_right
+
 setopt append_history
 setopt share_history
 
@@ -110,12 +117,6 @@ function _dln_prompt_right {
   echo -e " %{\e[38;5;16;48;5;30m%} ${_tmux_win} %{\e[0m%}"
 }
 
-export PROMPT_LEAN_COLOR1=78
-export PROMPT_LEAN_COLOR2=67
-export PROMPT_LEAN_TMUX=" "
-export PROMPT_LEAN_PATH_PERCENT=50
-export PROMPT_LEAN_LEFT=_dln_prompt_left
-# export PROMPT_LEAN_RIGHT=_dln_prompt_right
 
 
 function prompt_command {

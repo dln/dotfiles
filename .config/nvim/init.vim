@@ -306,7 +306,20 @@ au FileType xml
 "" fzf
 
 let g:fzf_layout = { 'up': '~40%' }
-
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Comment'],
+  \ 'bg':      ['bg', 'Comment'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'PMenuSel', 'PMenuSel', 'Normal'],
+  \ 'bg+':     ['bg', 'PMenuSel', 'PMenuSel'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Normal'] }
 
 ""
 "" Color theme
@@ -451,10 +464,13 @@ let g:ale_sign_column_always = 1
 " let g:ale_linters = {'go': ['gofmt']}
 " let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
 " let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
-let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet']}
+let g:ale_linters = {'go': ['gofmt', 'gometalinter']}
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1
+let g:go_gometalinter_options = join([
+ \    '--fast'
+ \ ], ' ')
 
 "" Neosnippet
 " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
