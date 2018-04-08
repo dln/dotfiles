@@ -20,15 +20,18 @@ export LPASS_AGENT_TIMEOUT=900
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-export ZSH_HIGHLIGHT_STYLES[command]='fg=155'
+export ZSH_HIGHLIGHT_STYLES[alias]='fg=155'
 export ZSH_HIGHLIGHT_STYLES[builtin]='fg=190'
+export ZSH_HIGHLIGHT_STYLES[command]='fg=155'
+export ZSH_HIGHLIGHT_STYLES[function]='fg=155'
+export ZSH_HIGHLIGHT_STYLES[path]='fg=116'
 
 setopt append_history
 setopt share_history
 
 source ~/.zplug/init.zsh
 
-zplug "miekg/lean"
+zplug "dln/lean"
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 zplug "plugins/git", from:oh-my-zsh
