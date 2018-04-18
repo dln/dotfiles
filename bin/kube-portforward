@@ -1,0 +1,8 @@
+#!/bin/bash
+set -xeuo pipefail
+selector="$1"
+shift
+pod=$(kubectl get pods -l ${selector} --field-selector=status.phase=Running -o template --template="{{with index .items 0}}{{.metadata.name}}{{end}}")
+kubectl port-forward $pod "$@"
+
+
