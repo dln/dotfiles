@@ -44,6 +44,7 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "arunvelsriram/kube-fzf", use:'kube-fzf.sh'
 
 zplug "~/.zsh", from:local
 
