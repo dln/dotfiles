@@ -9,6 +9,8 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
+fpath=(~/.zsh/functions $fpath)
+
 ZSH_THEME="robbyrussell"
 
 export DIRENV_LOG_FORMAT= 

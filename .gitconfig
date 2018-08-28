@@ -136,3 +136,10 @@ diff-chunk = magenta default bold
 [hub]
 	protocol = git
 [http]
+[http]
+	cookiefile = /home/dln/.gitcookies
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

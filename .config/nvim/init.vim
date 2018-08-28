@@ -6,11 +6,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'VundleVim/Vundle.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'b4b4r07/vim-hcl'
+Plug 'bazelbuild/vim-bazel'
 Plug 'cespare/vim-toml'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
+Plug 'google/vim-maktaba'
 Plug 'hashivim/vim-terraform'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/vim-easy-align'
@@ -23,19 +25,25 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'plasticboy/vim-markdown'
 Plug 'rakr/vim-one'
-Plug 'roxma/nvim-completion-manager'
 Plug 'rust-lang/rust.vim'
 Plug 'sebdah/vim-delve'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
-Plug 'typeintandem/nvim'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
+
+" Autocomplete
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-racer'
 
 call plug#end()
 
@@ -229,6 +237,7 @@ au BufNewFile,BufRead manifest setlocal ft=json
 au BufNewFile,BufRead *.aurora set filetype=python 
 au BufNewFile,BufRead *.avdl setlocal ft=avro-idl
 au BufNewFile,BufRead *.avpr setlocal ft=json
+au BufNewFile,BufRead *.bazel setlocal ft=bzl
 au BufNewFile,BufRead *.cql set syntax=cql
 au BufNewFile,BufRead *.go setlocal ft=go
 au BufNewFile,BufRead *.g setlocal ft=antlr
@@ -264,7 +273,6 @@ au FileType python
     \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 |
     \ setlocal nosmartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 " pydoc integration
 let g:pydoc_highlight = 0
@@ -273,10 +281,9 @@ let g:pcs_check_when_saving = 0
 let g:pymode_lint = 0
 let g:pymode_lint_checker = "pyflakes"
 
-
-" YouCompleteMe
-set completefunc=youcompleteme#Complete
-set completeopt=preview,menuone
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 " tags
 set tags=./tags;/
@@ -457,7 +464,6 @@ let g:go_snippet_engine = "neosnippet"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <S-k> <Plug>(go-doc)
 autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
-
 
 " ALE
 let g:ale_sign_column_always = 1

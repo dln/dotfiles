@@ -46,7 +46,6 @@ export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
 export GIT_PAGER='/usr/share/git/diff-highlight/diff-highlight | less -+F -x8 -nBJXRgiM -h512'
 
 ## Java
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 export IDEA_VM_OPTIONS="$HOME/Dropbox/dotfiles/idea.vmoptions"
 export IDEA_JDK=$HOME/lib/jdk-8u5-tuxjdk-b08
 

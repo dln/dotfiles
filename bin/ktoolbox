@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -ex
+set -ex
 name=toolbox-${USER}
 image='dlneintr/toolbox:latest'
 labels="app=toolbox,owner=${USER},cookie=0xdeadbeef"

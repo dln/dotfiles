@@ -1,3 +1,6 @@
+--glob=!/vendor/
+--glob=!/.git/
+--glob=!/.terraform/
 --colors=path:fg:100,150,210
 --colors=match:style:nobold
 --colors=match:bg:180,150,40

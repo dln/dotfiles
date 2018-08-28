@@ -79,7 +79,7 @@ font:
     style: Italic
 
   # Point size of the font
-  size: 18
+  size: 10 
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -233,12 +233,6 @@ cursor_style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
-
-shell:
-  program: /bin/tmux
-  args:
-    - attach
-    - -t0
 
 # Shell
 #
