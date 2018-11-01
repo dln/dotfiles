@@ -4,6 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugins
 Plug 'VundleVim/Vundle.vim'
+Plug 'acarapetis/vim-colors-github'
 Plug 'airblade/vim-gitgutter'
 Plug 'b4b4r07/vim-hcl'
 Plug 'bazelbuild/vim-bazel'
@@ -11,7 +12,9 @@ Plug 'cespare/vim-toml'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
+Plug 'gerw/vim-HiLinkTrace'
 Plug 'godlygeek/tabular'
+Plug 'google/vim-jsonnet'
 Plug 'google/vim-maktaba'
 Plug 'hashivim/vim-terraform'
 Plug 'jremmen/vim-ripgrep'
@@ -21,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'kshenoy/vim-signature'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'plasticboy/vim-markdown'
@@ -34,6 +38,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 
 " Autocomplete
@@ -253,6 +258,13 @@ au BufNewFile,BufRead SCons* set filetype=python
 "" JavaScript, Json
 let g:vim_json_syntax_conceal = 0
 
+"" Jsonnet
+
+let g:jsonnet_fmt_fail_silently = 0
+autocmd BufNewFile,BufAdd,BufRead *.libjsonnet setlocal ft=jsonnet
+
+
+
 "" Scala
 autocmd BufNewFile,BufAdd,BufRead build.sbt setlocal ft=scala
 autocmd BufNewFile,BufAdd,BufRead *.scala setlocal ft=scala
@@ -449,6 +461,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
@@ -516,8 +529,8 @@ set termguicolors
 let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 
-" color dln-light
-color dln-dark
+color dln-light
+" color dln-dark
 
 " highlight LineNr ctermfg=31 ctermbg=234 cterm=italic
 " highlight CursorLine ctermfg=159 ctermbg=24
@@ -529,5 +542,28 @@ highlight GitGutterChange ctermbg=234 ctermfg=220
 highlight GitGutterDelete ctermbg=234 ctermfg=124
 highlight GitGutterChangeDelete ctermbg=234 ctermfg=88
 
-map ,l :color dln-dark<CR>
+map ,l :color dln-light<CR>
+
+let s:hidden_all = 1
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
 

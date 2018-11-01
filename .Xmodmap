@@ -19,3 +19,7 @@ add mod3 = Alt_R
 
 keysym Alt_R = Mode_switch
 
+! Pgup/Down on dell
+keycode 112 = Left
+keycode 117 = Right
+

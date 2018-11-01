@@ -9,6 +9,10 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
+export EDITOR=nvim
+export DISPLAY=:0
+export GOPATH=$HOME
+
 fpath=(~/.zsh/functions $fpath)
 
 ZSH_THEME="robbyrussell"
@@ -17,16 +21,17 @@ export DIRENV_LOG_FORMAT=
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 export HISTFILE=~/.zsh_history
-export SAVEHIST=9000
+export HISTSIZE=20000
+export SAVEHIST=20000
 export LPASS_AGENT_TIMEOUT=900
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-export ZSH_HIGHLIGHT_STYLES[alias]='fg=155'
-export ZSH_HIGHLIGHT_STYLES[builtin]='fg=190'
-export ZSH_HIGHLIGHT_STYLES[command]='fg=155'
-export ZSH_HIGHLIGHT_STYLES[function]='fg=155'
-export ZSH_HIGHLIGHT_STYLES[path]='fg=116'
+export ZSH_HIGHLIGHT_STYLES[alias]='fg=31'
+export ZSH_HIGHLIGHT_STYLES[builtin]='fg=71'
+export ZSH_HIGHLIGHT_STYLES[command]='fg=35'
+export ZSH_HIGHLIGHT_STYLES[function]='fg=35'
+export ZSH_HIGHLIGHT_STYLES[path]='fg=31'
 
 export PROMPT_LEAN_COLOR1=78
 export PROMPT_LEAN_COLOR2=67
@@ -35,7 +40,13 @@ export PROMPT_LEAN_PATH_PERCENT=50
 export PROMPT_LEAN_LEFT=_dln_prompt_left
 # export PROMPT_LEAN_RIGHT=_dln_prompt_right
 
-setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+# setopt append_history
 setopt share_history
 
 source ~/.zplug/init.zsh
