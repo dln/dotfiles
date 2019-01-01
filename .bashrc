@@ -112,3 +112,5 @@ fi
 source $HOME/.bash_aliases
 source $HOME/.bash_exports
 source $HOME/.bash_prompt
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

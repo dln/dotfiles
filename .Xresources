@@ -1,5 +1,5 @@
-Xft.dpi: 240
-!Xft.dpi: 96
+!Xft.dpi: 210
+Xft.dpi: 144
 Xft.antialias: 1
 Xft.rgba: rgb
 Xft.hinting: 1

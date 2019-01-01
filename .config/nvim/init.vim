@@ -2,55 +2,82 @@
 " set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plugins
-Plug 'VundleVim/Vundle.vim'
-Plug 'acarapetis/vim-colors-github'
-Plug 'airblade/vim-gitgutter'
-Plug 'b4b4r07/vim-hcl'
-Plug 'bazelbuild/vim-bazel'
-Plug 'cespare/vim-toml'
-Plug 'djoshea/vim-autoread'
-Plug 'ervandew/supertab'
+" Autocomplete
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-go'
+" Plug 'ncm2/ncm2-racer'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Markdown
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'tpope/vim-markdown'
+
+" remove trailing whitespace
+Plug 'bronson/vim-trailing-whitespace'
+
+" comment lines out (gc in visual mode)
+Plug 'tomtom/tcomment_vim'
+
+" Pimped out bar at the bottom of current buffer
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Golang
 Plug 'fatih/vim-go'
-Plug 'gerw/vim-HiLinkTrace'
-Plug 'godlygeek/tabular'
-Plug 'google/vim-jsonnet'
-Plug 'google/vim-maktaba'
+Plug 'mdempsky/gocode'
+
+" Bazel
+Plug 'bazelbuild/vim-bazel'
+Plug 'bazelbuild/vim-ft-bzl'
+
+" Rust
+Plug 'racer-rust/vim-racer'
+Plug 'roxma/nvim-cm-racer'
+Plug 'rust-lang/rust.vim'
+
+" Terraform
+Plug 'b4b4r07/vim-hcl'
 Plug 'hashivim/vim-terraform'
+
+" Jsonnet filetype plugin
+Plug 'google/vim-jsonnet'
+
+" toml
+Plug 'cespare/vim-toml'
+
+" Plug 'ervandew/supertab'
+Plug 'google/vim-maktaba'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'plasticboy/vim-markdown'
-Plug 'rakr/vim-one'
-Plug 'rust-lang/rust.vim'
-Plug 'sebdah/vim-delve'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 
-" Autocomplete
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-go'
-Plug 'ncm2/ncm2-racer'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 call plug#end()
+
+" language en_US
+set encoding=utf8
+set ffs=unix,dos,mac
 
 set ttimeout
 set ttimeoutlen=0
@@ -77,6 +104,7 @@ set smartindent " Don't mess with comments
 set nojoinspaces
 
 set autochdir
+set autoread        "Reload files changed outside vim
 set nofoldenable    " disable folding
 
 " Wordwrap
@@ -98,9 +126,11 @@ set whichwrap+=<,>,h,l
 set wrap
 
 "" GUI
-set novisualbell
+set visualbell
 set noerrorbells
 set ruler
+set cursorline
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set number " line numbers
 set numberwidth=6
 set lz " lazy redraw
@@ -118,7 +148,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set splitbelow " Preview window
 set splitright
 
-" let mapleader=","
+let mapleader=","
 
 "" Session
 let g:session_autosave = 'no'
@@ -173,14 +203,14 @@ map ,H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,/tmp/v\d\d*'
 let g:explDetailedHelp=1
 
-"" Backup 
+"" Backup
 set backup
 set backupcopy=yes
 set backupdir=~/.vim/backup,~/.tmp,~/tmp,/var/tmp,/tmp"
 set directory=~/.vim/backup,~/.tmp,~/tmp,/var/tmp,/tmp"
 let myvar = strftime("%y%m%d-%H%M")
 let myvar = "set backupext=_". myvar
-execute myvar 
+execute myvar
 au BufWritePre * let &backupext = substitute(expand("%:p"), "\/", "_", "g")
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/target/*,*/.git/*"
@@ -218,13 +248,46 @@ inoremap <C-S-Right> <C-\><C-O>gh<C-O>w
 map <silent> <c-/> :TComment<cr>
 imap <silent> <c-/> <c--><c-->
 
-"" SCM Stuff
+"" Git
 let g:SCMDiffCommand = "git"
 let VCSCommandDeleteOnHide = 1
 let g:git_branch_status_nogit=""
 let g:git_branch_status_around="[]"
 let g:git_branch_status_text=""
 let g:git_branch_status_head_current=1
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_modified_removed = ''
+
+"" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "✗"
+let syntastic_style_error_symbol = "✗"
+let g:syntastic_warning_symbol = "∙∙"
+let syntastic_style_warning_symbol = "∙∙"
+
+"" ALE
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = ''      "       ﱥ   ﬡ  樂
+let g:ale_sign_warning = ''
+" let g:ale_linters = {'go': ['gofmt']}
+" let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
+" let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
+let g:ale_linters = {'go': ['gofmt', 'gometalinter']}
+let g:go_gometalinter_options = join([
+ \    '--fast'
+ \ ], ' ')
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 "" Buffer navigation
 map <silent> ` :b#<CR>
@@ -239,7 +302,7 @@ nmap <silent> ,/ :let @/=""<CR>
 ""
 
 au BufNewFile,BufRead manifest setlocal ft=json
-au BufNewFile,BufRead *.aurora set filetype=python 
+au BufNewFile,BufRead *.aurora set filetype=python
 au BufNewFile,BufRead *.avdl setlocal ft=avro-idl
 au BufNewFile,BufRead *.avpr setlocal ft=json
 au BufNewFile,BufRead *.bazel setlocal ft=bzl
@@ -247,13 +310,13 @@ au BufNewFile,BufRead *.cql set syntax=cql
 au BufNewFile,BufRead *.go setlocal ft=go
 au BufNewFile,BufRead *.g setlocal ft=antlr
 au BufNewFile,BufRead *.js set ft=javascript
-au BufNewFile,BufRead *.json setfiletype json 
+au BufNewFile,BufRead *.json setfiletype json
 au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
-au BufNewFile,BufRead *.template setfiletype json 
+au BufNewFile,BufRead *.template setfiletype json
 au BufNewFile,BufRead *.thrift setlocal ft=thrift
 au BufNewFile,BufRead *.upstart set filetype=upstart
 au BufNewFile,BufRead *.upstart.conf set filetype=upstart
-au BufNewFile,BufRead SCons* set filetype=python 
+au BufNewFile,BufRead SCons* set filetype=python
 
 "" JavaScript, Json
 let g:vim_json_syntax_conceal = 0
@@ -294,8 +357,80 @@ let g:pymode_lint = 0
 let g:pymode_lint_checker = "pyflakes"
 
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
+
+
+"" COC completion
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
 
 " tags
 set tags=./tags;/
@@ -307,7 +442,7 @@ function! EnhanceCppSyntax()
     syn match cppFuncDef "::\~\?\zs\h\w*\ze([^)]*\()\s*\(const\)\?\)\?$"
     hi def link cppFuncDef Special
 endfunction
-autocmd Syntax cpp call EnhanceCppSyntax() 
+autocmd Syntax cpp call EnhanceCppSyntax()
 autocmd FileType cpp setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 " HTML
@@ -340,32 +475,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Normal'] }
 
-""
-"" Color theme
-""
-if $TERM =~ '^xterm'
-        set t_Co=256 
-elseif $TERM =~ '^screen'
-        set t_Co=256            " just guessing
-elseif $TERM =~ '^rxvt'
-        set t_Co=256
-elseif $TERM =~ '^linux'
-        set t_Co=8
-else
-        set t_Co=16
-endif
-
-if &term =~ "xterm" || &term =~ "screen" || &term == "screen"
-    set t_Co=256
-    if has("terminfo")
-        let &t_Sf=nr2char(27).'[3%p1%dm'
-        let &t_Sb=nr2char(27).'[4%p1%dm'
-    else
-        let &t_Sf=nr2char(27).'[3%dm'
-        let &t_Sb=nr2char(27).'[4%dm'
-    endif
-endif
-
 " Show syntax highlight group in the status bar
 map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -375,89 +484,9 @@ set background=dark
 let g:one_allow_italics=1
 let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
-let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste'],
-  \             [ 'fugitive', 'filename', 'modified'],
-  \             [ 'go'] ],
-  \   'right': [ [ 'lineinfo' ], 
-  \              [ 'percent' ], 
-  \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-  \ },
-  \ 'component_function': {
-  \   'fileencoding': 'LightLineFileencoding',
-  \   'fileformat': 'LightLineFileformat',
-  \   'filename': 'LightLineFilename',
-  \   'filetype': 'LightLineFiletype',
-  \   'fugitive': 'LightLineFugitive',
-  \   'go': 'LightLineGo',
-  \   'lineinfo': 'LightLineInfo',
-  \   'mode': 'LightLineMode',
-  \   'modified': 'LightLineModified',
-  \   'percent': 'LightLinePercent',
-  \ }
-  \ }
-
-function! LightLineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineInfo()
-  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
-endfunction
-
-function! LightLinePercent()
-  return &ft =~? (100 * line('.') / line('$')) . '%'
-endfunction
-
-function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineGo()
-  " return ''
-  return exists('*go#jobcontrol#Statusline') ? go#jobcontrol#Statusline() : ''
-endfunction
-
-function! LightLineMode()
-  return lightline#mode()
-endfunction
-
-function! LightLineFilename()
-  return expand('%:p:~')
-endfunction
-
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? '' : ''
-endfunction
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
 
 " Golang
-let g:go_highlight_build_constraints = 1  
+let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -478,18 +507,6 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <S-k> <Plug>(go-doc)
 autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
 
-" ALE
-let g:ale_sign_column_always = 1
-" let g:ale_linters = {'go': ['gofmt']}
-" let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
-" let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
-let g:ale_linters = {'go': ['gofmt', 'gometalinter']}
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:airline#extensions#ale#enabled = 1
-let g:go_gometalinter_options = join([
- \    '--fast'
- \ ], ' ')
 
 "" Neosnippet
 " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -510,17 +527,33 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 
 
-"" Git
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_sign_added = '🞥'
-let g:gitgutter_sign_modified = '▲'
-let g:gitgutter_sign_removed = '🞬'
-let g:gitgutter_sign_removed_first_line = '🞬'
-let g:gitgutter_sign_modified_removed = '🞬'
 
 "" Airline
-" let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='cool'
+let g:airline_theme='distinguished'
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline_section_x = ''   " Hide file type
+let g:airline_section_z = "\uf0c9 %l \ufb87 %c"
+ let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'c'  : 'C',
+      \ 'i'  : 'I',
+      \ 'ic' : 'I',
+      \ 'ix' : 'I',
+      \ 'n'  : "\ue62b",
+      \ 'ni' : "\ue62b",
+      \ 'no' : "\ue62b",
+      \ 'R'  : 'R',
+      \ 'Rv' : 'R',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ 't'  : 'T',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ }
 
 "" Terminal
 
@@ -532,17 +565,7 @@ let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 " color dln-light
 color dln-dark
 
-" highlight LineNr ctermfg=31 ctermbg=234 cterm=italic
-" highlight CursorLine ctermfg=159 ctermbg=24
-" highlight SignColumn ctermbg=234
-" highlight Search ctermbg=237 ctermfg=none cterm=none
-
-highlight GitGutterAdd ctermbg=234 ctermfg=58
-highlight GitGutterChange ctermbg=234 ctermfg=220
-highlight GitGutterDelete ctermbg=234 ctermfg=124
-highlight GitGutterChangeDelete ctermbg=234 ctermfg=88
-
-map ,l :color dln-light<CR>
+map ,l :color dln-dark<CR>
 
 let s:hidden_all = 1
 set noshowmode
