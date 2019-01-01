@@ -217,14 +217,14 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/target/*,*/.git/*"
 
 
 map <silent> <space> :Buffers<cr>
-map <silent> ,` :Buffers<cr>
-map <silent> ,; :Commits<cr>
-map <silent> ,e :GitFiles<cr>
-map <silent> ,d :Files<cr>
-map <silent> ,f :History<cr>
-" map <silent> ,g :BLines<cr>
-map <silent> ,/ :Ag<cr>
-map <silent> ,m :Marks<cr>
+map <silent> <leader>` :Buffers<cr>
+map <silent> <leader>; :Commits<cr>
+map <silent> <leader>e :GitFiles<cr>
+map <silent> <leader>d :Files<cr>
+map <silent> <leader>f :History<cr>
+" map <silent> <leader>g :BLines<cr>
+map <silent> <leader>/ :Ag<cr>
+map <silent> <leader>m :Marks<cr>
 
 "" Key bindings
 imap <silent>  <c-w>
@@ -411,8 +411,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
