@@ -55,7 +55,6 @@ Plug 'cespare/vim-toml'
 
 " Plug 'ervandew/supertab'
 Plug 'google/vim-maktaba'
-Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-peekaboo'
