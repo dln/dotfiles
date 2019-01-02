@@ -1,6 +1,7 @@
 {
   "coc.preferences.diagnostic.errorSign": "",
   "coc.preferences.diagnostic.warningSign": "",
+  "coc.preferences.noselect": false,
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
