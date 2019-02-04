@@ -293,6 +293,7 @@ map <silent> ` :b#<CR>
 
 
 "" "Turn off search highlight
+map <silent> <Bslash><cr> :noh<cr>
 map <silent> <leader><cr> :noh<cr>
 nmap <silent> ,/ :let @/=""<CR>
 
@@ -496,11 +497,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
-let g:go_auto_type_info = 0
 " let g:go_def_mapping_enabled = 0
 let g:go_info_mode = 'guru'
 let g:go_updatetime = 20
 let g:go_snippet_engine = "neosnippet"
+" Let coc.nvim handle GoDef.
+let g:go_def_mapping_enabled = 0
 
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <S-k> <Plug>(go-doc)
@@ -564,7 +566,7 @@ let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 " color dln-light
 color dln-dark
 
-map ,l :color dln-dark<CR>
+map ,l :color dln-light<CR>
 
 let s:hidden_all = 1
 set noshowmode
