@@ -26,8 +26,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 1
+    y: 1
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -92,27 +92,28 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: IBM Plex Mono
+    family: BlexMono Nerd Font
     style: Regular
+    # style: Medium
 
   # Bold font face
   bold:
-    family: IBM Plex Mono
-    style: SemiBold
+    family: BlexMono Nerd Font
+    style: Bold
 
   # Italic font face
   italic:
-    family: IBM Plex Mono
+    family: BlexMono Nerd Font
     style: Italic
 
   # Point size
-  size: 8.5 
+  size: 9
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 2
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -134,8 +135,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0xffffff'
-    foreground: '0x000000'
+    background: '0x000000'
+    foreground: '0xeaeaea'
 
     # Bright and dim foreground colors
     #
