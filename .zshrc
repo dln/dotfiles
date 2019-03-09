@@ -12,6 +12,7 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 export EDITOR=nvim
 export DISPLAY=:0
 export GOPATH=$HOME
+export GDK_SCALE=2
 
 fpath=(~/.zsh/functions $fpath)
 
@@ -24,6 +25,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=20000
 export SAVEHIST=20000
 export LPASS_AGENT_TIMEOUT=900
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -241,6 +243,7 @@ export FZF_COMPLETION_TRIGGER=";"
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 command -v kops    >/dev/null 2>&1 && source <(kops completion zsh)
 command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
+command -v ark     >/dev/null 2>&1 && source <(ark completion zsh)
 
 [ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
@@ -265,9 +268,12 @@ alias vim=nvim
 alias xc='xclip -selection clipboard'
 # alias e='nvr --remote'
 
+## PlasticSCM
 
+export PATH="$HOME/plastic/client:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
