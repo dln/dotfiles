@@ -72,6 +72,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
+" PowerShell
+Plug 'PProvost/vim-ps1'
+
 call plug#end()
 
 " language en_US
