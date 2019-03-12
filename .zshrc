@@ -10,7 +10,7 @@
 export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 export EDITOR=nvim
-export DISPLAY=:0
+#export DISPLAY=:0
 export GOPATH=$HOME
 export GDK_SCALE=2
 
@@ -125,7 +125,9 @@ function short_pwd {
 
 function _dln_prompt_left {
   _pw="$(short_pwd)"
-  echo -e "%{\e[38;5;246m%}$_pw "
+  # _host="%{\e[48;5;32;38;5;15m%} $HOST %{\e[0m%}"
+  _host="%{\e[38;5;244m%}$HOST:%{\e[0m%}"
+  echo -e "$_host%{\e[38;5;16m%}$_pw"
 }
 
 function _dln_prompt_right {
