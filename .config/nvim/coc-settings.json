@@ -39,10 +39,6 @@
       "command": "bingo",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
-    },
-    "jsonnet": {
-      "command": "jsonnet-language-server",
-      "filetypes": ["jsonnet"]
     }
   }
 }

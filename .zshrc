@@ -60,6 +60,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "arunvelsriram/kube-fzf", use:'kube-fzf.sh'
+zplug "thecasualcoder/kube-fzf", as:command, use:"{*pod,*.sh}"
 
 zplug "~/.zsh", from:local
 
@@ -258,7 +259,7 @@ alias ag='ag --pager less'
 alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias hs='history -a; history -n'
-alias l='less -nS'
+alias l='less -nRS'
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias pstree="pstree -Auh | less"
 alias tail='tail -n $LINES'
