@@ -217,7 +217,7 @@ redraw-prompt() {
 zle -N redraw-prompt
 
 _jump() {
-  dir="$(fasd -Rdl | fzf -1 -0 --no-sort +m --height 10)" && cd_func "${dir}"
+  dir="$(fasd -Rdlt | fzf --tiebreak=end -1 -0 --no-sort +m --height 10)" && cd_func "${dir}"
   zle && zle redraw-prompt
 }
 
@@ -239,6 +239,7 @@ e ()
 ## fzf
 export FZF_TMUX=1
 export FZF_COMPLETION_TRIGGER=";"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 . /usr/share/fzf/completion.zsh
 . /usr/share/fzf/key-bindings.zsh
 
@@ -247,6 +248,7 @@ command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 command -v kops    >/dev/null 2>&1 && source <(kops completion zsh)
 command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
 command -v ark     >/dev/null 2>&1 && source <(ark completion zsh)
+command -v stern   >/dev/null 2>&1 && source <(stern --completion zsh)
 
 [ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
@@ -276,6 +278,10 @@ alias xc='xclip -selection clipboard'
 export PATH="$HOME/plastic/client:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+## Bazel
+
+export BAZEL_PYTHON=python2
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
