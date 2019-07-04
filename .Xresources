@@ -7,6 +7,9 @@ Xft.autohint: 0
 Xft.hintstyle:  hintfull
 Xft.lcdfilter:  lcddefault
 
+Xcursor.theme: Bibata_Oil
+Xcursor.size: 48
+
 XTerm*metaSendsEscape: true
 XTerm.VT100.translations: #override \
 Meta <Key> minus: smaller-vt-font() \n\

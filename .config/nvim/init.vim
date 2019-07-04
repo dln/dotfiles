@@ -66,6 +66,9 @@ Plug 'Shougo/neosnippet-snippets'
 " Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 
+" Powershell
+Plug 'PProvost/vim-ps1'
+
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -74,6 +77,9 @@ Plug 'junegunn/gv.vim'
 
 " PowerShell
 Plug 'PProvost/vim-ps1'
+
+" Webdev
+Plug 'burner/vim-svelte'
 
 call plug#end()
 

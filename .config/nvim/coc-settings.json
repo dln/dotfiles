@@ -9,7 +9,7 @@
             "/deployment.jsonnet",
             "/deployment.json"
         ],
-        "url": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.2/deployment.json"
+        "url": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/deployment.json"
     }
   ],
   "yaml.schemas": {
@@ -36,7 +36,8 @@
       "args": ["--stdio"]
     },
     "golang": {
-      "command": "bingo",
+      "command": "gopls",
+      "args": [],
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
