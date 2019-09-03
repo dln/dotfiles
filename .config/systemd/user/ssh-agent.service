@@ -5,7 +5,7 @@ Description=SSH key agent
 Type=forking
 Environment=SSH_AUTH_SOCK=%h/.ssh/ssh_auth_sock
 ExecStartPre=/usr/bin/rm -f $SSH_AUTH_SOCK
-ExecStart=/usr/bin/ssh-agent -a $SSH_AUTH_SOCK
+ExecStart=/usr/bin/ssh-agent -a $SSH_AUTH_SOCK -t 3600
 
 [Install]
 WantedBy=default.target

@@ -10,7 +10,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'ncm2/ncm2-path'
 " Plug 'ncm2/ncm2-go'
 " Plug 'ncm2/ncm2-racer'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile', 'branch': 'master'}
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -252,6 +253,12 @@ vnoremap <C-S-Right> w
 nnoremap <C-S-Right> gh<C-O>w
 inoremap <C-S-Right> <C-\><C-O>gh<C-O>w
 
+"" Align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 "" Comments
 map <silent> <c-/> :TComment<cr>
 imap <silent> <c-/> <c--><c-->
@@ -385,6 +392,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -405,6 +415,10 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+
 function! s:show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
@@ -414,7 +428,8 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('doHover')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -506,9 +521,9 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
-" let g:go_def_mapping_enabled = 0
-let g:go_info_mode = 'guru'
-let g:go_updatetime = 20
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_updatetime = 200
 let g:go_snippet_engine = "neosnippet"
 " Let coc.nvim handle GoDef.
 let g:go_def_mapping_enabled = 0

@@ -1,7 +1,7 @@
 [core]
 excludesfile = "~/.gitignore"
 editor = nvim
-pager = diff-so-fancy | less -+R -nBJFXRgiM -h512 -x4
+#pager = diff-so-fancy | less -+R -nBJFXRgiM -h512 -x4
 
 [user]
 	name = Daniel Lundin

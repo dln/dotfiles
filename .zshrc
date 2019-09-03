@@ -11,7 +11,6 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 export EDITOR=nvim
 #export DISPLAY=:0
-export GOPATH=$HOME
 export GDK_SCALE=2
 
 fpath=(~/.zsh/functions $fpath)
@@ -283,6 +282,14 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export BAZEL_PYTHON=python2
 
+## Golang
+
+export GOPATH=$HOME
+export GO111MODULE=on
+GOPROXY=https://proxy.golang.org/
+
+## Ansible
+export ANSIBLE_NOCOWS=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
