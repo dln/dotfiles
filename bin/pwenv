@@ -1,0 +1,7 @@
+#!/bin/bash
+set -eu
+
+var="$1"
+shift
+
+exec env ${var}=$(systemd-ask-password --accept-cached --keyname="pwenv.${var}" "${var}: ") "$@"
