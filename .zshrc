@@ -11,7 +11,7 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 export EDITOR=nvim
 #export DISPLAY=:0
-export GDK_SCALE=2
+export GDK_SCALE=1.5
 
 fpath=(~/.zsh/functions $fpath)
 
@@ -182,7 +182,9 @@ function prompt_command {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls='ls --color=auto --group-directories-first --human-readable --almost-all'
+# alias ls='ls --color=auto --group-directories-first --human-readable --almost-all'
+alias ls=exa
+alias bat=bat --theme=ansi-light
 
 bindkey -e
 bindkey "^[[A" history-substring-search-up
@@ -248,6 +250,9 @@ command -v kops    >/dev/null 2>&1 && source <(kops completion zsh)
 command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
 command -v ark     >/dev/null 2>&1 && source <(ark completion zsh)
 command -v stern   >/dev/null 2>&1 && source <(stern --completion zsh)
+
+# Flux
+export FLUX_FORWARD_NAMESPACE=flux
 
 [ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc

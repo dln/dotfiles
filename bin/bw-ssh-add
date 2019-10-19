@@ -1,11 +1,13 @@
 #!/bin/bash
 set -eu
 
-AUTO_LOCK=900
+AUTO_LOCK=3600
 BW_SESSION=
 
 exit_error() {
   echo "$2"
+  keyctl purge user bw_master || true
+  keyctl purge user bw_session || true
   exit "$1"
 }
 

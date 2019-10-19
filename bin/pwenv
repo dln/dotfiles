@@ -1,7 +1,42 @@
 #!/bin/bash
 set -eu
 
+purge=0
+ttl=259200
+
+usage() { echo "Usage: $0 [-t SECONDS] [-f]" 1>&2; exit 1; }
+
+while getopts ":ft:" o; do
+  case "${o}" in
+    f)
+      purge=1
+      ;;
+    t)
+      ttl=${OPTARG}
+      ;;
+    *)
+      usage
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
 var="$1"
 shift
 
-exec env ${var}=$(systemd-ask-password --accept-cached --keyname="pwenv.${var}" "${var}: ") "$@"
+if [ -z "${var}" ]; then
+    usage
+fi
+
+function get_password() {
+  key="pwenv.${var}"
+  if [ "${purge}" == "1" ]; then
+    keyctl purge user ${key} 2>&1 >>/dev/null || true
+  fi
+  out=$(systemd-ask-password --accept-cached --keyname="${key}" "${var}:")
+  key_id=$(keyctl request user ${key} 2>/dev/null)
+  keyctl timeout $key_id $ttl
+  echo $out
+}
+
+exec env ${var}=$(get_password) "$@"
