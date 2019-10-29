@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eo pipefail
+printf "\033]52;c;$(base64 -w0)\a"
