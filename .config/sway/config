@@ -1,0 +1,54 @@
+
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    tap enabled
+    natural_scroll enabled
+    pointer_accel 0.5
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+  xkb_layout us-se-umlauts
+}
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym F1 workspace 1
+bindsym F2 workspace 2
+bindsym F3 workspace 3
+bindsym F4 workspace 4
+bindsym F5 workspace 5
+bindsym F6 workspace 6
+bindsym F7 workspace 7
+bindsym F8 workspace 8
+bindsym F9 workspace 9
+bindsym Shift+F1 move container to workspace 1
+bindsym Shift+F2 move container to workspace 2
+bindsym Shift+F3 move container to workspace 3
+bindsym Shift+F4 move container to workspace 4
+bindsym Shift+F5 move container to workspace 5
+bindsym Shift+F6 move container to workspace 6
+bindsym Shift+F7 move container to workspace 7
+bindsym Shift+F8 move container to workspace 8
+bindsym Shift+F9 move container to workspace 9
+bindsym Mod4+Return exec alacritty
+bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
+bindsym Mod4+l exec swaylock -c 000000 -i /home/dln/i3lock.png
+
+floating_modifier Mod4
+bindsym Mod4+Shift+space floating toggle
+bindsym Mod4+space focus mode_toggle
+
+hide_edge_borders both
+smart_borders on
+default_border pixel
+
+seat seat0 xcursor_theme Bibata_Oil 48
+
+output "eDP-1" scale 1
