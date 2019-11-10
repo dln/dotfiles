@@ -1,0 +1,11 @@
+[Unit]
+Description=A lightweight Wayland notification daemon
+Documentation=man:mako(1)
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mako --font 'IBM Plex Sans 20' --anchor bottom-right --margin 5
+
+[Install]
+WantedBy=sway-session.target
