@@ -1,0 +1,3 @@
+include "linux-with-two-alt-keys"
+keycode 58 = Control
+
