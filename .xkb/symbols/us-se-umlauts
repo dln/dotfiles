@@ -1,6 +1,6 @@
 default partial alphanumeric_keys
 xkb_symbols "basic" {
-	include "us(altgr-intl)"
+	include "us"
 	include "level3(ralt_switch)"
 	include "ctrl(nocaps)"
 	name[Group1] = "English (US, international with umlaut)";
