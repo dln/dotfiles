@@ -12,6 +12,7 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 export EDITOR=nvim
 #export DISPLAY=:0
 export GDK_SCALE=1.5
+export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
 
 fpath=(~/.zsh/functions $fpath)
 
