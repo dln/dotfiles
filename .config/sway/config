@@ -38,6 +38,7 @@ bindsym Shift+F7 move container to workspace 7
 bindsym Shift+F8 move container to workspace 8
 bindsym Shift+F9 move container to workspace 9
 bindsym Mod4+Shift+c kill
+bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec alacritty
 bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
 bindsym Mod4+l exec swaylock -c 000000 -i /home/dln/i3lock.png
