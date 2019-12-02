@@ -253,10 +253,11 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Kubernetes
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
-command -v kops    >/dev/null 2>&1 && source <(kops completion zsh)
 command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
 command -v ark     >/dev/null 2>&1 && source <(ark completion zsh)
 command -v stern   >/dev/null 2>&1 && source <(stern --completion zsh)
+
+export PATH=$HOME/.krew/bin:$PATH
 
 # Flux
 export FLUX_FORWARD_NAMESPACE=flux
@@ -288,6 +289,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Bazel
 export BAZEL_PYTHON=python2
+
+## JavaScript
+
+export PATH="./node_modules/.bin:$PATH"
+>>>>>>> work
 
 ## Golang
 export GOPATH=$HOME
