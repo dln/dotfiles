@@ -1,5 +1,5 @@
 
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:30383:DELL08AF:00_06CB:76AF_Touchpad" {
     tap enabled
     natural_scroll enabled
     pointer_accel 0.5
@@ -41,7 +41,7 @@ bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec alacritty
 bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
-bindsym Mod4+l exec swaylock -c 000000 -i /home/dln/i3lock.png
+bindsym Mod4+l exec swaylock -s center -c 000000 -i /home/dln/.config/sway/lock.png
 bindsym Mod4+space exec makoctl dismiss -a
 bindsym Mod4+print exec grim -g "$(slurp)" - | wl-copy
 
@@ -52,6 +52,23 @@ bindsym Mod4+f focus mode_toggle
 hide_edge_borders both
 smart_borders on
 default_border pixel
+
+tiling_drag enable
+
+bar {
+  position bottom
+  status_command /home/dln/bin/sway-status
+  workspace_buttons no
+  mode overlay
+  font "IBM Plex Sans Condensed 23"
+  separator_symbol |
+  gaps 0 2 2 3490
+  height 50
+  colors {
+    statusline #000000dd
+    background #eeeeee
+  }
+}
 
 seat seat0 xcursor_theme Bibata_Oil 48
 
