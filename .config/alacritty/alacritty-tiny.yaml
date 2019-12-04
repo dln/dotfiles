@@ -116,8 +116,6 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    #background: '0xe0e0dd'
-    #foreground: '0x000000'
     background: '0x304455'
     foreground: '0xf0f7ff'
 
@@ -209,7 +207,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.5
+background_opacity: 1.0
 
 # Mouse bindings
 #

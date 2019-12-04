@@ -156,7 +156,11 @@ function prompt_command {
 if [[ "${TMUX}" != "" ]]; then
   if [[ "${HOST}" = "lilbub" ]]; then
     tmux set -g status-fg "#ffebee"
+<<<<<<< HEAD
     tmux set -g status-bg "#212121"
+=======
+    tmux set -g status-bg "#b71c1c"
+>>>>>>> mucking around
     tmux set -g status-left '#[bg=#E53935,fg=#ffebee] #I #[default] '
   fi
 fi
@@ -293,7 +297,6 @@ export BAZEL_PYTHON=python2
 ## JavaScript
 
 export PATH="./node_modules/.bin:$PATH"
->>>>>>> work
 
 ## Golang
 export GOPATH=$HOME
