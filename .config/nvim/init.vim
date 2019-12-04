@@ -34,6 +34,10 @@ Plug 'tomtom/tcomment_vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Theme
+Plug 'kaicataldo/material.vim'
+
+
 " Golang
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode'
@@ -183,8 +187,8 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplVSplit = 25
 let g:miniBufExplSplitBelow=1
 
-"" X clipboard copy paste
-map <silent> ,v :r!xclip -o<cr>
+"" Wayland clipboard copy paste
+map <silent> ,v :r!wl-paste<cr>
 
 
 "" Searching
@@ -239,6 +243,8 @@ map <silent> <leader>/ :Ag<cr>
 map <silent> <leader>m :Marks<cr>
 
 "" Key bindings
+nmap <C-N><C-N> :set invnumber<CR>
+
 imap <silent>  <c-w>
 inoremap <C-s> <esc>:w<cr>a
 nnoremap <C-s> :w<cr>a
@@ -557,7 +563,6 @@ let g:vim_markdown_toml_frontmatter = 1
 
 
 "" Airline
-let g:airline_theme='distinguished'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
@@ -585,6 +590,11 @@ let g:airline_section_z = "\uf0c9 %l \ufb87 %c"
 
 "" Testing
 let test#strategy = "tslime"
+nmap <M-t> :TestLast<CR>
+imap <M-t> :TestLast<CR>
+nmap <M-S-t> :TestFile<CR>
+imap <M-S-t> :TestFile<CR>
+
 
 
 "" Terminal
@@ -594,8 +604,17 @@ set termguicolors
 let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 
-color dln-light
-" color dln-dark
+
+let darkmode=$DARKMODE
+if darkmode == 'true'
+  let g:material_terminal_italics = 1
+  let g:material_theme_style = 'darker'
+  let g:airline_theme='distinguished'
+  color material
+ else
+   let g:airline_theme='sol'
+   color dln-light
+endif
 
 map ,l :color dln-light<CR>
 

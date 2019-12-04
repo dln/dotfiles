@@ -18,7 +18,6 @@ fpath=(~/.zsh/functions $fpath)
 
 ZSH_THEME="robbyrussell"
 
-export DIRENV_LOG_FORMAT= 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 export HISTFILE=~/.zsh_history
@@ -154,6 +153,15 @@ function prompt_command {
   eval $(tmux switch-client \; show-environment -s 2>/dev/null)
 }
 
+# tmux colors
+if [[ "${TMUX}" != "" ]]; then
+  if [[ "${HOST}" = "lilbub" ]]; then
+    tmux set -g status-fg "#ffebee"
+    tmux set -g status-bg "#b71c1c"
+    tmux set -g status-left '#[bg=#E53935,fg=#ffebee] #I #[default] '
+  fi
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -205,7 +213,6 @@ cd_func () {
   fi
   "cd" "${dir}"
   fasd -A $PWD
-  eval $(direnv export zsh)
 }
 alias cd=cd_func
 
@@ -276,26 +283,19 @@ alias upper="tr '[:lower:]' '[:upper:]'"
 alias vimdiff='vimdiff -R'
 alias vim=nvim
 alias xc='xclip -selection clipboard'
-# alias e='nvr --remote'
-
-## PlasticSCM
-
-export PATH="$HOME/plastic/client:$PATH"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 ## Bazel
-
 export BAZEL_PYTHON=python2
 
 ## Golang
-
 export GOPATH=$HOME
-export GO111MODULE=on
 GOPROXY=https://proxy.golang.org/
 
 ## Ansible
 export ANSIBLE_NOCOWS=1
+
+## Rust
+export PATH=$HOME/.cargo/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

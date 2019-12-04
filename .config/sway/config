@@ -40,6 +40,8 @@ bindsym Shift+F9 move container to workspace 9
 bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec alacritty
+bindsym Mod4+Shift+Return exec env DARKMODE=true alacritty --config-file=/home/dln/.config/alacritty/alacritty-dark.yml
+bindsym Mod4+Control+Return exec alacritty --config-file=/home/dln/.config/alacritty/alacritty-tiny.yaml
 bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
 bindsym Mod4+l exec swaylock -s center -c 000000 -i /home/dln/.config/sway/lock.png
 bindsym Mod4+space exec makoctl dismiss -a
@@ -51,7 +53,8 @@ bindsym Mod4+f focus mode_toggle
 
 hide_edge_borders both
 smart_borders on
-default_border pixel
+default_border none
+smart_gaps on
 
 tiling_drag enable
 
@@ -65,11 +68,12 @@ bar {
   gaps 0 2 2 3490
   height 50
   colors {
-    statusline #000000dd
-    background #eeeeee
+    statusline #333333
+    background #ffffffdd
   }
 }
 
 seat seat0 xcursor_theme Bibata_Oil 48
 
 output "eDP-1" scale 1
+output "eDP-1" background #cccccc solid_color

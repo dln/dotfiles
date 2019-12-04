@@ -1,5 +1,5 @@
-!Xft.dpi: 210
-Xft.dpi: 144
+Xft.dpi: 210
+!Xft.dpi: 144
 Xft.antialias: 1
 Xft.rgba: rgb
 Xft.hinting: 1
@@ -8,7 +8,7 @@ Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 
 Xcursor.theme: Bibata_Oil
-Xcursor.size: 48
+Xcursor.size: 64
 
 XTerm*metaSendsEscape: true
 XTerm.VT100.translations: #override \
