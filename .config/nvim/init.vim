@@ -11,7 +11,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'ncm2/ncm2-go'
 " Plug 'ncm2/ncm2-racer'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile', 'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'janko/vim-test'
+Plug 'jgdavey/tslime.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -579,6 +582,10 @@ let g:airline_section_z = "\uf0c9 %l \ufb87 %c"
       \ 'V'  : 'V',
       \ '' : 'V',
       \ }
+
+"" Testing
+let test#strategy = "tslime"
+
 
 "" Terminal
 
