@@ -156,11 +156,7 @@ function prompt_command {
 if [[ "${TMUX}" != "" ]]; then
   if [[ "${HOST}" = "lilbub" ]]; then
     tmux set -g status-fg "#ffebee"
-<<<<<<< HEAD
     tmux set -g status-bg "#212121"
-=======
-    tmux set -g status-bg "#b71c1c"
->>>>>>> mucking around
     tmux set -g status-left '#[bg=#E53935,fg=#ffebee] #I #[default] '
   fi
 fi
@@ -298,6 +294,11 @@ export BAZEL_PYTHON=python2
 
 export PATH="./node_modules/.bin:$PATH"
 
+## Wayland
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 ## Golang
 export GOPATH=$HOME
 GOPROXY=https://proxy.golang.org/
@@ -315,6 +316,7 @@ export GTK_THEME=Adwaita:dark
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export SWAYSOCK=$HOME/.local/sway.sock
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   XKB_DEFAULT_LAYOUT=us exec sway
 fi
