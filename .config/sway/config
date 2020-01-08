@@ -1,3 +1,11 @@
+set $lock physlock -ms -p "$(toilet -t -f bigmono12 Shelman Group)"
+set $mod Mod4
+
+
+set $left h
+set $down j
+set $up k
+set $right l
 
 input "1739:30383:DELL08AF:00_06CB:76AF_Touchpad" {
     tap enabled
@@ -43,13 +51,37 @@ bindsym Mod4+Return exec alacritty
 bindsym Mod4+Shift+Return exec env DARKMODE=true alacritty --config-file=/home/dln/.config/alacritty/alacritty-dark.yml
 bindsym Mod4+Control+Return exec alacritty --config-file=/home/dln/.config/alacritty/alacritty-tiny.yaml
 bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
-bindsym Mod4+l exec swaylock -s center -c 000000 -i /home/dln/.config/sway/lock.png
+bindsym Mod4+l exec $lock
 bindsym Mod4+space exec makoctl dismiss -a
 bindsym Mod4+print exec grim -g "$(slurp)" - | wl-copy
+bindsym Mod4+Shift+minus move scratchpad
+bindsym Mod4+minus scratchpad show
 
 floating_modifier Mod4
 bindsym Mod4+Shift+f floating toggle
 bindsym Mod4+f focus mode_toggle
+
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 20px
+    bindsym Down resize grow height 20px
+    bindsym Up resize shrink height 20px
+    bindsym Right resize grow width 20px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
 
 hide_edge_borders both
 smart_borders on
@@ -65,15 +97,22 @@ bar {
   mode overlay
   font "IBM Plex Sans Condensed 23"
   separator_symbol |
-  gaps 0 2 2 3490
+  gaps 0 0 0 3490
   height 50
   colors {
-    statusline #333333
-    background #ffffffdd
+    statusline #999999
+    background #212121
   }
 }
 
 seat seat0 xcursor_theme Bibata_Oil 48
 
 output "eDP-1" scale 1
-output "eDP-1" background #cccccc solid_color
+output "eDP-1" background #000000 solid_color
+
+# Screen lock
+exec swayidle \
+	timeout 600 '$lock' \
+	timeout 900 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	before-sleep '$lock'

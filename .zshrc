@@ -11,7 +11,6 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 export EDITOR=nvim
 #export DISPLAY=:0
-export GDK_SCALE=1.5
 export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
 
 fpath=(~/.zsh/functions $fpath)
@@ -157,7 +156,7 @@ function prompt_command {
 if [[ "${TMUX}" != "" ]]; then
   if [[ "${HOST}" = "lilbub" ]]; then
     tmux set -g status-fg "#ffebee"
-    tmux set -g status-bg "#b71c1c"
+    tmux set -g status-bg "#212121"
     tmux set -g status-left '#[bg=#E53935,fg=#ffebee] #I #[default] '
   fi
 fi
@@ -238,7 +237,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 e ()
 {
-  tmux select-window -t1 
+  tmux select-window -t1
   nvr --remote $(readlink -f "$@")
 }
 
@@ -265,9 +264,6 @@ export FLUX_FORWARD_NAMESPACE=flux
 [ -f /usr/share/bash-completion/completions/aws ] && source /usr/share/bash-completion/completions/aws
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
 
-# Pager
-command -v pygmentize >/dev/null 2>&1 && export LESSOPEN="|/usr/bin/pygmentize -f terminal16m -O style=native %s"
-
 ## Aliases
 alias ag='ag --pager less'
 alias cdiff='colordiff -u'
@@ -278,11 +274,16 @@ alias lower="tr '[:upper:]' '[:lower:]'"
 alias pstree="pstree -Auh | less"
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
-alias tree='tree -C'
+alias tree='exa -T'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias vimdiff='vimdiff -R'
 alias vim=nvim
 alias xc='xclip -selection clipboard'
+
+## Wayland
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Bazel
 export BAZEL_PYTHON=python2
@@ -297,5 +298,12 @@ export ANSIBLE_NOCOWS=1
 ## Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
+## GTK
+export GDK_SCALE=1.5
+export GTK_THEME=Adwaita:dark
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  XKB_DEFAULT_LAYOUT=us exec sway
+fi
