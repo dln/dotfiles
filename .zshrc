@@ -297,6 +297,7 @@ export PATH="./node_modules/.bin:$PATH"
 ## Wayland
 export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export QT_SCALE_FACTOR=2
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Golang
