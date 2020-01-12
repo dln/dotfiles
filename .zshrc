@@ -283,6 +283,7 @@ alias xc='xclip -selection clipboard'
 ## Wayland
 export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export QT_SCALE_FACTOR=2
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Bazel
@@ -304,6 +305,7 @@ export GTK_THEME=Adwaita:dark
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export SWAYSOCK=$HOME/.local/sway.sock
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   XKB_DEFAULT_LAYOUT=us exec sway
 fi

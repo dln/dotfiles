@@ -1,6 +1,6 @@
-set $lock physlock -ms -p "$(toilet -t -f bigmono12 Shelman Group)"
+set $lock physlock -dms -p "$(toilet -t -f bigmono12 Shelman Group)"
 set $mod Mod4
-
+set $term env DARKMODE=true alacritty --config-file=/home/dln/.config/alacritty/alacritty-dark.yml
 
 set $left h
 set $down j
@@ -47,8 +47,8 @@ bindsym Shift+F8 move container to workspace 8
 bindsym Shift+F9 move container to workspace 9
 bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
-bindsym Mod4+Return exec alacritty
-bindsym Mod4+Shift+Return exec env DARKMODE=true alacritty --config-file=/home/dln/.config/alacritty/alacritty-dark.yml
+bindsym Mod4+Return exec $term
+bindsym Mod4+Shift+Return exec alacritty
 bindsym Mod4+Control+Return exec alacritty --config-file=/home/dln/.config/alacritty/alacritty-tiny.yaml
 bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
 bindsym Mod4+l exec $lock
@@ -90,25 +90,12 @@ smart_gaps on
 
 tiling_drag enable
 
-bar {
-  position bottom
-  status_command /home/dln/bin/sway-status
-  workspace_buttons no
-  mode overlay
-  font "IBM Plex Sans Condensed 23"
-  separator_symbol |
-  gaps 0 0 0 3490
-  height 50
-  colors {
-    statusline #999999
-    background #212121
-  }
-}
-
 seat seat0 xcursor_theme Bibata_Oil 48
 
 output "eDP-1" scale 1
 output "eDP-1" background #000000 solid_color
+
+exec $term -e tmux attach
 
 # Screen lock
 exec swayidle \
