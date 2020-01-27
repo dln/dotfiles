@@ -11,7 +11,6 @@ export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 export EDITOR=nvim
 #export DISPLAY=:0
-export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
 
 fpath=(~/.zsh/functions $fpath)
 
@@ -126,7 +125,7 @@ function _dln_prompt_left {
   _pw="$(short_pwd)"
   # _host="%{\e[48;5;32;38;5;15m%} $HOST %{\e[0m%}"
   _host="%{\e[38;5;244m%}$HOST:%{\e[0m%}"
-  echo -e "$_host%{\e[38;5;16m%}$_pw"
+  echo -e "$_host%{\e[38;5;248m%}$_pw"
 }
 
 function _dln_prompt_right {
@@ -152,12 +151,14 @@ function prompt_command {
   eval $(tmux switch-client \; show-environment -s 2>/dev/null)
 }
 
-# tmux colors
-if [[ "${TMUX}" != "" ]]; then
-  if [[ "${HOST}" = "lilbub" ]]; then
+# laptop specifics
+if [[ "${HOST}" = "lilbub" ]]; then
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+  if [[ "${TMUX}" != "" ]]; then
     tmux set -g status-fg "#ffebee"
     tmux set -g status-bg "#212121"
-    tmux set -g status-left '#[bg=#E53935,fg=#ffebee] #I #[default] '
+    tmux set -g status-left '#[bg=#353535,fg=#757575] #I #[default] '
   fi
 fi
 
@@ -281,20 +282,12 @@ alias vimdiff='vimdiff -R'
 alias vim=nvim
 alias xc='xclip -selection clipboard'
 
-## Wayland
-export QT_QPA_PLATFORM=wayland
-export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-export QT_SCALE_FACTOR=2
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-## Bazel
-export BAZEL_PYTHON=python2
-
 ## JavaScript
 
 export PATH="./node_modules/.bin:$PATH"
 
 ## Wayland
+export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 export QT_SCALE_FACTOR=2
@@ -311,7 +304,8 @@ export ANSIBLE_NOCOWS=1
 export PATH=$HOME/.cargo/bin:$PATH
 
 ## GTK
-export GDK_SCALE=1.5
+export GDK_SCALE=2
+#export GDK_DPI_SCALE=1
 export GTK_THEME=Adwaita:dark
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -319,5 +313,6 @@ export GTK_THEME=Adwaita:dark
 export SWAYSOCK=$HOME/.local/sway.sock
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  rm -f $SWAYSOCK
   XKB_DEFAULT_LAYOUT=us exec sway
 fi
