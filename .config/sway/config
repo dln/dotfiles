@@ -10,7 +10,7 @@ set $right l
 input "1739:30383:DELL08AF:00_06CB:76AF_Touchpad" {
     tap enabled
     natural_scroll enabled
-    pointer_accel 0.5
+    pointer_accel 0.2
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -48,7 +48,7 @@ bindsym Shift+F9 move container to workspace 9
 bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec $term
-bindsym Mod4+Shift+Return exec alacritty
+bindsym Mod4+Shift+Return exec alacritty -e tmux attach -t0
 bindsym Mod4+Control+Return exec alacritty --config-file=/home/dln/.config/alacritty/alacritty-tiny.yaml
 bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
 bindsym Mod4+l exec $lock
@@ -92,9 +92,10 @@ tiling_drag enable
 
 seat seat0 xcursor_theme Bibata_Oil 48
 
-output "eDP-1" scale 1
+output "eDP-1" scale 2
 output "eDP-1" background #000000 solid_color
 
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"
 exec $term -e tmux attach
 
 # Screen lock
@@ -103,3 +104,4 @@ exec swayidle \
 	timeout 900 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
 	before-sleep '$lock'
+
