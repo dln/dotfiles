@@ -293,17 +293,36 @@ fun! <sid>hi(group, guifg, guibg, attr)
   endif
 endfun
 
-call  <sid>hi("Normal",         s:white_1000,      "",                "")
-call  <sid>hi("Bold",           "",                "",                "bold")
-call  <sid>hi("Italic",         "",                "",                "italic")
-call  <sid>hi("LineNr",         s:grey_800,        "",      "italic")
-call  <sid>hi("CursorLine",     "",   "#112131",      "")
-call  <sid>hi("CursorLineNR",   s:grey_500,   "#334455",      "")
-call  <sid>hi("Statement",      s:blue_grey_200,      "",                "bold")
-call  <sid>hi("String",      s:light_green_400,      "",                "italic")
-call  <sid>hi("Comment",         s:blue_grey_600,        "",      "italic")
-call  <sid>hi("Type",         s:deep_purple_200,        "",      "none")
-call  <sid>hi("Identifier",         s:orange_200,        "",      "")
-call  <sid>hi("goFunction",         s:blue_300,        "",      "bold")
-call  <sid>hi("goOperator",         s:teal_200,        "",      "")
-call  <sid>hi("Search",         "",                s:amber_700,       "none")
+" FIXME: this is a todo
+
+call  <sid>hi("Normal",       s:white_1000,      "",                "")
+call  <sid>hi("Bold",         "",                "",                "bold")
+call  <sid>hi("Italic",       "",                "",                "italic")
+call  <sid>hi("VertSplit",    "#112131",   s:blue_grey_800,   "")
+call  <sid>hi("LineNr",       s:grey_800,        "",                "italic")
+call  <sid>hi("SignColumn",   s:blue_grey_500,   "#121212",         "")
+call  <sid>hi("Visual",       s:cyan_100,        s:indigo_900,      "")
+
+call  <sid>hi("Bookmark",     s:black_1000,      s:yellow_700,      "none")
+call  <sid>hi("Todo",         s:yellow_100,      s:orange_900,      "none")
+
+call  <sid>hi("CursorLine",   "",                "#112131",         "")
+call  <sid>hi("CursorLineNR", s:grey_500,        "#334455",         "")
+call  <sid>hi("Folded",       s:purple_200,      s:deep_purple_900, "")
+
+call  <sid>hi("Pmenu",        s:blue_grey_200,   s:blue_grey_800,   "none")
+call  <sid>hi("PmenuSbar",    s:blue_grey_500,   s:blue_grey_900,   "none")
+call  <sid>hi("PmenuThumb",   s:blue_grey_400,   s:blue_grey_700,   "none")
+call  <sid>hi("PmenuSel",     s:black_1000,      s:amber_300,       "")
+call  <sid>hi("CocFloating",  s:blue_grey_200,   s:blue_grey_900,   "none")
+
+call  <sid>hi("Statement",    s:blue_grey_200,   "",                "bold")
+call  <sid>hi("String",       s:light_green_400, "",                "italic")
+call  <sid>hi("Comment",      s:blue_grey_600,   "",                "italic")
+call  <sid>hi("Type",         s:deep_purple_100, "",                "none")
+call  <sid>hi("Identifier",   s:orange_200,      "",                "")
+call  <sid>hi("goFunction",   s:blue_300,        "",                "bold")
+call  <sid>hi("goOperator",   s:teal_200,        "",                "")
+call  <sid>hi("Search",       "",                s:amber_700,       "none")
+
+call  <sid>hi("goSameId",     s:yellow_100,      "",                "underline")

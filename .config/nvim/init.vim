@@ -71,6 +71,8 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'terminalnode/sway-vim-syntax'
+
 " Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 
@@ -563,7 +565,7 @@ let g:vim_markdown_toml_frontmatter = 1
 
 
 "" Airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_section_x = ''   " Hide file type
@@ -610,7 +612,7 @@ if darkmode == 'true'
   let g:material_terminal_italics = 1
   let g:material_theme_style = 'darker'
   let g:airline_theme='distinguished'
-  color material
+  color dln-dim
  else
    let g:airline_theme='sol'
    color dln-light

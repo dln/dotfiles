@@ -48,9 +48,6 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
 # Spaces per Tab (changes require restart)
 #
 # This setting defines the width of a tab in cells.
@@ -78,23 +75,25 @@ tabspaces: 8
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
-  # Normal (roman) font face
+  size: 14
   normal:
     family: IBM Plex Mono
     style: Regular
-
-  # Bold font face
   bold:
     family: IBM Plex Mono
     style: SemiBold
-
-  # Italic font face
   italic:
     family: IBM Plex Mono
     style: Italic
-
-  # Point size
-  size: 27
+  # normal:
+  #   family: Fira Code
+  #   style: Regular
+  # bold:
+  #   family: Fira Code
+  #   style: SemiBold
+  # italic:
+  #   family: Fira Code
+  #   style: Italic
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -115,7 +114,7 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x151515'
+    background: '0x121212'
     foreground: '0xa1b0b8'
 
   # Normal colors
