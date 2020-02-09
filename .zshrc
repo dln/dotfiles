@@ -306,7 +306,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 ## GTK
 export GDK_SCALE=2
 #export GDK_DPI_SCALE=1
-export GTK_THEME=Adwaita:dark
+#export GTK_THEME=Adwaita:dark
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

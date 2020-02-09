@@ -75,7 +75,7 @@ tabspaces: 8
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
-  size: 14
+  size: 28
   normal:
     family: IBM Plex Mono
     style: Regular

@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 
-input "1739:30383:DELL08AF:00_06CB:76AF_Touchpad" {
+input "1739:30385:DELL08AF:00_06CB:76B1_Touchpad" {
     tap enabled
     natural_scroll enabled
     pointer_accel 0.2
@@ -92,7 +92,7 @@ tiling_drag enable
 
 seat seat0 xcursor_theme Bibata_Oil 48
 
-output "eDP-1" scale 2
+output "eDP-1" scale 1
 output "eDP-1" background #000000 solid_color
 
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
