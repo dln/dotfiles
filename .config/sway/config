@@ -61,6 +61,8 @@ floating_modifier Mod4
 bindsym Mod4+Shift+f floating toggle
 bindsym Mod4+f focus mode_toggle
 
+bindsym Mod4+x floating enable; resize set width 80 ppt; resize set height 100 ppt ; move position center
+
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
