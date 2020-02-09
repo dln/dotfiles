@@ -295,12 +295,13 @@ endfun
 
 " FIXME: this is a todo
 
+call  <sid>hi("MsgArea",      s:orange_900,  "",                     "")
 call  <sid>hi("Normal",       s:white_1000,      "",                "")
 call  <sid>hi("Bold",         "",                "",                "bold")
 call  <sid>hi("Italic",       "",                "",                "italic")
 call  <sid>hi("VertSplit",    "#112131",   s:blue_grey_800,   "")
 call  <sid>hi("LineNr",       s:grey_800,        "",                "italic")
-call  <sid>hi("SignColumn",   s:blue_grey_500,   "#121212",         "")
+call  <sid>hi("SignColumn",   s:blue_grey_500,   "transparent",         "none")
 call  <sid>hi("Visual",       s:cyan_100,        s:indigo_900,      "")
 
 call  <sid>hi("Bookmark",     s:black_1000,      s:yellow_700,      "none")
@@ -316,6 +317,8 @@ call  <sid>hi("PmenuThumb",   s:blue_grey_400,   s:blue_grey_700,   "none")
 call  <sid>hi("PmenuSel",     s:black_1000,      s:amber_300,       "")
 call  <sid>hi("CocFloating",  s:blue_grey_200,   s:blue_grey_900,   "none")
 
+call  <sid>hi("ALEErrorSign",         s:red_500,      "",      "none")
+call  <sid>hi("ALEWarningSign",       s:orange_500,      "",      "none")
 call  <sid>hi("Statement",    s:blue_grey_200,   "",                "bold")
 call  <sid>hi("String",       s:light_green_400, "",                "italic")
 call  <sid>hi("Comment",      s:blue_grey_600,   "",                "italic")
