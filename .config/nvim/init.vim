@@ -607,25 +607,10 @@ let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 
 
-let darkmode=$DARKMODE
-if darkmode == 'true'
-  let g:material_terminal_italics = 1
-  let g:material_theme_style = 'darker'
-  let g:airline_theme='distinguished'
-  color dln-dim
- else
-   let g:airline_theme='sol'
-   color dln-light
-endif
+color dln-dim
+map ,l :color dln-dim<CR>
 
-map ,l :color dln-light<CR>
-
-let s:hidden_all = 1
-set noshowmode
-set noruler
-set laststatus=0
-set noshowcmd
-
+let s:hidden_all  = 0
 function! ToggleHiddenAll()
     if s:hidden_all  == 0
         let s:hidden_all = 1
@@ -633,12 +618,14 @@ function! ToggleHiddenAll()
         set noruler
         set laststatus=0
         set noshowcmd
+        set nonumber
     else
         let s:hidden_all = 0
         set showmode
         set ruler
         set laststatus=2
         set showcmd
+        set number
     endif
 endfunction
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
