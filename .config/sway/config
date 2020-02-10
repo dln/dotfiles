@@ -50,7 +50,7 @@ bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec $term
 bindsym Mod4+Shift+Return exec alacritty -e tmux attach -t0
 bindsym Mod4+Control+Return exec alacritty --config-file=/home/dln/.config/alacritty/alacritty-tiny.yaml
-bindsym Mod4+p exec rofi -font "Roboto Mono 10" -show run
+bindsym Mod4+p exec rofi -show run
 bindsym Mod4+l exec $lock
 bindsym Mod4+space exec makoctl dismiss -a
 bindsym Mod4+print exec grim -g "$(slurp)" - | wl-copy
@@ -100,7 +100,7 @@ output "eDP-1" bg /home/dln/.config/sway/laser.png center
 
 exec mako
 exec redshift
-exec "systemctl --user import-environment; systemctl --user stbrt sway-session.target"
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"
 exec $term -e tmux attach
 
 # Screen lock
