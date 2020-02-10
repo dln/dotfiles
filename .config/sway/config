@@ -1,4 +1,4 @@
-set $lock physlock -dms -p "$(toilet -t -f bigmono12 Shelman Group)"
+set $lock physlock -dms -p "$(echo -e -n '\e[31;1m' && toilet -t -f bigmono12 Shelman Group)"
 set $mod Mod4
 set $term env DARKMODE=true alacritty --config-file=/home/dln/.config/alacritty/alacritty-dark.yml
 
