@@ -98,7 +98,9 @@ output "eDP-1" scale 1
 output "eDP-1" background #000000 solid_color
 output "eDP-1" bg /home/dln/.config/sway/laser.png center
 
-exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+exec mako
+exec redshift
+exec "systemctl --user import-environment; systemctl --user stbrt sway-session.target"
 exec $term -e tmux attach
 
 # Screen lock
@@ -107,4 +109,20 @@ exec swayidle \
 	timeout 900 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
 	before-sleep '$lock'
+
+bar {
+  mode hide
+  font pango:IBM Plex Mono 28
+  position bottom
+  status_command i3blocks
+  workspace_buttons no
+  gaps 0 0 5 0
+  status_padding 0
+  status_edge_padding 0
+
+  colors {
+    statusline #e65100ff
+    background #00000000
+  }
+}
 
