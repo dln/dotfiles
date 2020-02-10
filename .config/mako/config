@@ -1,0 +1,9 @@
+font=IBM Plex Sans Condensed 30
+width=800
+height=400
+padding=20
+margin=10,0,2
+anchor=bottom-right
+background-color=#000000ff
+border-color=#e65100ff
+text-color=#ff6f00ff
