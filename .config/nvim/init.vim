@@ -165,6 +165,7 @@ set wildmode=list:longest
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set splitbelow " Preview window
 set splitright
+set updatetime=150
 
 let mapleader=","
 
@@ -172,7 +173,7 @@ let mapleader=","
 let g:session_autosave = 'no'
 
 "" Fancy status line.
-set laststatus=2
+set laststatus=0
 
 "" Powerline
 "set rtp+=/home/dln/.vim/bundle/powerline/powerline/bindings/vim
@@ -493,8 +494,31 @@ au FileType xml
     \ set errorformat=line\ %l\ column\ %c\ \-\ %m
 
 "" fzf
+function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 20])])
+    " let top = ((&lines - height) / 2) - 1
+    let top = 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
-let g:fzf_layout = { 'up': '~40%' }
+    let top = "┌" . repeat("─", width - 2) . "┐"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "└" . repeat("─", width - 2) . "┘"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
+
+let g:fzf_layout = { 'up': '~40%', 'window': 'call CreateCenteredFloatingWindow()' }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Comment'],
   \ 'bg':      ['bg', 'Comment'],
@@ -565,11 +589,13 @@ let g:vim_markdown_toml_frontmatter = 1
 
 
 "" Airline
+let g:airline_theme="minimalist"
 let g:airline_powerline_fonts = 0
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_section_x = ''   " Hide file type
-let g:airline_section_z = "\uf0c9 %l \ufb87 %c"
+let g:airline_section_z = "\u2193%l \u2192%c"
+" let g:airline_section_z = "%l:%c"
  let g:airline_mode_map = {
       \ '__' : '-',
       \ 'c'  : 'C',
@@ -610,6 +636,7 @@ let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 color dln-dim
 map ,l :color dln-dim<CR>
 
+
 let s:hidden_all  = 0
 function! ToggleHiddenAll()
     if s:hidden_all  == 0
@@ -618,14 +645,12 @@ function! ToggleHiddenAll()
         set noruler
         set laststatus=0
         set noshowcmd
-        set nonumber
     else
         let s:hidden_all = 0
         set showmode
         set ruler
         set laststatus=2
         set showcmd
-        set number
     endif
 endfunction
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
