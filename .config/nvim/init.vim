@@ -17,7 +17,8 @@ Plug 'janko/vim-test'
 Plug 'jgdavey/tslime.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+
 Plug 'junegunn/fzf.vim'
 
 " Markdown
@@ -120,7 +121,8 @@ set autoindent
 set copyindent
 set smartindent " Don't mess with comments
 set nojoinspaces
-
+set ttyfast
+set lazyredraw
 set autochdir
 set autoread        "Reload files changed outside vim
 set nofoldenable    " disable folding
@@ -149,6 +151,7 @@ set noerrorbells
 set ruler
 set cursorline
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+
 set number " line numbers
 set numberwidth=6
 set lz " lazy redraw
@@ -534,6 +537,18 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Normal'] }
 
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command], 'window': { 'width': 0.9, 'height': 0.6 }}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+map <silent> <leader>/ :RG<cr>
+
 " Show syntax highlight group in the status bar
 map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -594,7 +609,8 @@ let g:airline_powerline_fonts = 0
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_section_x = ''   " Hide file type
-let g:airline_section_z = "\u2193%l \u2192%c"
+" let g:airline_section_z = "\u2193%l \u2192%c"
+let g:airline_section_z = "%P \u2192%c"
 " let g:airline_section_z = "%l:%c"
  let g:airline_mode_map = {
       \ '__' : '-',
