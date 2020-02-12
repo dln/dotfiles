@@ -294,7 +294,7 @@ export QT_SCALE_FACTOR=2
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Golang
-export GOPATH=$HOME
+#export GOPATH=$HOME
 GOPROXY=https://proxy.golang.org/
 
 ## Ansible
