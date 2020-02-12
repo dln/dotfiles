@@ -151,52 +151,16 @@ function prompt_command {
   eval $(tmux switch-client \; show-environment -s 2>/dev/null)
 }
 
+## ssh
 export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
 
-# laptop specifics
-if [[ "${HOST}" = "lilbub" ]]; then
-  GPG_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  if [[ "${GPG_AUTH_SOCK}" != "" ]]; then
-    ln -sf $GPG_AUTH_SOCK $SSH_AUTH_SOCK
-  fi
-
-  if [[ "${TMUX}" != "" ]]; then
-    tmux set -g status-fg "#ffebee"
-    tmux set -g status-bg "#212121"
-    tmux set -g status-left '#[bg=#353535,fg=#757575] #I #[default] '
-  fi
+# Set up ssh agent socket if gpg-agent is in use
+GPG_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+if [[ "${GPG_AUTH_SOCK}" != "" ]]; then
+  ln -sf $GPG_AUTH_SOCK $SSH_AUTH_SOCK
 fi
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# alias ls='ls --color=auto --group-directories-first --human-readable --almost-all'
 alias ls=exa
 alias bat=bat --theme=ansi-light
 
