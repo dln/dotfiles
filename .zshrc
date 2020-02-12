@@ -151,9 +151,14 @@ function prompt_command {
   eval $(tmux switch-client \; show-environment -s 2>/dev/null)
 }
 
+export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
+
 # laptop specifics
 if [[ "${HOST}" = "lilbub" ]]; then
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  GPG_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  if [[ "${GPG_AUTH_SOCK}" != "" ]]; then
+    ln -sf $GPG_AUTH_SOCK $SSH_AUTH_SOCK
+  fi
 
   if [[ "${TMUX}" != "" ]]; then
     tmux set -g status-fg "#ffebee"
