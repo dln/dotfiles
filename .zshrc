@@ -58,6 +58,7 @@ zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "arunvelsriram/kube-fzf", use:'kube-fzf.sh'
 zplug "thecasualcoder/kube-fzf", as:command, use:"{*pod,*.sh}"
+zplug "nnao45/zsh-kubectl-completion"
 
 zplug "~/.zsh", from:local
 
@@ -222,7 +223,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 . /usr/share/fzf/key-bindings.zsh
 
 # Kubernetes
-command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
+# command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 command -v helm    >/dev/null 2>&1 && source <(helm completion zsh)
 command -v ark     >/dev/null 2>&1 && source <(ark completion zsh)
 command -v stern   >/dev/null 2>&1 && source <(stern --completion zsh)
@@ -280,6 +281,7 @@ export GDK_SCALE=2
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export SWAYSOCK=$HOME/.local/sway.sock
+export XDG_SESSION_TYPE=wayland
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   rm -f $SWAYSOCK
