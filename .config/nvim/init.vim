@@ -168,7 +168,7 @@ set wildmode=list:longest
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set splitbelow " Preview window
 set splitright
-set updatetime=150
+set updatetime=500
 
 let mapleader=","
 
