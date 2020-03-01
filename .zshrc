@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-export PATH=$HOME/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
+export PATH=$HOME/bin:$HOME/go/bin:$PATH:/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 export EDITOR=nvim
 #export DISPLAY=:0
@@ -32,13 +32,6 @@ export ZSH_HIGHLIGHT_STYLES[command]='fg=35'
 export ZSH_HIGHLIGHT_STYLES[function]='fg=35'
 export ZSH_HIGHLIGHT_STYLES[path]='fg=31'
 
-export PROMPT_LEAN_COLOR1=78
-export PROMPT_LEAN_COLOR2=67
-export PROMPT_LEAN_TMUX=""
-export PROMPT_LEAN_PATH_PERCENT=50
-export PROMPT_LEAN_LEFT=_dln_prompt_left
-# export PROMPT_LEAN_RIGHT=_dln_prompt_right
-
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -50,7 +43,6 @@ setopt share_history
 
 source ~/.zplug/init.zsh
 
-zplug "dln/lean"
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 zplug "plugins/git", from:oh-my-zsh
@@ -118,39 +110,6 @@ zplug load
 # source $ZSH/oh-my-zsh.sh
 # source ~/.oh-my-zsh/plugins/zsh-titles/titles.plugin.zsh
 
-function short_pwd {
-  echo $PWD | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):"
-}
-
-function _dln_prompt_left {
-  _pw="$(short_pwd)"
-  # _host="%{\e[48;5;32;38;5;15m%} $HOST %{\e[0m%}"
-  _host="%{\e[38;5;244m%}$HOST:%{\e[0m%}"
-  echo -e "$_host%{\e[38;5;248m%}$_pw"
-}
-
-function _dln_prompt_right {
-  _tmux_win=`tmux display-message -p "#I" 2>/dev/null`
-  echo -e " %{\e[38;5;16;48;5;30m%} ${_tmux_win} %{\e[0m%}"
-}
-
-
-
-function prompt_command {
-  banner="$USER@$HOST"
-  ((prompt_x = $(tput cols) - $(expr length ${banner}) - 3))
-  tput sc
-  tput cup 0 ${prompt_x}
-  if [ "$USER" = "root" ]; then
-    echo -ne " \e[38;5;228;48;5;160m ${banner} \e[0m"
-  else
-    echo -ne " \e[38;5;195;48;5;33m ${banner} \e[0m"
-  fi
-  tput rc
-  #tmux rename-window `basename $PWD`
-  tmux rename-window $(short_pwd) 2>/dev/null
-  eval $(tmux switch-client \; show-environment -s 2>/dev/null)
-}
 
 ## ssh
 export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
@@ -212,8 +171,57 @@ e ()
   nvr --remote $(readlink -f "$@")
 }
 
-## Powerline
-# . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# =============
+#    PROMPT
+# =============
+
+autoload -U colors && colors
+setopt promptsubst
+
+function short_pwd {
+  echo $PWD | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):"
+}
+
+export PROMPT_LEAN_COLOR1=78
+export PROMPT_LEAN_COLOR2=67
+
+local ret_status="%(?:%B%F{#607D8B]}%%:%B%F{#F4511E}%%)"
+PROMPT='%F{#78909C}%}$(short_pwd)%f$(git_prompt_info)%f${ret_status}%f%b '
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#795548}⟨%F{#8D6E63}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%F{#795548}⟩%f"
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{#F57F17}⋆"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# Outputs current branch info in prompt format
+function git_prompt_info() {
+  local ref
+  if [[ "$(command git config --get customzsh.hide-status 2>/dev/null)" != "1" ]]; then
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
+}
+
+# Checks if working tree is dirty
+function parse_git_dirty() {
+  local STATUS=''
+  local FLAGS
+  FLAGS=('--porcelain')
+
+  if [[ "$(command git config --get customzsh.hide-dirty)" != "1" ]]; then
+    FLAGS+='--ignore-submodules=dirty'
+    STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
+  fi
+
+  if [[ -n $STATUS ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+  else
+    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+  fi
+}
+
 
 ## fzf
 export FZF_TMUX=1
@@ -241,7 +249,7 @@ alias ag='ag --pager less'
 alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias hs='history -a; history -n'
-alias l='less -nRSX'
+alias l='less -nRX'
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias pstree="pstree -Auh | less"
 alias tail='tail -n $LINES'
