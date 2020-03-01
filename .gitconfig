@@ -5,7 +5,7 @@ editor = nvim
 
 [user]
 	name = Daniel Lundin
-email = dln@eintr.org
+	email = daniel@arity.se
 
 [column]
 	ui = auto
