@@ -73,6 +73,8 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'terminalnode/sway-vim-syntax'
+Plug 'tsandall/vim-rego'
+
 
 " Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
