@@ -3,7 +3,7 @@ separator_block_width=40
 
 [window]
 align=left
-command=swaymsg -t subscribe -m '["window"]' | jq --unbuffered -M -r '.container.name' | stdbuf -oL cut -c -80 | stdbuf -oL sed -e 's/ *$//'
+command=swaymsg -t subscribe -m '["window"]' | stdbuf -oL jq --unbuffered -M -r '.container.name // empty' | stdbuf -oL cut -c -80 | stdbuf -oL sed -e 's/ *$//'
 interval=persist
 background=#000000cc
 
