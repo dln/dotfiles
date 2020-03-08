@@ -6,6 +6,7 @@ editor = nvim
 [user]
 	name = Daniel Lundin
 	email = daniel@arity.se
+	signingkey = 79020DB026385D4C
 
 [column]
 	ui = auto
@@ -145,3 +146,5 @@ diff-chunk = magenta default bold
 	clean = git-lfs clean -- %f
 [credential]
   helper = store
+[commit]
+	gpgsign = true
