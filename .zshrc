@@ -187,7 +187,7 @@ export PROMPT_LEAN_COLOR1=78
 export PROMPT_LEAN_COLOR2=67
 
 local ret_status="%(?:%B%F{#607D8B]}%%:%B%F{#F4511E}%%)"
-PROMPT='%F{#78909C}%}$(short_pwd)%f$(git_prompt_info)%f${ret_status}%f%b '
+PROMPT='%F{#455A64}${HOST}:%F{#78909C}%}$(short_pwd)%f$(git_prompt_info)%f${ret_status}%f%b '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#795548}⟨%F{#8D6E63}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%F{#795548}⟩%f"
