@@ -1,0 +1,16 @@
+#!/bin/sh
+set -ex
+
+if [[ -z "$1" ]]; then
+  echo "Usage: $0 <branch name>"
+  exit 1
+fi
+
+hub sync
+
+if git rev-parse --verify --quiet $1; then
+  git checkout $1
+else
+  git checkout -b $1 master
+  git push -u origin $1
+fi
