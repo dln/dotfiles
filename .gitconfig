@@ -4,9 +4,7 @@ editor = nvim
 #pager = diff-so-fancy | less -+R -nBJFXRgiM -h512 -x4
 
 [user]
-	name = Daniel Lundin
-	email = daniel@arity.se
-	signingkey = 79020DB026385D4C
+	useConfigOnly = true
 
 [column]
 	ui = auto
@@ -61,6 +59,7 @@ kdiff3 = difftool -d -t kdiff3
 guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -rn; }; f"
 scat = show $1:`git ls-files --full-name $2`
 	serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+	identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
 
 [merge]
 tool = meld
@@ -148,3 +147,11 @@ diff-chunk = magenta default bold
   helper = store
 [commit]
 	gpgsign = true
+[user "arity"]
+	name = Daniel Lundin
+	email = daniel@arity.se
+	signingkey = 79020DB026385D4C
+[user "netent"]
+	name = Daniel Lundin
+	email = daniel.lundin@netent.com
+	signingkey = 18DB5948BBDB740A
