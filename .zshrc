@@ -120,6 +120,10 @@ if [[ "${GPG_AUTH_SOCK}" != "" ]]; then
   ln -sf $GPG_AUTH_SOCK $SSH_AUTH_SOCK
 fi
 
+## Pager
+export LESS="--mouse --wheel-lines=1 -nRX"
+alias l='less -nRX'
+
 
 alias ls=exa
 alias bat=bat --theme=ansi-light
@@ -253,7 +257,6 @@ alias ag='ag --pager less'
 alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias hs='history -a; history -n'
-alias l='less -nRX'
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias pstree="pstree -Auh | less"
 alias tail='tail -n $LINES'
