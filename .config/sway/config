@@ -33,30 +33,41 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym F1 workspace 1
-bindsym F2 workspace 2
-bindsym F3 workspace 3
-bindsym F4 workspace 4
-bindsym F5 workspace 5
-bindsym F6 workspace 6
-bindsym F7 workspace 7
-bindsym F8 workspace 8
-bindsym F9 workspace 9
-bindsym F10 workspace 10
-bindsym F11 workspace 11
-bindsym F12 workspace 12
-bindsym Shift+F1 move container to workspace 1
-bindsym Shift+F2 move container to workspace 2
-bindsym Shift+F3 move container to workspace 3
-bindsym Shift+F4 move container to workspace 4
-bindsym Shift+F5 move container to workspace 5
-bindsym Shift+F6 move container to workspace 6
-bindsym Shift+F7 move container to workspace 7
-bindsym Shift+F8 move container to workspace 8
-bindsym Shift+F9 move container to workspace 9
-bindsym Shift+F10 move container to workspace 10
-bindsym Shift+F11 move container to workspace 11
-bindsym Shift+F12 move container to workspace 12
+bindsym F1 swap container with mark F1
+bindsym F2 swap container with mark F2
+bindsym F3 swap container with mark F3
+bindsym F4 swap container with mark F4
+bindsym F5 swap container with mark F5
+bindsym F6 swap container with mark F6
+bindsym F7 swap container with mark F7
+bindsym F8 swap container with mark F8
+bindsym Shift+F1 mark F1
+bindsym Shift+F2 mark F2
+bindsym Shift+F3 mark F3
+bindsym Shift+F4 mark F4
+bindsym Shift+F5 mark F5
+bindsym Shift+F6 mark F6
+bindsym Shift+F7 mark F7
+bindsym Shift+F8 mark F8
+
+bindsym Mod4+1 workspace 1
+bindsym Mod4+2 workspace 2
+bindsym Mod4+3 workspace 3
+bindsym Mod4+4 workspace 4
+bindsym Mod4+5 workspace 5
+bindsym Mod4+6 workspace 6
+bindsym Mod4+7 workspace 7
+bindsym Mod4+8 workspace 8
+bindsym Mod4+9 workspace 9
+bindsym Shift+Mod4+1 move container to workspace 1
+bindsym Shift+Mod4+2 move container to workspace 2
+bindsym Shift+Mod4+3 move container to workspace 3
+bindsym Shift+Mod4+4 move container to workspace 4
+bindsym Shift+Mod4+5 move container to workspace 5
+bindsym Shift+Mod4+6 move container to workspace 6
+bindsym Shift+Mod4+7 move container to workspace 7
+bindsym Shift+Mod4+8 move container to workspace 8
+bindsym Shift+Mod4+9 move container to workspace 9
 
 bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
@@ -69,19 +80,24 @@ bindsym Mod4+l exec $lock
 bindsym Mod4+Shift+l exec 'swaymsg "output * dpms off"; $lock'
 bindsym Mod4+space exec makoctl dismiss -a
 bindsym Mod4+print exec grim -g "$(slurp)" - | wl-copy
-bindsym Mod4+Shift+minus move scratchpad
-bindsym Mod4+minus scratchpad show
 bindsym Mod4+Escape reload
 bindsym Mod4+g layout toggle split tabbed stacking
 bindsym Mod4+Tab focus next sibling
 bindsym Mod4+Control+Tab move workspace to output right
 
+bindsym Mod4+Shift+minus move scratchpad
+bindsym Mod4+minus scratchpad show
+bindsym Control_R scratchpad show
+bindsym Control+Control_R move scratchpad
+
 floating_modifier Mod4
+bindsym Menu floating toggle
 bindsym Mod4+Shift+f floating toggle
 bindsym Mod4+f focus mode_toggle
 bindsym Mod4+F11 fullscreen toggle
 
-bindsym Mod4+x floating enable; resize set width 80 ppt; resize set height 100 ppt ; move position center
+bindsym Control+Menu floating toggle; resize set width 60 ppt; resize set height 100 ppt ; move position center
+bindsym Mod4+x floating toggle; resize set width 60 ppt; resize set height 100 ppt ; move position center
 
 mode "resize" {
     # left will shrink the containers width
@@ -111,6 +127,7 @@ default_border pixel 2
 smart_gaps on
 # gaps outer all set 0
 tiling_drag enable
+xwayland force
 
 seat seat0 xcursor_theme Bibata_Oil 32
 
@@ -120,7 +137,7 @@ bindswitch --reload lid:off output $laptop enable
 output $laptop scale 2
 output $laptop background #000000 solid_color
 output $laptop bg /home/dln/.config/sway/laser.png center
-output $laptop pos 0 600
+output $laptop pos 0 800
 
 output "DP-1" scale 1
 output "DP-1" pos 1920 0
@@ -131,8 +148,12 @@ exec rm -f $SWAYSOCK.wob && mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob 
 exec mako
 exec redshift
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
-exec $term -e tmux attach
 exec libinput-gestures-setup restart
+
+## Applications
+exec workspace 2; exec google-chrome-stable
+exec workspace 4; exec spotify
+exec workspace 5; $term -e tmux attach
 
 # Screen lock
 exec swayidle \
@@ -143,7 +164,7 @@ exec swayidle \
 
 bar {
   mode hide
-  font pango:IBM Plex Mono 28
+  font pango:IBM Plex Mono 16
   position bottom
   status_command i3blocks
   workspace_buttons no
