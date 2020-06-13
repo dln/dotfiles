@@ -33,22 +33,22 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym F1 swap container with mark F1
-bindsym F2 swap container with mark F2
-bindsym F3 swap container with mark F3
-bindsym F4 swap container with mark F4
-bindsym F5 swap container with mark F5
-bindsym F6 swap container with mark F6
-bindsym F7 swap container with mark F7
-bindsym F8 swap container with mark F8
-bindsym Shift+F1 mark F1
-bindsym Shift+F2 mark F2
-bindsym Shift+F3 mark F3
-bindsym Shift+F4 mark F4
-bindsym Shift+F5 mark F5
-bindsym Shift+F6 mark F6
-bindsym Shift+F7 mark F7
-bindsym Shift+F8 mark F8
+bindsym F1 exec sway-focus F1
+bindsym F2 exec sway-focus F2
+bindsym F3 exec sway-focus F3
+bindsym F4 exec sway-focus F4
+bindsym F5 workspace 5
+bindsym F6 workspace 6
+bindsym F7 workspace 7
+bindsym F8 workspace 8
+bindsym Shift+F1 mark F1; exec sway-focus F1
+bindsym Shift+F2 mark F2; exec sway-focus F2
+bindsym Shift+F3 mark F3; exec sway-focus F3
+bindsym Shift+F4 mark F4; exec sway-focus F4
+bindsym Shift+F5 move container to workspace 5
+bindsym Shift+F6 move container to workspace 6
+bindsym Shift+F7 move container to workspace 7
+bindsym Shift+F8 move container to workspace 8
 
 bindsym Mod4+1 workspace 1
 bindsym Mod4+2 workspace 2
