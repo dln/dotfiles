@@ -73,9 +73,9 @@ bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec $term
 bindsym Mod4+Shift+Return exec $term tmux attach -t0
-bindsym Mod4+Control+Return exec "autossh -M21001 -f -A -T home-dev sleep inf; $term mosh -p 2022 home tmux attach"
-bindsym Mod4+p exec rofi -show run
-bindsym Mod4+e exec rofi -show emoji -modi emoji
+bindsym Mod4+Control+Return exec "autossh -M21001 -f -A -T home-dev sleep inf; $term mosh -p 2022 home -- tmux attach -t 0"
+bindsym Mod4+p exec wofi --show run
+bindsym Mod4+e exec ~/bin/wofi-emoji
 bindsym Mod4+l exec $lock
 bindsym Mod4+Shift+l exec 'swaymsg "output * dpms off"; $lock'
 bindsym Mod4+space exec makoctl dismiss -a

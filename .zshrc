@@ -289,9 +289,14 @@ export ANSIBLE_NOCOWS=1
 export PATH=$HOME/.cargo/bin:$PATH
 
 ## GTK
-export GDK_SCALE=2
-#export GDK_DPI_SCALE=1
-#export GTK_THEME=Adwaita:dark
+export GDK_SCALE=1
+export GDK_DPI_SCALE=1.5
+export GTK_THEME=Arc-Dark
+
+## Video acceleration
+export VDPAU_DRIVER=va_gl
+export MOZ_WEBRENDER=1
+export MOZ_ENABLE_WAYLAND=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
