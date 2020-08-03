@@ -26,8 +26,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 10
+    y: 10
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -75,7 +75,7 @@ tabspaces: 8
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
-  size: 28
+  size: 18.0
   normal:
     family: IBM Plex Mono
     style: Regular
@@ -85,21 +85,12 @@ font:
   italic:
     family: IBM Plex Mono
     style: Italic
-  # normal:
-  #   family: Fira Code
-  #   style: Regular
-  # bold:
-  #   family: Fira Code
-  #   style: SemiBold
-  # italic:
-  #   family: Fira Code
-  #   style: Italic
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: 3
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -109,7 +100,7 @@ font:
     y: 0
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 colors:
   # Default colors
@@ -140,36 +131,98 @@ colors:
     cyan:    '0x00acc1'
     white:   '0xf5f5f5'
 
-# Visual Bell
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor.
+  #
+  # Allowed values are CellForeground and CellBackground, which reference the
+  # affected cell, or hexadecimal colors like #ff00ff.
+  cursor:
+    cursor: '0xaa0000'
+    # text: CellBackground
+
+  # Vi mode cursor colors
+  #
+  # Colors for the cursor when the vi mode is active.
+  #
+  # Allowed values are CellForeground and CellBackground, which reference the
+  # affected cell, or hexadecimal colors like #ff00ff.
+  #vi_mode_cursor:
+  #  text: CellBackground
+  #  cursor: CellForeground
+
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area.
+  #
+  # Allowed values are CellForeground and CellBackground, which reference the
+  # affected cell, or hexadecimal colors like #ff00ff.
+  #selection:
+  #  text: CellBackground
+  #  background: CellForeground
+
+  # Search colors
+  #
+  # Colors used for the search bar and match highlighting.
+  #
+  # Allowed values are CellForeground and CellBackground, which reference the
+  # affected cell, or hexadecimal colors like #ff00ff.
+  #search:
+  #  matches:
+  #    foreground: '#000000'
+  #    background: '#ffffff'
+  #
+  #  bar:
+  #    background: CellForeground
+  #    foreground: CellBackground
+
+
+# Bell
 #
-# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
-# rung, the terminal background will be set to white and transition back to the
-# default background color. You can control the rate of this transition by
-# setting the `duration` property (represented in milliseconds). You can also
-# configure the transition function by setting the `animation` property.
-#
-# Values for `animation`:
-#   - Ease
-#   - EaseOut
-#   - EaseOutSine
-#   - EaseOutQuad
-#   - EaseOutCubic
-#   - EaseOutQuart
-#   - EaseOutQuint
-#   - EaseOutExpo
-#   - EaseOutCirc
-#   - Linear
-#
-# Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
-  animation: EaseOutExpo
-  duration: 0
+# The bell is rung every time the BEL control character is received.
+#bell:
+  # Visual Bell Animation
+  #
+  # Animation effect for flashing the screen when the visual bell is rung.
+  #
+  # Values for `animation`:
+  #   - Ease
+  #   - EaseOut
+  #   - EaseOutSine
+  #   - EaseOutQuad
+  #   - EaseOutCubic
+  #   - EaseOutQuart
+  #   - EaseOutQuint
+  #   - EaseOutExpo
+  #   - EaseOutCirc
+  #   - Linear
+  #animation: EaseOutExpo
+
+  # Duration of the visual bell flash. A `duration` of `0` will disable the
+  # visual bell animation.
+  #duration: 0
+
+  # Visual bell animation color.
+  #color: '#ffffff'
+
+  # Bell Command
+  #
+  # This program is executed whenever the bell is rung.
+  #
+  # When set to `command: None`, no command will be executed.
+  #
+  # Example:
+  #   command:
+  #     program: notify-send
+  #     args: ["Hello, World!"]
+  #
+  #command: None
 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.0
+background_opacity: 1.0
 
 # Mouse bindings
 #
@@ -215,7 +268,7 @@ mouse:
     #modifiers: Control|Shift
 
 selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to both the primary and
   # the selection clipboard. Otherwise, it will only be copied to the selection
@@ -233,9 +286,21 @@ cursor:
   #   - | Beam
   style: Block
 
+  # Vi mode cursor style
+  #
+  # If the vi mode cursor style is `None` or not specified, it will fall back to
+  # the style of the active value of the normal cursor.
+  #
+  # See `cursor.style` for available options.
+  #vi_mode_style: None
+
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
+
+  # Thickness of the cursor relative to the cell width as floating point number
+  # from `0.0` to `1.0`.
+  thickness: 0.55
 
 # Live config reload (changes require restart)
 live_config_reload: true
