@@ -75,7 +75,7 @@ tabspaces: 8
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
-  size: 18.0
+  size: 20.0
   normal:
     family: IBM Plex Mono
     style: Regular
@@ -97,7 +97,7 @@ font:
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 0
+    y: 1
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false

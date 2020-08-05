@@ -1,6 +1,6 @@
 set $lock swaylock
 set $mod Mod4
-set $term kitty
+set $term alacritty
 set $laptop eDP-1
 
 set $left h
@@ -73,7 +73,7 @@ bindsym Mod4+Shift+c kill
 bindsym Mod4+Shift+q exit
 bindsym Mod4+Return exec $term
 bindsym Mod4+Shift+Return exec $term tmux new-session -A -D -s 0
-bindsym Mod4+Control+Return exec "autossh -M21001 -f -A -T home-dev sleep inf; $term mosh -p 2022 home -- tmux new-session -A -D -s 0"
+bindsym Mod4+Control+Return exec "autossh -M21001 -f -A -T home-dev sleep inf; $term -e mosh -p 2022 home -- tmux new-session -A -D -s 0"
 bindsym Mod4+p exec wofi --show run
 bindsym Mod4+e exec ~/bin/wofi-emoji
 bindsym Mod4+l exec $lock
