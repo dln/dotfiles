@@ -46,7 +46,8 @@ source ~/.zplug/init.zsh
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/history-substring-search", from:oh-my-zsh
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "arunvelsriram/kube-fzf", use:'kube-fzf.sh'
 zplug "thecasualcoder/kube-fzf", as:command, use:"{*pod,*.sh}"
@@ -300,10 +301,10 @@ export MOZ_ENABLE_WAYLAND=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export SWAYSOCK=$HOME/.local/sway.sock
-export XDG_SESSION_TYPE=wayland
-
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  rm -f $SWAYSOCK
-  XKB_DEFAULT_LAYOUT=us exec sway
-fi
+# export SWAYSOCK=$HOME/.local/sway.sock
+# export XDG_SESSION_TYPE=wayland
+#
+# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#   rm -f $SWAYSOCK
+#   XKB_DEFAULT_LAYOUT=us exec sway
+# fi
