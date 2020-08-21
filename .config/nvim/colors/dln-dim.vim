@@ -297,7 +297,7 @@ endfun
 
 call  <sid>hi("Floating",        s:blue_grey_400,      "",                "")
 call  <sid>hi("MsgArea",         s:orange_900,      "",                "")
-call  <sid>hi("Normal",          s:white_1000,      "",                "")
+call  <sid>hi("Normal",          "#a1b0b8",      "",                "")
 call  <sid>hi("Bold",            "",                "",                "bold")
 call  <sid>hi("Italic",          "",                "",                "italic")
 call  <sid>hi("VertSplit",       "#112131",         s:blue_grey_800,   "")
@@ -310,8 +310,10 @@ call  <sid>hi("Search",          "",                s:amber_500,       "none")
 call  <sid>hi("Bookmark",        s:black_1000,      s:yellow_700,      "none")
 call  <sid>hi("Todo",            s:yellow_100,      s:orange_900,      "none")
 
-call  <sid>hi("CursorLine",      "",                "#112131",         "")
-call  <sid>hi("CursorLineNR",    s:grey_500,        "#334455",         "")
+" call  <sid>hi("CursorLine",      "",                "#112131",         "")
+" call  <sid>hi("CursorLineNR",    s:grey_500,        "#334455",         "")
+call  <sid>hi("CursorLine",      "",                "#011121",         "")
+call  <sid>hi("CursorLineNR",    s:blue_grey_500,        "#112131",         "")
 call  <sid>hi("Folded",          s:purple_200,      s:deep_purple_900, "")
 
 call  <sid>hi("Pmenu",           s:blue_grey_500,   "#112131",   "none")

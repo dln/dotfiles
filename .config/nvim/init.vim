@@ -246,6 +246,7 @@ map <silent> <leader>; :Commits<cr>
 map <silent> <leader>e :GitFiles<cr>
 map <silent> <leader>d :Files<cr>
 map <silent> <leader>f :History<cr>
+
 " map <silent> <leader>g :BLines<cr>
 map <silent> <leader>/ :Ag<cr>
 map <silent> <leader>m :Marks<cr>
@@ -523,6 +524,7 @@ function! CreateCenteredFloatingWindow()
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
 
+let g:fzf_preview_window = ''
 let g:fzf_layout = { 'up': '~40%', 'window': 'call CreateCenteredFloatingWindow()' }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Comment'],
