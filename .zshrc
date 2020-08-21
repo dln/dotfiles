@@ -231,6 +231,7 @@ function parse_git_dirty() {
   fi
 }
 
+export RPS1="%F{#455A64}\$(kubectl config current-context)"
 
 ## fzf
 export FZF_TMUX=1
