@@ -1,0 +1,9 @@
+#!/bin/bash
+cfg=.kubeconfig
+
+path=$(pwd)
+while [[ "$path" != "" && ! -e "$path/$cfg" ]]; do
+  path=${path%/*}
+done
+
+exec env KUBECONFIG="$path/$cfg:$KUBECONFIG:$HOME/.kube/config" kubectl "$@"
