@@ -233,6 +233,10 @@ function parse_git_dirty() {
 
 export RPS1="%F{#455A64}\$(kubectl config current-context)"
 
+## direnv
+
+eval "$(direnv hook zsh)"
+
 ## fzf
 export FZF_TMUX=1
 export FZF_COMPLETION_TRIGGER=";"
@@ -259,7 +263,6 @@ alias ag='ag --pager less'
 alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias hs='history -a; history -n'
-alias kubectl='kubectl-wrapper'
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias pstree="pstree -Auh | less"
 alias tail='tail -n $LINES'
