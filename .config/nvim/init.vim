@@ -241,7 +241,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/target/*,*/.git/*"
 
 
 map <silent> <space> :Buffers<cr>
-map <silent> <leader>` :Buffers<cr>
+map <silent> <leader><tab> :Buffers<cr>
 map <silent> <leader>; :Commits<cr>
 map <silent> <leader>e :GitFiles<cr>
 map <silent> <leader>d :Files<cr>
@@ -323,7 +323,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 
 "" Buffer navigation
-map <silent> ` :b#<CR>
+" map <silent> ` :b#<CR>
+map <silent> <M-Tab> :b#<CR>
 
 
 "" "Turn off search highlight
