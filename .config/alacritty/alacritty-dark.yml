@@ -78,12 +78,15 @@ font:
   size: 20.0
   normal:
     family: IBM Plex Mono
+    # family: Source Code Pro
     style: Regular
   bold:
     family: IBM Plex Mono
+    # family: Source Code Pro
     style: SemiBold
   italic:
     family: IBM Plex Mono
+    # family: Source Code Pro
     style: Italic
 
   # Offset is the extra space around each character. `offset.y` can be thought of
@@ -105,9 +108,11 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x000000'
+    #background: '0x000000'
     #background: '0x121212'
+    background: '0x202020'
     foreground: '0xa1b0b8'
+    #foreground: '0xb8b0a1'
 
   # Normal colors
   normal:
@@ -222,7 +227,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.25
 
 # Mouse bindings
 #
