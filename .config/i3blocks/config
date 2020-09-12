@@ -1,12 +1,6 @@
 separator=true
 separator_block_width=40
 
-[window]
-align=left
-command=~/.config/i3blocks/win-title
-interval=persist
-background=#000000cc
-
 [battery]
 background=#000000cc
 command=~/.config/i3blocks/battery-plus

@@ -21,6 +21,9 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 
 Plug 'junegunn/fzf.vim'
 
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
 " Markdown
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'tpope/vim-markdown'

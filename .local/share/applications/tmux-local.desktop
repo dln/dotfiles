@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+TryExec=alacritty
+Icon=Alacritty
+Terminal=false
+Categories=System;TerminalEmulator;
+
+Name=tmux local
+GenericName=tmux-local
+StartupWMClass=tmux-local
+
+Exec=alacritty --class tmux-local -e tmux new-session -A -D -s 0

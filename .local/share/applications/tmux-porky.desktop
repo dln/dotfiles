@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+TryExec=/home/dln/bin/term-porky
+Icon=Alacritty
+Terminal=false
+Categories=System;TerminalEmulator;
+
+Name=tmux porky
+GenericName=tmux-porky
+StartupWMClass=tmux-porky
+
+Exec=/home/dln/bin/term-porky

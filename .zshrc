@@ -277,13 +277,6 @@ alias xc='xclip -selection clipboard'
 
 export PATH="./node_modules/.bin:$PATH"
 
-## Wayland
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland
-export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-export QT_SCALE_FACTOR=2
-export _JAVA_AWT_WM_NONREPARENTING=1
-
 ## Golang
 #export GOPATH=$HOME
 GOPROXY=https://proxy.golang.org/
@@ -294,22 +287,18 @@ export ANSIBLE_NOCOWS=1
 ## Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
-## GTK
-export GDK_SCALE=1
-export GDK_DPI_SCALE=1.5
-export GTK_THEME=Arc-Dark
-
-## Video acceleration
-export VDPAU_DRIVER=va_gl
-export MOZ_WEBRENDER=1
-export MOZ_ENABLE_WAYLAND=1
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export SWAYSOCK=$HOME/.local/sway.sock
-# export XDG_SESSION_TYPE=wayland
-#
-# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-#   rm -f $SWAYSOCK
-#   XKB_DEFAULT_LAYOUT=us exec sway
+ENVIRONMENTD="$HOME/.config/environment.d"
+set -a
+if [ -d "$ENVIRONMENTD" ]; then
+    for conf in $(ls "$ENVIRONMENTD"/*.conf)
+    do
+        . "$conf"
+    done
+fi
+set +a
+
+# if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
+#   MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
 # fi
