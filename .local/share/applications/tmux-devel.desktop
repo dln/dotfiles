@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=tmux devel
+GenericName=tmux-devel
+StartupWMClass=tmux-devel
+Type=Application
+TryExec=kitty
+Icon=kitty
+Terminal=false
+Categories=System;TerminalEmulator;
+Exec=kitty --class=tmux-devel autossh -M21001 devel
