@@ -4,10 +4,10 @@ editor = nvim
 #pager = diff-so-fancy | less -+R -nBJFXRgiM -h512 -x4
 
 [user]
-	useConfigOnly = true
+useConfigOnly = true
 
 [column]
-	ui = auto
+ui = auto
 
 [push]
 default = tracking
@@ -15,20 +15,13 @@ default = tracking
 [branch "master"]
 rebase = true
 
-[init]
-templatedir = ~/.git_template
-
 [alias]
 b = branch -va
-f = fetch
-fa = fetch --all
-t = tag
 d = diff --stat -p -C
 ds = diff --staged --stat -p -C
 patch = !git --no-pager diff --no-color
 co = checkout
 st = status -sb
-stu = status -sb --untracked=no
 pullr = pull --rebase
 wc = whatchanged --abbrev-commit --date=relative --date-order --pretty='format:%Cgreen%h %Cblue%ar %Credby %an%Creset -- %s' -n 45
 
@@ -53,55 +46,16 @@ cdiff = diff --color
 diffs = diff --staged --stat -p
 diffc = diff --staged --stat -p
 vimdiff = difftool -t vimdiff
-meld = difftool -d -t meld
-kdiff3 = difftool -d -t kdiff3
 
 guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -rn; }; f"
-scat = show $1:`git ls-files --full-name $2`
-	serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
-	identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
+serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
-[merge]
-tool = meld
-
-[mergetool]
-prompt = false
-
-[diff]
-renames = true
-tool = kdiff3
-
-[difftool]
-prompt = false
-
-[difftool "kdiff3"]
-cmd = kdiff3 $LOCAL $REMOTE
-trustExitCode = false
-
-[difftool "p4merge"]
-cmd = p4merge $LOCAL $REMOTE
-
+identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
 [color]
 ui = auto
 branch = auto
 diff = auto
 status = auto
-
-[color "branch"]
-current = yellow reverse
-local = yellow
-remote = green
-
-[color "diff"]
-meta = blue bold
-frag = magenta bold
-old = red 
-new = green 
-
-[color "status"]
-added = blue bold
-changed = green bold
-untracked = cyan bold
 
 [apply]
 whitespace = nowarn
@@ -112,46 +66,24 @@ threads = 0
 [blame]
 date = relative
 
-[tig]
-show-rev-graph = yes
-show-refs = yes
-line-graphics = yes
-
-[tig "bind"]
-generic = G !echo
-stage = G !echo
-main = G !echo
-
-[tig "color"]
-cursor = black green dim
-author = green default normal
-main-revgraph = yellow default normal
-pp-commit = magenta default bold
-diff-chunk = magenta default bold
-
-# vim: ft=conf:
-[diff-so-fancy]
-	useUnicodeRuler = true
-	stripLeadingSymbols = true
 [hub]
-	protocol = git
+protocol = git
+
 [http]
-[http]
-	cookiefile = /home/dln/.gitcookies
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+cookiefile = /home/dln/.gitcookies
+
 [credential]
-  helper = store
+helper = store
+
 [commit]
-	gpgsign = true
+gpgsign = true
+
 [user "arity"]
-	name = Daniel Lundin
-	email = daniel@arity.se
-	signingkey = 79020DB026385D4C
+name = Daniel Lundin
+email = daniel@arity.se
+signingkey = 79020DB026385D4C
+
 [user "netent"]
-	name = Daniel Lundin
-	email = daniel.lundin@netent.com
-	signingkey = B9D5337DEEE9C1D8
+name = Daniel Lundin
+email = daniel.lundin@netent.com
+signingkey = B9D5337DEEE9C1D8

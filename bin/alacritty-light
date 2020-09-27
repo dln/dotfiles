@@ -1,2 +1,0 @@
-#!/bin/sh
-exec alacritty --config-file /home/dln/.config/alacritty/alacritty-light.yml "$@"

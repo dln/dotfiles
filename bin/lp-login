@@ -1,4 +1,0 @@
-#!/bin/bash
-lpass login --trust dln@eintr.org
-lp-ssh-add ssh/id_rsa
-lp-ssh-add ssh/id_rsa_embark

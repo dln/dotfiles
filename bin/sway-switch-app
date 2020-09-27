@@ -1,7 +1,0 @@
-#!/bin/bash
-set -exo pipefail
-app_id="$1"
-swaymsg -t get_tree \
-  | jq -r "recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.app_id==\"${app_id}\")|select(.focused==false)|\"[con_id=\"+ (.id|tostring) + \"] focus\"" \
-  | head -n 1 \
-  | xargs -e swaymsg
