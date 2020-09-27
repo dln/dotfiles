@@ -6,6 +6,6 @@ set visible-stats on
 set show-all-if-ambiguous on
 set completion-query-items 150
 
-"\C-p": history-search-backward
-"\C-n": history-search-forward
+#"\C-p": history-search-backward
+#"\C-n": history-search-forward
 

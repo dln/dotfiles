@@ -1,6 +1,5 @@
-"" Vundle
-" set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.local/share/nvim/plugged')
+
 
 " Autocomplete
 " Plug 'ncm2/ncm2'
@@ -233,8 +232,8 @@ let g:explDetailedHelp=1
 "" Backup
 set backup
 set backupcopy=yes
-set backupdir=~/.vim/backup,~/.tmp,~/tmp,/var/tmp,/tmp"
-set directory=~/.vim/backup,~/.tmp,~/tmp,/var/tmp,/tmp"
+set backupdir=~/tmp,/var/tmp,/tmp"
+set directory=~/tmp,/var/tmp,/tmp"
 let myvar = strftime("%y%m%d-%H%M")
 let myvar = "set backupext=_". myvar
 execute myvar
@@ -562,7 +561,7 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-set background=dark
+set background=light
 let g:one_allow_italics=1
 let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
 
@@ -657,8 +656,8 @@ let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 
 
-color dln-dim
-map ,l :color dln-dim<CR>
+color dln-light
+map ,l :color dln-light<CR>
 
 
 let s:hidden_all  = 0

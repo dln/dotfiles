@@ -1,9 +1,10 @@
 source ~/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
-zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-history-substring-search', defer:3
+zplug 'zsh-users/zsh-autosuggestions'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -13,10 +14,45 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+## History
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE=~/.zsh_history
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_fcntl_lock
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt HIST_IGNORE_SPACE
+setopt hist_lex_words
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_subst_pattern
+setopt hist_verify
+setopt share_history
+
+
+## zsh settings
+setopt pipe_fail
+setopt auto_pushd
+setopt no_beep
+setopt no_rm_star_silent
+setopt extended_glob
+setopt ksh_glob
+setopt null_glob
 
 ## Completion
 autoload -Uz compinit
 compinit
+
+## Keybindings
+bindkey -e
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
 
 ## Gnupg  / gpg / ssh / yubikey
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -66,8 +102,13 @@ GOPROXY=https://proxy.golang.org/
 export ANSIBLE_NOCOWS=1
 
 ## Prompt
+function set_win_title(){
+  echo -ne "\033]0;${PWD}\007"
+}
+starship_precmd_user_func="set_win_title"
+precmd_functions+=(set_win_title)
+
 eval "$(starship init zsh)"
 
+
 export PATH=$HOME/bin:$PATH
-
-
