@@ -5,6 +5,7 @@ zplug "zsh-users/zsh-completions"
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-history-substring-search', defer:3
 zplug 'zsh-users/zsh-autosuggestions'
+zplug 'Aloxaf/fzf-tab'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -46,6 +47,12 @@ setopt null_glob
 autoload -Uz compinit
 compinit
 
+## Autosuggest
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '^ ' autosuggest-accept
+
 ## Keybindings
 bindkey -e
 bindkey '^[[A' history-substring-search-up
@@ -64,7 +71,7 @@ export LESS="--mouse --wheel-lines=1 -nRX"
 ## Aliases
 alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
-alias l='less -nRX'
+alias l=bat
 alias ls=exa
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
