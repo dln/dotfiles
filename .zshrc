@@ -81,6 +81,13 @@ e ()
   nvr --remote $(readlink -f "$@")
 }
 
+## fzf
+export FZF_TMUX=1
+export FZF_COMPLETION_TRIGGER=";"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+. /usr/share/fzf/completion.zsh
+. /usr/share/fzf/key-bindings.zsh
+
 ## direnv
 eval "$(direnv hook zsh)"
 

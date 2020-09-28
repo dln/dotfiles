@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 
 prompt_order = [
   "username",
@@ -49,9 +49,10 @@ prompt_order = [
 symbol = "%%"
 
 [line_break]
-disabled = true
+disabled = false
 
 [directory]
+fish_style_pwd_dir_length = 2
 truncation_length = 1
 truncate_to_repo = false
 style = "bold"
