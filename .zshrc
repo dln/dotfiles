@@ -4,8 +4,8 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-history-substring-search', defer:3
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'Aloxaf/fzf-tab'
+# zplug 'zsh-users/zsh-autosuggestions'
+# zplug 'Aloxaf/fzf-tab'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -48,17 +48,60 @@ autoload -Uz compinit
 compinit
 
 ## Autosuggest
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-bindkey '^ ' autosuggest-accept
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
+# ZSH_AUTOSUGGEST_USE_ASYNC=1
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+## fasd
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+eval "$(fasd --init posix-alias zsh-hook)"
+
+cd_func () {
+  local dir
+  if [[ $1 ==  "--" ]]; then
+    _jump || return 1
+    return 0
+  elif [[ -z "$1" ]]; then
+    dir="$HOME"
+  else
+    dir="$@"
+  fi
+  "cd" "${dir}"
+  fasd -A $PWD
+}
+alias cd=cd_func
+
+redraw-prompt() {
+    local precmd
+    for precmd in $precmd_functions; do
+        $precmd
+    done
+    zle reset-prompt
+}
+zle -N redraw-prompt
+
+_jump() {
+  dir="$(fasd -Rdlt | fzf --tiebreak=end -1 -0 --no-sort +m --height 10)" && cd_func "${dir}"
+  zle && zle redraw-prompt
+}
+
+zle -N _jump
 
 ## Keybindings
 bindkey -e
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+bindkey '^g' _jump
 
 
 ## Gnupg  / gpg / ssh / yubikey
@@ -116,13 +159,13 @@ GOPROXY=https://proxy.golang.org/
 export ANSIBLE_NOCOWS=1
 
 ## Prompt
-function set_win_title(){
-  echo -ne "\033]0;${PWD}\007"
+function _pre(){
+  # echo -ne "\033]0;${PWD}\007"
+  tmux refresh-client -S
 }
-starship_precmd_user_func="set_win_title"
-precmd_functions+=(set_win_title)
+starship_precmd_user_func="_pre"
+precmd_functions+=(_pre)
 
 eval "$(starship init zsh)"
-
 
 export PATH=$HOME/bin:$PATH
