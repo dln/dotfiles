@@ -1,8 +1,6 @@
 add_newline = false
 
 prompt_order = [
-    "username",
-    "hostname",
     "directory",
     "git_status",
     "git_state",
