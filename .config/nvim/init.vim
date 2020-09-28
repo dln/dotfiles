@@ -130,6 +130,7 @@ set lazyredraw
 set autochdir
 set autoread        "Reload files changed outside vim
 set nofoldenable    " disable folding
+set title
 
 " Wordwrap
 " set formatoptions=l
