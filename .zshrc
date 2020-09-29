@@ -161,6 +161,7 @@ export ANSIBLE_NOCOWS=1
 ## Prompt
 function _pre(){
   # echo -ne "\033]0;${PWD}\007"
+  tmux set -g @kubectx $(kubectl config current-context)
   tmux refresh-client -S
 }
 starship_precmd_user_func="_pre"

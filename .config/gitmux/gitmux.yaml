@@ -9,7 +9,7 @@ tmux:
     modified: ' !'
     untracked: '?'
     stashed: '⚑ '
-    clean: ' ✔ '
+    clean: '✔ '
   styles:
     clear: '#[fg=default]'
     state: '#[bg=red,fg=white]'
@@ -17,10 +17,10 @@ tmux:
     remote: '#[fg=cyan]'
     staged: '#[fg=green]'
     conflict: '#[fg=red]'
-    modified: '#[fg=#827717,bg=#ffc107]'
-    untracked: '#[fg=magenta,bg=#ffc107]'
+    modified: '#[fg=#000000,bg=#ffc107]'
+    untracked: '#[fg=#000000,bg=#ffc107]'
     stashed: '#[fg=cyan]'
-    clean: '#[fg=#e8f5e9,bg=#33691e]'
+    clean: '#[fg=#e8f5e9,bg=#00796b]'
   layout: [branch, divergence, ' ', flags, ' ']
   options:
     branch_max_len: 0
