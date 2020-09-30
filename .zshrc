@@ -159,14 +159,12 @@ GOPROXY=https://proxy.golang.org/
 export ANSIBLE_NOCOWS=1
 
 ## Prompt
-function _pre(){
-  # echo -ne "\033]0;${PWD}\007"
-  tmux set -g @kubectx $(kubectl config current-context)
-  tmux refresh-client -S
-}
-starship_precmd_user_func="_pre"
-precmd_functions+=(_pre)
-
 eval "$(starship init zsh)"
+
+function _precmd(){
+  tmux set -w @starship "$(env STARSHIP_CONFIG=$HOME/.config/starship-tmux.toml starship prompt -s ${STATUS:-0} -j ${NUM_JOBS:-0} -d ${STARSHIP_DURATION:-0})"
+}
+starship_precmd_user_func="_precmd"
+precmd_functions+=(_precmd)
 
 export PATH=$HOME/bin:$PATH

@@ -1,6 +1,6 @@
 tmux:
   symbols:
-    branch: '⎇ '
+    branch: ' '
     hashprefix: ':'
     ahead: ↑·
     behind: ↓·
@@ -13,14 +13,14 @@ tmux:
   styles:
     clear: '#[fg=default]'
     state: '#[bg=red,fg=white]'
-    branch: '#[fg=#e0f2f1,bg=#00796b] '
+    branch: '#[fg=white,bg=green] '
     remote: '#[fg=cyan]'
     staged: '#[fg=green]'
     conflict: '#[fg=red]'
     modified: '#[fg=#000000,bg=#ffc107]'
     untracked: '#[fg=#000000,bg=#ffc107]'
     stashed: '#[fg=cyan]'
-    clean: '#[fg=#e8f5e9,bg=#00796b]'
+    clean: '#[fg=#e8f5e9,bg=green]'
   layout: [branch, divergence, ' ', flags, ' ']
   options:
     branch_max_len: 0

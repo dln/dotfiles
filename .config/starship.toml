@@ -1,11 +1,11 @@
 add_newline = false
 
-prompt_order = [
-    "directory",
-    "git_status",
-    "git_state",
-    "character",
-]
+format = """\
+$directory\
+$git_status\
+$git_state\
+$character\
+"""
 
 [character]
 symbol = "%%"
