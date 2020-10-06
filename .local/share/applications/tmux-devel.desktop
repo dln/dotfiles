@@ -7,4 +7,4 @@ TryExec=kitty
 Icon=kitty
 Terminal=false
 Categories=System;TerminalEmulator;
-Exec=kitty --class=tmux-devel autossh -M21001 devel
+Exec=kitty --class=tmux-devel autossh -M0 devel
