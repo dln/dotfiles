@@ -168,3 +168,6 @@ starship_precmd_user_func="_precmd"
 precmd_functions+=(_precmd)
 
 export PATH=$HOME/bin:$PATH
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
