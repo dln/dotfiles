@@ -12,6 +12,9 @@ ui = auto
 [push]
 default = tracking
 
+[branch "main"]
+rebase = true
+
 [branch "master"]
 rebase = true
 
@@ -95,3 +98,5 @@ signingkey = 79020DB026385D4C
 name = Daniel Lundin
 email = daniel.lundin@netent.com
 signingkey = B9D5337DEEE9C1D8
+[init]
+	defaultBranch = main
