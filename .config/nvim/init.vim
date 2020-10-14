@@ -55,8 +55,9 @@ Plug 'roxma/nvim-cm-racer'
 Plug 'rust-lang/rust.vim'
 
 " Terraform
-Plug 'b4b4r07/vim-hcl'
+Plug 'jvirtanen/vim-hcl'
 Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
 " Jsonnet filetype plugin
 Plug 'google/vim-jsonnet'
@@ -78,7 +79,7 @@ Plug 'terminalnode/sway-vim-syntax'
 Plug 'tsandall/vim-rego'
 
 
-" Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 
 " Powershell
