@@ -69,8 +69,7 @@ date = relative
 [delta]
 plus-color = "#012800"
 minus-color = "#340001"
-syntax-theme = GitHub
-# syntax-theme = Monokai Extended
+syntax-theme = Monokai Extended
 
 [hub]
 protocol = git
