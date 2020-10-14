@@ -70,7 +70,7 @@ truncate_to_repo = false
 style = "bold"
 
 [git_branch]
-format = '▕#\[bg=green\] $symbol$branch '
+format = '#\[fg=#212121]\▕#\[bg=green,fg=#f7f7f7\] $symbol$branch '
 style = ""
 
 [git_commit]
@@ -86,7 +86,7 @@ style = ""
 
 [kubernetes]
 disabled = false
-format = '▕#\[bg=blue\] $symbol$context(\($namespace\)) '
+format = '#\[fg=#212121\]▕#\[bg=#0D47A1,fg=#80DEEA\] $symbol$context(\($namespace\)) '
 style = ""
 
 [time]
@@ -94,19 +94,19 @@ disabled = false
 style = ""
 
 [golang]
-format = '▕#\[bg=#00ACC1\] $symbol$version '
+format = '#\[fg=#212121\]▕#\[bg=#00ACC1,fg=#f7f7f7\] $symbol$version '
 style = ""
 
 [jobs]
-format = '▕#\[bg=#7E57C2\] $symbol$number '
+format = '#\[fg=#212121\]▕#\[bg=#7E57C2,fg=#f7f7f7\] $symbol$number '
 style = ""
 disabled = false
 
 [status]
-format = '▕#\[bg=red\] $symbol$status '
+format = '\#\[fg=#212121\]▕#[bg=red,fg=#f7f7f7\] $symbol$status '
 style = ""
 disabled = false
 
 [cmd_duration]
-format = '▕#\[bg=#558B2F\] ⏳$duration '
+format = '#\[fg=#212121\]▕#\[bg=#558B2F,fg=#f7f7f7\] ⏳$duration '
 style = ""
