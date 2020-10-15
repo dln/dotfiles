@@ -316,11 +316,11 @@ call  <sid>hi("CursorLine",      "",                "#011121",         "")
 call  <sid>hi("CursorLineNR",    s:blue_grey_500,        "#112131",         "")
 call  <sid>hi("Folded",          s:purple_200,      s:deep_purple_900, "")
 
-call  <sid>hi("Pmenu",           s:blue_grey_500,   "#112131",   "none")
+call  <sid>hi("Pmenu",           s:light_blue_500,  "#0D3791",   "none")
 call  <sid>hi("PmenuSbar",       s:blue_grey_500,   "#111c27",   "none")
 call  <sid>hi("PmenuThumb",      s:blue_grey_400,   "#112131",   "none")
 " call  <sid>hi("PmenuSel",        s:light_blue_100,       "#0D3771",       "bold")
-call  <sid>hi("PmenuSel",        s:amber_100,       "#0D3771",       "bold")
+call  <sid>hi("PmenuSel",        s:light_blue_100,   s:light_blue_800,       "bold")
 
 call  <sid>hi("CocFloating",     s:light_blue_100,   "#0D3771",   "italic")
 
@@ -342,4 +342,6 @@ call  <sid>hi("Identifier",      s:orange_200,      "",                "")
 call  <sid>hi("goFunction",      s:blue_300,        "",                "bold")
 call  <sid>hi("goOperator",      s:teal_200,        "",                "")
 call  <sid>hi("goSameId",        s:yellow_100,      "",                "underline")
+
+call  <sid>hi("Floating",    s:red_200, "",                "italic")
 

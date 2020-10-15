@@ -1,23 +1,15 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'dln/nvim-highlite'
+Plug 'bluz71/vim-moonfly-colors'
 
-" Autocomplete
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-go'
-" Plug 'ncm2/ncm2-racer'
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'steelsojka/completion-buffers'
 
-Plug 'janko/vim-test'
-Plug 'jgdavey/tslime.vim'
-
-" Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'do': './install --bin' }
-
 Plug 'junegunn/fzf.vim'
 
 " Ansible
@@ -33,31 +25,12 @@ Plug 'bronson/vim-trailing-whitespace'
 " comment lines out (gc in visual mode)
 Plug 'tomtom/tcomment_vim'
 
-" Pimped out bar at the bottom of current buffer
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Theme
-Plug 'kaicataldo/material.vim'
-
-
 " Golang
 Plug 'fatih/vim-go'
-Plug 'mdempsky/gocode'
-
-" Bazel
-Plug 'bazelbuild/vim-bazel'
-Plug 'bazelbuild/vim-ft-bzl'
-
-" Rust
-Plug 'racer-rust/vim-racer'
-Plug 'roxma/nvim-cm-racer'
-Plug 'rust-lang/rust.vim'
 
 " Terraform
 Plug 'jvirtanen/vim-hcl'
 Plug 'hashivim/vim-terraform'
-Plug 'juliosueiras/vim-terraform-completion'
 
 " Jsonnet filetype plugin
 Plug 'google/vim-jsonnet'
@@ -73,29 +46,12 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'terminalnode/sway-vim-syntax'
 Plug 'tsandall/vim-rego'
-
-
-Plug 'vim-syntastic/syntastic'
-Plug 'w0rp/ale'
-
-" Powershell
-Plug 'PProvost/vim-ps1'
-
 
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-
-" PowerShell
-Plug 'PProvost/vim-ps1'
-
-" Webdev
-Plug 'burner/vim-svelte'
 
 call plug#end()
 
@@ -299,32 +255,6 @@ let g:gitgutter_sign_removed = ''
 let g:gitgutter_sign_removed_first_line = ''
 let g:gitgutter_sign_modified_removed = ''
 
-"" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = "✗"
-let syntastic_style_error_symbol = "✗"
-let g:syntastic_warning_symbol = "∙∙"
-let syntastic_style_warning_symbol = "∙∙"
-
-"" ALE
-let g:airline#extensions#ale#enabled = 1
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = ''      "       ﱥ   ﬡ  樂
-let g:ale_sign_warning = ''
-" let g:ale_linters = {'go': ['gofmt']}
-" let g:ale_linters = {'go': ['go build', 'gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
-" let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter', 'gosimple', 'go vet', 'staticcheck']}
-let g:ale_linters = {'go': ['gofmt', 'gometalinter']}
-let g:go_gometalinter_options = join([
- \    '--fast'
- \ ], ' ')
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 
 "" Buffer navigation
 " map <silent> ` :b#<CR>
@@ -365,144 +295,98 @@ let g:vim_json_syntax_conceal = 0
 let g:jsonnet_fmt_fail_silently = 0
 autocmd BufNewFile,BufAdd,BufRead *.libjsonnet setlocal ft=jsonnet
 
-
-
-"" Scala
-autocmd BufNewFile,BufAdd,BufRead build.sbt setlocal ft=scala
-autocmd BufNewFile,BufAdd,BufRead *.scala setlocal ft=scala
-autocmd FileType scala setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-
-"" Rust
-autocmd FileType rust setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-
-"" Clojure
-let g:paredit_mode=0
-let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-let g:clj_paren_rainbow=1           " Rainbow parentheses'!
-
-"" Python
-au FileType python
-    \ setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m |
-    \ setlocal makeprg=python\ % |
-    \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 |
-    \ setlocal nosmartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-
-" pydoc integration
-let g:pydoc_highlight = 0
-let python_highlight_all = 1
-let g:pcs_check_when_saving = 0
-let g:pymode_lint = 0
-let g:pymode_lint_checker = "pyflakes"
-
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-
-
-"" COC completion
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
-
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd CursorHold * silent call CocActionAsync('doHover')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-" vmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-
 " tags
 set tags=./tags;/
 
-" C++
 
-" Add highlighting for function definition in C++
-function! EnhanceCppSyntax()
-    syn match cppFuncDef "::\~\?\zs\h\w*\ze([^)]*\()\s*\(const\)\?\)\?$"
-    hi def link cppFuncDef Special
-endfunction
-autocmd Syntax cpp call EnhanceCppSyntax()
-autocmd FileType cpp setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+"" syntax and completion
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
-" HTML
-au FileType html
-                \ set makeprg=tidy\ -qe\ -access\ 3\ % |
-                \ set errorformat=line\ %l\ column\ %c\ \-\ %m
-" let g:html_indent_tags .= '\|p'
-" let g:html_indent_tags .= '\|li'
+:lua << END
+require'nvim_lsp'.gopls.setup{
+  on_attach=require'diagnostic'.on_attach
+}
+
+require'nvim_lsp'.jdtls.setup{
+  on_attach=require'diagnostic'.on_attach
+}
+
+require'nvim_lsp'.terraformls.setup{
+  on_attach=require'diagnostic'.on_attach,
+  cmd = {'terraform-ls', 'serve'}
+}
+
+require'nvim_lsp'.vimls.setup{
+  on_attach=require'diagnostic'.on_attach
+}
+
+require'nvim_lsp'.yamlls.setup{
+  on_attach=require'diagnostic'.on_attach
+}
+
+END
+
+nmap <tab> <Plug>(completion_smart_tab)
+nmap <s-tab> <Plug>(completion_smart_s_tab)
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'snippet']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
 
 
-au FileType xml
-    \ set makeprg=tidy\ -qe\ -access\ 3\ % |
-    \ set errorformat=line\ %l\ column\ %c\ \-\ %m
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+"" Diagnostics
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_insert_delay = 1
+let g:diagnostic_virtual_text_prefix = '⟸ '
+
+call sign_define("LspDiagnosticsErrorSign", {"text" : "", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
+autocmd BufEnter * lua require'completion'.on_attach()
+
+
+"" Treesitter
+
+:lua << END
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+END
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 "" fzf
 function! CreateCenteredFloatingWindow()
@@ -563,10 +447,7 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-set background=light
-let g:one_allow_italics=1
-let g:PaperColor_Light_Override = { 'Background' : '#fefe00' }
-
+set background=dark
 
 " Golang
 let g:go_highlight_build_constraints = 1
@@ -592,61 +473,10 @@ autocmd FileType go nmap <S-k> <Plug>(go-doc)
 autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
 
 
-"" Neosnippet
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-" imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-k>":"\<CR>")
-"
-imap <c-j>     <Plug>(neosnippet_expand_or_jump)
-vmap <c-j>     <Plug>(neosnippet_expand_or_jump)
-inoremap <silent> <c-u> <c-r>=cm#sources#neosnippet#trigger_or_popup("\<Plug>(neosnippet_expand_or_jump)")<cr>
-vmap <c-u>     <Plug>(neosnippet_expand_target)
-" expand parameters
-let g:neosnippet#enable_completed_snippet=1
-
 " Hugo
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 
-
-
-"" Airline
-let g:airline_theme="minimalist"
-let g:airline_powerline_fonts = 0
-let g:airline_skip_empty_sections = 1
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline_section_x = ''   " Hide file type
-" let g:airline_section_z = "\u2193%l \u2192%c"
-let g:airline_section_z = "%P \u2192%c"
-" let g:airline_section_z = "%l:%c"
- let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'c'  : 'C',
-      \ 'i'  : 'I',
-      \ 'ic' : 'I',
-      \ 'ix' : 'I',
-      \ 'n'  : "\ue62b",
-      \ 'ni' : "\ue62b",
-      \ 'no' : "\ue62b",
-      \ 'R'  : 'R',
-      \ 'Rv' : 'R',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ 't'  : 'T',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ }
-
-"" Testing
-let test#strategy = "tslime"
-nmap <M-t> :TestLast<CR>
-imap <M-t> :TestLast<CR>
-nmap <M-S-t> :TestFile<CR>
-imap <M-S-t> :TestFile<CR>
 
 
 
@@ -654,29 +484,12 @@ imap <M-S-t> :TestFile<CR>
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" " undercurl in tmux
+set t_Cs = "\e[4:3m"
+set t_Ce = "\e[4:0m"
 
 
-color dln-light
-map ,l :color dln-light<CR>
-
-
-let s:hidden_all  = 0
-function! ToggleHiddenAll()
-    if s:hidden_all  == 0
-        let s:hidden_all = 1
-        set noshowmode
-        set noruler
-        set laststatus=0
-        set noshowcmd
-    else
-        let s:hidden_all = 0
-        set showmode
-        set ruler
-        set laststatus=2
-        set showcmd
-    endif
-endfunction
-nnoremap <S-h> :call ToggleHiddenAll()<CR>
-
+color dln
+map ,l :color dln<CR>
