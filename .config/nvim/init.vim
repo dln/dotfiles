@@ -88,6 +88,7 @@ set autochdir
 set autoread        "Reload files changed outside vim
 set nofoldenable    " disable folding
 set title
+set titlestring=%F%m\ %r\ %y
 
 " Wordwrap
 " set formatoptions=l
