@@ -87,16 +87,12 @@ diffFilter = delta --color-only
 helper = store
 
 [commit]
-gpgsign = true
+#gpgsign = true
 
 [user "arity"]
 name = Daniel Lundin
 email = daniel@arity.se
 signingkey = 79020DB026385D4C
 
-[user "netent"]
-name = Daniel Lundin
-email = daniel.lundin@netent.com
-signingkey = B9D5337DEEE9C1D8
 [init]
 	defaultBranch = main
