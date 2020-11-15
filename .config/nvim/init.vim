@@ -1,7 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'dln/nvim-highlite'
-Plug 'bluz71/vim-moonfly-colors'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'tjdevries/gruvbuddy.nvim'
+Plug '~/src/github.com/shelmangroup/nvim-shelman-theme'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -156,8 +157,9 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplVSplit = 25
 let g:miniBufExplSplitBelow=1
 
-"" Wayland clipboard copy paste
-map <silent> ,v :r!wl-paste<cr>
+
+"" minimap
+let g:minimap_auto_start = 1
 
 
 "" Searching
@@ -312,24 +314,28 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 :lua << END
-require'nvim_lsp'.gopls.setup{
+require'lspconfig'.gopls.setup{
   on_attach=require'diagnostic'.on_attach
 }
 
-require'nvim_lsp'.jdtls.setup{
+require'lspconfig'.jdtls.setup{
   on_attach=require'diagnostic'.on_attach
 }
 
-require'nvim_lsp'.terraformls.setup{
+require'lspconfig'.sumneko_lua.setup{
+  cmd = {"lua-language-server"};
+}
+
+require'lspconfig'.terraformls.setup{
   on_attach=require'diagnostic'.on_attach,
   cmd = {'terraform-ls', 'serve'}
 }
 
-require'nvim_lsp'.vimls.setup{
+require'lspconfig'.vimls.setup{
   on_attach=require'diagnostic'.on_attach
 }
 
-require'nvim_lsp'.yamlls.setup{
+require'lspconfig'.yamlls.setup{
   on_attach=require'diagnostic'.on_attach
 }
 
@@ -338,7 +344,7 @@ END
 nmap <tab> <Plug>(completion_smart_tab)
 nmap <s-tab> <Plug>(completion_smart_s_tab)
 let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet']},
+    \{'complete_items': ['lsp', 'buffers', 'snippet']},
     \{'mode': '<c-p>'},
     \{'mode': '<c-n>'}
 \]
@@ -355,9 +361,9 @@ let g:diagnostic_insert_delay = 1
 let g:diagnostic_virtual_text_prefix = '⟸ '
 
 call sign_define("LspDiagnosticsErrorSign", {"text" : "🔥", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "⚠", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "🎃", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "💡", "texthl" : "LspDiagnosticsHint"})
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
 set completeopt=menuone,noinsert,noselect
@@ -512,5 +518,6 @@ set t_Cs = "\e[4:3m"
 set t_Ce = "\e[4:0m"
 
 
-color dln
-map ,l :color dln<CR>
+lua require('colorbuddy').colorscheme('shelman-dark')
+
+map ,l :luafile %<CR>

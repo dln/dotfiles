@@ -11,6 +11,6 @@ hub sync
 if git rev-parse --verify --quiet $1; then
   git checkout $1
 else
-  git checkout -b $1 master
+  git checkout -b $1 main
   git push -u origin $1
 fi

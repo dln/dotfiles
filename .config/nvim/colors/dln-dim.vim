@@ -336,7 +336,7 @@ call  <sid>hi("ALEInfoSign",     s:blue_grey_500,   "",                "italic")
 
 call  <sid>hi("Statement",       s:blue_grey_200,   "",                "bold")
 call  <sid>hi("String",          s:light_green_400, "",                "italic")
-call  <sid>hi("Comment",         s:blue_grey_600,   "",                "italic")
+call  <sid>hi("Comment",         s:blue_grey_600,   "",                "bold,italic")
 call  <sid>hi("Type",            s:deep_purple_100, "",                "none")
 call  <sid>hi("Identifier",      s:orange_200,      "",                "")
 call  <sid>hi("goFunction",      s:blue_300,        "",                "bold")

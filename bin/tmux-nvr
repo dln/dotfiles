@@ -1,0 +1,5 @@
+#!/bin/bash
+tmux select-window -t1
+FILE="$1"
+shift
+exec nvr --remote "$@" $(readlink -f "$FILE")

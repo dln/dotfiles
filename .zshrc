@@ -109,17 +109,19 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 
 ## Pager
-export LESS="--mouse --wheel-lines=1 -nRX"
+export LESS="--mouse --wheel-lines=1 -nRXF"
 
 ## Aliases
-alias cdiff='colordiff -u'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias l=bat
 alias ls=exa
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
 alias tree='exa --tree'
+alias v=vgrep
+alias ve='env EDITOR= vgrep -s'
 alias xc='xclip -selection clipboard'
+
 
 ## vim
 export EDITOR=nvim
