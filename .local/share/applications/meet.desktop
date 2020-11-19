@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Meet
+StartupWMClass=meet.google.com
+Exec=/usr/bin/google-chrome-stable --app=https://meet.google.com
+Terminal=false
+Icon=google-chrome
+Type=Application
+Categories=Network;Office
