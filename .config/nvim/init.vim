@@ -6,7 +6,6 @@ Plug '~/src/github.com/shelmangroup/nvim-shelman-theme'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'steelsojka/completion-buffers'
 
@@ -215,6 +214,8 @@ map <silent> <leader>/ :Ag<cr>
 map <silent> <leader>m :Marks<cr>
 
 "" Key bindings
+cnorea wd w\|:bd
+
 nmap <C-N><C-N> :set invnumber<CR>
 
 imap <silent>  <c-w>
@@ -315,11 +316,9 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 :lua << END
 require'lspconfig'.gopls.setup{
-  on_attach=require'diagnostic'.on_attach
 }
 
 require'lspconfig'.jdtls.setup{
-  on_attach=require'diagnostic'.on_attach
 }
 
 require'lspconfig'.sumneko_lua.setup{
@@ -327,16 +326,13 @@ require'lspconfig'.sumneko_lua.setup{
 }
 
 require'lspconfig'.terraformls.setup{
-  on_attach=require'diagnostic'.on_attach,
   cmd = {'terraform-ls', 'serve'}
 }
 
 require'lspconfig'.vimls.setup{
-  on_attach=require'diagnostic'.on_attach
 }
 
 require'lspconfig'.yamlls.setup{
-  on_attach=require'diagnostic'.on_attach
 }
 
 END
