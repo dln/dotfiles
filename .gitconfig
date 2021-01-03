@@ -1,7 +1,6 @@
 [core]
 excludesfile = "~/.gitignore"
-editor = nvim
-pager = delta
+	pager = delta --line-numbers -s
 
 [user]
 useConfigOnly = true
@@ -27,6 +26,10 @@ co = checkout
 st = status -sb
 pullr = pull --rebase
 wc = whatchanged --abbrev-commit --date=relative --date-order --pretty='format:%Cgreen%h %Cblue%ar %Credby %an%Creset -- %s' -n 45
+f = fuzzy status
+fd = fuzzy diff
+fl = fuzzy log
+fs = fuzzy status
 
 ll = log --graph --date=relative --topo-order --pretty='format:%C(yellow)%h%C(yellow)%d %Cblue%ar %Cgreenby %an%Creset -- %s'
 lla = log --graph --date=relative --topo-order --pretty='format:%Cgreen%h %Cblue%ar %Credby %an%Creset -- %s' --all

@@ -192,8 +192,8 @@ let g:explDetailedHelp=1
 "" Backup
 set backup
 set backupcopy=yes
-set backupdir=~/tmp,/var/tmp,/tmp"
-set directory=~/tmp,/var/tmp,/tmp"
+set backupdir=~/tmp/nvim/,~/tmp,/var/tmp,/tmp"
+set directory=~/tmp/nvim/,~/tmp,/var/tmp,/tmp"
 let myvar = strftime("%y%m%d-%H%M")
 let myvar = "set backupext=_". myvar
 execute myvar
