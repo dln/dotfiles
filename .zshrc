@@ -1,4 +1,5 @@
 source ~/.zplug/init.zsh
+  # --set k8sServicePort=6443 \
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
@@ -123,10 +124,6 @@ alias ve='env EDITOR= vgrep -s'
 alias xc='xclip -selection clipboard'
 
 
-if [[ "$HOST" ==  "porky" ]]; then
-  alias ssh="env TERM=xterm-256color ssh"
-fi
-
 ## vim
 export EDITOR=nvim
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
@@ -151,12 +148,14 @@ eval "$(direnv hook zsh)"
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 export PATH=$HOME/.krew/bin:$PATH
 
+## linkerd
+command -v linkerd >/dev/null 2>&1 && source <(linkerd completion zsh)
+
 ## Flux
 export FLUX_FORWARD_NAMESPACE=flux
 
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
-alias gcloud="env TERM=xterm-256color gcloud"
 
 # hack until gcloud works with python 3.9
 export CLOUDSDK_PYTHON=python2
