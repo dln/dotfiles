@@ -1,6 +1,6 @@
 [core]
 excludesfile = "~/.gitignore"
-	pager = delta --line-numbers -s
+pager = delta --line-numbers -s
 
 [user]
 useConfigOnly = true
@@ -21,6 +21,7 @@ rebase = true
 b = branch -va
 d = diff --stat -p -C
 ds = diff --staged --stat -p -C
+du = !"git --no-pager diff --stat -p -C --color=always | bat"
 patch = !git --no-pager diff --no-color
 co = checkout
 st = status -sb
@@ -76,6 +77,7 @@ date = relative
 plus-color = "#012800"
 minus-color = "#340001"
 syntax-theme = Monokai Extended
+hunk-header-style = line-number syntax
 
 [hub]
 protocol = git
@@ -90,7 +92,7 @@ diffFilter = delta --color-only
 helper = store
 
 [commit]
-#gpgsign = true
+gpgsign = true
 
 [user "arity"]
 name = Daniel Lundin
@@ -98,4 +100,4 @@ email = daniel@arity.se
 signingkey = 79020DB026385D4C
 
 [init]
-	defaultBranch = main
+defaultBranch = main
