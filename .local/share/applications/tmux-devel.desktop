@@ -3,8 +3,8 @@ Name=tmux devel
 GenericName=tmux-devel
 StartupWMClass=tmux-devel
 Type=Application
-TryExec=kitty
-Icon=kitty
+TryExec=/home/dln/bin/alacritty
+Icon=alacritty
 Terminal=false
 Categories=System;TerminalEmulator;
-Exec=kitty --class=tmux-devel autossh -M0 -q devel
+Exec=/home/dln/bin/alacritty --class=tmux-devel -e autossh -M0 -q devel
