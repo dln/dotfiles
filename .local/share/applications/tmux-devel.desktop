@@ -7,4 +7,4 @@ TryExec=/home/dln/bin/alacritty
 Icon=alacritty
 Terminal=false
 Categories=System;TerminalEmulator;
-Exec=/home/dln/bin/alacritty --class=tmux-devel -e autossh -M0 -q devel
+Exec=/home/dln/bin/alacritty --class=tmux-devel -e ssh devel

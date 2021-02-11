@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=plex
+StartupWMClass=plex
+Exec=/usr/bin/google-chrome-stable --app=https://plex.aarn.shelman.io
+Terminal=false
+Icon=google-chrome
+Type=Application
+Categories=Audio;
