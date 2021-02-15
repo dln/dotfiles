@@ -2,7 +2,7 @@
 Version=1.0
 Name=plex
 StartupWMClass=plex
-Exec=/usr/bin/google-chrome-stable --app=https://plex.aarn.shelman.io
+Exec=/usr/bin/google-chrome-stable --profile-directory='Profile 2' --app=https://plex.aarn.shelman.io
 Terminal=false
 Icon=google-chrome
 Type=Application
