@@ -21,7 +21,7 @@ rebase = true
 b = branch -va
 d = diff --stat -p -C
 ds = diff --staged --stat -p -C
-du = !"git --no-pager diff --stat -p -C --color=always | bat"
+du = !"git --no-pager diff --stat -p -C --color=always"
 patch = !git --no-pager diff --no-color
 co = checkout
 st = status -sb

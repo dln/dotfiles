@@ -121,6 +121,7 @@ alias tree='exa --tree'
 alias v=vgrep
 alias ve='env EDITOR= vgrep -s'
 alias xc='xclip -selection clipboard'
+alias c='cut -c-${COLUMNS}'
 
 
 ## vim
@@ -151,7 +152,7 @@ export PATH=$HOME/.krew/bin:$PATH
 command -v linkerd >/dev/null 2>&1 && source <(linkerd completion zsh)
 
 ## Flux
-export FLUX_FORWARD_NAMESPACE=flux
+command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
 
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc

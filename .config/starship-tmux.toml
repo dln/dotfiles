@@ -2,11 +2,11 @@ add_newline = false
 
 format = """
 $status\
-$cmd_duration\
 $jobs\
 $kubernetes\
 $gcloud\
 """
+#$cmd_duration\
 # $git_branch\
 # $git_commit\
 # $git_state\
