@@ -130,8 +130,8 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 e ()
 {
-  tmux select-window -t1
   nvr --remote $(readlink -f "$@")
+  echo -e "\x1b]2;$(date +%s):nvim\x1b\\"
 }
 
 ## fzf
