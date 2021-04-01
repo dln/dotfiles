@@ -3,8 +3,8 @@ Name=tmux devel
 GenericName=tmux-devel
 StartupWMClass=tmux-devel
 Type=Application
-TryExec=/home/dln/bin/alacritty
-Icon=alacritty
+TryExec=/usr/bin/wezterm
+Icon=org.wezfurlong.wezterm
 Terminal=false
 Categories=System;TerminalEmulator;
-Exec=/home/dln/bin/alacritty --class=tmux-devel -e ssh devel
+Exec=/usr/bin/wezterm start --class=tmux-devel -- ssh devel
