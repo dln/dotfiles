@@ -4,6 +4,6 @@ Name=Google Meet
 StartupWMClass=meet.google.com
 Exec=/usr/bin/google-chrome-stable --profile-directory='Profile 1' --app=https://meet.google.com
 Terminal=false
-Icon=google-chrome
+Icon=camera-video
 Type=Application
 Categories=Network;Office

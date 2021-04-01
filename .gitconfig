@@ -92,7 +92,7 @@ diffFilter = delta --color-only
 helper = store
 
 [commit]
-gpgsign = true
+# gpgsign = true
 
 [user "arity"]
 name = Daniel Lundin
