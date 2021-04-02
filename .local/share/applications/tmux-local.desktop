@@ -7,4 +7,5 @@ TryExec=/usr/bin/wezterm
 Icon=org.wezfurlong.wezterm
 Terminal=false
 Categories=System;TerminalEmulator;
-Exec=/usr/bin/wezterm start --class=tmux-local -- tmux new-session -A -D -s 0
+Exec=/usr/bin/wezterm start --class=tmux-local
+# Exec=/usr/bin/wezterm connect local

@@ -58,7 +58,8 @@ return {
     bottom = 0,
   },
 
-  enable_tab_bar = false,
+  enable_tab_bar = true,
+  show_tab_index_in_tab_bar = false,
   enable_scroll_bar = false,
   window_decorations = "NONE",
   scrollback_lines = 5000,

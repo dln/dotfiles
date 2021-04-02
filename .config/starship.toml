@@ -1,7 +1,9 @@
 add_newline = false
 
 format = """\
+$hostname\
 $directory\
+$git_branch\
 $git_status\
 $git_state\
 $character\
@@ -18,10 +20,12 @@ disabled = true
 fish_style_pwd_dir_length = 1
 truncation_length = 1
 truncate_to_repo = false
-style = "bold"
+style = "italic bold"
 
 [git_branch]
-style = ""
+symbol = ""
+truncation_length = 8
+truncation_symbol = ""
 
 [git_commit]
 style = ""
@@ -31,6 +35,11 @@ style = ""
 
 [git_status]
 style = ""
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](bold italic):"
+disabled = false
 
 [kubernetes]
 disabled = false

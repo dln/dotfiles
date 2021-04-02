@@ -1,5 +1,4 @@
 source ~/.zplug/init.zsh
-  # --set k8sServicePort=6443 \
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
@@ -131,7 +130,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 e ()
 {
   nvr --remote $(readlink -f "$@")
-  echo -e "\x1b]2;$(date +%s):nvim\x1b\\"
+  echo -e "\x1b]2;1234567890123456$(date +%s):nvim\x1b\\"
 }
 
 ## fzf
@@ -170,12 +169,6 @@ export ANSIBLE_NOCOWS=1
 
 ## Prompt
 eval "$(starship init zsh)"
-
-function _precmd(){
-  tmux set -w @starship "$(env STARSHIP_CONFIG=$HOME/.config/starship-tmux.toml starship prompt -s ${STATUS:-0} -j ${NUM_JOBS:-0} -d ${STARSHIP_DURATION:-0})"
-}
-starship_precmd_user_func="_precmd"
-precmd_functions+=(_precmd)
 
 export PATH=$HOME/bin:$PATH
 
