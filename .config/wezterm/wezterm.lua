@@ -15,7 +15,7 @@ wezterm.on("update-right-status", function(window, pane)
 end);
 
 function font_with_fallback(name, params)
-  local names = {name, "Noto Color Emoji"}
+  local names = {name, "Noto Color Emoji", "Iosevka Nerd Font Mono"}
   return wezterm.font_with_fallback(names, params)
 end
 
@@ -67,8 +67,14 @@ return {
   check_for_updates = false,
   status_update_interval = 100,
 
-  leader = { key="o", mods="CTRL", timeout_milliseconds=1000 },
+  launch_menu = {
+    {
+      label = "dln-dev",
+      args = {"ssh", "dln-dev"},
+    },
+  },
 
+  leader = { key="o", mods="CTRL", timeout_milliseconds=1000 },
   keys = {
 
     {key="c", mods="ALT|SHIFT", action="Copy"},
@@ -76,6 +82,7 @@ return {
     {key="n", mods="LEADER", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     {key="c", mods="LEADER", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     {key="k", mods="LEADER", action=wezterm.action{CloseCurrentTab={confirm=true}}},
+    {key="l", mods="LEADER", action="ShowLauncher"},
 
     {key="LeftArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=-1}},
     {key="RightArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=1}},

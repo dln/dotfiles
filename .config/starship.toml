@@ -6,7 +6,7 @@ $directory\
 $git_branch\
 $git_status\
 $git_state\
-$character\
+( $character)\
 """
 
 [character]
@@ -23,7 +23,9 @@ truncate_to_repo = false
 style = "italic bold"
 
 [git_branch]
-symbol = ""
+format = "[$symbol$branch]($style)"
+style = "fg:#559955"
+symbol = " "
 truncation_length = 8
 truncation_symbol = ""
 
@@ -34,7 +36,8 @@ style = ""
 style = ""
 
 [git_status]
-style = ""
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "dimmed"
 
 [hostname]
 ssh_only = false
