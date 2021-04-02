@@ -6,7 +6,7 @@ Plug '~/src/github.com/shelmangroup/nvim-shelman-theme'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " update parsers on update
 Plug 'steelsojka/completion-buffers'
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -370,11 +370,13 @@ autocmd BufEnter * lua require'completion'.on_attach()
 
 "" Treesitter
 
-:lua << END
+lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
   highlight = {
-    enable = true,
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "lua" },  -- list of language that will be disabled
   },
   incremental_selection = {
     enable = true,
@@ -385,28 +387,8 @@ require'nvim-treesitter.configs'.setup {
       node_decremental = "grm",
     },
   },
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-
-        -- Or you can define your own textobjects like this
-        ["iF"] = {
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-          java = "(method_declaration) @function",
-        },
-      },
-    },
-  },
 }
-END
+EOF
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
