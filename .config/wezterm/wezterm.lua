@@ -57,7 +57,7 @@ return {
     bottom = 0,
   },
 
-  enable_tab_bar = false,
+  enable_tab_bar = true,
   show_tab_index_in_tab_bar = true,
   enable_scroll_bar = false,
   window_decorations = "NONE",
@@ -85,6 +85,7 @@ return {
 
     {key="LeftArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=-1}},
     {key="RightArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=1}},
+    {key="RightArrow", mods="CTRL|SHIFT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
 
     {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
     {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
