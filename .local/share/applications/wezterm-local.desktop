@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=tmux devel
-GenericName=tmux-devel
-StartupWMClass=tmux-devel
+Name=wezterm-local
+GenericName=wezterm-local
+StartupWMClass=wezterm-local
 Type=Application
 TryExec=/usr/bin/wezterm
 Icon=org.wezfurlong.wezterm
 Terminal=false
 Categories=System;TerminalEmulator;
-Exec=/usr/bin/wezterm start --class=tmux-devel -- ssh devel
+Exec=/usr/bin/wezterm start --class=wezterm-local

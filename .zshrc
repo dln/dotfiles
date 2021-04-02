@@ -76,6 +76,7 @@ cd_func () {
   fi
   "cd" "${dir}"
   fasd -A $PWD
+  set_win_title
 }
 alias cd=cd_func
 
@@ -124,6 +125,19 @@ alias xc='xclip -selection clipboard'
 alias c='cut -c-${COLUMNS}'
 
 
+
+## Prompt
+eval "$(starship init zsh)"
+
+function _title(){
+  printf '%-16.16s' "$(starship module directory | sed 's/\x1b\[[0-9;]*m//g')"
+}
+
+function set_win_title(){
+    echo -ne "\033]0; $(_title) \007"
+}
+set_win_title
+
 ## vim
 export EDITOR=nvim
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
@@ -131,7 +145,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 e ()
 {
   nvr --remote $(readlink -f "$@")
-  echo -e "\x1b]2;1234567890123456$(date +%s):nvim\x1b\\"
+  echo -e "\x1b]2;$(_title) $(date +%s):nvim\x1b\\"
 }
 
 ## fzf
@@ -167,14 +181,6 @@ GOPROXY=https://proxy.golang.org/
 
 ## Ansible
 export ANSIBLE_NOCOWS=1
-
-## Prompt
-eval "$(starship init zsh)"
-# function set_win_title(){
-#     echo -ne "\033]0; $(basename $PWD) \007"
-# }
-# precmd_functions+=(set_win_title)
-
 
 export PATH=$HOME/bin:$PATH
 
