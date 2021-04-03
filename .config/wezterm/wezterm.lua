@@ -19,7 +19,40 @@ function font_with_fallback(name, params)
   return wezterm.font_with_fallback(names, params)
 end
 
+
+local themeShelmanDark = {
+  colors = {
+    foreground    = "#ded9ce",
+    background    = "#171717",
+    cursor_bg     = "#FB8C00",
+    cursor_border = "#FB8C00",
+    split         = "#444444",
+    ansi    = { "#000000", "#ff605a", "#b1e869", "#ead89c", "#5da9f6", "#e86aff", "#82fff6", "#ded9ce" },
+    brights = { "#313131", "#f58b7f", "#dcf88f", "#eee5b2", "#a5c7ff", "#ddaaff", "#b6fff9", "#fefffe" },
+    tab_bar = {
+      background = "#000000",
+      active_tab         = { bg_color = "#171717", fg_color = "#c0b070", intensity = "Bold", },
+      inactive_tab       = { bg_color = "#000000", fg_color = "#c0c0c0", intensity = "Half", },
+      inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true, }
+    }
+  },
+
+  tab_bar_style = {
+    active_tab_left          = wezterm.format({ {Background={Color="#171717"}}, {Foreground={Color="#000000"}}, {Text=" "} }),
+    active_tab_right         = wezterm.format({ {Background={Color="#171717"}}, {Foreground={Color="#000000"}}, {Text=" "} }),
+    inactive_tab_left        = wezterm.format({ {Background={Color="#000000"}}, {Foreground={Color="#171717"}}, {Text=" "} }),
+    inactive_tab_right       = wezterm.format({ {Background={Color="#000000"}}, {Foreground={Color="#171717"}}, {Text="▕"} }),
+    inactive_tab_hover_left  = wezterm.format({ {Background={Color="#333333"}}, {Foreground={Color="#ffffff"}}, {Text=" "} }),
+    inactive_tab_hover_right = wezterm.format({ {Background={Color="#333333"}}, {Foreground={Color="#ffffff"}}, {Text=" "} }),
+  },
+};
+
+
+local theme = themeShelmanDark;
+
 return {
+  colors = theme.colors,
+  tab_bar_style = theme.tab_bar_style,
   -- automatically_reload_config = false,
   font = font_with_fallback("Iosevka Term SS09 Light"),
   font_rules = {
@@ -99,93 +132,6 @@ return {
     {key="0", mods="ALT", action=wezterm.action{ActivateTab=9}},
   },
 
-  colors = {
-    foreground = "#ded9ce",
-    background = "#171717",
-
-    cursor_bg = "#FB8C00",
-    -- cursor_fg = "black",
-    cursor_border = "#FB8C00",
-
-    split = "#444444",
-
-    ansi = {
-      "#000000",
-      "#ff605a",
-      "#b1e869",
-      "#ead89c",
-      "#5da9f6",
-      "#e86aff",
-      "#82fff6",
-      "#ded9ce"
-    },
-
-    brights = {
-      "#313131",
-      "#f58b7f",
-      "#dcf88f",
-      "#eee5b2",
-      "#a5c7ff",
-      "#ddaaff",
-      "#b6fff9",
-      "#fefffe"
-    },
-
-    tab_bar = {
-      background = "#000000",
-      active_tab = {
-        bg_color = "#171717",
-        fg_color = "#c0b070",
-        intensity = "Bold",
-      },
-      inactive_tab = {
-        bg_color = "#000000",
-        fg_color = "#c0c0c0",
-        intensity = "Half",
-      },
-
-      -- You can configure some alternate styling when the mouse pointer
-      -- moves over inactive tabs
-      inactive_tab_hover = {
-        bg_color = "#333333",
-        fg_color = "#909090",
-        italic = true,
-      }
-    }
-  },
-
-  tab_bar_style = {
-    active_tab_left = wezterm.format({
-      {Background={Color="#171717"}},
-      {Foreground={Color="#000000"}},
-      {Text=" "},
-    }),
-    active_tab_right = wezterm.format({
-      {Background={Color="#171717"}},
-      {Foreground={Color="#000000"}},
-      {Text=" "},
-    }),
-    inactive_tab_left = wezterm.format({
-      {Background={Color="#000000"}},
-      {Foreground={Color="#171717"}},
-      {Text=" "},
-    }),
-    inactive_tab_right = wezterm.format({
-      {Background={Color="#000000"}},
-      {Foreground={Color="#171717"}},
-      {Text="▕"},
-    }),
-    inactive_tab_hover_left = wezterm.format({
-      {Background={Color="#333333"}},
-      {Foreground={Color="#ffffff"}},
-      {Text=" "},
-    }),
-    inactive_tab_hover_right = wezterm.format({
-      {Background={Color="#333333"}},
-      {Foreground={Color="#ffffff"}},
-      {Text=" "},
-    }),
-  },
 
   -- ssh_domains = {
   --   {
