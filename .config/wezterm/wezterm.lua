@@ -160,12 +160,12 @@ return {
   },
 
 
-  -- ssh_domains = {
-  --   {
-  --     name = "dln-dev",
-  --     remote_address = "dln-dev",
-  --     username = "dln",
-  --   }
-  -- },
+  ssh_domains = {
+    {
+      name = "dln-dev",
+      remote_address = "dln-dev",
+      username = "dln",
+    }
+  },
 
 }
