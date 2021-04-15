@@ -62,23 +62,9 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
-eval "$(fasd --init posix-alias zsh-hook)"
-
-cd_func () {
-  local dir
-  if [[ $1 ==  "--" ]]; then
-    _jump || return 1
-    return 0
-  elif [[ -z "$1" ]]; then
-    dir="$HOME"
-  else
-    dir="$@"
-  fi
-  "cd" "${dir}"
-  fasd -A $PWD
-  set_win_title
-}
-alias cd=cd_func
+if command -v pazi &>/dev/null; then
+  eval "$(pazi init zsh)" # or 'bash'
+fi
 
 redraw-prompt() {
     local precmd
@@ -90,10 +76,9 @@ redraw-prompt() {
 zle -N redraw-prompt
 
 _jump() {
-  dir="$(fasd -Rdlt | fzf --tiebreak=end -1 -0 --no-sort +m --height 10)" && cd_func "${dir}"
+  z --pipe="fzf"
   zle && zle redraw-prompt
 }
-
 zle -N _jump
 
 ## Keybindings
