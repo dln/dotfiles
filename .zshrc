@@ -168,6 +168,9 @@ command -v linkerd >/dev/null 2>&1 && source <(linkerd completion zsh)
 ## Flux
 command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
 
+## Tekton cli
+command -v tkn >/dev/null 2>&1 && source <(tkn completion zsh)
+
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
 
@@ -181,6 +184,17 @@ GOPROXY=https://proxy.golang.org/
 
 ## Ansible
 export ANSIBLE_NOCOWS=1
+
+
+## PostgreSQL Operator
+export PATH=/home/dln/.pgo/pgo:$PATH
+export PGOUSER=/home/dln/.pgo/pgo/pgouser
+export PGO_CA_CERT=/home/dln/.pgo/pgo/client.crt
+export PGO_CLIENT_CERT=/home/dln/.pgo/pgo/client.crt
+export PGO_CLIENT_KEY=/home/dln/.pgo/pgo/client.key
+export PGO_APISERVER_URL='https://127.0.0.1:8443'
+export PGO_NAMESPACE=pgo
+
 
 export PATH=$HOME/bin:$PATH
 
