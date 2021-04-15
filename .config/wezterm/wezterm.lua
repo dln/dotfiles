@@ -54,12 +54,13 @@ local themeShelmanLight = {
     cursor_bg     = "#FB8C00",
     cursor_border = "#FB8C00",
     split         = "#444444",
-    ansi    = { "#000000", "#ff605a", "#b1e869", "#ead89c", "#5da9f6", "#e86aff", "#82fff6", "#ded9ce" },
-    brights = { "#313131", "#f58b7f", "#dcf88f", "#eee5b2", "#a5c7ff", "#ddaaff", "#b6fff9", "#fefffe" },
+    ansi    = { "#212121", "#b7141e", "#457b23", "#f5971d", "#134eb2", "#550087", "#0e707c", "#eeeeee" },
+    brights = { "#424242", "#e83a3f", "#7aba39", "#fee92e", "#53a4f3", "#a94dbb", "#26bad1", "#d8d8d8" },
+
     tab_bar = {
-      background = "#444444",
+      background = "#556677",
       active_tab         = { bg_color = "#f7f7f7", fg_color = "#000000", intensity = "Normal", },
-      inactive_tab       = { bg_color = "#777777", fg_color = "#000000", intensity = "Half", },
+      inactive_tab       = { bg_color = "#778899", fg_color = "#000000", intensity = "Half", },
       inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true, }
     }
   },
@@ -67,49 +68,55 @@ local themeShelmanLight = {
   tab_bar_style = {
     active_tab_left          = wezterm.format({ {Background={Color="#f7f7f7"}}, {Foreground={Color="#000000"}}, {Text=" "} }),
     active_tab_right         = wezterm.format({ {Background={Color="#f7f7f7"}}, {Foreground={Color="#000000"}}, {Text=" "} }),
-    inactive_tab_left        = wezterm.format({ {Background={Color="#777777"}}, {Foreground={Color="#f7f7f7"}}, {Text=" "} }),
-    inactive_tab_right       = wezterm.format({ {Background={Color="#777777"}}, {Foreground={Color="#333333"}}, {Text="▕"} }),
+    inactive_tab_left        = wezterm.format({ {Background={Color="#778899"}}, {Foreground={Color="#f7f7f7"}}, {Text=" "} }),
+    inactive_tab_right       = wezterm.format({ {Background={Color="#778899"}}, {Foreground={Color="#333333"}}, {Text="▕"} }),
     inactive_tab_hover_left  = wezterm.format({ {Background={Color="#333333"}}, {Foreground={Color="#ffffff"}}, {Text=" "} }),
     inactive_tab_hover_right = wezterm.format({ {Background={Color="#333333"}}, {Foreground={Color="#ffffff"}}, {Text=" "} }),
   },
 };
 
 
-local theme = themeShelmanDark;
+local theme = themeShelmanLight;
 
 return {
   colors = theme.colors,
   tab_bar_style = theme.tab_bar_style,
   -- automatically_reload_config = false,
-  font = font_with_fallback("Iosevka Term SS09 Light"),
+  font = font_with_fallback("Iosevka Term SS09", {weight="Regular"}),
+  -- font = wezterm.font("Iosevka Term SS09", {weight="Regular"}),
   font_rules = {
     {
       italic = false,
       intensity = "Half",
-      font = font_with_fallback("Iosevka Term SS09 Thin")
+      font = font_with_fallback("Iosevka Term SS09", {weight="Thin"})
     },
     {
       italic = true,
       intensity = "Normal",
-      font = font_with_fallback("Iosevka Term SS09 Light", {italic=true})
+      font = font_with_fallback("Iosevka Term SS09", {weight="Light", italic=true})
     },
     {
       italic = true,
       intensity = "Bold",
-      font = font_with_fallback("Iosevka Term Curly Slab XLt", {italic=true})
+      font = font_with_fallback("Iosevka Term Curly Slab", {weight="Light", italic=true})
     },
     {
       intensity = "Bold",
-      font = font_with_fallback("Iosevka Term SS09 Semibold")
+      font = font_with_fallback("Iosevka Term SS09", {weight="DemiBold"})
     },
   },
-  freetype_load_target = "HorizontalLcd",
+  -- freetype_load_target = "HorizontalLcd",
+  freetype_load_target = "Light",
+  freetype_interpreter_version = 40,
+  freetype_load_flags = "FORCE_AUTOHINT",
+
+  bold_brightens_ansi_colors = false,
 
   font_size = 12.0,
-  line_height = 1.0,
+  line_height = 1.125,
 
-  initial_cols = 120,
-  initial_rows = 40,
+  -- initial_cols = 120,
+  -- initial_rows = 40,
   window_padding = {
     left = 0,
     right = 0,
@@ -125,6 +132,8 @@ return {
   alternate_buffer_wheel_scroll_speed = 2,
   check_for_updates = false,
   status_update_interval = 100,
+
+  term = "wezterm",
 
   launch_menu = {
     {
@@ -160,12 +169,12 @@ return {
   },
 
 
-  ssh_domains = {
-    {
-      name = "dln-dev",
-      remote_address = "dln-dev",
-      username = "dln",
-    }
-  },
+  -- ssh_domains = {
+  --   {
+  --     name = "dln-dev",
+  --     remote_address = "dln-dev",
+  --     username = "dln",
+  --   }
+  -- },
 
 }

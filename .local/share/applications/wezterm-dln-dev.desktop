@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=wezterm-dln-dev
 GenericName=wezterm-dln-dev
-StartupWMClass=wezterm-dln-dev
+StartupWMClass=org.wezfurlong.wezterm
 Type=Application
 TryExec=/usr/bin/wezterm
 Icon=org.wezfurlong.wezterm
 Terminal=false
 Categories=System;TerminalEmulator;
+# Exec=/usr/bin/wezterm connect dln-dev
 Exec=/usr/bin/wezterm --config 'default_prog={"autossh", "-M0", "-q", "dln-dev"}' start --class=wezterm-dln-dev
