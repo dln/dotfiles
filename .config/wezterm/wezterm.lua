@@ -50,9 +50,10 @@ local themeShelmanDark = {
 local themeShelmanLight = {
   colors = {
     foreground    = "#000000",
-    background    = "#f7f7f7",
-    cursor_bg     = "#FB8C00",
-    cursor_border = "#FB8C00",
+    background    = "#fcfcfc",
+    cursor_bg     = "#ff3300",
+    cursor_fg     = "#ffffff",
+    cursor_border = "#cc0000",
     split         = "#444444",
     ansi    = { "#212121", "#b7141e", "#457b23", "#f5971d", "#134eb2", "#550087", "#0e707c", "#eeeeee" },
     brights = { "#424242", "#e83a3f", "#7aba39", "#fee92e", "#53a4f3", "#a94dbb", "#26bad1", "#d8d8d8" },
@@ -107,13 +108,13 @@ return {
   },
   -- freetype_load_target = "HorizontalLcd",
   freetype_load_target = "Light",
-  freetype_interpreter_version = 40,
-  freetype_load_flags = "FORCE_AUTOHINT",
+  -- freetype_interpreter_version = 40,
+  -- freetype_load_flags = "FORCE_AUTOHINT",
 
   bold_brightens_ansi_colors = false,
 
   font_size = 12.0,
-  line_height = 1.125,
+  line_height = 1.14,
 
   -- initial_cols = 120,
   -- initial_rows = 40,
@@ -127,7 +128,7 @@ return {
   enable_tab_bar = true,
   show_tab_index_in_tab_bar = true,
   enable_scroll_bar = false,
-  window_decorations = "NONE",
+  window_decorations = "RESIZE",
   scrollback_lines = 5000,
   alternate_buffer_wheel_scroll_speed = 2,
   check_for_updates = false,
