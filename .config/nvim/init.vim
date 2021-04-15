@@ -113,10 +113,10 @@ set visualbell
 set noerrorbells
 set ruler
 set cursorline
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+set guicursor=n-v-c:block,n-v-c:blinkon1,i-ci-ve:ver50,r-cr:hor20,o:hor50
 
 set number " line numbers
-set numberwidth=6
+set numberwidth=4
 set lz " lazy redraw
 set so=7 "scope
 set sidescroll=1
