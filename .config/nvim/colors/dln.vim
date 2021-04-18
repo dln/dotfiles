@@ -1,1 +1,0 @@
-/home/dln/src/github.com/dln/nvim-highlite/colors/dln.vim
