@@ -12,7 +12,7 @@ return require('packer').startup(function()
 	  end
   }
 
-  use {
+  --[[ use {
       "glepnir/lspsaga.nvim",
       config = function()
         require("dln.lspsaga")
@@ -29,7 +29,7 @@ return require('packer').startup(function()
         map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", o)
         map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", o)
       end
-    }
+    } ]]
 
   use {
     "hrsh7th/nvim-compe",

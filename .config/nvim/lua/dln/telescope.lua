@@ -25,7 +25,7 @@ telescope.setup {
 
 -- TODO: Reduce preview ratio
 -- Override flex layout
-local layout_strategies = require("telescope.pickers.layout_strategies")
+--[[ local layout_strategies = require("telescope.pickers.layout_strategies")
 local config = require("telescope.config")
 
 layout_strategies.flex = function(self, max_columns, max_lines)
@@ -41,7 +41,7 @@ layout_strategies.flex = function(self, max_columns, max_lines)
     self.layout_config = (config.values.layout_defaults or {})["horizontal"]
     return layout_strategies.horizontal(self, max_columns, max_lines)
   end
-end
+end ]]
 
 -- Extensions
 telescope.load_extension("fzy_native")

@@ -60,3 +60,28 @@ map('i', '', '<C-w>')
 vim.g.netrw_dirhistmax = 0
 
 require('plugins')
+
+
+-- local border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' }
+local border = { '▛', '▔' ,'▜', '🮇', '▟', '▂', '▙', '▎' }
+
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {
+    border = border
+  }
+)
+
+-- vim.cmd [[nnoremap <buffer><silent> <C-space> :lua vim.lsp.diagnostic.show_line_diagnostics({ border = border })<CR>]]
+-- vim.cmd [[nnoremap <buffer><silent> ]g :lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = border }})<CR>]]
+-- vim.cmd [[nnoremap <buffer><silent> [g :lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "round" }})<CR>]]
+
