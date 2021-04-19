@@ -63,7 +63,7 @@ require('plugins')
 
 
 -- local border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' }
-local border = { '▛', '▔' ,'▜', '🮇', '▟', '▂', '▙', '▎' }
+local border = { '🭽', '▔' ,'🭾', '▕', '🭿', '▂', '🭼', '▏' }
 
 vim.lsp.handlers["textDocument/hover"] =
   vim.lsp.with(
