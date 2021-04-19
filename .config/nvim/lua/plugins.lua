@@ -12,25 +12,6 @@ return require('packer').startup(function()
 	  end
   }
 
-  --[[ use {
-      "glepnir/lspsaga.nvim",
-      config = function()
-        require("dln.lspsaga")
-
-        local map = require("dln.utils").map
-        local o = {silent = true}
-        map("n", "gh", ":Lspsaga lsp_finder<CR>", o)
-        map("n", "<leader>ca", ":Lspsaga code_action<CR>", o)
-        -- map("n", "<leader>k", ":Lspsaga hover_doc<CR>", o)
-        map("n", "gs", ":Lspsaga signature_help<CR>", o)
-        map("n", "gr", ":Lspsaga rename<CR>", o)
-        map("n", "gd", ":Lspsaga preview_definition<CR>", o)
-        map("n", "<leader>cd", ":Lspsaga show_line_diagnostics<CR>", o)
-        map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", o)
-        map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", o)
-      end
-    } ]]
-
   use {
     "hrsh7th/nvim-compe",
     config = function()
