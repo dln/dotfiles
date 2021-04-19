@@ -75,10 +75,7 @@ return require('packer').startup(function()
       local map = require('dln.utils').map
       map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
       map('i', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
-      map('n', 'gd',  '<Cmd>lua vim.lsp.buf.definition()<CR>')
       map('n', '1gd', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
-      map('n', 'gr',  '<Cmd>lua vim.lsp.buf.references()<CR>')
-      map('n', 'g0',  '<Cmd>lua vim.lsp.buf.document_symbol()<CR>')
       map('n', 'gf',  '<Cmd>lua vim.lsp.buf.formatting()<CR>')
     end
   }
@@ -100,6 +97,13 @@ return require('packer').startup(function()
       map('n', '<leader>e', '<cmd>lua require("telescope.builtin").git_files()<CR>')
       map('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
       map('n', '<leader>t', '<cmd>lua require("telescope.builtin").treesitter()<CR>')
+      map('n', '<leader>/', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+      map('n', '<leader>.', '<cmd>lua require("telescope.builtin").file_browser()<CR>')
+      map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
+      map('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
+      map('n', 'g/', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
+      map('n', 'g?', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<CR>')
+      map('n', 'ge', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<CR>')
     end
   }
 
