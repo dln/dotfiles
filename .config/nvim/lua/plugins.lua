@@ -49,6 +49,17 @@ return require('packer').startup(function()
     end
   }
 
+  use {
+	  'lewis6991/gitsigns.nvim',
+	  requires = {
+		  'nvim-lua/plenary.nvim'
+	  },
+	  config = function()
+		  require('gitsigns').setup {
+			  numhl = true,
+		  }
+	  end
+  }
 
   use {
     "lukas-reineke/indent-blankline.nvim",
