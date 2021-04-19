@@ -94,7 +94,8 @@ return {
     {
       italic = true,
       intensity = "Normal",
-      font = font_with_fallback("Iosevka Term SS09", {weight="Light", italic=true})
+      -- font = font_with_fallback("Iosevka Aile", {weight="Regular", italic=true})
+      font = font_with_fallback("Iosevka Term Curly Slab", {weight="Regular", italic=true})
     },
     {
       italic = true,
@@ -114,7 +115,7 @@ return {
   bold_brightens_ansi_colors = false,
 
   font_size = 12.0,
-  line_height = 1.14,
+  line_height = 1.0,
 
   -- initial_cols = 120,
   -- initial_rows = 40,
