@@ -130,6 +130,14 @@ return require('packer').startup(function()
   }
 
   use {
+	  "onsails/lspkind-nvim",
+	  config = function()
+		  require('lspkind').init({
+		  })
+	  end
+  }
+
+  use {
     "~/src/github.com/shelmangroup/nvim-shelman-theme",
     requires ={{'tjdevries/colorbuddy.vim'}},
     config = function()
