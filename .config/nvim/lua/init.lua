@@ -48,6 +48,7 @@ vim.o.sidescrolloff = 5
 vim.o.termguicolors = true
 vim.wo.cursorline = true
 vim.wo.number = true
+vim.o.laststatus = 0
 
 --- Key mappings
 local map = require("dln.utils").map

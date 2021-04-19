@@ -77,6 +77,12 @@ return require('packer').startup(function()
       map('i', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
       map('n', '1gd', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
       map('n', 'gf',  '<Cmd>lua vim.lsp.buf.formatting()<CR>')
+      map('n', 'rn',  '<Cmd>lua vim.lsp.buf.rename()<CR>')
+      map('n', '[d',  '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+      map('n', ']d',  '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+      map('n', 'wa',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+      map('n', 'wr',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+      map('n', 'wl',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
     end
   }
 
@@ -91,10 +97,11 @@ return require('packer').startup(function()
     config = function()
       require('dln.telescope')
       local map = require('dln.utils').map
-      map('n', '<space>', '<cmd>lua require("telescope.builtin").buffers()<CR>')
       map('n', '<leader>b', '<cmd>lua require("telescope.builtin").buffers()<CR>')
       map('n', '<leader>f', '<cmd>lua require("telescope.builtin").oldfiles()<CR>')
+      map('n', '<space>',   '<cmd>lua require("telescope.builtin").oldfiles()<CR>')
       map('n', '<leader>e', '<cmd>lua require("telescope.builtin").git_files()<CR>')
+      map('n', '<leader>g', '<cmd>lua require("telescope.builtin").git_status()<CR>')
       map('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
       map('n', '<leader>t', '<cmd>lua require("telescope.builtin").treesitter()<CR>')
       map('n', '<leader>/', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
@@ -111,6 +118,7 @@ return require('packer').startup(function()
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     requires = {
+      "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag"
     },
