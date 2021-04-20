@@ -42,6 +42,7 @@ return require('packer').startup(function()
         end
       end
 
+      utils.mapx("is", "<C-space>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<Tab>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<S-Tab>", "v:lua.complete('<C-p>', '<C-h>')")
       utils.mapx("x",  "<CR>",    "compe:#confirm('<CR')")
@@ -57,6 +58,13 @@ return require('packer').startup(function()
 	  config = function()
 		  require('gitsigns').setup {
 			  numhl = true,
+			  signs = {
+				  add          = {hl = 'GitSignsAdd'   , text = '▌', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+				  change       = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+				  delete       = {hl = 'GitSignsDelete', text = '▖', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+				  topdelete    = {hl = 'GitSignsDelete', text = '▘', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+				  changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+			  },
 		  }
 	  end
   }

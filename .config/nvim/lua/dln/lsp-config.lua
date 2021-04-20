@@ -63,36 +63,36 @@ for _, lsp in ipairs(servers) do
 end
 
 local efm_prettier = {
-	formatCommand = "prettier --stdin-filepath ${INPUT}",
-	formatStdin = true
+        formatCommand = "prettier --stdin-filepath ${INPUT}",
+        formatStdin = true
 }
 
 
 lspconfig.sumneko_lua.setup {
-	cmd = {"lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
-	settings = {
-		Lua = {
-			completion = {kewordSnippet = "Disable"},
-			diagnostics = {
-				enable = true,
-				globals = {"renoise", "use", "vim"}
-			},
-			runtime = {
-				version = "LuaJIT",
-				path = {"?.lua", "?/init.lua", "?/?.lua"}
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-					[vim.fn.stdpath("data") .. "/site/pack"] = true
-				},
-				maxPreload = 2000,
-				preloadFileSize = 1000
-			}
-		}
-	}
+        cmd = {"lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
+        settings = {
+                Lua = {
+                        completion = {kewordSnippet = "Disable"},
+                        diagnostics = {
+                                enable = true,
+                                globals = {"renoise", "use", "vim"}
+                        },
+                        runtime = {
+                                version = "LuaJIT",
+                                path = {"?.lua", "?/init.lua", "?/?.lua"}
+                        },
+                        workspace = {
+                                library = {
+                                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                                        [vim.fn.stdpath("config") .. "/lua"] = true,
+                                        [vim.fn.stdpath("data") .. "/site/pack"] = true
+                                },
+                                maxPreload = 2000,
+                                preloadFileSize = 1000
+                        }
+                }
+        }
 }
 
 lspconfig.yamlls.setup {
