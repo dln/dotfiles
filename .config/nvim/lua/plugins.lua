@@ -42,7 +42,7 @@ return require('packer').startup(function()
         end
       end
 
-      utils.mapx("is", "<C-space>",   "v:lua.complete('<C-n>', '<Tab>')")
+      utils.mapx("is", "<C-Space>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<Tab>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<S-Tab>", "v:lua.complete('<C-p>', '<C-h>')")
       utils.mapx("x",  "<CR>",    "compe:#confirm('<CR')")
@@ -83,7 +83,7 @@ return require('packer').startup(function()
       -- vim.g.indent_blankline_show_end_of_line = true
       vim.g.indent_blankline_show_first_indent_level = true
       vim.g.indent_blankline_show_trailing_blankline_indent = true
-      vim.g.indent_blankline_char_highlight_list = { 'Indent1', 'Indent2', 'Indent3', 'Indent4'}
+      vim.g.indent_blankline_char_highlight_list = { 'Indent1', 'Indent2', 'Indent3', 'Indent4', 'Indent5', 'Indent6'}
     end
   }
 
@@ -99,9 +99,9 @@ return require('packer').startup(function()
       map('n', 'rn',  '<Cmd>lua vim.lsp.buf.rename()<CR>')
       map('n', '[d',  '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
       map('n', ']d',  '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-      map('n', 'wa',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-      map('n', 'wr',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-      map('n', 'wl',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+      map('n', 'gwa',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+      map('n', 'gwr',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+      map('n', 'gwl',  '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
     end
   }
 

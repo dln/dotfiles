@@ -12,6 +12,7 @@ augroup recompile_plugins
   autocmd BufWritePost plugins.lua call <SID>recompile_plugins()
 augroup END
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "" Temporary hacks
 

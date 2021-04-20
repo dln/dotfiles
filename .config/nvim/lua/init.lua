@@ -1,6 +1,6 @@
-vim.bo.undofile = true
-vim.cmd('set completeopt-=preview')
-vim.cmd('set viewoptions-=options')
+vim.cmd[[set undofile]]
+vim.cmd[[set completeopt-=preview]]
+vim.cmd[[set viewoptions-=options]]
 vim.g.mapleader = ','
 vim.o.clipboard = 'unnamed'
 vim.o.hidden = true
@@ -13,7 +13,10 @@ vim.o.updatetime = 100
 vim.o.autochdir = true
 vim.o.backupdir = "/home/dln/.local/share/nvim/backup//"
 
+
 --- Indent
+vim.bo.autoindent = true
+vim.o.breakindent = true
 vim.bo.expandtab = true
 vim.bo.smartindent = true
 vim.o.joinspaces = false
@@ -21,9 +24,9 @@ vim.o.listchars = 'extends:›,precedes:‹,nbsp:·,tab:→ ,trail:·'
 vim.wo.foldlevel = 99
 vim.wo.linebreak = true
 vim.wo.list = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
 
 --- Search
 vim.cmd('set path+=**')
@@ -33,7 +36,7 @@ vim.o.smartcase = true
 vim.o.wildmode = 'longest:full,full'
 
 if vim.fn.executable('rg') then
-  vim.o.grepprg = 'rg --vimgrep --no-heading --smart-case'
+	vim.o.grepprg = 'rg --vimgrep --no-heading --smart-case'
 end
 
 --- Completion
@@ -48,6 +51,7 @@ vim.o.sidescrolloff = 5
 vim.o.termguicolors = true
 vim.wo.cursorline = true
 vim.wo.number = true
+vim.wo.signcolumn = "yes"
 vim.o.laststatus = 0
 
 --- Key mappings
@@ -63,23 +67,22 @@ vim.g.netrw_dirhistmax = 0
 require('plugins')
 
 
--- local border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' }
 local border = { '🭽', '▔' ,'🭾', '▕', '🭿', '▂', '🭼', '▏' }
 
 vim.lsp.handlers["textDocument/hover"] =
-  vim.lsp.with(
-  vim.lsp.handlers.hover,
-  {
-    border = border
-  }
+vim.lsp.with(
+vim.lsp.handlers.hover,
+{
+	border = border
+}
 )
 
 vim.lsp.handlers["textDocument/signatureHelp"] =
-  vim.lsp.with(
-  vim.lsp.handlers.signature_help,
-  {
-    border = border
-  }
+vim.lsp.with(
+vim.lsp.handlers.signature_help,
+{
+	border = border
+}
 )
 
 -- vim.cmd [[nnoremap <buffer><silent> <C-space> :lua vim.lsp.diagnostic.show_line_diagnostics({ border = border })<CR>]]
