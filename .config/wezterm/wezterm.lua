@@ -19,7 +19,6 @@ function font_with_fallback(name, params)
   return wezterm.font_with_fallback(names, params)
 end
 
-
 local themeShelmanDark = {
   colors = {
     foreground    = "#ded9ce",
@@ -127,6 +126,7 @@ return {
   },
 
   enable_tab_bar = true,
+  tab_bar_at_bottom = true,
   show_tab_index_in_tab_bar = true,
   enable_scroll_bar = false,
   window_decorations = "RESIZE",
