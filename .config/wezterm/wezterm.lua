@@ -113,7 +113,7 @@ return {
 
   bold_brightens_ansi_colors = false,
 
-  font_size = 12.0,
+  font_size = 13.0,
   line_height = 1.0,
 
   -- initial_cols = 120,
