@@ -95,6 +95,8 @@ lspconfig.sumneko_lua.setup {
 	}
 }
 
+lspconfig.terraformls.setup {}
+
 local yaml_is_k8s = function(bufnr)
 	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, 50, false) -- Stop after the first 50 lines
 	for _, l in pairs(lines) do
@@ -107,12 +109,39 @@ lspconfig.yamlls.setup {
 	settings = {
 		yaml = {
 			format = {enable = true, singleQuote = true},
-			schemaStore = {enable = true},
+			schemaStore = {enable = true, url = "https://json.schemastore.org"},
 			schemas = {
 				-- ["https://json.schemastore.org/github-workflow"] = "*.github/workflows/*",
 				["https://json.schemastore.org/kustomization.json"] = "kustomization.yaml",
 				-- ["https://json.schemastore.org/ansible-role-2.9.json"] = "*/tasks/*.y*ml",
-				-- kubernetes = "*.yaml",
+				kubernetes = {
+					"clusterrolebinding.yaml",
+					"clusterrole-contour.yaml",
+					"clusterrole.yaml",
+					"configmap.yaml",
+					"cronjob.yaml",
+					"daemonset.yaml",
+					"deployment-*.yaml",
+					"deployment.yaml",
+					"*-deployment.yaml",
+					"hpa.yaml",
+					"ingress.yaml",
+					"job.yaml",
+					"namespace.yaml",
+					"pvc.yaml",
+					"rbac.yaml",
+					"rolebinding.yaml",
+					"role.yaml",
+					"sa.yaml",
+					"secret.yaml",
+					"serviceaccounts.yaml",
+					"service-account.yaml",
+					"serviceaccount.yaml",
+					"service-*.yaml",
+					"service.yaml",
+					"*-service.yaml",
+					"statefulset.yaml",
+				},
 			},
 
 			validate = true

@@ -1,5 +1,6 @@
 return require('packer').startup(function()
-  use "pierreglaser/folding-nvim"
+  use 'hashivim/vim-terraform'
+  use 'pierreglaser/folding-nvim'
   use 'tjdevries/colorbuddy.vim'
   use 'wbthomason/packer.nvim'
 
@@ -163,5 +164,17 @@ return require('packer').startup(function()
       require('colorbuddy').colorscheme('shelman-light')
     end
   }
+
+	use {
+		"cuducos/yaml.nvim",
+		ft = {"yaml"},
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			-- "nvim-telescope/telescope.nvim" -- optional
+		},
+		config = function ()
+			require("yaml_nvim").init()
+		end
+	}
 
 end)

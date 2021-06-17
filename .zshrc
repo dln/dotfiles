@@ -1,5 +1,6 @@
 source ~/.zplug/init.zsh
 
+
 zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
@@ -43,7 +44,7 @@ setopt extended_glob
 setopt ksh_glob
 setopt null_glob
 
-## Completion
+# ## Completion
 autoload -Uz compinit
 compinit
 
@@ -129,7 +130,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 e ()
 {
-  nvr --remote $(readlink -f "$@")
+  nvr --nostart --remote $(readlink -f "$@")
   echo -e "\x1b]2;$(_title) $(date +%s):nvim\x1b\\"
 }
 
@@ -155,6 +156,12 @@ command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
 
 ## Tekton cli
 command -v tkn >/dev/null 2>&1 && source <(tkn completion zsh)
+
+## kapp
+command -v kapp >/dev/null 2>&1 && source <(kapp completion zsh)
+
+## talos cli
+command -v talosctl >/dev/null 2>&1 && source <(talosctl completion zsh)
 
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
@@ -183,5 +190,8 @@ export PGO_NAMESPACE=pgo
 
 export PATH=$HOME/bin:$PATH
 
-autoload -U +X bashcompinit && bashcompinit
+#autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
+
+autoload -Uz compinit
+compinit

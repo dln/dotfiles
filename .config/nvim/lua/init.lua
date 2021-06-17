@@ -11,8 +11,8 @@ vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
 vim.o.updatetime = 100
 vim.o.autochdir = true
-vim.o.backupdir = "/home/dln/.local/share/nvim/backup//"
-
+vim.o.backupdir = "/home/dln/.local/share/nvim/backup/"
+vim.o.backup = true
 
 --- Indent
 vim.bo.autoindent = true
@@ -24,9 +24,9 @@ vim.o.listchars = 'extends:›,precedes:‹,nbsp:·,tab:→ ,trail:·'
 vim.wo.foldlevel = 99
 vim.wo.linebreak = true
 vim.wo.list = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
 
 --- Search
 vim.cmd('set path+=**')

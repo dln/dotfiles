@@ -94,10 +94,13 @@ helper = store
 [commit]
 # gpgsign = true
 
-[user "arity"]
+[user]
 name = Daniel Lundin
 email = daniel@arity.se
 signingkey = 79020DB026385D4C
 
 [init]
 defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+	insteadOf = https://github.com/
