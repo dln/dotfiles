@@ -165,7 +165,7 @@ return require('packer').startup(function()
     end
   }
 
-	use {
+	--[[ use {
 		"cuducos/yaml.nvim",
 		ft = {"yaml"},
 		requires = {
@@ -176,5 +176,5 @@ return require('packer').startup(function()
 			require("yaml_nvim").init()
 		end
 	}
-
+ ]]
 end)
