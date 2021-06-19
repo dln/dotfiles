@@ -98,7 +98,11 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 ## Pager
 export LESS="--mouse --wheel-lines=1 -nRXF"
 
+## Clipboard OSC 52
+ function clip { echo -en "\x1b]52;c;$(base64 -w0)\x07" }
+
 ## Aliases
+alias c='cut -c-${COLUMNS}'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias l=bat
 alias ls=exa
@@ -107,8 +111,7 @@ alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
 alias tree='exa --tree'
 alias v=vgrep
 alias ve='env EDITOR= vgrep -s'
-alias xc='xclip -selection clipboard'
-alias c='cut -c-${COLUMNS}'
+alias xc=clip
 
 
 
