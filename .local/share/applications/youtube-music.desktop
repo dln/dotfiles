@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
-Name=YouTube Music
+Name=YouTube Music (provar)
 StartupWMClass=music.youtube.com
-Exec=/usr/bin/google-chrome-stable --profile-directory='Profile 2' --app=https://music.youtube.com
+Exec=/usr/bin/google-chrome-stable --user-data-dir=$HOME/.config/google-chrome --profile-directory='Profile 2' --app=https://music.youtube.com --class=music.youtube.com
 Terminal=false
 Icon=google-chrome
 Type=Application

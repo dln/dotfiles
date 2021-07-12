@@ -55,6 +55,7 @@ local themeShelmanLight = {
     cursor_bg     = "#ff3300",
     cursor_fg     = "#ffffff",
     cursor_border = "#cc0000",
+    selection_bg  = "#FFEA00",
     split         = "#444444",
     selection_bg  = "#FFCA28",
     ansi    = { "#212121", "#b7141e", "#457b23", "#f5971d", "#134eb2", "#550087", "#0e707c", "#eeeeee" },
@@ -120,8 +121,8 @@ return {
   font_size = 13.0,
   line_height = 1.025,
 
-  -- initial_cols = 120,
-  -- initial_rows = 40,
+  initial_cols = 100,
+  initial_rows = 55,
   window_padding = {
     left = padding,
     right = padding,
