@@ -54,6 +54,7 @@ local themeShelmanLight = {
     cursor_fg     = "#ffffff",
     cursor_border = "#cc0000",
     split         = "#444444",
+    selection_bg  = "#FFCA28",
     ansi    = { "#212121", "#b7141e", "#457b23", "#f5971d", "#134eb2", "#550087", "#0e707c", "#eeeeee" },
     brights = { "#424242", "#e83a3f", "#7aba39", "#fee92e", "#53a4f3", "#a94dbb", "#26bad1", "#d8d8d8" },
 
@@ -110,22 +111,23 @@ return {
   freetype_load_target = "Light",
   -- freetype_interpreter_version = 40,
   -- freetype_load_flags = "FORCE_AUTOHINT",
+  warn_about_missing_glyphs = false,
 
   bold_brightens_ansi_colors = false,
 
   font_size = 13.0,
-  line_height = 1.0,
+  line_height = 1.025,
 
   -- initial_cols = 120,
   -- initial_rows = 40,
   window_padding = {
-    left = 10,
-    right = 10,
-    top = 10,
-    bottom = 10,
+    left = 1,
+    right = 1,
+    top = 1,
+    bottom = 1,
   },
 
-  enable_tab_bar = true,
+  enable_tab_bar = false,
   tab_bar_at_bottom = true,
   show_tab_index_in_tab_bar = true,
   enable_scroll_bar = false,
@@ -144,7 +146,7 @@ return {
     },
   },
 
-  leader = { key="o", mods="CTRL", timeout_milliseconds=1000 },
+  leader = { key="o", mods="CTRL|SHIFT", timeout_milliseconds=1000 },
   keys = {
 
     {key="c", mods="ALT|SHIFT", action="Copy"},
@@ -158,7 +160,7 @@ return {
     {key="RightArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=1}},
     {key="RightArrow", mods="CTRL|SHIFT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
 
-    {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
+    --[[ {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
     {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
     {key="3", mods="ALT", action=wezterm.action{ActivateTab=2}},
     {key="4", mods="ALT", action=wezterm.action{ActivateTab=3}},
@@ -167,7 +169,7 @@ return {
     {key="7", mods="ALT", action=wezterm.action{ActivateTab=6}},
     {key="8", mods="ALT", action=wezterm.action{ActivateTab=7}},
     {key="9", mods="ALT", action=wezterm.action{ActivateTab=8}},
-    {key="0", mods="ALT", action=wezterm.action{ActivateTab=9}},
+    {key="0", mods="ALT", action=wezterm.action{ActivateTab=9}}, ]]
   },
 
 
