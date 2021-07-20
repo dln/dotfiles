@@ -3,6 +3,8 @@ local wezterm = require 'wezterm';
 local editPanes = {};
 local editMarker = ":nvim";
 
+local padding = 8;
+
 -- Window titles are a perfectly fine IPC mechanism 😁
 
 wezterm.on("update-right-status", function(window, pane)
@@ -121,10 +123,10 @@ return {
   -- initial_cols = 120,
   -- initial_rows = 40,
   window_padding = {
-    left = 1,
-    right = 1,
-    top = 1,
-    bottom = 1,
+    left = padding,
+    right = padding,
+    top = padding,
+    bottom = padding,
   },
 
   enable_tab_bar = false,
