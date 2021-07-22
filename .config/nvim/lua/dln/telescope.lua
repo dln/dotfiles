@@ -7,8 +7,9 @@ telescope.setup {
   defaults = {
     layout_strategy = "flex",
     -- layout_defaults = {flip_columns = 160},
-    preview_cutoff = 10,
-    results_height = 10,
+		layout_config = {
+			preview_cutoff = 10,
+		},
     mappings = {
       i = {
         ["<CR>"] = actions.select_default + actions.center,

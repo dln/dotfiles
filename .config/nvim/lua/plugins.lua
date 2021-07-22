@@ -3,6 +3,8 @@ return require('packer').startup(function()
   use 'pierreglaser/folding-nvim'
   use 'tjdevries/colorbuddy.vim'
   use 'wbthomason/packer.nvim'
+	use 'ray-x/lsp_signature.nvim'
+	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
   use {
 	  'b3nj5m1n/kommentary',
@@ -72,7 +74,7 @@ return require('packer').startup(function()
 
   use {
     "lukas-reineke/indent-blankline.nvim",
-    branch = "lua",
+    branch = "master",
     config = function()
       -- vim.wo.colorcolumn = "100"
       vim.g.indent_blankline_char = "│"
@@ -122,10 +124,12 @@ return require('packer').startup(function()
       map('n', '<space>',   '<cmd>lua require("telescope.builtin").oldfiles()<CR>')
       map('n', '<leader>e', '<cmd>lua require("telescope.builtin").git_files()<CR>')
       map('n', '<leader>g', '<cmd>lua require("telescope.builtin").git_status()<CR>')
+      map('n', '<leader>a', '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>')
       map('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
       map('n', '<leader>t', '<cmd>lua require("telescope.builtin").treesitter()<CR>')
       map('n', '<leader>/', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
       map('n', '<leader>.', '<cmd>lua require("telescope.builtin").file_browser()<CR>')
+      map('n', '<leader>p', '<cmd>lua require("telescope.builtin").registers()<CR>')
       map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
       map('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
       map('n', 'g/', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
@@ -149,6 +153,18 @@ return require('packer').startup(function()
     end
   }
 
+	use {
+		"ray-x/go.nvim",
+		config = function()
+			require('go').setup({
+				comment_placeholder = ''
+			})
+			vim.cmd("autocmd FileType go nmap <Leader>c :lua require('go.comment').gen()<cr>")
+			vim.cmd("autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()")
+			vim.cmd('autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500)')
+		end
+	}
+
   use {
 	  "onsails/lspkind-nvim",
 	  config = function()
@@ -165,7 +181,7 @@ return require('packer').startup(function()
     end
   }
 
-	--[[ use {
+	use {
 		"cuducos/yaml.nvim",
 		ft = {"yaml"},
 		requires = {
@@ -176,5 +192,4 @@ return require('packer').startup(function()
 			require("yaml_nvim").init()
 		end
 	}
- ]]
 end)

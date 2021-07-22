@@ -5,8 +5,6 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-history-substring-search', defer:3
-# zplug 'zsh-users/zsh-autosuggestions'
-# zplug 'Aloxaf/fzf-tab'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -43,10 +41,6 @@ setopt no_rm_star_silent
 setopt extended_glob
 setopt ksh_glob
 setopt null_glob
-
-# ## Completion
-autoload -Uz compinit
-compinit
 
 ## Autosuggest
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
@@ -134,7 +128,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 e ()
 {
   nvr --nostart --remote $(readlink -f "$@")
-  echo -e "\x1b]2;$(_title) $(date +%s):nvim\x1b\\"
+	tmux select-window -t1
 }
 
 ## fzf
@@ -152,19 +146,29 @@ command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 export PATH=$HOME/.krew/bin:$PATH
 
 ## linkerd
-command -v linkerd >/dev/null 2>&1 && source <(linkerd completion zsh)
+if [ ! -f "${fpath[1]}/_linkerd" ]; then
+	command -v linkerd >/dev/null 2>&1 && linkerd completion zsh > "${fpath[1]}/_linkerd"
+fi
 
 ## Flux
-command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
+if [ ! -f "${fpath[1]}/_flux" ]; then
+	command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
+fi
 
 ## Tekton cli
-command -v tkn >/dev/null 2>&1 && source <(tkn completion zsh)
+if [ ! -f "${fpath[1]}/_tkn" ]; then
+	command -v tkn >/dev/null 2>&1 && tkn completion zsh > "${fpath[1]}/_tkn"
+fi
 
 ## kapp
-command -v kapp >/dev/null 2>&1 && source <(kapp completion zsh)
+if [ ! -f "${fpath[1]}/_kapp" ]; then
+	command -v kapp >/dev/null 2>&1 && kapp completion zsh --tty=false > "${fpath[1]}/_kapp"
+fi
 
 ## talos cli
-command -v talosctl >/dev/null 2>&1 && source <(talosctl completion zsh)
+if [ ! -f "${fpath[1]}/_talosctl" ]; then
+	command -v talosctl >/dev/null 2>&1 && talosctl completion zsh > "${fpath[1]}/_talosctl"
+fi
 
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
@@ -172,13 +176,15 @@ command -v talosctl >/dev/null 2>&1 && source <(talosctl completion zsh)
 # hack until gcloud works with python 3.9
 export CLOUDSDK_PYTHON=python2
 
-
 ## Golang
 export PATH=$HOME/go/bin:$PATH
-GOPROXY=https://proxy.golang.org/
+GOPROXY=https://athens.aarn.shelman.io
 
 ## Ansible
 export ANSIBLE_NOCOWS=1
+
+## Docker
+export DOCKER_BUILDKIT=1
 
 
 ## PostgreSQL Operator
@@ -193,8 +199,7 @@ export PGO_NAMESPACE=pgo
 
 export PATH=$HOME/bin:$PATH
 
-#autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/vault vault
-
+# ## Completion
 autoload -Uz compinit
-compinit
+compinit -i
+

@@ -2,7 +2,6 @@ vim.cmd[[set undofile]]
 vim.cmd[[set completeopt-=preview]]
 vim.cmd[[set viewoptions-=options]]
 vim.g.mapleader = ','
-vim.o.clipboard = 'unnamed'
 vim.o.hidden = true
 vim.o.mouse = 'a'
 vim.o.splitbelow = true

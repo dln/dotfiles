@@ -1,5 +1,8 @@
 lua require("init")
 
+set title
+set titlestring=%F%m\ %r\ %y
+
 function s:recompile_plugins()
   luafile %
   PackerCompile

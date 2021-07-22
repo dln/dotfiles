@@ -1,12 +1,8 @@
 add_newline = false
 
 format = """\
-$hostname\
 $directory\
-$git_branch\
-$git_status\
-$git_state\
-( $character)\
+($character)\
 """
 
 [character]
