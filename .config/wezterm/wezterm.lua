@@ -119,7 +119,7 @@ return {
   bold_brightens_ansi_colors = false,
 
   font_size = 13.0,
-  line_height = 1.025,
+  line_height = 1.0,
 
   initial_cols = 100,
   initial_rows = 55,
@@ -159,9 +159,11 @@ return {
     {key="k", mods="LEADER", action=wezterm.action{CloseCurrentTab={confirm=true}}},
     {key="l", mods="LEADER", action="ShowLauncher"},
 
+    --[[
     {key="LeftArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=-1}},
     {key="RightArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=1}},
     {key="RightArrow", mods="CTRL|SHIFT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
+    ]]
 
     --[[ {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
     {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
