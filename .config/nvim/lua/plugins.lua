@@ -185,6 +185,15 @@ return require('packer').startup(function()
     end
   }
 
+	-- use {
+	-- 	"marko-cerovac/material.nvim",
+ --    config = function()
+	-- 		vim.g.material_style = 'lighter'
+	-- 		vim.g.material_lighter_contrast = true
+	-- 		require('material').set()
+ --    end
+	-- }
+
 	use {
 		"cuducos/yaml.nvim",
 		ft = {"yaml"},

@@ -1,6 +1,8 @@
 [core]
 excludesfile = "~/.gitignore"
 pager = delta --line-numbers
+	compression = 0
+	looseCompression = 0
 
 [user]
 useConfigOnly = true

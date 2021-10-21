@@ -142,7 +142,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 eval "$(direnv hook zsh)"
 
 ## Kubernetes
-command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
+command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
 export PATH=$HOME/.krew/bin:$PATH
 
 ## linkerd
@@ -202,4 +202,9 @@ export PATH=$HOME/bin:$PATH
 # ## Completion
 autoload -Uz compinit
 compinit -i
+
+## AWS
+if [ -x /usr/bin/aws_zsh_completer.sh ]; then
+	source /usr/bin/aws_zsh_completer.sh
+fi
 
