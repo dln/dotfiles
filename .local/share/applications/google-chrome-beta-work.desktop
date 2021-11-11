@@ -2,7 +2,7 @@
 Version=1.0
 Name=Work Chrome
 StartupWMClass=Google-chrome-beta-work
-Exec=/usr/bin/google-chrome-beta %U --user-data-dir=$HOME/.config/Google-chrome-beta-work --class=Google-chrome-beta-work
+Exec=/usr/bin/google-chrome-beta %U --user-data-dir=.config/Google-chrome-beta-work --class=Google-chrome-beta-work
 StartupNotify=true
 Terminal=false
 Icon=google-chrome-beta
