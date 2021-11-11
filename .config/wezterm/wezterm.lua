@@ -149,6 +149,8 @@ return {
     },
   },
 
+  disable_default_key_bindings = true,
+
   leader = { key="o", mods="CTRL|SHIFT", timeout_milliseconds=1000 },
   keys = {
 
@@ -158,6 +160,9 @@ return {
     {key="c", mods="LEADER", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     {key="k", mods="LEADER", action=wezterm.action{CloseCurrentTab={confirm=true}}},
     {key="l", mods="LEADER", action="ShowLauncher"},
+
+    {key="-", mods="CTRL", action="DecreaseFontSize"},
+    {key="=", mods="CTRL", action="IncreaseFontSize"},
 
     --[[
     {key="LeftArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=-1}},
