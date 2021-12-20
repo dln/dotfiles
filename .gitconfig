@@ -21,6 +21,7 @@ rebase = true
 
 [alias]
 b = branch -va
+cl = clone --filter=blob:none
 d = diff --stat -p -C
 ds = diff --staged --stat -p -C
 du = !"git --no-pager diff --stat -p -C --color=always"
