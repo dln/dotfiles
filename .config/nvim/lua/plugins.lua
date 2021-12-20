@@ -49,6 +49,7 @@ return require('packer').startup(function()
         end
       end
 
+      utils.mapx("is", "<C-.>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<C-Space>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<Tab>",   "v:lua.complete('<C-n>', '<Tab>')")
       utils.mapx("is", "<S-Tab>", "v:lua.complete('<C-p>', '<C-h>')")
@@ -186,23 +187,14 @@ return require('packer').startup(function()
   }
 
 	-- use {
-	-- 	"marko-cerovac/material.nvim",
- --    config = function()
-	-- 		vim.g.material_style = 'lighter'
-	-- 		vim.g.material_lighter_contrast = true
-	-- 		require('material').set()
- --    end
+	-- 	"cuducos/yaml.nvim",
+	-- 	ft = {"yaml"},
+	-- 	requires = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		-- "nvim-telescope/telescope.nvim" -- optional
+	-- 	},
+	-- 	config = function ()
+	-- 		require("yaml_nvim").init()
+	-- 	end
 	-- }
-
-	use {
-		"cuducos/yaml.nvim",
-		ft = {"yaml"},
-		requires = {
-			"nvim-treesitter/nvim-treesitter",
-			-- "nvim-telescope/telescope.nvim" -- optional
-		},
-		config = function ()
-			require("yaml_nvim").init()
-		end
-	}
 end)
