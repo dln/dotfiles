@@ -208,3 +208,9 @@ if [ -x /usr/bin/aws_zsh_completer.sh ]; then
 	source /usr/bin/aws_zsh_completer.sh
 fi
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/completion.zsh.inc'; fi
