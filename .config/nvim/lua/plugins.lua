@@ -5,6 +5,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 	use 'ray-x/lsp_signature.nvim'
 	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+	use 'L3MON4D3/LuaSnip'
 
   use {
 	  'b3nj5m1n/kommentary',
@@ -20,43 +21,85 @@ return require('packer').startup(function()
   }
 
   use {
-    "hrsh7th/nvim-compe",
-    config = function()
-      require("compe").setup {
-        min_length = 0,
-        source = {
-          buffer = true,
-          nvim_lsp = true,
-          nvim_lua = true,
-        }
-      }
-      local utils = require("dln.utils")
-      local check_behind = function()
-        local is_empty = function(col)
-          return col <= 0 or vim.fn.getline("."):sub(col, col):match("%s")
-        end
-        local pos_col = vim.fn.col(".") - 1
-        return is_empty(pos_col) and is_empty(pos_col - 1) and true or false
-      end
+	  'hrsh7th/nvim-cmp',
+		requires = {
+			'andersevenrud/cmp-tmux',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'saadparwaiz1/cmp_luasnip',
+		},
+	  config = function()
+			local cmp = require'cmp' 
+			-- local cmp = require('hrsh7th/nvim-cmp')
 
-      _G.complete = function(pum, empty)
-        if vim.fn.pumvisible() == 1 then
-          return utils.term_codes(pum)
-        elseif check_behind() then
-          return utils.term_codes(empty)
-        else
-          return vim.fn["compe#complete"]()
-        end
-      end
+		cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
 
-      utils.mapx("is", "<C-.>",   "v:lua.complete('<C-n>', '<Tab>')")
-      utils.mapx("is", "<C-Space>",   "v:lua.complete('<C-n>', '<Tab>')")
-      utils.mapx("is", "<Tab>",   "v:lua.complete('<C-n>', '<Tab>')")
-      utils.mapx("is", "<S-Tab>", "v:lua.complete('<C-p>', '<C-h>')")
-      utils.mapx("x",  "<CR>",    "compe:#confirm('<CR')")
-      utils.mapx("is", "<C-e>",   "compe#close('<C-e>')")
-    end
-  }
+
+		mapping = {
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(4),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<CR>"] = cmp.mapping.confirm({
+          select = false,
+        }),
+				['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+      },
+
+		sources = cmp.config.sources({
+			{
+				name = 'buffer',
+				priority = 1,
+
+			},
+			{ name = 'luasnip' },
+			{
+				name = 'tmux',
+				priority = 2,
+				option = {
+					trigger_characters = {},
+				}
+			},
+			{
+				name = 'nvim_lsp',
+				priority = 3,
+			},
+		})
+	})
+
+		end
+	}
+
 
   use {
 	  'lewis6991/gitsigns.nvim',
