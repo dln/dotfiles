@@ -34,68 +34,80 @@ return require('packer').startup(function()
 			local cmp = require'cmp' 
 			-- local cmp = require('hrsh7th/nvim-cmp')
 
-		cmp.setup({
-    snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
-    },
+			cmp.setup({
+
+				formatting = {
+					format = require('lspkind').cmp_format({
+						with_text = true,
+						menu = {
+							buffer = "[Buffer]",
+							tmux = "[Tmux]",
+							luasnip = "[LuaSnip]",
+							nvim_lsp = "[LSP]",
+							nvim_lua = "[Lua]",
+							path = "[Path]",
+						},
+					}),
+				},
+
+				snippet = {
+					expand = function(args)
+						require('luasnip').lsp_expand(args.body)
+					end,
+				},
 
 
-		mapping = {
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
-        ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm({
-          select = false,
-        }),
-				['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      },
+				mapping = {
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-u>"] = cmp.mapping.scroll_docs(4),
+					["<C-e>"] = cmp.mapping.close(),
+					["<CR>"] = cmp.mapping.confirm({
+						select = false,
+					}),
+					['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif has_words_before() then
+							cmp.complete()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				},
 
-		sources = cmp.config.sources({
-			{
-				name = 'buffer',
-				priority = 1,
+				sources = cmp.config.sources({
+					{
+						name = 'buffer',
+						priority = 1,
 
-			},
-			{ name = 'luasnip' },
-			{
-				name = 'tmux',
-				priority = 2,
-				option = {
-					trigger_characters = {},
-				}
-			},
-			{
-				name = 'nvim_lsp',
-				priority = 3,
-			},
-		})
-	})
+					},
+					{ name = 'luasnip' },
+					{
+						name = 'tmux',
+						priority = 2,
+						option = {
+							all_panes = true,
+							trigger_characters = {},
+						}
+					},
+					{
+						name = 'nvim_lsp',
+						priority = 3,
+					},
+				})
+			})
 
 		end
 	}
