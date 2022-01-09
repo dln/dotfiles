@@ -163,6 +163,7 @@ return {
 
     {key="-", mods="CTRL", action="DecreaseFontSize"},
     {key="=", mods="CTRL", action="IncreaseFontSize"},
+    {key="Enter", mods="ALT", action="ToggleFullScreen"},
 
     --[[
     {key="LeftArrow", mods="CTRL", action=wezterm.action{ActivateTabRelative=-1}},
