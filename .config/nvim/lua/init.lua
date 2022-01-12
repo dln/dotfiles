@@ -14,10 +14,10 @@ vim.o.backupdir = "/home/dln/.local/share/nvim/backup/"
 vim.o.backup = true
 
 --- Indent
-vim.bo.autoindent = true
+vim.o.autoindent = true
 vim.o.breakindent = true
-vim.bo.expandtab = true
-vim.bo.smartindent = true
+vim.o.expandtab = true
+vim.o.smartindent = true
 vim.o.joinspaces = false
 vim.o.listchars = 'extends:›,precedes:‹,nbsp:·,tab:→ ,trail:·'
 vim.wo.foldlevel = 99
