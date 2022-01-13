@@ -236,6 +236,16 @@ return require('packer').startup(function()
     end
   }
 
+
+  use {
+    'mattn/efm-langserver',
+    config = function()
+      require "lspconfig".efm.setup {
+        init_options = {documentFormatting = true},
+      }
+    end
+  }
+
   use {
     "ray-x/go.nvim",
     config = function()
