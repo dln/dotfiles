@@ -116,7 +116,7 @@ return {
 
   bold_brightens_ansi_colors = false,
 
-  font_size = 13.0,
+  font_size = 12.5,
   line_height = 1.0,
 
   initial_cols = 110,
@@ -128,6 +128,8 @@ return {
     bottom = 0,
   },
 
+  enable_wayland = true,
+
   enable_tab_bar = false,
   tab_bar_at_bottom = true,
   show_tab_index_in_tab_bar = true,
@@ -137,7 +139,7 @@ return {
   alternate_buffer_wheel_scroll_speed = 2,
   check_for_updates = false,
   status_update_interval = 100,
-
+  audible_bell = "Disabled",
   term = "wezterm",
 
   launch_menu = {
