@@ -6,6 +6,11 @@ return require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'rafamadriz/friendly-snippets'
+  use 'mfussenegger/nvim-dap'
+  use 'theHamsta/nvim-dap-virtual-text'
+
+  use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
   use {
     'b3nj5m1n/kommentary',
@@ -242,6 +247,8 @@ return require('packer').startup(function()
     config = function()
       require "lspconfig".efm.setup {
         init_options = {documentFormatting = true},
+        settings = {
+        }
       }
     end
   }
