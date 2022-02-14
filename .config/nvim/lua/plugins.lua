@@ -7,10 +7,18 @@ return require('packer').startup(function()
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'rafamadriz/friendly-snippets'
   use 'mfussenegger/nvim-dap'
-  use 'theHamsta/nvim-dap-virtual-text'
 
   use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+  use {
+    'theHamsta/nvim-dap-virtual-text',
+    config = function()
+      require("nvim-dap-virtual-text").setup {
+        commented = true,
+      }
+    end
+  }
 
   use {
     'b3nj5m1n/kommentary',
