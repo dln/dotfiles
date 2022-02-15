@@ -1,5 +1,7 @@
 source ~/.zplug/init.zsh
 
+source /etc/profile.d/locale.sh
+
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
