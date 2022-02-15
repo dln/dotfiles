@@ -9,7 +9,7 @@ return require('packer').startup(function()
   use 'mfussenegger/nvim-dap'
 
   use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
   use {
     'theHamsta/nvim-dap-virtual-text',
@@ -210,7 +210,8 @@ return require('packer').startup(function()
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
-      'nvim-telescope/telescope-github.nvim'
+      'nvim-telescope/telescope-github.nvim',
+      'nvim-telescope/telescope-dap.nvim'
     },
     config = function()
       require('dln.telescope')
@@ -231,6 +232,11 @@ return require('packer').startup(function()
       map('n', 'g/', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
       map('n', 'g?', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<CR>')
       map('n', 'ge', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<CR>')
+      map('n', 'Db', '<cmd>lua require("telescope").extensions.dap.list_breakpoints()<CR>')
+      map('n', 'Dc', '<cmd>lua require("telescope").extensions.dap.commands()<CR>')
+      map('n', 'Df', '<cmd>lua require("telescope").extensions.dap.frames()<CR>')
+      map('n', 'DD', '<cmd>:GoBreakToggle<CR>')
+      map('n', 'Dv', '<cmd>lua require("telescope").extensions.dap.variables()<CR>')
     end
   }
 
@@ -265,7 +271,9 @@ return require('packer').startup(function()
     "ray-x/go.nvim",
     config = function()
       require('go').setup({
-        comment_placeholder = ''
+        comment_placeholder = '',
+        icons = {breakpoint = '🧘', currentpos = '🏃'},
+        dap_debug_gui = true
       })
       vim.cmd("autocmd FileType go nmap <Leader>c :lua require('go.comment').gen()<cr>")
       vim.cmd("autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()")
