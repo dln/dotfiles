@@ -9,7 +9,7 @@ return require('packer').startup(function()
   use 'mfussenegger/nvim-dap'
 
   use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
-  -- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
   use {
     'theHamsta/nvim-dap-virtual-text',
@@ -222,6 +222,7 @@ return require('packer').startup(function()
       map('n', '<leader>e', '<cmd>lua require("telescope.builtin").git_files()<CR>')
       map('n', '<leader>g', '<cmd>lua require("telescope.builtin").git_status()<CR>')
       map('n', '<leader>a', '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>')
+      map('n', '<leader>m', '<cmd>lua require("telescope.builtin").marks()<CR>')
       map('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
       map('n', '<leader>t', '<cmd>lua require("telescope.builtin").treesitter()<CR>')
       map('n', '<leader>/', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
@@ -308,4 +309,11 @@ return require('packer').startup(function()
   --     require("yaml_nvim").init()
   --   end
   -- }
+
+  -- marks
+  use {
+    "chentau/marks.nvim",
+    config = function() require("plugins/marks") end,
+  }
 end)
+
