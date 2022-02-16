@@ -290,30 +290,19 @@ return require('packer').startup(function()
     end
   }
 
-  use {
-    "~/src/github.com/shelmangroup/nvim-shelman-theme",
-    requires ={{'tjdevries/colorbuddy.vim'}},
-    config = function()
-      require('colorbuddy').colorscheme('shelman-light')
-    end
-  }
-
-  -- use {
-  --   "cuducos/yaml.nvim",
-  --   ft = {"yaml"},
-  --   requires = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     -- "nvim-telescope/telescope.nvim" -- optional
-  --   },
-  --   config = function ()
-  --     require("yaml_nvim").init()
-  --   end
-  -- }
-
   -- marks
   use {
     "chentau/marks.nvim",
     config = function() require("plugins/marks") end,
   }
-end)
 
+  -- zenbones
+  use {
+    "mcchrish/zenbones.nvim",
+    requires = {
+      "rktjmp/lush.nvim",
+    },
+    config = function() require("plugins/zenbones") end,
+  }
+
+end)
