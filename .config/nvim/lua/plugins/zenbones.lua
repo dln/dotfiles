@@ -38,7 +38,10 @@ local specs = lush.parse(function()
     GitSignsDeleteNr { fg = "#FFCDD2" },
     GitSignsChange { fg = "#FFA726" },
     GitSignsChangeNr { fg = "#FFE0B2" },
-    goSameId { fg = "#ff0000", gui = "underline" },
+    PMenu { bg = "#BBDEFB" },
+    PMenuSel { fg = "#FFFFFF", bg = "#1976D2" },
+    PMenuSbar { bg = "#90CAF9" },
+    PMenuThumb { bg = "#64B5F6" },
   }
 end)
 
