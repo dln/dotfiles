@@ -12,8 +12,9 @@ local base = require "zenbones"
 -- Create some specs
 local specs = lush.parse(function()
   return {
-    CursorLine   { bg = "#f0f5fa" },
-    CursorLineNr { fg = "#607D8B", bg="#f0f5fa" },
+    CursorLine   { bg = "#f5f5f0" },
+    CursorLineNr { fg = "#BCAAA4", bg="#f5f5f0" },
+    MsgArea { fg = "#A1887F", bg="#f1f1f1" },
     String  { fg = "#33691E", gui = "italic" },
     Comment { fg = "#114499", gui = "bold,italic" },
     LineNr  { fg = "#CFD8DC", gui = "bold,italic" },
