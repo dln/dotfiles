@@ -52,6 +52,8 @@ vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
 vim.o.laststatus = 0
+vim.o.statusline = "═"
+vim.o.fillchars = "stl:═,stlnc:═"
 
 --- Key mappings
 local map = require("dln.utils").map

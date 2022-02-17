@@ -42,6 +42,8 @@ local specs = lush.parse(function()
     PMenuSel { fg = "#FFFFFF", bg = "#1976D2" },
     PMenuSbar { bg = "#90CAF9" },
     PMenuThumb { bg = "#64B5F6" },
+    StatusLine { base = base.VertSplit, fg = "#BCAAA4" },
+    StatusLineNC { base = base.VertSplit, fg = "#BCAAA4" },
   }
 end)
 
