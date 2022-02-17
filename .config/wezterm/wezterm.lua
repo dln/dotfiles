@@ -113,17 +113,17 @@ return {
   -- freetype_interpreter_version = 40,
   -- freetype_load_flags = "FORCE_AUTOHINT",
   warn_about_missing_glyphs = false,
-
   bold_brightens_ansi_colors = false,
 
-  font_size = 12.5,
-  line_height = 1.0,
+
+  font_size = 12.0,
+  line_height = 1.1,
 
   initial_cols = 110,
   initial_rows = 49,
   window_padding = {
-    left = 0,
-    right = 0,
+    left = 10,
+    right = 10,
     top = 0,
     bottom = 0,
   },
