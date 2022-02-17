@@ -101,7 +101,7 @@ return {
     {
       italic = true,
       intensity = "Bold",
-      font = font_with_fallback("Iosevka Term Curly Slab", {weight="Light", italic=true})
+      font = font_with_fallback("Iosevka SS15", {weight="ExtraLight", italic=true})
     },
     {
       intensity = "Bold",
