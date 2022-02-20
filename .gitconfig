@@ -95,12 +95,11 @@ diffFilter = delta --color-only
 helper = store
 
 [commit]
-# gpgsign = true
+gpgsign = false
 
 [user]
 name = Daniel Lundin
 email = daniel@arity.se
-signingkey = 79020DB026385D4C
 
 [init]
 defaultBranch = main
