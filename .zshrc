@@ -49,19 +49,6 @@ setopt null_glob
 # ZSH_AUTOSUGGEST_USE_ASYNC=1
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-## fasd
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
-
-if command -v pazi &>/dev/null; then
-  eval "$(pazi init zsh)" # or 'bash'
-fi
 
 redraw-prompt() {
     local precmd
@@ -73,10 +60,20 @@ redraw-prompt() {
 zle -N redraw-prompt
 
 _jump() {
-  z --pipe="fzf"
+  _dir=$((
+      git rev-parse --show-toplevel 2>/dev/null | xargs -r fd --type d --hidden --follow --exclude .git .
+      fre --sorted
+    ) | fzf-tmux)
+  [ -n "$_dir" ] && pushd $_dir >>/dev/null
   zle && zle redraw-prompt
 }
 zle -N _jump
+
+fre_chpwd() {
+  fre --add "$(pwd)"
+}
+typeset -gaU chpwd_functions
+chpwd_functions+=fre_chpwd
 
 ## Keybindings
 bindkey -e
