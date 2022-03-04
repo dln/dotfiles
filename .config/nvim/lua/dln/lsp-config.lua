@@ -2,6 +2,10 @@ local lspconfig = require("lspconfig")
 -- local configs = require("lspconfig.configs")
 local util = require("lspconfig.util")
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
 vim.lsp.with(
 vim.lsp.diagnostic.on_publish_diagnostics,
@@ -81,10 +85,11 @@ local yaml_is_k8s = function(bufnr)
 end
 
 lspconfig.cssls.setup {
-	cmd = { "css-languageserver", "--stdio" },
-	filetypes = { "css" },
-	settings = {}
+	cmd = { "vscode-css-languageserver", "--stdio" },
+    capabilities = capabilities,
 }
+
+lspconfig.cssmodules_ls.setup{}
 
 lspconfig.html.setup {
 	cmd = { "vscode-html-languageserver", "--stdio" },

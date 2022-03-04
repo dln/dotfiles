@@ -6,10 +6,8 @@ return require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'rafamadriz/friendly-snippets'
-  use 'mfussenegger/nvim-dap'
-
-  use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
 
   use {
     'theHamsta/nvim-dap-virtual-text',
@@ -19,6 +17,14 @@ return require('packer').startup(function()
       }
     end
   }
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("plugins/null-ls")
+    end,
+  })
 
   use {
     'b3nj5m1n/kommentary',
@@ -234,9 +240,8 @@ return require('packer').startup(function()
       map('n', 'g?', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<CR>')
       map('n', 'ge', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<CR>')
       map('n', 'Db', '<cmd>lua require("telescope").extensions.dap.list_breakpoints()<CR>')
-      map('n', 'Dc', '<cmd>lua require("telescope").extensions.dap.commands()<CR>')
+      map('n', 'Dcc', '<cmd>lua require("telescope").extensions.dap.commands()<CR>')
       map('n', 'Df', '<cmd>lua require("telescope").extensions.dap.frames()<CR>')
-      map('n', 'DD', '<cmd>:GoBreakToggle<CR>')
       map('n', 'Dv', '<cmd>lua require("telescope").extensions.dap.variables()<CR>')
     end
   }
@@ -256,25 +261,13 @@ return require('packer').startup(function()
     end
   }
 
-
-  use {
-    'mattn/efm-langserver',
-    config = function()
-      require "lspconfig".efm.setup {
-        init_options = {documentFormatting = true},
-        settings = {
-        }
-      }
-    end
-  }
-
   use {
     "ray-x/go.nvim",
     config = function()
       require('go').setup({
         comment_placeholder = '',
         icons = {breakpoint = '🧘', currentpos = '🏃'},
-        dap_debug_gui = true
+        dap_debug_gui = false
       })
       vim.cmd("autocmd FileType go nmap <Leader>c :lua require('go.comment').gen()<cr>")
       vim.cmd("autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()")
@@ -294,6 +287,18 @@ return require('packer').startup(function()
   use {
     "chentau/marks.nvim",
     config = function() require("plugins/marks") end,
+  }
+
+  -- dap
+  use {
+   'mfussenegger/nvim-dap',
+    config = function() require("plugins/dap") end,
+  }
+
+  -- go
+  use {
+    "leoluz/nvim-dap-go",
+    config = function() require("plugins/nvim-dap-go") end,
   }
 
   -- zenbones

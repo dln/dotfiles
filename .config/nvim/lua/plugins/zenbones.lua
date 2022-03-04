@@ -15,7 +15,7 @@ local specs = lush.parse(function()
     CursorLine   { bg = "#f5f5f0" },
     CursorLineNr { fg = "#BCAAA4", bg="#f5f5f0" },
     MsgArea { fg = "#A1887F", bg="#f1f1f1" },
-    String  { fg = "#33691E", gui = "italic" },
+    String  { fg = "#2E7D32", gui = "italic" },
     Comment { fg = "#114499", gui = "bold,italic" },
     LineNr  { fg = "#CFD8DC", gui = "bold,italic" },
     Indent1 { fg = "#FFEBEE", gui = "italic" },
