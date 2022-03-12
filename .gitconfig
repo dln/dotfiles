@@ -34,6 +34,7 @@ f = fuzzy status
 fd = fuzzy diff
 fl = fuzzy log
 fs = fuzzy status
+pu = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
 
 ll = log --graph --date=relative --topo-order --pretty='format:%C(yellow)%h%C(yellow)%d %Cblue%ar %Cgreenby %an%Creset -- %s'
 lla = log --graph --date=relative --topo-order --pretty='format:%Cgreen%h %Cblue%ar %Credby %an%Creset -- %s' --all
