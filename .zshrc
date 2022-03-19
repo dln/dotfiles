@@ -108,7 +108,10 @@ alias v=vgrep
 alias ve='env EDITOR= vgrep -s'
 alias xc=clip
 
-# ripgrep "auto paging"
+## ripgrep 
+export RIPGREP_CONFIG_PATH=${HOME}/.config/rg/rg.conf
+
+# "auto paging"
 rg() {
   /usr/bin/rg -p "$@" | bat
 }
