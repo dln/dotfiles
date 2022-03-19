@@ -50,6 +50,8 @@ setopt null_glob
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 
+export PATH=$HOME/bin:$PATH
+
 redraw-prompt() {
     local precmd
     for precmd in $precmd_functions; do
@@ -172,6 +174,11 @@ if [ ! -f "${fpath[1]}/_kapp" ]; then
 	command -v kapp >/dev/null 2>&1 && kapp completion zsh --tty=false > "${fpath[1]}/_kapp"
 fi
 
+## kn
+if [ ! -f "${fpath[1]}/_kn" ]; then
+  command -v kn >/dev/null 2>&1 && kn completion zsh > "${fpath[1]}/_kn"
+fi
+
 ## talos cli
 if [ ! -f "${fpath[1]}/_talosctl" ]; then
 	command -v talosctl >/dev/null 2>&1 && talosctl completion zsh > "${fpath[1]}/_talosctl"
@@ -203,8 +210,6 @@ export PGO_CLIENT_KEY=/home/dln/.pgo/pgo/client.key
 export PGO_APISERVER_URL='https://127.0.0.1:8443'
 export PGO_NAMESPACE=pgo
 
-
-export PATH=$HOME/bin:$PATH
 
 # ## Completion
 autoload -Uz compinit
