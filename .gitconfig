@@ -24,6 +24,7 @@ b = branch -va
 cl = clone --filter=blob:none
 d = diff --stat -p -C
 ds = diff --staged --stat -p -C
+dt = difftool
 du = !"git --no-pager diff --stat -p -C --color=always"
 patch = !git --no-pager diff --no-color
 co = checkout
