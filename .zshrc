@@ -157,6 +157,11 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 ## direnv
 eval "$(direnv hook zsh)"
 
+## eksctl
+if [ ! -f "${fpath[1]}/_eksctl" ]; then
+	command -v eksctl >/dev/null 2>&1 && eksctl completion zsh > "${fpath[1]}/_eksctl"
+fi
+
 ## Kubernetes
 command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
 export PATH=$HOME/.krew/bin:$PATH
