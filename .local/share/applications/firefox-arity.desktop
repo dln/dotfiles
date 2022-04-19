@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox Beta (Work)
+Name=Firefox (Arity)
 GenericName=Web Browser
 Comment=Browse the Web
-Exec=firefox-beta %u -P Work --new-instance --name firefox-work
-Icon=firefox-beta
+Exec=firefox %u -P Arity --new-instance --name firefox-arity
+Icon=firefox
 Terminal=false
 Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
-StartupWMClass=firefox-work
+StartupWMClass=firefox-arity
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
