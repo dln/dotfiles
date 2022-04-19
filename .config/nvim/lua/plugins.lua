@@ -153,19 +153,16 @@ return require('packer').startup(function()
     end
   }
 
+  -- treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
     requires = {
       "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag"
     },
-    config = function()
-      require("dln.treesitter")
-      vim.wo.foldmethod = "expr"
-      vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-    end
+    run = ":TSUpdate",
+    config = function() require("plugins/treesitter") end,
   }
 
   use {
