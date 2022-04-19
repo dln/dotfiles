@@ -217,4 +217,12 @@ return require('packer').startup(function()
     config = function() require("plugins/zenbones") end,
   }
 
+  -- copilot
+  use({
+    "github/copilot.vim",
+    config = function()
+      require("plugins/copilot")
+    end,
+  })
+
 end)
