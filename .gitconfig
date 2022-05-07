@@ -1,8 +1,8 @@
 [core]
 excludesfile = "~/.gitignore"
-pager = delta --line-numbers
-	compression = 0
-	looseCompression = 0
+pager = delta --line-numbers --max-line-distance 0.9
+compression = 0
+looseCompression = 0
 
 [user]
 useConfigOnly = true
@@ -79,8 +79,6 @@ threads = 0
 date = relative
 
 [delta]
-plus-color = "#012800"
-minus-color = "#340001"
 syntax-theme = GitHub
 hunk-header-style = line-number syntax
 
@@ -91,7 +89,7 @@ protocol = git
 cookiefile = /home/dln/.gitcookies
 
 [interactive]
-diffFilter = delta --color-only
+diffFilter = delta --color-only --features=interactive
 
 [credential]
 helper = store
