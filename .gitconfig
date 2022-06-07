@@ -63,6 +63,7 @@ guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -r
 serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
 identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
+
 [color]
 ui = auto
 branch = auto
@@ -104,9 +105,8 @@ email = daniel@arity.se
 [init]
 defaultBranch = main
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-	insteadOf = https://github.com/
+; [url "git@github.com:"]
+; 	insteadOf = https://github.com/
 
 [lfs]
 concurrenttransfers = 32
