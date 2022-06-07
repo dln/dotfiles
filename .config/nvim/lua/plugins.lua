@@ -8,6 +8,7 @@ return require('packer').startup(function()
   use 'rafamadriz/friendly-snippets'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
+  use 'jjo/vim-cue'
 
   use {
     'theHamsta/nvim-dap-virtual-text',
@@ -189,7 +190,7 @@ return require('packer').startup(function()
 
   -- marks
   use {
-    "chentau/marks.nvim",
+    "chentoast/marks.nvim",
     config = function() require("plugins/marks") end,
   }
 
