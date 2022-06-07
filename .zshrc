@@ -131,7 +131,6 @@ set_win_title
 
 ## vim
 export EDITOR=nvim
-export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 e ()
 {
@@ -143,7 +142,7 @@ e ()
     _file=$( (fre --store_name $_store --sorted && fd --type f --hidden --follow --exclude .git . $_git_root) | fzf-tmux)
     fre --store_name $_store --add $_file
   fi
-  nvr --nostart --remote $_file
+  nvim --server $XDG_RUNTIME_DIR/nvim.sock --remote $_file
 	tmux select-window -t1
 }
 
@@ -238,3 +237,4 @@ if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/completion.zsh.inc'; fi
+PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete.zsh"
