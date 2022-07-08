@@ -180,6 +180,16 @@ return require('packer').startup(function()
     end
   }
 
+  use({
+		"nvim-treesitter/nvim-treesitter-context",
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("plugins/treesitter-context")
+		end,
+	})
+
   use {
     "onsails/lspkind-nvim",
     config = function()
@@ -216,11 +226,11 @@ return require('packer').startup(function()
   }
 
   -- copilot
-  use({
-    "github/copilot.vim",
-    config = function()
-      require("plugins/copilot")
-    end,
-  })
+  -- use({
+  --   "github/copilot.vim",
+  --   config = function()
+  --     require("plugins/copilot")
+  --   end,
+  -- })
 
 end)
