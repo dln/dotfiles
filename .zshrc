@@ -107,6 +107,7 @@ alias tree='exa --tree'
 alias v=vgrep
 alias ve='env EDITOR= vgrep -s'
 alias xc=clip
+alias w="history -1 | sed -e 's/[0-9]*  //' | xargs viddy -n1"
 
 ## ripgrep 
 export RIPGREP_CONFIG_PATH=${HOME}/.config/rg/rg.conf
