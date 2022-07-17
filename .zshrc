@@ -166,14 +166,9 @@ fi
 command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
 export PATH=$HOME/.krew/bin:$PATH
 
-## linkerd
-if [ ! -f "${fpath[1]}/_linkerd" ]; then
-	command -v linkerd >/dev/null 2>&1 && linkerd completion zsh > "${fpath[1]}/_linkerd"
-fi
-
-## Flux
-if [ ! -f "${fpath[1]}/_flux" ]; then
-	command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
+## bazel
+if [ ! -f "${fpath[1]}/_bazel" ]; then
+  curl -sLo "${fpath[1]}/_bazel" https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel
 fi
 
 ## Tekton cli
@@ -239,3 +234,6 @@ if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cl
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/completion.zsh.inc'; fi
 PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete.zsh"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/mcli mcli
