@@ -225,6 +225,17 @@ return require('packer').startup(function()
     config = function() require("plugins/zenbones") end,
   }
 
+  -- lsp_lines
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+      vim.diagnostic.config({
+        virtual_text = false,
+      })
+    end
+  }
+
   -- copilot
   -- use({
   --   "github/copilot.vim",

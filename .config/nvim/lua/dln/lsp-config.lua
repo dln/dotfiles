@@ -11,7 +11,7 @@ vim.lsp.with(
 vim.lsp.diagnostic.on_publish_diagnostics,
 {
 	update_in_insert = false,
-	virtual_text = {prefix = "‹❮❰ " }
+  virtual_text = false,
 }
 )
 local signs = { Error = "🔥", Warn = "⚠️ ", Hint = "💡", Info = "💡" }
