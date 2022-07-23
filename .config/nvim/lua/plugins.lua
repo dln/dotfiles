@@ -9,6 +9,7 @@ return require('packer').startup(function()
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
   use 'jjo/vim-cue'
+  use("ckipp01/stylua-nvim")
 
   use {
     'theHamsta/nvim-dap-virtual-text',
@@ -216,15 +217,6 @@ return require('packer').startup(function()
     config = function() require("plugins/nvim-dap-go") end,
   }
 
-  -- zenbones
-  use {
-    "mcchrish/zenbones.nvim",
-    requires = {
-      "rktjmp/lush.nvim",
-    },
-    config = function() require("plugins/zenbones") end,
-  }
-
   -- lsp_lines
   use {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -234,6 +226,15 @@ return require('packer').startup(function()
         virtual_text = false,
       })
     end
+  }
+
+  -- zenbones
+  use {
+    "mcchrish/zenbones.nvim",
+    requires = {
+      "rktjmp/lush.nvim",
+    },
+    config = function() require("plugins/zenbones") end,
   }
 
   -- copilot
