@@ -104,6 +104,7 @@ export LESS="--mouse --wheel-lines=1 -nRXF"
 
 ## Aliases
 alias c='cut -c-${COLUMNS}'
+alias e=nvim-edit-fzf
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias l=bat
 alias ls=exa
@@ -138,20 +139,6 @@ set_win_title
 
 ## vim
 export EDITOR=nvim
-
-e ()
-{
-  if [ -n "$1" ]; then
-    _file=$(readlink -f "$@") 
-  else
-    _git_root=$(git rev-parse --show-toplevel)
-    _store=$(printf $_git_root | sha1sum | cut -d ' ' -f 1)
-    _file=$( (fre --store_name $_store --sorted && fd --type f --hidden --follow --exclude .git . $_git_root) | fzf-tmux)
-    fre --store_name $_store --add $_file
-  fi
-  nvim --server $XDG_RUNTIME_DIR/nvim.sock --remote $_file
-	tmux select-window -t1
-}
 
 ## fzf
 export FZF_TMUX=1
