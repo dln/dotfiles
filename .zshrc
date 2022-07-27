@@ -77,6 +77,14 @@ fre_chpwd() {
 typeset -gaU chpwd_functions
 chpwd_functions+=fre_chpwd
 
+_cwd_gitroot() {
+  _gitroot=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  _dir=$((echo "$_gitroot" && fd -td . "$_gitroot") | fzf-tmux)
+  [ -n "$_dir" ] && cd $_dir
+  zle && zle redraw-prompt
+}
+zle -N _cwd_gitroot
+
 ## Keybindings
 bindkey -e
 bindkey '^[[A' history-beginning-search-backward
@@ -84,6 +92,7 @@ bindkey '^[[B' history-beginning-search-forward
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 bindkey '^g' _jump
+bindkey '^_' _cwd_gitroot
 
 
 ## Gnupg  / gpg / ssh / yubikey
