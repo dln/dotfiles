@@ -62,10 +62,7 @@ redraw-prompt() {
 zle -N redraw-prompt
 
 _jump() {
-  _dir=$((
-      git rev-parse --show-toplevel 2>/dev/null | xargs -r fd --type d --hidden --follow --exclude .git .
-      fre --sorted
-    ) | fzf-tmux)
+  _dir=$(fre --sorted | fzf-tmux --no-sort)
   [ -n "$_dir" ] && pushd $_dir >>/dev/null
   zle && zle redraw-prompt
 }
