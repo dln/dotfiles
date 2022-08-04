@@ -10,6 +10,13 @@ null_ls.setup({
 		builtins.completion.spell,
 		builtins.diagnostics.buf.with({
 			args = { "lint", "--disable-symlinks", "--path", "$FILENAME" },
+			cwd = function()
+				local file_dir = vim.fn.expand("%:p:h") .. ";"
+				local buf_yaml = vim.fn.findfile("buf.yaml", file_dir)
+				if buf_yaml then
+					return vim.fn.fnamemodify(buf_yaml, ":h")
+				end
+			end,
 		}),
 		builtins.diagnostics.buildifier,
 		builtins.diagnostics.cue_fmt,
