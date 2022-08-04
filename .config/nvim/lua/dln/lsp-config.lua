@@ -53,7 +53,6 @@ lspconfig.gopls.setup({
 				"-bazel-testlogs",
 				"-bazel-mypkg",
 			},
-			...,
 		},
 	},
 })
