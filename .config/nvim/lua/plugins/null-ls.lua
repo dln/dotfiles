@@ -8,7 +8,9 @@ null_ls.setup({
 		builtins.formatting.shfmt,
 		builtins.formatting.buildifier,
 		builtins.completion.spell,
-		builtins.diagnostics.buf,
+		builtins.diagnostics.buf.with({
+			args = { "lint", "--path", "$FILENAME" },
+		}),
 		builtins.diagnostics.buildifier,
 		builtins.diagnostics.cue_fmt,
 	},
