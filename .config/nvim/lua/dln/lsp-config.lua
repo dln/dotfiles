@@ -51,7 +51,7 @@ lspconfig.gopls.setup({
 				"-bazel-bin",
 				"-bazel-out",
 				"-bazel-testlogs",
-				"-bazel-mypkg",
+				"-proto",
 			},
 		},
 	},
