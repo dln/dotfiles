@@ -26,6 +26,7 @@ local servers = {
 	"dockerls",
 	"jsonls",
 	-- "sql",
+	"pyright",
 	"sumneko_lua",
 	"terraformls",
 	"yamlls",
