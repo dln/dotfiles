@@ -45,9 +45,6 @@ lspconfig.gopls.setup({
 	on_attach = on_attach,
 	settings = {
 		gopls = {
-			env = {
-				GOPACKAGESDRIVER = "./tools/gopackagesdriver.sh",
-			},
 			directoryFilters = {
 				"-bazel-bin",
 				"-bazel-out",
