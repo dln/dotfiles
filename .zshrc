@@ -62,7 +62,7 @@ redraw-prompt() {
 zle -N redraw-prompt
 
 _jump() {
-  _dir=$(fre --sorted | fzf-tmux --no-sort -p 90%,50% -y 0)
+  _dir=$(fre --sorted | fzf-tmux --no-sort -p 90%,40% -y 0)
   [ -n "$_dir" ] && pushd $_dir >>/dev/null
   zle && zle redraw-prompt
 }
@@ -76,7 +76,7 @@ chpwd_functions+=fre_chpwd
 
 _cwd_gitroot() {
   _gitroot=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-  _dir=$((echo "$_gitroot" && fd -td . "$_gitroot") | fzf-tmux -p 90%,50% -y 0)
+  _dir=$((echo "$_gitroot" && fd -td . "$_gitroot") | fzf-tmux -p 90%,40% -y 0)
   [ -n "$_dir" ] && cd $_dir
   zle && zle redraw-prompt
 }
@@ -103,9 +103,8 @@ export LESS="--mouse --wheel-lines=1 -nRXF"
  function clip { echo -en "\x1b]52;c;$(base64 -w0)\x07" }
 
 ## Aliases
-alias b='tmux display-popup -h "60%" -w "80%" -b rounded -d "$(pwd)" -e "BUILD_COMMAND=${BUILD_COMMAND}" -E "~/bin/tmux-build-helper"'
 alias c='cut -c-${COLUMNS}'
-alias e='tmux display-popup -h "60%" -w "80%" -b rounded -d "$(pwd)" -E "~/bin/tmux-edit-helper"'
+alias e='tmux-edit-helper'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias l=bat
 alias ls=exa
