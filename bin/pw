@@ -1,10 +1,18 @@
 #!/bin/bash
-set -euo pipefail
+#
+# Author: Daniel Lundin <dln@arity.se>
+#
+# Convenience script to hide sensitive variables on the command line.
+# Uses keyctl to store secrets in the keyring.
+#
+# Example usage: mycommand --user=foo --password=$(pw mypass)
+
+set -eo pipefail
 
 purge=0
 ttl=${PW_TTL:-259200}
 
-usage() { echo "Usage: $0 [-t SECONDS] [-f]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-t SECONDS] [-f] SECRET_NAME" 1>&2; exit 1; }
 
 while getopts ":ft:" o; do
   case "${o}" in
@@ -22,18 +30,17 @@ done
 shift $((OPTIND-1))
 
 var="$1"
-shift
-
-if [ -z "${var}" ]; then
-    usage
-fi
+shift || usage
+[ -z "$1" ] || usage
 
 key="pw.${var}"
+
 if [ "${purge}" == "1" ]; then
   keyctl purge user "${key}" >>/dev/null 2>&1 || true
 fi
+
 out=$(systemd-ask-password --accept-cached --keyname="${key}" "${var}:")
 key_id=$(keyctl request user "${key}" 2>/dev/null)
 keyctl timeout "$key_id" "$ttl"
-printf "%s" "$out"
 
+printf "%s" "$out"
