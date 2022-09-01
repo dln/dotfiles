@@ -5,34 +5,7 @@ function font_with_fallback(name, params)
   return wezterm.font_with_fallback(names, params)
 end
 
-local themeShelmanDark = {
-  colors = {
-    foreground    = "#ded9ce",
-    background    = "#171a23",
-    cursor_bg     = "#FB8C00",
-    cursor_border = "#FB8C00",
-    split         = "#444444",
-    ansi          = { "#000000", "#ff605a", "#b1e869", "#ead89c", "#5da9f6", "#e86aff", "#82fff6", "#ded9ce" },
-    brights       = { "#313131", "#f58b7f", "#dcf88f", "#eee5b2", "#a5c7ff", "#ddaaff", "#b6fff9", "#fefffe" },
-    tab_bar       = {
-      background         = "#000000",
-      active_tab         = { bg_color = "#171a23", fg_color = "#c0b070", intensity = "Normal", },
-      inactive_tab       = { bg_color = "#000000", fg_color = "#c0c0c0", intensity = "Half", },
-      inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true, }
-    }
-  },
-
-  tab_bar_style = {
-    active_tab_left          = wezterm.format({ { Background = { Color = "#171a23" } }, { Foreground = { Color = "#000000" } }, { Text = " " } }),
-    active_tab_right         = wezterm.format({ { Background = { Color = "#171a23" } }, { Foreground = { Color = "#000000" } }, { Text = " " } }),
-    inactive_tab_left        = wezterm.format({ { Background = { Color = "#000000" } }, { Foreground = { Color = "#171a23" } }, { Text = " " } }),
-    inactive_tab_right       = wezterm.format({ { Background = { Color = "#000000" } }, { Foreground = { Color = "#171a23" } }, { Text = "▕" } }),
-    inactive_tab_hover_left  = wezterm.format({ { Background = { Color = "#333333" } }, { Foreground = { Color = "#ffffff" } }, { Text = " " } }),
-    inactive_tab_hover_right = wezterm.format({ { Background = { Color = "#333333" } }, { Foreground = { Color = "#ffffff" } }, { Text = " " } }),
-  },
-};
-
-local themeShelmanLight = {
+local theme = {
   colors = {
     foreground    = "#000000",
     background    = "#fcfcfc",
@@ -43,31 +16,11 @@ local themeShelmanLight = {
     selection_bg  = "#FFCA28",
     ansi          = { "#212121", "#b7141e", "#457b23", "#f5971d", "#134eb2", "#550087", "#0e707c", "#eeeeee" },
     brights       = { "#424242", "#e83a3f", "#7aba39", "#fee92e", "#53a4f3", "#a94dbb", "#26bad1", "#d8d8d8" },
-
-    tab_bar = {
-      background         = "#556677",
-      active_tab         = { bg_color = "#f7f7f7", fg_color = "#000000", intensity = "Normal", },
-      inactive_tab       = { bg_color = "#778899", fg_color = "#000000", intensity = "Half", },
-      inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true, }
-    }
-  },
-
-  tab_bar_style = {
-    active_tab_left          = wezterm.format({ { Background = { Color = "#f7f7f7" } }, { Foreground = { Color = "#000000" } }, { Text = " " } }),
-    active_tab_right         = wezterm.format({ { Background = { Color = "#f7f7f7" } }, { Foreground = { Color = "#000000" } }, { Text = " " } }),
-    inactive_tab_left        = wezterm.format({ { Background = { Color = "#778899" } }, { Foreground = { Color = "#f7f7f7" } }, { Text = " " } }),
-    inactive_tab_right       = wezterm.format({ { Background = { Color = "#778899" } }, { Foreground = { Color = "#333333" } }, { Text = "▕" } }),
-    inactive_tab_hover_left  = wezterm.format({ { Background = { Color = "#333333" } }, { Foreground = { Color = "#ffffff" } }, { Text = " " } }),
-    inactive_tab_hover_right = wezterm.format({ { Background = { Color = "#333333" } }, { Foreground = { Color = "#ffffff" } }, { Text = " " } }),
-  },
+  }
 };
-
-
-local theme = themeShelmanLight;
 
 return {
   colors = theme.colors,
-  tab_bar_style = theme.tab_bar_style,
   font = font_with_fallback("Iosevka Term SS09", { weight = "Regular" }),
   font_rules = {
     {
