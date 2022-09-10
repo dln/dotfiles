@@ -8,7 +8,7 @@ lualine.setup({
 	options = {
 		globalstatus = true,
 		theme = "onelight",
-		component_separators = "╱",
+		component_separators = { left = "╲", right = "╱" },
 		section_separators = { left = "", right = "" },
 	},
 	sections = {
