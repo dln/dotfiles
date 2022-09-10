@@ -1,4 +1,9 @@
 local lualine = require("lualine")
+
+local function clock()
+	return os.date("%H:%M")
+end
+
 lualine.setup({
 	options = {
 		globalstatus = true,
@@ -14,5 +19,8 @@ lualine.setup({
 				file_status = true,
 			},
 		},
+		lualine_x = { "filetype" },
+		lualine_y = { "location", "progress" },
+		lualine_z = { clock },
 	},
 })
