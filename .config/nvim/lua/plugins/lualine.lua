@@ -2,6 +2,9 @@ local lualine = require("lualine")
 lualine.setup({
 	options = {
 		globalstatus = true,
+		theme = "onelight",
+		component_separators = "╱",
+		section_separators = { left = "", right = "" },
 	},
 	sections = {
 		lualine_c = {
