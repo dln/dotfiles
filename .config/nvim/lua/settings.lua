@@ -14,6 +14,8 @@ vim.o.backupdir = "/home/dln/.local/share/nvim/backup/"
 vim.o.backup = true
 vim.g.netrw_dirhistmax = 0
 vim.o.clipboard = "unnamedplus"
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
 
 --- Indent
 vim.o.autoindent = true
@@ -46,18 +48,18 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 
 --- Appearance
 vim.o.background = "light"
-vim.o.scrolloff = 5
+vim.o.scrolloff = 7
 vim.o.showmode = false
 vim.o.sidescrolloff = 5
 vim.o.termguicolors = true
 vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
-vim.o.laststatus = 0
-vim.o.statusline = "═"
-vim.o.fillchars = "stl:═,stlnc:═"
-vim.o.title = true
-vim.o.titlestring = "%F%m %r %y"
+vim.o.laststatus = 3
+-- vim.o.statusline = "═"
+vim.o.fillchars = "stl: ,stlnc: "
+-- vim.o.title = true
+-- vim.o.titlestring = "%F%m %r %y"
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 
