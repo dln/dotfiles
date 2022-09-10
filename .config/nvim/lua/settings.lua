@@ -62,29 +62,8 @@ vim.o.fillchars = "stl: ,stlnc: "
 -- vim.o.titlestring = "%F%m %r %y"
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-
---- Key mappings
-local map = require("dln.utils").map
-map("n", "<C-l>", ':let @/=""<CR>') -- clear search
-map("n", "H", "^")
-map("n", "L", "$")
-map("i", "", "<C-w>")
-
-map("n", ",L", ":luafile %<CR>") -- Reload lua file
-
---- Plugins
 vim.g.netrw_dirhistmax = 0
 
-local border = {
-	{ "🭽", "FloatBorder" },
-	{ "▔", "FloatBorder" },
-	{ "🭾", "FloatBorder" },
-	{ "▕", "FloatBorder" },
-	{ "🭿", "FloatBorder" },
-	{ "▁", "FloatBorder" },
-	{ "🭼", "FloatBorder" },
-	{ "▏", "FloatBorder" },
-}
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+--- Key mappings
+vim.keymap.set("n", "<C-l>", ':let @/=""<CR>') -- clear search
+vim.keymap.set("n", ",L", ":luafile %<CR>") -- Reload lua file

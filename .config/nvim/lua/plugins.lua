@@ -126,18 +126,7 @@ return require("packer").startup(function()
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("dln.lsp-config")
-			local map = require("dln.utils").map
-			map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-			map("i", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
-			map("n", "1gd", "<Cmd>lua vim.lsp.buf.type_definition()<CR>")
-			map("n", "gf", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
-			map("n", "rn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
-			map("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-			map("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
-			map("n", "gwa", "<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-			map("n", "gwr", "<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-			map("n", "gwl", "<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+			require("plugins/lsp-config")
 		end,
 	})
 
