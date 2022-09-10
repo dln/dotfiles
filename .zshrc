@@ -1,18 +1,18 @@
-source ~/.zplug/init.zsh
-
-source /etc/profile.d/locale.sh
-
-zplug "zsh-users/zsh-completions"
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug 'zsh-users/zsh-history-substring-search', defer:3
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone --depth=1 https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
-zplug load
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit ice wait load zsh-users/zsh-completions
+zinit ice wait load zsh-users/zsh-syntax-highlighting
+zinit ice wait load zsh-users/zsh-history-substring-search
 
 ## History
 HISTSIZE=50000
@@ -47,7 +47,6 @@ setopt null_glob
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
 # ZSH_AUTOSUGGEST_USE_ASYNC=1
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 
 export PATH=$HOME/bin:$PATH
 
@@ -127,15 +126,6 @@ rg() {
 ## Prompt
 eval "$(starship init zsh)"
 
-function _title(){
-  printf '%-16.16s' "$(starship module directory | sed 's/\x1b\[[0-9;]*m//g')"
-}
-
-function set_win_title(){
-    echo -ne "\033]0; $(_title) \007"
-}
-set_win_title
-
 ## vim
 export EDITOR=nvim
 
@@ -149,11 +139,28 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 ## direnv
 eval "$(direnv hook zsh)"
 
-
 ## pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="/home/dln/.pyenv/shims:${PATH}"
+export PYENV_SHELL=zsh
+# command pyenv rehash 2>/dev/null   # this is slow
+pyenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  activate|deactivate|rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")"
+    ;;
+  *)
+    command pyenv "$command" "$@"
+    ;;
+  esac
+}
 
 ## eksctl
 if [ ! -f "${fpath[1]}/_eksctl" ]; then
@@ -161,7 +168,9 @@ if [ ! -f "${fpath[1]}/_eksctl" ]; then
 fi
 
 ## Kubernetes
-command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
+if [ ! -f "${fpath[1]}/_kubectl" ]; then
+  command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
+fi
 export PATH=$HOME/.krew/bin:$PATH
 
 ## bazel
@@ -205,26 +214,10 @@ export ANSIBLE_NOCOWS=1
 ## Docker
 export DOCKER_BUILDKIT=1
 
-
-## PostgreSQL Operator
-export PATH=/home/dln/.pgo/pgo:$PATH
-export PGOUSER=/home/dln/.pgo/pgo/pgouser
-export PGO_CA_CERT=/home/dln/.pgo/pgo/client.crt
-export PGO_CLIENT_CERT=/home/dln/.pgo/pgo/client.crt
-export PGO_CLIENT_KEY=/home/dln/.pgo/pgo/client.key
-export PGO_APISERVER_URL='https://127.0.0.1:8443'
-export PGO_NAMESPACE=pgo
-
-
-# ## Completion
-autoload -Uz compinit
-compinit -i
-
 ## AWS
 if [ -x /usr/bin/aws_zsh_completer.sh ]; then
 	source /usr/bin/aws_zsh_completer.sh
 fi
-
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/path.zsh.inc'; fi
