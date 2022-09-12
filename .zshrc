@@ -10,9 +10,12 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit ice wait load zsh-users/zsh-completions
-zinit ice wait load zsh-users/zsh-syntax-highlighting
-zinit ice wait load zsh-users/zsh-history-substring-search
+zi ice wait lucid
+zi load zsh-users/zsh-completions
+zi ice wait lucid
+zi load zsh-users/zsh-syntax-highlighting
+zi ice wait lucid
+zi load zsh-users/zsh-history-substring-search
 
 ## History
 HISTSIZE=50000
