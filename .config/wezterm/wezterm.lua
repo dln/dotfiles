@@ -21,6 +21,16 @@ local theme = {
 
 return {
   colors = theme.colors,
+  window_frame = {
+    border_left_width = '4px',
+    border_right_width = '4px',
+    border_bottom_height = '4px',
+    border_top_height = '4px',
+    border_left_color = '#000000',
+    border_right_color = '#000000',
+    border_bottom_color = '#000000',
+    border_top_color = '#000000',
+  },
   font = font_with_fallback("Iosevka Term SS09", { weight = "Regular" }),
   font_rules = {
     {
@@ -50,7 +60,7 @@ return {
   font_size = 12.5,
   line_height = 1.1,
 
-  initial_cols = 125,
+  initial_cols = 128,
   initial_rows = 45,
   window_padding = {
     left = 0,
