@@ -35,6 +35,16 @@ sync = branchless sync
 bco = branchless checkout
 c = branchless checkout
 
+gerrit-push = !git push origin HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD)
+gerrit-push-wip = !git push origin HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD)%wip
+gerrit-push-ready = !git push origin HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD)%ready
+gerrit-replace = !git commit --amend -a && git gerrit-push
+gerrit-config = !git fetch origin refs/meta/config:refs/remotes/origin/meta/config && git checkout origin/meta/config
+gerrit-config-push = !git push origin HEAD:refs/meta/config
+gp = gerrit-push
+gpw = gerrit-push-wip
+gpr = gerrit-push-ready
+
 ll = log --graph --date=relative --topo-order --pretty='format:%C(yellow)%h%C(yellow)%d %Cblue%ar %Cgreenby %an%Creset -- %s'
 lla = log --graph --date=relative --topo-order --pretty='format:%Cgreen%h %Cblue%ar %Credby %an%Creset -- %s' --all
 
