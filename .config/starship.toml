@@ -4,6 +4,7 @@ format = """\
 $hostname\
 $directory\
 $git_branch\
+$git_commit\
 $git_state\
 $git_status\
 ($character)\
@@ -30,11 +31,12 @@ style = "italic bold"
 format = "[$symbol$branch]($style)"
 style = "fg:#559955"
 symbol = " "
-truncation_length = 8
+truncation_length = 16
 truncation_symbol = ""
 
 [git_commit]
-style = ""
+format = "[ $hash$tag]($style) "
+style = "fg:#559955"
 
 [git_state]
 style = ""
