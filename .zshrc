@@ -108,6 +108,7 @@ alias c='cut -c-${COLUMNS}'
 alias e='tmux-edit-helper'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias l=bat
+alias lw='bat --wrap=never'
 alias ls=exa
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
@@ -204,9 +205,6 @@ fi
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
 
-# hack until gcloud works with python 3.9
-export CLOUDSDK_PYTHON=python2
-
 ## Golang
 export PATH=$HOME/go/bin:$PATH
 GOPROXY=https://athens.aarn.shelman.io
@@ -221,13 +219,14 @@ export DOCKER_BUILDKIT=1
 if [ -x /usr/bin/aws_zsh_completer.sh ]; then
 	source /usr/bin/aws_zsh_completer.sh
 fi
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/completion.zsh.inc'; fi
 PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete.zsh"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
+complete -C '/usr/bin/aws_completer' aws
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/tmp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/tmp/google-cloud-sdk/completion.zsh.inc'; fi
