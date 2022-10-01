@@ -15,7 +15,6 @@ vim.o.backup = true
 vim.g.netrw_dirhistmax = 0
 vim.o.clipboard = "unnamedplus"
 vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
 
 --- Indent
 vim.o.autoindent = true
