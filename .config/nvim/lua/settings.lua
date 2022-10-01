@@ -55,6 +55,7 @@ vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
 vim.o.laststatus = 3
+vim.o.cmdheight = 0
 -- vim.o.statusline = "═"
 vim.o.fillchars = "stl: ,stlnc: "
 -- vim.o.title = true
