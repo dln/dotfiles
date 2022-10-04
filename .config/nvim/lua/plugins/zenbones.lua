@@ -18,6 +18,7 @@ local specs = lush.parse(function()
 		MsgArea({ fg = "#A1887F", bg = "#f1f1f1" }),
 		String({ fg = "#2E7D32", gui = "italic" }),
 		Comment({ fg = "#114499", gui = "bold,italic" }),
+		CopilotSuggestion({ fg = "#0066cc", gui = "bold,italic" }),
 		LineNr({ fg = "#CFD8DC", gui = "bold,italic" }),
 		Indent1({ fg = "#FFEBEE", gui = "italic" }),
 		Indent2({ fg = "#E8F5E9", gui = "italic" }),
