@@ -29,7 +29,7 @@ return require("packer").startup(function()
 	})
 
 	use({
-		"gbprod/yanky.nvim",
+		"folke/yanky.nvim",
 		config = function()
 			require("plugins/yanky")
 		end,
