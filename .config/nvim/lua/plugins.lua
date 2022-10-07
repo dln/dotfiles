@@ -196,6 +196,13 @@ return require("packer").startup(function()
 		end,
 	})
 
+	use({
+		"ojroques/nvim-osc52",
+		config = function()
+			require("plugins/osc52")
+		end,
+	})
+
 	-- marks
 	use({
 		"chentoast/marks.nvim",
