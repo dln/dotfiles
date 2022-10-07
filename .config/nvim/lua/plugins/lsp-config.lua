@@ -6,13 +6,15 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("i", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
 vim.keymap.set("n", "1gd", "<Cmd>lua vim.lsp.buf.type_definition()<CR>")
-vim.keymap.set("n", "gf", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
+vim.keymap.set("n", "gf", "<Cmd>lua vim.lsp.buf.format()<CR>")
 vim.keymap.set("n", "rn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
 vim.keymap.set("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
 vim.keymap.set("n", "gwa", "<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
 vim.keymap.set("n", "gwr", "<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
 vim.keymap.set("n", "gwl", "<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+
+vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format({sync = true})]])
 
 local border = {
 	{ "🭽", "FloatBorder" },
