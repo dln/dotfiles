@@ -29,6 +29,13 @@ return require("packer").startup(function()
 	})
 
 	use({
+		"gbprod/yanky.nvim",
+		config = function()
+			require("plugins/yanky")
+		end,
+	})
+
+	use({
 		"b3nj5m1n/kommentary",
 		config = function()
 			require("kommentary.config").use_extended_mappings()
