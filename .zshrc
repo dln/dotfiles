@@ -221,12 +221,9 @@ export ANSIBLE_NOCOWS=1
 ## Docker
 export DOCKER_BUILDKIT=1
 
-## AWS
-if [ -x /usr/bin/aws_zsh_completer.sh ]; then
-	source /usr/bin/aws_zsh_completer.sh
-fi
 PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete.zsh"
 
+## AWS
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
 complete -C '/usr/bin/aws_completer' aws
