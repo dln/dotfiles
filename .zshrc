@@ -126,6 +126,12 @@ rg() {
   /usr/bin/rg -p "$@" | bat
 }
 
+fix_cursor() {
+  echo -ne '\e[5 q'
+}
+
+precmd_functions+=(fix_cursor)
+
 
 ## Prompt
 eval "$(starship init zsh)"
