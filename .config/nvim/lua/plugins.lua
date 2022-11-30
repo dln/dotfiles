@@ -3,7 +3,6 @@ return require("packer").startup(function()
 	use("pierreglaser/folding-nvim")
 	use("tjdevries/colorbuddy.vim")
 	use("wbthomason/packer.nvim")
-	use("ray-x/lsp_signature.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("rafamadriz/friendly-snippets")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
@@ -64,6 +63,7 @@ return require("packer").startup(function()
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 		},
