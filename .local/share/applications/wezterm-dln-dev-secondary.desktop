@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=wezterm-dln-dev-secondary
+GenericName=wezterm-dln-dev-secondary
+StartupWMClass=org.wezfurlong.wezterm
+Type=Application
+TryExec=/usr/bin/wezterm
+Icon=org.wezfurlong.wezterm
+Terminal=false
+Categories=System;TerminalEmulator;
+Exec=/usr/bin/wezterm --config 'default_prog={"ssh", "-q", "dln-dev", "--", "tmux", "-u", "new-session", "-As1", "-t0"}' --config font_size=9 start --class=wezterm-dln-dev-secondary
