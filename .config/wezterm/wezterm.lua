@@ -57,7 +57,8 @@ return {
   warn_about_missing_glyphs = false,
   bold_brightens_ansi_colors = false,
 
-  font_size = 12.5,
+
+  font_size = 10.5,
   line_height = 1.1,
 
   initial_cols = 128,
