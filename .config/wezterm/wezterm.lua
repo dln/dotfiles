@@ -26,10 +26,10 @@ return {
 		border_right_width = "2px",
 		border_bottom_height = "2px",
 		border_top_height = "2px",
-		border_left_color = "#666666",
-		border_right_color = "#666666",
-		border_bottom_color = "#666666",
-		border_top_color = "#666666",
+		border_left_color = "#cccccc",
+		border_right_color = "#cccccc",
+		border_bottom_color = "#cccccc",
+		border_top_color = "#cccccc",
 	},
 	font = font_with_fallback("Iosevka Term SS09", { weight = "Regular" }),
 	font_rules = {
@@ -63,6 +63,8 @@ return {
 	initial_cols = 128,
 	initial_rows = 45,
 	use_resize_increments = true,
+
+	window_background_opacity = 0.93,
 	window_padding = {
 		left = "0.75cell",
 		right = "0.5cell",
