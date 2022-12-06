@@ -21,6 +21,53 @@ local theme = {
 
 return {
 	colors = theme.colors,
+	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
+	font_rules = {
+		{
+			italic = false,
+			intensity = "Half",
+			font = font_with_fallback("Iosevka Shelman SS09", { weight = "Thin" }),
+		},
+		{
+			italic = true,
+			intensity = "Normal",
+			font = font_with_fallback("Iosevka Shelman Curly Slab", { weight = "Light", italic = true }),
+		},
+		{
+			italic = true,
+			intensity = "Bold",
+			font = font_with_fallback("Iosevka Shelman SS15", { weight = "ExtraLight", italic = true }),
+		},
+		{
+			intensity = "Bold",
+			font = font_with_fallback("Iosevka Shelman SS09", { weight = "DemiBold" }),
+		},
+	},
+	freetype_load_target = "Light",
+	freetype_render_target = "HorizontalLcd",
+	--freetype_load_flags = "NO_HINTING",
+	--custom_block_glyphs = false,
+
+	warn_about_missing_glyphs = false,
+	bold_brightens_ansi_colors = false,
+	allow_square_glyphs_to_overflow_width = "Always",
+
+	font_size = 10,
+	line_height = 1.0,
+	cell_width = 0.9,
+
+	initial_cols = 128,
+	initial_rows = 45,
+	use_resize_increments = true,
+
+	window_background_opacity = 0.93,
+	--	window_padding = {
+	--		left = "0.75cell",
+	--		right = "0.5cell",
+	--		top = "0.5cell",
+	--		bottom = "0cell",
+	--	},
+	window_decorations = "RESIZE",
 	window_frame = {
 		border_left_width = "2px",
 		border_right_width = "2px",
@@ -30,46 +77,6 @@ return {
 		border_right_color = "#cccccc",
 		border_bottom_color = "#cccccc",
 		border_top_color = "#cccccc",
-	},
-	font = font_with_fallback("Iosevka Term SS09", { weight = "Regular" }),
-	font_rules = {
-		{
-			italic = false,
-			intensity = "Half",
-			font = font_with_fallback("Iosevka Term SS09", { weight = "Thin" }),
-		},
-		{
-			italic = true,
-			intensity = "Normal",
-			font = font_with_fallback("Iosevka Term Curly Slab", { weight = "Light", italic = true }),
-		},
-		{
-			italic = true,
-			intensity = "Bold",
-			font = font_with_fallback("Iosevka SS15", { weight = "ExtraLight", italic = true }),
-		},
-		{
-			intensity = "Bold",
-			font = font_with_fallback("Iosevka Term SS09", { weight = "DemiBold" }),
-		},
-	},
-	freetype_load_target = "Light",
-	warn_about_missing_glyphs = false,
-	bold_brightens_ansi_colors = false,
-
-	font_size = 10.5,
-	line_height = 1.1,
-
-	initial_cols = 128,
-	initial_rows = 45,
-	use_resize_increments = true,
-
-	window_background_opacity = 0.93,
-	window_padding = {
-		left = "0.75cell",
-		right = "0.5cell",
-		top = "0.5cell",
-		bottom = "0cell",
 	},
 
 	default_cursor_style = "SteadyBlock",
@@ -81,7 +88,6 @@ return {
 	tab_bar_at_bottom = true,
 	show_tab_index_in_tab_bar = true,
 	enable_scroll_bar = false,
-	window_decorations = "RESIZE",
 	scrollback_lines = 5000,
 	alternate_buffer_wheel_scroll_speed = 2,
 	check_for_updates = false,
