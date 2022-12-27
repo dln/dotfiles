@@ -62,8 +62,8 @@ vim.o.cmdheight = 1
 -- vim.o.title = true
 -- vim.o.titlestring = "%F%m %r %y"
 vim.o.fillchars = "stl: ,stlnc: "
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.wo.foldmethod = "expr"
+-- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.g.netrw_dirhistmax = 0
 
 --- Key mappings
