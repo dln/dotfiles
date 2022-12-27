@@ -45,8 +45,8 @@ function M.config()
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
-  local on_attach = function()
-    --		require("folding").on_attach()
+  local function on_attach(client, bufnr)
+    require("nvim-navic").attach(client, bufnr)
   end
 
   -- simple setups --
@@ -86,8 +86,8 @@ function M.config()
   })
 
   lspconfig.sumneko_lua.setup({
-    on_attach = function()
-      on_attach()
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
       vim.cmd([[autocmd BufWritePre <buffer> lua require'stylua-nvim'.format_file()]])
     end,
     settings = {
