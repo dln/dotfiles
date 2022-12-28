@@ -11,7 +11,48 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = "all",
+				ensure_installed = {
+					"bash",
+					"c",
+					"cmake",
+					"cpp",
+					"css",
+					"diff",
+					"gitignore",
+					"go",
+					"graphql",
+					"help",
+					"html",
+					"http",
+					"java",
+					"javascript",
+					"jsdoc",
+					"json",
+					"jsonc",
+					"latex",
+					"lua",
+					"markdown",
+					"markdown_inline",
+					"meson",
+					"ninja",
+					"php",
+					"python",
+					"query",
+					"regex",
+					"rust",
+					"scss",
+					"sql",
+					"svelte",
+					"teal",
+					"toml",
+					"tsx",
+					"typescript",
+					"vhs",
+					"vim",
+					"vue",
+					"wgsl",
+					"yaml",
+				},
 				highlight = {
 					enable = true,
 					use_languagetree = true,
@@ -20,6 +61,8 @@ return {
 				indent = {
 					enable = false,
 				},
+
+				context_commentstring = { enable = true, enable_autocmd = false },
 
 				playground = {
 					enable = true,
@@ -36,6 +79,12 @@ return {
 						scope_incremental = "sd",
 						node_decremental = "sa",
 					},
+				},
+
+				query_linter = {
+					enable = true,
+					use_virtual_text = true,
+					lint_events = { "BufWrite", "CursorHold" },
 				},
 
 				textobjects = {
