@@ -57,6 +57,8 @@ function M.config()
 			GitSignsChange({ fg = "#FFA726" }),
 			GitSignsChangeNr({ fg = "#FFE0B2" }),
 
+			IlluminatedWordText({ bg = "#FFEB3B" }),
+
 			-- LspCodeLens({ fg = "#00ff00", gui = "undercurl" }),
 			-- LspSignatureActiveParameter({ fg = "#ff0000", bg = "#ffffcc" }),
 
