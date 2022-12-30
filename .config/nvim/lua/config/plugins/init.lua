@@ -1,11 +1,40 @@
 return {
-	"hashivim/vim-terraform",
-	"jose-elias-alvarez/typescript.nvim",
+
 	"tjdevries/colorbuddy.vim",
 	"wbthomason/packer.nvim",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"jjo/vim-cue",
 	"ckipp01/stylua-nvim",
+
+	{
+		"m-demare/hlargs.nvim",
+		event = "VeryLazy",
+		enabled = true,
+		config = {
+			excluded_argnames = {
+				usages = {
+					lua = { "self", "use" },
+				},
+			},
+		},
+	},
+
+	{
+		"folke/trouble.nvim",
+		cmd = { "TroubleToggle", "Trouble" },
+		config = {
+			auto_open = false,
+			use_diagnostic_signs = true,
+		},
+		keys = {
+			{ "<leader>xx", "<cmd>TroubleToggle<cr>" },
+			{ "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>" },
+			{ "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>" },
+			{ "<leader>xl", "<cmd>TroubleToggle loclist<cr>" },
+			{ "<leader>xq", "<cmd>TroubleToggle quickfix<cr>" },
+			{ "gR", "<cmd>TroubleToggle lsp_references<cr>" },
+		},
+	},
 
 	{
 		"smjonas/inc-rename.nvim",
