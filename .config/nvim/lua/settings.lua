@@ -61,7 +61,8 @@ vim.o.cmdheight = 1
 -- vim.o.statusline = "═"
 -- vim.o.title = true
 -- vim.o.titlestring = "%F%m %r %y"
-vim.o.fillchars = "stl: ,stlnc: "
+vim.o.fillchars =
+	"stl: ,stlnc: ,eob:🮙"
 -- vim.wo.foldmethod = "expr"
 -- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.g.netrw_dirhistmax = 0
