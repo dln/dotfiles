@@ -15,7 +15,7 @@ vim.o.backup = true
 vim.g.netrw_dirhistmax = 0
 vim.o.clipboard = "unnamedplus"
 vim.g.do_filetype_lua = 1
-vim.o.spell = true
+vim.o.spell = false
 vim.o.spelllang = "en_us"
 
 --- Indent

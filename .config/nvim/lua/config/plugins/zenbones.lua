@@ -19,13 +19,20 @@ function M.config()
 
 	-- Create some specs
 	---@diagnostic disable = undefined-global
-	local specs = lush.parse(function()
+	local specs = lush.parse(function(injected_functions)
+		-- See https://github.com/rktjmp/lush.nvim/issues/109
+		local sym = injected_functions.sym
 		return {
 			CursorLine({ bg = "#f5f5f0" }),
 			Error({ fg = "#d9534f" }),
 			CursorLineNr({ fg = "#BCAAA4", bg = "#f5f5f0" }),
 			MsgArea({ fg = "#A1887F", bg = "#f1f1f1" }),
 			String({ fg = "#2E7D32", gui = "italic" }),
+			Number({ fg = "#32936F" }),
+			sym("@string")({ fg = "#4B762D", gui = "italic" }),
+			sym("@type.definition")({ fg = "#B6465F", gui = "bold" }),
+			sym("@function")({ fg = "#8C1831", gui = "bold" }),
+			sym("@method")(sym("@function")),
 			Comment({ fg = "#114499", gui = "bold,italic" }),
 			CopilotSuggestion({ fg = "#0066cc", gui = "bold,italic" }),
 			LineNr({ fg = "#9FA8AC", gui = "bold,italic" }),
@@ -58,9 +65,11 @@ function M.config()
 			GitSignsChange({ fg = "#FFA726" }),
 			GitSignsChangeNr({ fg = "#FFE0B2" }),
 
-			IlluminatedWordText({ bg = "#FFEB3B" }),
-			NavicIcons({ fg = "#cc0000" }),
+			Hlargs({ fg = "#2274A5" }),
 
+			IlluminatedWordText({ bg = "#FFEB3B" }),
+
+			NavicIcons({ fg = "#cc0000" }),
 			NavicIconsFile({ fg = "#cc0000" }),
 			NavicIconsModule({ fg = "#cc0000" }),
 			NavicIconsNamespace({ fg = "#cc0000" }),
