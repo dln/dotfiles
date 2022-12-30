@@ -30,6 +30,7 @@ function M.config()
 			CopilotSuggestion({ fg = "#0066cc", gui = "bold,italic" }),
 			LineNr({ fg = "#9FA8AC", gui = "bold,italic" }),
 			LineNrAbove({ fg = "#9F080C", gui = "bold,italic" }),
+			IndentBlanklineContextChar({ fg = "#FF713F", gui = "italic" }),
 			Indent1({ fg = "#DFDF9A", gui = "italic" }),
 			Indent2({ fg = "#BAE1FF", gui = "italic" }),
 			Indent3({ fg = "#BAFFC9", gui = "italic" }),
@@ -92,6 +93,9 @@ function M.config()
 
 			-- LspCodeLens({ fg = "#00ff00", gui = "undercurl" }),
 			-- LspSignatureActiveParameter({ fg = "#ff0000", bg = "#ffffcc" }),
+
+			NoiceCmdlinePopup({ bg = "#E1F5FE" }),
+			NoiceMini({ bg = "#FFF9C4" }),
 
 			PMenu({ bg = "#F7F5F0" }),
 			PMenuBorder({ bg = "#F7F5F0", fg = "#886622" }),

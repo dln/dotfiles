@@ -1,11 +1,20 @@
 return {
 	"hashivim/vim-terraform",
-	"pierreglaser/folding-nvim",
+	"jose-elias-alvarez/typescript.nvim",
 	"tjdevries/colorbuddy.vim",
 	"wbthomason/packer.nvim",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"jjo/vim-cue",
 	"ckipp01/stylua-nvim",
+
+	{
+		"smjonas/inc-rename.nvim",
+		cmd = "IncRename",
+		config = true,
+		keys = {
+			{ "<Leader>rn", ":IncRename " },
+		},
+	},
 
 	{
 		"SmiteshP/nvim-navic",

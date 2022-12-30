@@ -50,7 +50,8 @@ function M.config()
 			-- layout_defaults = {flip_columns = 160},
 			layout_config = {
 				preview_cutoff = 10,
-				prompt_position = "top",
+				prompt_position = "bottom",
+				mirror = true,
 			},
 			mappings = {
 				i = {
