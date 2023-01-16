@@ -7,18 +7,20 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_status\
+${custom.sl_status}\
 ($character)\
 """
 
 right_format = """\
-${custom.sl_status}\
 """
 
 [custom.sl_status]
 command = '''~/bin/starship-sl-status'''
 when = true
-style = "italic bg:#79AE6F fg:#ffffff"
-format = '🌱 [](fg:#79AE6F)[ $output ]($style)'
+# style = "italic bg:#79AE6F fg:#ffffff"
+# format = '🌱 [](fg:#79AE6F)[ $output ]($style)'
+style = "italic fg:#79AE6F"
+format = '🌱[ $output ]($style)'
 
 [character]
 success_symbol = "%"
