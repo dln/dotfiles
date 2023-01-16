@@ -11,8 +11,14 @@ $git_status\
 """
 
 right_format = """\
+${custom.sl_status}\
 """
 
+[custom.sl_status]
+command = '''~/bin/starship-sl-status'''
+when = true
+style = "italic bg:#79AE6F fg:#ffffff"
+format = '🌱 [](fg:#79AE6F)[ $output ]($style)'
 
 [character]
 success_symbol = "%"
