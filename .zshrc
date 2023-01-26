@@ -227,6 +227,11 @@ export ANSIBLE_NOCOWS=1
 ## Docker
 export DOCKER_BUILDKIT=1
 
+autoload -Uz compinit
+compinit
+
+autoload -Uz compdef
+
 PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete.zsh"
 
 ## AWS
