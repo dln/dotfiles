@@ -188,6 +188,12 @@ if [ ! -f "${fpath[1]}/_bazel" ]; then
   curl -sLo "${fpath[1]}/_bazel" https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel
 fi
 
+## sapling
+if [ ! -f "${fpath[1]}/_sl" ]; then
+  # See: https://github.com/facebook/sapling/pull/369
+  curl -sLo "${fpath[1]}/_sl" https://github.com/facebook/sapling/raw/d6157db1ebc0868cf70805756e32541bd681bac2/eden/scm/contrib/zsh_completion_sl
+fi
+
 ## Tekton cli
 if [ ! -f "${fpath[1]}/_tkn" ]; then
 	command -v tkn >/dev/null 2>&1 && tkn completion zsh > "${fpath[1]}/_tkn"
