@@ -5,11 +5,62 @@ function font_with_fallback(name, params)
 	return wezterm.font_with_fallback(names, params)
 end
 
-local theme = {
+local themeShelmanDark = {
+	colors = {
+		foreground = "#ded9ce",
+		background = "#171a23",
+		cursor_bg = "#FB8C00",
+		cursor_border = "#FB8C00",
+		split = "#444444",
+		ansi = { "#000000", "#ff605a", "#b1e869", "#ead89c", "#5da9f6", "#e86aff", "#82fff6", "#ded9ce" },
+		brights = { "#313131", "#f58b7f", "#dcf88f", "#eee5b2", "#a5c7ff", "#ddaaff", "#b6fff9", "#fefffe" },
+		tab_bar = {
+			background = "#000000",
+			active_tab = { bg_color = "#171a23", fg_color = "#c0b070", intensity = "Normal" },
+			inactive_tab = { bg_color = "#000000", fg_color = "#c0c0c0", intensity = "Half" },
+			inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true },
+		},
+	},
+
+	tab_bar_style = {
+		active_tab_left = wezterm.format({
+			{ Background = { Color = "#171a23" } },
+			{ Foreground = { Color = "#000000" } },
+			{ Text = " " },
+		}),
+		active_tab_right = wezterm.format({
+			{ Background = { Color = "#171a23" } },
+			{ Foreground = { Color = "#000000" } },
+			{ Text = " " },
+		}),
+		inactive_tab_left = wezterm.format({
+			{ Background = { Color = "#000000" } },
+			{ Foreground = { Color = "#171a23" } },
+			{ Text = " " },
+		}),
+		inactive_tab_right = wezterm.format({
+			{ Background = { Color = "#000000" } },
+			{ Foreground = { Color = "#171a23" } },
+			{ Text = "▕" },
+		}),
+		inactive_tab_hover_left = wezterm.format({
+			{ Background = { Color = "#333333" } },
+			{ Foreground = { Color = "#ffffff" } },
+			{ Text = " " },
+		}),
+		inactive_tab_hover_right = wezterm.format({
+			{ Background = { Color = "#333333" } },
+			{ Foreground = { Color = "#ffffff" } },
+			{ Text = " " },
+		}),
+	},
+}
+
+local themeShelmanLight = {
 	colors = {
 		foreground = "#000000",
 		background = "#fcfcfc",
-		cursor_bg = "#ff3300",
+		cursor_bg = "#EA526F",
 		cursor_fg = "#ffffff",
 		cursor_border = "#cc0000",
 		split = "#444444",
@@ -20,7 +71,7 @@ local theme = {
 }
 
 return {
-	colors = theme.colors,
+	colors = themeShelmanLight.colors,
 	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
 	font_rules = {
 		{
@@ -52,21 +103,21 @@ return {
 	bold_brightens_ansi_colors = false,
 	allow_square_glyphs_to_overflow_width = "Always",
 
-	font_size = 10,
+	font_size = 10.5,
 	line_height = 1.0,
 	cell_width = 0.9,
 
 	initial_cols = 128,
 	initial_rows = 45,
-	use_resize_increments = true,
+	use_resize_increments = false,
 
 	window_background_opacity = 0.93,
-	--	window_padding = {
-	--		left = "0.75cell",
-	--		right = "0.5cell",
-	--		top = "0.5cell",
-	--		bottom = "0cell",
-	--	},
+	window_padding = {
+		left = "0",
+		right = "0",
+		top = "0",
+		bottom = "0",
+	},
 	window_decorations = "RESIZE",
 	window_frame = {
 		border_left_width = "2px",
@@ -81,7 +132,7 @@ return {
 
 	default_cursor_style = "SteadyBlock",
 	cursor_thickness = "3px",
-	cursor_blink_rate = 0,
+	cursor_blink_rate = 300,
 
 	enable_wayland = true,
 	enable_tab_bar = false,
