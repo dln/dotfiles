@@ -51,6 +51,7 @@ function M.config()
 	-- simple setups --
 	local servers = {
 		"bashls",
+		"bufls",
 		"dockerls",
 		"gopls",
 		"jsonls",
@@ -186,7 +187,9 @@ function M.config()
 		},
 	})
 
-	require("lspconfig").tsserver.setup({})
+	require("lspconfig").tsserver.setup({
+		root_dir = vim.loop.cwd,
+	})
 
 	-- npm install -g typescript typescript-language-server
 	-- require("lspconfig").tsserver.setup({

@@ -9,7 +9,6 @@ local M = {
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"onsails/lspkind-nvim",
-		"saadparwaiz1/cmp_luasnip",
 	},
 	event = "InsertEnter",
 }
@@ -42,12 +41,6 @@ function M.config()
 			}),
 		},
 
-		snippet = {
-			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
-			end,
-		},
-
 		mapping = {
 			["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 			["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -73,7 +66,6 @@ function M.config()
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "buffer" },
-			{ name = "luasnip" },
 			{ name = "copilot" },
 			{
 				name = "tmux",

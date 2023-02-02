@@ -22,7 +22,8 @@ function M.config()
 
 	vim.keymap.set("n", "<leader>b", '<cmd>lua require("telescope.builtin").buffers()<CR>')
 	vim.keymap.set("n", "<leader>f", '<cmd>lua require("telescope.builtin").oldfiles()<CR>')
-	vim.keymap.set("n", "<space>", '<cmd>lua require("telescope.builtin").oldfiles()<CR>')
+	vim.keymap.set("n", "<space>", '<cmd>lua require("telescope.builtin").oldfiles({cwd_only=true})<CR>')
+	vim.keymap.set("n", "<leader><space>", '<cmd>lua require("telescope.builtin").oldfiles()<CR>')
 	vim.keymap.set("n", "<leader>d", '<cmd>lua require("telescope.builtin").diagnostics()<CR>')
 	vim.keymap.set("n", "<leader>e", '<cmd>lua require("telescope.builtin").git_files()<CR>')
 	vim.keymap.set("n", "<leader>g", '<cmd>lua require("telescope.builtin").git_status()<CR>')
@@ -36,7 +37,11 @@ function M.config()
 	vim.keymap.set("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 	vim.keymap.set("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
 	vim.keymap.set("n", "g/", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
-	vim.keymap.set("n", "g?", '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<CR>')
+	vim.keymap.set(
+		"n",
+		"g?",
+		'<cmd>lua require("telescope.builtin").lsp_workspace_symbols({query=(vim.bo.filetype == "go" and "\'" or "")})<CR>'
+	)
 	vim.keymap.set("n", "ge", '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<CR>')
 	vim.keymap.set("n", "Db", '<cmd>lua require("telescope").extensions.dap.list_breakpoints()<CR>')
 	vim.keymap.set("n", "Dcc", '<cmd>lua require("telescope").extensions.dap.commands()<CR>')

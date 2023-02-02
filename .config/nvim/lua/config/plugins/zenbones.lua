@@ -37,6 +37,7 @@ function M.config()
 			-- Comment({ fg = "#114499", gui = "bold,italic" }),
 			-- Comment({ fg = "#144EE1", gui = "bold,italic" }),
 			Comment({ fg = "#8F001D", gui = "bold,italic" }),
+			Todo({ fg = "#FF0000", gui = "bold,underline" }),
 			EndOfBuffer({ fg = "#CBCFE1" }),
 			CopilotSuggestion({ fg = "#0066cc", gui = "bold,italic" }),
 			LineNr({ fg = "#9FA8AC", gui = "bold,italic" }),
@@ -72,6 +73,7 @@ function M.config()
 			Hlargs({ fg = "#2274A5" }),
 
 			IlluminatedWordText({ bg = "#FFEE99" }),
+			NotifyBackground({ bg = "#FFF8D6" }),
 
 			NavicIcons({ fg = "#cc0000" }),
 			NavicIconsFile({ fg = "#cc0000" }),

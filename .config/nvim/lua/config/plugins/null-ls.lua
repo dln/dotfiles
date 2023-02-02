@@ -13,6 +13,7 @@ function M.config()
 			builtins.formatting.buf,
 			builtins.formatting.cue_fmt,
 			builtins.formatting.shfmt,
+			builtins.formatting.sqlfluff,
 			builtins.formatting.buildifier,
 			builtins.completion.spell,
 			builtins.diagnostics.buf.with({

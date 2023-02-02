@@ -9,7 +9,7 @@ vim.o.splitright = true
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
 vim.o.updatetime = 100
-vim.o.autochdir = true
+vim.o.autochdir = false
 vim.o.backupdir = "/home/dln/.local/share/nvim/backup/"
 vim.o.backup = true
 vim.g.netrw_dirhistmax = 0
@@ -17,6 +17,7 @@ vim.o.clipboard = "unnamedplus"
 vim.g.do_filetype_lua = 1
 vim.o.spell = false
 vim.o.spelllang = "en_us"
+vim.opt.winbar = nil
 
 --- Indent
 vim.o.autoindent = true
@@ -61,8 +62,7 @@ vim.o.cmdheight = 1
 -- vim.o.statusline = "═"
 -- vim.o.title = true
 -- vim.o.titlestring = "%F%m %r %y"
-vim.o.fillchars =
-	"stl: ,stlnc: ,eob:🮙"
+vim.o.fillchars = "stl: ,stlnc: ,eob:🮙"
 -- vim.wo.foldmethod = "expr"
 -- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.g.netrw_dirhistmax = 0
