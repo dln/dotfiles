@@ -12,6 +12,7 @@ local M = {
 		"nvim-telescope/telescope-fzy-native.nvim",
 		"nvim-telescope/telescope-github.nvim",
 		"nvim-telescope/telescope-dap.nvim",
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 }
 
@@ -34,6 +35,7 @@ function M.config()
 	vim.keymap.set("n", "<leader>/", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 	vim.keymap.set("n", "<leader>.", '<cmd>lua require("telescope.builtin").file_browser()<CR>')
 	vim.keymap.set("n", "<leader>p", '<cmd>lua require("telescope.builtin").registers()<CR>')
+	vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 	vim.keymap.set("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 	vim.keymap.set("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
 	vim.keymap.set("n", "g/", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
@@ -70,6 +72,13 @@ function M.config()
 			grep_previewer = previewers.vim_buffer_vimgrep.new,
 			qflist_previewer = previewers.vim_buffer_qflist.new,
 		},
+		extensions = {
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown({
+					-- even more opts
+				}),
+			},
+		},
 	})
 
 	local layout_strategies = require("telescope.pickers.layout_strategies")
@@ -94,8 +103,7 @@ function M.config()
 	telescope.load_extension("dap")
 	telescope.load_extension("fzy_native")
 	telescope.load_extension("gh")
-	-- telescope.load_extension("packer")  -- currently breaking packer
-	--
+	telescope.load_extension("ui-select")
 end
 
 return M
