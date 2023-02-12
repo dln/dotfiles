@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -fe -o pipefail
 
+eval "$(direnv export bash)"
+
 if [ -n "$1" ]; then
 	_file=$(readlink -f "$@")
 else
@@ -14,6 +16,7 @@ fi
 
 tmux select-window -t nvim 2>/dev/null ||
 	tmux new-window -S -n nvim \
+		-e "BUILD_COMMAND=$BUILD_COMMAND" \
 		-e "GOPACKAGESDRIVER=$GOPACKAGESDRIVER" \
 		-e "GOFLAGS=$GOFLAGS" \
 		nvim --listen "$XDG_RUNTIME_DIR/nvim.sock"
