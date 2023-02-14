@@ -27,6 +27,7 @@ return {
 					"gomod",
 					"graphql",
 					"help",
+					"hcl",
 					"html",
 					"http",
 					"java",
@@ -67,20 +68,16 @@ return {
 					enable = true,
 					use_languagetree = true,
 				},
-
 				indent = {
 					enable = false,
 				},
-
 				context_commentstring = { enable = true, enable_autocmd = false },
-
 				playground = {
 					enable = true,
 					disable = {},
 					updatetime = 25,
 					persist_queries = false,
 				},
-
 				incremental_selection = {
 					enable = true,
 					keymaps = {
@@ -90,13 +87,11 @@ return {
 						node_decremental = "sa",
 					},
 				},
-
 				query_linter = {
 					enable = true,
 					use_virtual_text = true,
 					lint_events = { "BufWrite", "CursorHold" },
 				},
-
 				textobjects = {
 					move = {
 						enable = true,

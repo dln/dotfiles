@@ -6,6 +6,7 @@ end
 
 local M = {
 	"nvim-telescope/telescope.nvim",
+	lazy = false,
 	dependencies = {
 		"nvim-lua/popup.nvim",
 		"nvim-lua/plenary.nvim",

@@ -1,8 +1,8 @@
 local M = {
 	"mcchrish/zenbones.nvim",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
 	dependencies = {
-		"rktjmp/lush.nvim",
+		{ "rktjmp/lush.nvim" },
 	},
 }
 
@@ -119,15 +119,14 @@ function M.config()
 			PMenuThumb({ bg = "#64B5F6" }),
 			StatusLine({ base = base.VertSplit, fg = "#BCAAA4" }),
 			StatusLineNC({ base = base.VertSplit, fg = "#BCAAA4" }),
-
 			TreesitterContext({ bg = "#f0f0f0", fg = "#BCAAA4", gui = "bold,italic" }),
 			TreesitterContextLineNumber({ bg = "#f0f0f0", fg = "#979770", gui = "bold,italic" }),
 		}
 	end)
 
 	-- Apply specs using lush tool-chain
-	vim.cmd("colorscheme zenbones")
 	lush.apply(lush.compile(specs))
+	vim.cmd("colorscheme zenbones")
 end
 
 return M
