@@ -16,6 +16,7 @@ function M.config()
 			builtins.formatting.sqlfluff,
 			builtins.formatting.buildifier,
 			builtins.completion.spell,
+			builtins.code_actions.eslint_d,
 			builtins.diagnostics.buf.with({
 				args = { "lint", "--disable-symlinks", "--path", "$FILENAME" },
 				cwd = function()
@@ -28,6 +29,8 @@ function M.config()
 			}),
 			builtins.diagnostics.buildifier,
 			builtins.diagnostics.cue_fmt,
+			builtins.diagnostics.golangci_lint,
+			builtins.diagnostics.eslint_d,
 		},
 		debug = true,
 	})

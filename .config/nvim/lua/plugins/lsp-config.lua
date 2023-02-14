@@ -57,7 +57,7 @@ function M.config()
 		"jsonls",
 		-- "sql",
 		"pyright",
-		"sumneko_lua",
+		"lua_ls",
 		"terraformls",
 		"yamlls",
 	}
@@ -85,7 +85,7 @@ function M.config()
 		},
 	})
 
-	lspconfig.sumneko_lua.setup({
+	lspconfig.lua_ls.setup({
 		on_attach = function(client, bufnr)
 			on_attach(client, bufnr)
 			vim.cmd([[autocmd BufWritePre <buffer> lua require'stylua-nvim'.format_file()]])
