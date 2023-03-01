@@ -1,8 +1,6 @@
-local M = {
+return {
 	"mfussenegger/nvim-dap",
-
 	dependencies = {
-		{ "rcarriga/nvim-dap-ui" },
 		{
 			"theHamsta/nvim-dap-virtual-text",
 			config = function()
@@ -16,24 +14,40 @@ local M = {
 			config = function()
 				require("dap-go").setup()
 			end,
-			keys = {
-				{ "<leader>y", ":lua require('dap-go').debug_test()<CR>" },
-			},
 		},
 	},
+	keys = {
+		{ "DD", ":lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
+		{ "Dc", ":lua require'dap'.continue()<cr>", desc = "Continue" },
+		{ "Di", ":lua require'dap'.step_into()<cr>", desc = "Step Into" },
+		{ "Do", ":lua require'dap'.step_over()<cr>", desc = "Step Over" },
+		{ "DO", ":lua require'dap'.step_out()<cr>", desc = "Step Out" },
+		{ "Dh", ":lua require'dap.ui.widgets'.hover()<cr>", desc = "Hover" },
+		{ "Dr", ":lua require'dap'.repl.toggle({height = 5})<cr>", desc = "Toogle Repl" },
+	},
+	config = function()
+		require("dap")
+		require("dap.ext.vscode").load_launchjs()
+
+		vim.fn.sign_define(
+			"DapBreakpoint",
+			{ text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+		)
+		vim.fn.sign_define(
+			"DapBreakpointCondition",
+			{ text = "ﳁ", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+		)
+		vim.fn.sign_define(
+			"DapBreakpointRejected",
+			{ text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+		)
+		vim.fn.sign_define(
+			"DapLogPoint",
+			{ text = "", texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint" }
+		)
+		vim.fn.sign_define(
+			"DapStopped",
+			{ text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
+		)
+	end,
 }
-
-function M.init()
-	local silent = { silent = true }
-	vim.fn.sign_define("DapStopped", { text = "⇒", texthl = "", linehl = "debugPC", numhl = "" })
-	vim.fn.sign_define("DapBreakpoint", { text = "🧘", texthl = "", linehl = "debugPC", numhl = "" })
-	vim.keymap.set("n", "DD", ":lua require 'dap'.toggle_breakpoint()<CR>", silent)
-	vim.keymap.set("n", "Dc", ":lua require 'dap'.continue()<CR>", silent)
-	vim.keymap.set("n", "Di", ":lua require 'dap'.step_into()<CR>", silent)
-	vim.keymap.set("n", "Do", ":lua require 'dap'.step_over()<CR>", silent)
-	vim.keymap.set("n", "DO", ":lua require 'dap'.step_out()<CR>", silent)
-	vim.keymap.set("n", "Dr", ":lua require 'dap'.repl.toggle({height = 5})<CR>", silent)
-	vim.keymap.set("n", "Dh", ":lua require 'dap.ui.widgets'.hover()<CR>", silent)
-end
-
-return M
