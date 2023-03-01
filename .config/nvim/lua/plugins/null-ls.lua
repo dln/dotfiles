@@ -15,6 +15,7 @@ function M.config()
 			builtins.formatting.shfmt,
 			builtins.formatting.sqlfluff,
 			builtins.formatting.buildifier,
+			builtins.formatting.prettierd,
 			builtins.completion.spell,
 			builtins.code_actions.eslint_d,
 			builtins.diagnostics.buf.with({
