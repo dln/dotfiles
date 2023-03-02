@@ -5,12 +5,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
--- require("lazy").setup("plugins")
-
 require("lazy").setup({
 	import = "plugins",
 	defaults = { lazy = true },
 	checker = { enabled = true },
+	install = {
+		missing = true,
+		colorscheme = { "zenbones" },
+	},
 	performance = {
 		cache = {
 			enabled = true,
