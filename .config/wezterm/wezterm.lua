@@ -7,8 +7,9 @@ end
 
 local themeShelmanDark = {
 	colors = {
-		foreground = "#ded9ce",
-		background = "#171a23",
+		-- foreground = "#ded9ce",
+		foreground = "#f0f0f0",
+		background = "#141619",
 		cursor_bg = "#FB8C00",
 		cursor_border = "#FB8C00",
 		split = "#444444",
@@ -20,39 +21,6 @@ local themeShelmanDark = {
 			inactive_tab = { bg_color = "#000000", fg_color = "#c0c0c0", intensity = "Half" },
 			inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true },
 		},
-	},
-
-	tab_bar_style = {
-		active_tab_left = wezterm.format({
-			{ Background = { Color = "#171a23" } },
-			{ Foreground = { Color = "#000000" } },
-			{ Text = " " },
-		}),
-		active_tab_right = wezterm.format({
-			{ Background = { Color = "#171a23" } },
-			{ Foreground = { Color = "#000000" } },
-			{ Text = " " },
-		}),
-		inactive_tab_left = wezterm.format({
-			{ Background = { Color = "#000000" } },
-			{ Foreground = { Color = "#171a23" } },
-			{ Text = " " },
-		}),
-		inactive_tab_right = wezterm.format({
-			{ Background = { Color = "#000000" } },
-			{ Foreground = { Color = "#171a23" } },
-			{ Text = "▕" },
-		}),
-		inactive_tab_hover_left = wezterm.format({
-			{ Background = { Color = "#333333" } },
-			{ Foreground = { Color = "#ffffff" } },
-			{ Text = " " },
-		}),
-		inactive_tab_hover_right = wezterm.format({
-			{ Background = { Color = "#333333" } },
-			{ Foreground = { Color = "#ffffff" } },
-			{ Text = " " },
-		}),
 	},
 }
 
@@ -102,21 +70,18 @@ return {
 	warn_about_missing_glyphs = false,
 	bold_brightens_ansi_colors = false,
 	allow_square_glyphs_to_overflow_width = "Always",
-
-	font_size = 10.5,
+	font_size = 14,
 	line_height = 1.0,
 	cell_width = 0.9,
-
 	initial_cols = 128,
 	initial_rows = 45,
 	use_resize_increments = false,
-
-	window_background_opacity = 0.93,
+	-- window_background_opacity = 1.0, --0.93,
 	window_padding = {
-		left = "0",
-		right = "0",
-		top = "0",
-		bottom = "0",
+		left = "20",
+		right = "20",
+		top = "20",
+		bottom = "20",
 	},
 	window_decorations = "RESIZE",
 	window_frame = {
@@ -124,16 +89,14 @@ return {
 		border_right_width = "2px",
 		border_bottom_height = "2px",
 		border_top_height = "2px",
-		border_left_color = "#cccccc",
-		border_right_color = "#cccccc",
-		border_bottom_color = "#cccccc",
-		border_top_color = "#cccccc",
+		border_left_color = "#999999",
+		border_right_color = "#999999",
+		border_bottom_color = "#999999",
+		border_top_color = "#999999",
 	},
-
 	default_cursor_style = "SteadyBlock",
 	cursor_thickness = "3px",
 	cursor_blink_rate = 300,
-
 	enable_wayland = true,
 	enable_tab_bar = false,
 	tab_bar_at_bottom = true,
@@ -145,7 +108,6 @@ return {
 	status_update_interval = 100,
 	audible_bell = "Disabled",
 	term = "wezterm",
-
 	disable_default_key_bindings = true,
 	keys = {
 		{ key = "c", mods = "ALT|SHIFT", action = wezterm.action({ CopyTo = "ClipboardAndPrimarySelection" }) },
