@@ -125,8 +125,8 @@ function M.config()
 	end)
 
 	-- Apply specs using lush tool-chain
-	lush.apply(lush.compile(specs))
-	vim.cmd("colorscheme zenbones")
+	-- lush.apply(lush.compile(specs))
+	vim.cmd("colorscheme kanagawabones")
 end
 
 return M
