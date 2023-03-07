@@ -1,9 +1,0 @@
-[Unit]
-Description=dbus proxy for desktop notifications
-
-[Service]
-ExecStart=/usr/bin/xdg-dbus-proxy "$DBUS_SESSION_BUS_ADDRESS" %t/bus-notification --filter --talk=org.freedesktop.Notifications
-Restart=always
-
-[Install]
-WantedBy=default.target
