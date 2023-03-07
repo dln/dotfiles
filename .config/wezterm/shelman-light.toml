@@ -1,0 +1,14 @@
+[metadata]
+  name = "Shelman Light"
+  origin_url = ""
+
+[colors]
+  ansi = ["#000000", "#9e001d", "#509e00", "#ffc900", "#00669e", "#7d009e", "#008a9e", "#f0f0f0"]
+  brights = ["#000000", "#ff0035", "#85ff00", "#ffc900", "#00a7ff", "#cb01ff", "#00e0ff", "#ffffff"]
+  background = "#fefeff"
+  foreground = "#000000"
+  cursor_bg = "#aa0000"
+  cursor_fg = "#ffffff"
+  cursor_border = "#aa0000"
+  selection_bg = "#d7d7d7"
+  selection_fg = "#000000"

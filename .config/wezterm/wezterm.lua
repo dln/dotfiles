@@ -1,11 +1,26 @@
 local wezterm = require("wezterm")
+local io = require("io")
+local os = require("os")
 local mux = wezterm.mux
 local act = wezterm.action
 
-function font_with_fallback(name, params)
+local function font_with_fallback(name, params)
 	local names = { name, "Noto Color Emoji" }
 	return wezterm.font_with_fallback(names, params)
 end
+
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+end)
 
 wezterm.on("mux-startup", function()
 	local tab, pane, window = mux.spawn_window({})
@@ -20,20 +35,25 @@ wezterm.on("mux-startup", function()
 	window:spawn_tab({})
 end)
 
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		-- return "Shelman Light"
 		return "Shelman Dark"
 	else
-		return "Shelman Dark"
-		-- return "Shelman Light"
+		return "Shelman Light"
 	end
+end
+
+local function _get_scheme()
+	-- if wezterm.gui then
+	-- return  return scheme_for_appearance(wezterm.gui.get_appearance())
+	-- end
+	return "Shelman Dark"
 end
 
 local is_server = wezterm.hostname() == "dln-dev"
 
 return {
-	color_scheme = (is_server and "Shelman Dark" or scheme_for_appearance(wezterm.gui.get_appearance())),
+	color_scheme = _get_scheme(),
 	color_scheme_dirs = { "/home/dln/.config/wezterm" },
 	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
 	font_rules = {
@@ -139,7 +159,7 @@ return {
 		{
 			name = "dln-dev",
 			local_echo_threshold_ms = 100,
-			proxy_command = is_server == false and { "ssh", "dln-dev", "wezterm", "cli", "proxy" } or null,
+			proxy_command = is_server == false and { "ssh", "dln-dev", "wezterm", "cli", "proxy" } or nil,
 		},
 	},
 }
