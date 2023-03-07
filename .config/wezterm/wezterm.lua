@@ -141,7 +141,7 @@ return {
 	cursor_thickness = "3px",
 	cursor_blink_rate = 300,
 	enable_wayland = true,
-	enable_tab_bar = true,
+	enable_tab_bar = false,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = true,
 	show_tab_index_in_tab_bar = true,
