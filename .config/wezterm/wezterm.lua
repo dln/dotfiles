@@ -1,45 +1,40 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
+local act = wezterm.action
 
 function font_with_fallback(name, params)
-	local names = { name, "Noto Color Emoji", "Iosevka Nerd Font Mono" }
+	local names = { name, "Noto Color Emoji" }
 	return wezterm.font_with_fallback(names, params)
 end
 
-local themeShelmanDark = {
-	colors = {
-		-- foreground = "#ded9ce",
-		foreground = "#f0f0f0",
-		background = "#141619",
-		cursor_bg = "#FB8C00",
-		cursor_border = "#FB8C00",
-		split = "#444444",
-		ansi = { "#000000", "#ff605a", "#b1e869", "#ead89c", "#5da9f6", "#e86aff", "#82fff6", "#ded9ce" },
-		brights = { "#313131", "#f58b7f", "#dcf88f", "#eee5b2", "#a5c7ff", "#ddaaff", "#b6fff9", "#fefffe" },
-		tab_bar = {
-			background = "#000000",
-			active_tab = { bg_color = "#171a23", fg_color = "#c0b070", intensity = "Normal" },
-			inactive_tab = { bg_color = "#000000", fg_color = "#c0c0c0", intensity = "Half" },
-			inactive_tab_hover = { bg_color = "#333333", fg_color = "#909090", italic = true },
-		},
-	},
-}
+wezterm.on("mux-startup", function()
+	local tab, pane, window = mux.spawn_window({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	window:spawn_tab({})
+end)
 
-local themeShelmanLight = {
-	colors = {
-		foreground = "#000000",
-		background = "#fcfcfc",
-		cursor_bg = "#EA526F",
-		cursor_fg = "#ffffff",
-		cursor_border = "#cc0000",
-		split = "#444444",
-		selection_bg = "#FFCA28",
-		ansi = { "#212121", "#b7141e", "#457b23", "#f5971d", "#134eb2", "#550087", "#0e707c", "#eeeeee" },
-		brights = { "#424242", "#e83a3f", "#7aba39", "#fee92e", "#53a4f3", "#a94dbb", "#26bad1", "#d8d8d8" },
-	},
-}
+function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		-- return "Shelman Light"
+		return "Shelman Dark"
+	else
+		return "Shelman Dark"
+		-- return "Shelman Light"
+	end
+end
+
+local is_server = wezterm.hostname() == "dln-dev"
 
 return {
-	colors = themeShelmanLight.colors,
+	color_scheme = (is_server and "Shelman Dark" or scheme_for_appearance(wezterm.gui.get_appearance())),
+	color_scheme_dirs = { "/home/dln/.config/wezterm" },
 	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
 	font_rules = {
 		{
@@ -70,18 +65,26 @@ return {
 	warn_about_missing_glyphs = false,
 	bold_brightens_ansi_colors = false,
 	allow_square_glyphs_to_overflow_width = "Always",
-	font_size = 14,
+	font_size = 13.5,
 	line_height = 1.0,
-	cell_width = 0.9,
-	initial_cols = 128,
-	initial_rows = 45,
-	use_resize_increments = false,
-	-- window_background_opacity = 1.0, --0.93,
+	cell_width = 0.95,
+	-- initial_cols = 128,
+	-- initial_rows = 45,
+	use_resize_increments = true,
+	window_background_opacity = 1.0,
 	window_padding = {
-		left = "20",
-		right = "20",
-		top = "20",
-		bottom = "20",
+		left = "0.75cell",
+		right = "0.5cell",
+		top = "0.25cell",
+		bottom = "0cell",
+	},
+	colors = {
+		tab_bar = {
+			active_tab = {
+				fg_color = "#e0e0e0",
+				bg_color = "#374f66",
+			},
+		},
 	},
 	window_decorations = "RESIZE",
 	window_frame = {
@@ -89,17 +92,20 @@ return {
 		border_right_width = "2px",
 		border_bottom_height = "2px",
 		border_top_height = "2px",
-		border_left_color = "#999999",
-		border_right_color = "#999999",
-		border_bottom_color = "#999999",
-		border_top_color = "#999999",
+		border_left_color = "#333333",
+		border_right_color = "#333333",
+		border_bottom_color = "#333333",
+		border_top_color = "#333333",
+		inactive_titlebar_bg = "#21262e",
+		active_titlebar_bg = "#252b34",
 	},
 	default_cursor_style = "SteadyBlock",
 	cursor_thickness = "3px",
 	cursor_blink_rate = 300,
 	enable_wayland = true,
-	enable_tab_bar = false,
+	enable_tab_bar = true,
 	tab_bar_at_bottom = true,
+	use_fancy_tab_bar = true,
 	show_tab_index_in_tab_bar = true,
 	enable_scroll_bar = false,
 	scrollback_lines = 5000,
@@ -110,11 +116,30 @@ return {
 	term = "wezterm",
 	disable_default_key_bindings = true,
 	keys = {
-		{ key = "c", mods = "ALT|SHIFT", action = wezterm.action({ CopyTo = "ClipboardAndPrimarySelection" }) },
+		{ key = "c", mods = "ALT|SHIFT", action = act({ CopyTo = "ClipboardAndPrimarySelection" }) },
 		{ key = "v", mods = "ALT|SHIFT", action = "Paste" },
 		{ key = "0", mods = "CTRL", action = "ResetFontSize" },
 		{ key = "-", mods = "CTRL", action = "DecreaseFontSize" },
 		{ key = "=", mods = "CTRL", action = "IncreaseFontSize" },
 		{ key = "Enter", mods = "ALT", action = "ToggleFullScreen" },
+		{ key = "r", mods = "ALT", action = act.ReloadConfiguration },
+		-- mux
+		{ key = "E", mods = "CTRL|SHIFT", action = act.DetachDomain({ DomainName = "dln-dev" }) },
+		{ key = "1", mods = "ALT", action = act({ ActivateTab = 0 }) },
+		{ key = "2", mods = "ALT", action = act({ ActivateTab = 1 }) },
+		{ key = "3", mods = "ALT", action = act({ ActivateTab = 2 }) },
+		{ key = "4", mods = "ALT", action = act({ ActivateTab = 3 }) },
+		{ key = "5", mods = "ALT", action = act({ ActivateTab = 4 }) },
+		{ key = "6", mods = "ALT", action = act({ ActivateTab = 5 }) },
+		{ key = "7", mods = "ALT", action = act({ ActivateTab = 6 }) },
+		{ key = "8", mods = "ALT", action = act({ ActivateTab = 7 }) },
+		{ key = "9", mods = "ALT", action = act({ ActivateTab = 8 }) },
+	},
+	unix_domains = {
+		{
+			name = "dln-dev",
+			local_echo_threshold_ms = 100,
+			proxy_command = is_server == false and { "ssh", "dln-dev", "wezterm", "cli", "proxy" } or null,
+		},
 	},
 }
