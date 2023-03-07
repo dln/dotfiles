@@ -105,7 +105,7 @@ export LESS="--mouse --wheel-lines=1 -nRXF"
 
 ## Aliases
 alias c='cut -c-${COLUMNS}'
-alias e='tmux-edit-helper'
+alias e='wezterm-edit-helper'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias l=bat
 alias lw='bat --wrap=never'

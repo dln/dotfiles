@@ -52,6 +52,24 @@ end
 
 local is_server = wezterm.hostname() == "dln-dev"
 
+wezterm.on("user-var-changed", function(window, pane, name, value)
+	wezterm.log_info("user-var-changed", name, value)
+
+	if name == "nvim_activate" then
+		for _, t in ipairs(window:mux_window():tabs_with_info()) do
+			for _, p in ipairs(t.tab:panes()) do
+				if p:get_title() == "nvim" then
+					window:perform_action(act.ActivateTab(t.index), p)
+					if t.index > 0 then
+						window:perform_action(act.MoveTab(0), p)
+					end
+				end
+			end
+		end
+		-- window:perform_action(act.ActivateTab(0), pane)
+	end
+end)
+
 return {
 	color_scheme = _get_scheme(),
 	color_scheme_dirs = { "/home/dln/.config/wezterm" },
@@ -154,6 +172,9 @@ return {
 		{ key = "7", mods = "ALT", action = act({ ActivateTab = 6 }) },
 		{ key = "8", mods = "ALT", action = act({ ActivateTab = 7 }) },
 		{ key = "9", mods = "ALT", action = act({ ActivateTab = 8 }) },
+		{ key = "0", mods = "ALT", action = act({ ActivateTab = 9 }) },
+		{ key = "RightArrow", mods = "CTRL", action = act.ActivateTabRelative(1) },
+		{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 	},
 	unix_domains = {
 		{
