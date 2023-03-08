@@ -175,6 +175,7 @@ return {
 		{ key = "0", mods = "ALT", action = act({ ActivateTab = 9 }) },
 		{ key = "RightArrow", mods = "CTRL", action = act.ActivateTabRelative(1) },
 		{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
+		{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
 	},
 	unix_domains = {
 		{
