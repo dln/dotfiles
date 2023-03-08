@@ -14,7 +14,7 @@ function M.config()
 	lualine.setup({
 		options = {
 			globalstatus = true,
-			theme = "onelight",
+			theme = "onedark",
 			component_separators = { left = "╲", right = "╱" },
 			section_separators = { left = "", right = "" },
 		},

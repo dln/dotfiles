@@ -1,5 +1,7 @@
 local M = {
 	"mcchrish/zenbones.nvim",
+	lazy = false,
+	priority = 1000,
 	-- event = "VeryLazy",
 	dependencies = {
 		{ "rktjmp/lush.nvim" },
@@ -7,9 +9,9 @@ local M = {
 }
 
 function M.config()
-	vim.g.zenbones = {
-		style = "light",
-		lightness = "bright",
+	vim.g.kanagawabones = {
+		-- style = "light",
+		-- lightness = "bright",
 		colorize_diagnostic_underline_text = true,
 		transparent_background = true,
 	}

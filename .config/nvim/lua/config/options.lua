@@ -46,10 +46,9 @@ end
 
 --- Completion
 vim.cmd("set shortmess+=c")
-vim.o.completeopt = "menuone,noinsert,noselect"
+vim.opt.completeopt = { "menuone", "noselect" }
 
 --- Appearance
-vim.o.background = "light"
 vim.o.scrolloff = 7
 vim.o.showmode = false
 vim.o.sidescrolloff = 5

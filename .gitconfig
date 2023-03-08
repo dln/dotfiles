@@ -69,7 +69,7 @@ threads = 0
 date = relative
 
 [delta]
-syntax-theme = GitHub
+# syntax-theme = GitHub
 hunk-header-style = line-number syntax
 
 [hub]
