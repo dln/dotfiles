@@ -1,6 +1,4 @@
 local wezterm = require("wezterm")
-local io = require("io")
-local os = require("os")
 local mux = wezterm.mux
 local act = wezterm.action
 
@@ -13,9 +11,6 @@ wezterm.on("gui-startup", function(cmd)
 	local _, _, local_win = mux.spawn_window({
 		workspace = "default",
 	})
-	for _ = 1, 10 do
-		local_win:spawn_tab({})
-	end
 
 	mux.spawn_window({
 		workspace = "dln-dev",
@@ -29,9 +24,6 @@ wezterm.on("mux-startup", function()
 	local _, _, dev_win = mux.spawn_window({
 		workspace = "dln-dev",
 	})
-	for _ = 1, 10 do
-		dev_win:spawn_tab({})
-	end
 end)
 
 local function scheme_for_appearance(appearance)
@@ -51,23 +43,63 @@ end
 
 local is_server = wezterm.hostname() == "dln-dev"
 
+local function activate_nvim(window, pane)
+	wezterm.log_info("activate_nvim")
+	for _, t in ipairs(window:mux_window():tabs_with_info()) do
+		for _, p in ipairs(t.tab:panes()) do
+			if p:get_title() == "nvim" then
+				window:perform_action(
+					act.Multiple({
+						act.ActivateTab(t.index),
+						act.MoveTab(0),
+					}),
+					pane
+				)
+				return
+			end
+		end
+	end
+end
+
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	wezterm.log_info("user-var-changed", name, value)
 
 	if name == "nvim_activate" then
-		for _, t in ipairs(window:mux_window():tabs_with_info()) do
-			for _, p in ipairs(t.tab:panes()) do
-				if p:get_title() == "nvim" then
-					window:perform_action(act.ActivateTab(t.index), p)
-					if t.index > 0 then
-						window:perform_action(act.MoveTab(0), p)
-					end
-				end
-			end
-		end
-		-- window:perform_action(act.ActivateTab(0), pane)
+		activate_nvim(window, pane)
 	end
 end)
+
+local function activate_tab(title, index)
+	return function(window, pane)
+		wezterm.log_info(title)
+		for _, t in ipairs(window:mux_window():tabs_with_info()) do
+			if t.tab:get_title() == title then
+				window:perform_action(
+					act.Multiple({
+						act.ActivateTab(t.index),
+						act.MoveTab(index),
+					}),
+					pane
+				)
+				return
+			end
+		end
+		local tab, _, _ = window:mux_window():spawn_tab({})
+		tab:set_title(title)
+		window:perform_action(act.MoveTab(index), pane)
+	end
+end
+
+wezterm.on("tab-1", activate_nvim)
+wezterm.on("tab-2", activate_tab("t2", 1))
+wezterm.on("tab-3", activate_tab("t3", 2))
+wezterm.on("tab-4", activate_tab("t4", 3))
+wezterm.on("tab-5", activate_tab("t5", 4))
+wezterm.on("tab-6", activate_tab("t6", 5))
+wezterm.on("tab-7", activate_tab("t7", 6))
+wezterm.on("tab-8", activate_tab("t8", 7))
+wezterm.on("tab-9", activate_tab("t9", 8))
+wezterm.on("tab-10", activate_tab("t10", 9))
 
 return {
 	color_scheme = _get_scheme(),
@@ -162,16 +194,16 @@ return {
 		{ key = "r", mods = "ALT", action = act.ReloadConfiguration },
 		-- mux
 		{ key = "E", mods = "CTRL|SHIFT", action = act.DetachDomain({ DomainName = "dln-dev" }) },
-		{ key = "1", mods = "ALT", action = act({ ActivateTab = 0 }) },
-		{ key = "2", mods = "ALT", action = act({ ActivateTab = 1 }) },
-		{ key = "3", mods = "ALT", action = act({ ActivateTab = 2 }) },
-		{ key = "4", mods = "ALT", action = act({ ActivateTab = 3 }) },
-		{ key = "5", mods = "ALT", action = act({ ActivateTab = 4 }) },
-		{ key = "6", mods = "ALT", action = act({ ActivateTab = 5 }) },
-		{ key = "7", mods = "ALT", action = act({ ActivateTab = 6 }) },
-		{ key = "8", mods = "ALT", action = act({ ActivateTab = 7 }) },
-		{ key = "9", mods = "ALT", action = act({ ActivateTab = 8 }) },
-		{ key = "0", mods = "ALT", action = act({ ActivateTab = 9 }) },
+		{ key = "1", mods = "ALT", action = act.EmitEvent("tab-1") },
+		{ key = "2", mods = "ALT", action = act.EmitEvent("tab-2") },
+		{ key = "3", mods = "ALT", action = act.EmitEvent("tab-3") },
+		{ key = "4", mods = "ALT", action = act.EmitEvent("tab-4") },
+		{ key = "5", mods = "ALT", action = act.EmitEvent("tab-5") },
+		{ key = "6", mods = "ALT", action = act.EmitEvent("tab-6") },
+		{ key = "7", mods = "ALT", action = act.EmitEvent("tab-7") },
+		{ key = "8", mods = "ALT", action = act.EmitEvent("tab-8") },
+		{ key = "9", mods = "ALT", action = act.EmitEvent("tab-9") },
+		{ key = "0", mods = "ALT", action = act.EmitEvent("tab-10") },
 		{ key = "RightArrow", mods = "CTRL", action = act.ActivateTabRelative(1) },
 		{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
