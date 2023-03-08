@@ -10,29 +10,28 @@ local function font_with_fallback(name, params)
 end
 
 wezterm.on("gui-startup", function(cmd)
-	local tab, pane, window = mux.spawn_window(cmd or {})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
+	local _, _, local_win = mux.spawn_window({
+		workspace = "default",
+	})
+	for _ = 1, 10 do
+		local_win:spawn_tab({})
+	end
+
+	mux.spawn_window({
+		workspace = "dln-dev",
+		domain = { DomainName = "dln-dev" },
+	})
+
+	mux.set_active_workspace("default")
 end)
 
 wezterm.on("mux-startup", function()
-	local tab, pane, window = mux.spawn_window({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
-	window:spawn_tab({})
+	local _, _, dev_win = mux.spawn_window({
+		workspace = "dln-dev",
+	})
+	for _ = 1, 10 do
+		dev_win:spawn_tab({})
+	end
 end)
 
 local function scheme_for_appearance(appearance)
@@ -176,6 +175,7 @@ return {
 		{ key = "RightArrow", mods = "CTRL", action = act.ActivateTabRelative(1) },
 		{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+		{ key = "Backspace", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
 	},
 	unix_domains = {
 		{
