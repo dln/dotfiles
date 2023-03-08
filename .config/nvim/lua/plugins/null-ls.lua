@@ -9,15 +9,10 @@ function M.config()
 
 	null_ls.setup({
 		sources = {
-			builtins.formatting.black,
-			builtins.formatting.buf,
-			builtins.formatting.cue_fmt,
-			builtins.formatting.shfmt,
-			builtins.formatting.sqlfluff,
-			builtins.formatting.buildifier,
-			builtins.formatting.prettierd,
-			builtins.completion.spell,
 			builtins.code_actions.eslint_d,
+
+			builtins.completion.spell,
+
 			builtins.diagnostics.buf.with({
 				args = { "lint", "--disable-symlinks", "--path", "$FILENAME" },
 				cwd = function()
@@ -30,8 +25,17 @@ function M.config()
 			}),
 			builtins.diagnostics.buildifier,
 			builtins.diagnostics.cue_fmt,
-			builtins.diagnostics.golangci_lint,
 			builtins.diagnostics.eslint_d,
+			builtins.diagnostics.golangci_lint,
+
+			builtins.formatting.black,
+			builtins.formatting.buf,
+			builtins.formatting.buildifier,
+			builtins.formatting.cue_fmt,
+			builtins.formatting.prettierd,
+			builtins.formatting.shfmt,
+			builtins.formatting.sqlfluff,
+			builtins.formatting.stylua,
 		},
 		debug = true,
 	})
