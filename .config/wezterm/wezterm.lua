@@ -137,8 +137,8 @@ return {
 	font_size = 13.5,
 	line_height = 1.0,
 	cell_width = 0.95,
-	-- initial_cols = 128,
-	-- initial_rows = 45,
+	initial_cols = 132,
+	initial_rows = 45,
 	use_resize_increments = true,
 	window_background_opacity = 1.0,
 	window_padding = {
@@ -178,7 +178,7 @@ return {
 	show_tab_index_in_tab_bar = true,
 	enable_scroll_bar = false,
 	scrollback_lines = 5000,
-	alternate_buffer_wheel_scroll_speed = 2,
+	alternate_buffer_wheel_scroll_speed = 1,
 	check_for_updates = false,
 	status_update_interval = 100,
 	audible_bell = "Disabled",
@@ -208,6 +208,30 @@ return {
 		{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
 		{ key = "Backspace", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
+		{ key = "UpArrow", mods = "SHIFT", action = act.ScrollByLine(-1) },
+		{ key = "DownArrow", mods = "SHIFT", action = act.ScrollByLine(1) },
+		{ key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-0.5) },
+		{ key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(0.5) },
+	},
+	mouse_bindings = {
+		{
+			event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+			mods = "SHIFT",
+			action = act.ScrollByLine(-1),
+		},
+		{
+			event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+			mods = "SHIFT",
+			action = act.ScrollByLine(1),
+		},
+		{
+			event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+			action = act.ScrollByPage(-0.25),
+		},
+		{
+			event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+			action = act.ScrollByPage(0.25),
+		},
 	},
 	unix_domains = {
 		{
