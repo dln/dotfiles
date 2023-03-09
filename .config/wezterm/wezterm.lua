@@ -26,21 +26,6 @@ wezterm.on("mux-startup", function()
 	})
 end)
 
-local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Shelman Dark"
-	else
-		return "Shelman Light"
-	end
-end
-
-local function _get_scheme()
-	-- if wezterm.gui then
-	-- return  return scheme_for_appearance(wezterm.gui.get_appearance())
-	-- end
-	return "Shelman Dark"
-end
-
 local is_server = wezterm.hostname() == "dln-dev"
 
 local function activate_nvim(window, pane)
@@ -101,9 +86,13 @@ wezterm.on("tab-8", activate_tab("t8", 7))
 wezterm.on("tab-9", activate_tab("t9", 8))
 wezterm.on("tab-10", activate_tab("t10", 9))
 
+wezterm.add_to_config_reload_watch_list("/home/dln/.config/shelman-theme/current/wezterm")
+
 return {
-	color_scheme = _get_scheme(),
-	color_scheme_dirs = { "/home/dln/.config/wezterm" },
+	color_scheme = "Shelman Theme",
+	color_scheme_dirs = {
+		"/home/dln/.config/shelman-theme/current/wezterm",
+	},
 	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
 	font_rules = {
 		{
