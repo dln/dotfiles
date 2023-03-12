@@ -8,22 +8,31 @@ local function font_with_fallback(name, params)
 end
 
 wezterm.on("gui-startup", function(cmd)
-	local _, _, local_win = mux.spawn_window({
-		workspace = "default",
-	})
+	local args = {}
+	if cmd then
+		args = cmd.args
+	end
 
-	mux.spawn_window({
-		workspace = "dln-dev",
-		domain = { DomainName = "dln-dev" },
+	local _, _, window = mux.spawn_window({
+		workspace = "local",
+		args = args,
 	})
+	-- spawn 10 tabs
+	for _ = 1, 10 do
+		window:spawn_tab({})
+	end
 
-	mux.set_active_workspace("default")
+	mux.set_active_workspace("local")
 end)
 
 wezterm.on("mux-startup", function()
-	local _, _, dev_win = mux.spawn_window({
+	local _, _, window = mux.spawn_window({
 		workspace = "dln-dev",
 	})
+	-- Spawn 10 mux tabs (on dev server)
+	for _ = 1, 10 do
+		window:spawn_tab({})
+	end
 end)
 
 local is_server = wezterm.hostname() == "dln-dev"
@@ -54,37 +63,38 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 	end
 end)
 
-local function activate_tab(title, index)
+local function activate_tab(index)
 	return function(window, pane)
-		wezterm.log_info(title)
-		for _, t in ipairs(window:mux_window():tabs_with_info()) do
-			if t.tab:get_title() == title then
-				window:perform_action(
-					act.Multiple({
-						act.ActivateTab(t.index),
-						act.MoveTab(index),
-					}),
-					pane
-				)
-				return
-			end
-		end
-		local tab, _, _ = window:mux_window():spawn_tab({})
-		tab:set_title(title)
-		window:perform_action(act.MoveTab(index), pane)
+		window:perform_action(act.ActivateTab(index), pane)
+		-- wezterm.log_info(title)
+		-- for _, t in ipairs(window:mux_window():tabs_with_info()) do
+		-- 	if t.tab:get_title() == title then
+		-- 		window:perform_action(
+		-- 			act.Multiple({
+		-- 				act.ActivateTab(t.index),
+		-- 				act.MoveTab(index),
+		-- 			}),
+		-- 			pane
+		-- 		)
+		-- 		return
+		-- 	end
+		-- end
+		-- local tab, _, _ = window:mux_window():spawn_tab({})
+		-- tab:set_title(title)
+		-- window:perform_action(act.MoveTab(index), pane)
 	end
 end
 
 wezterm.on("tab-1", activate_nvim)
-wezterm.on("tab-2", activate_tab("t2", 1))
-wezterm.on("tab-3", activate_tab("t3", 2))
-wezterm.on("tab-4", activate_tab("t4", 3))
-wezterm.on("tab-5", activate_tab("t5", 4))
-wezterm.on("tab-6", activate_tab("t6", 5))
-wezterm.on("tab-7", activate_tab("t7", 6))
-wezterm.on("tab-8", activate_tab("t8", 7))
-wezterm.on("tab-9", activate_tab("t9", 8))
-wezterm.on("tab-10", activate_tab("t10", 9))
+wezterm.on("tab-2", activate_tab(1))
+wezterm.on("tab-3", activate_tab(2))
+wezterm.on("tab-4", activate_tab(3))
+wezterm.on("tab-5", activate_tab(4))
+wezterm.on("tab-6", activate_tab(5))
+wezterm.on("tab-7", activate_tab(6))
+wezterm.on("tab-8", activate_tab(7))
+wezterm.on("tab-9", activate_tab(8))
+wezterm.on("tab-10", activate_tab(9))
 
 wezterm.add_to_config_reload_watch_list("/home/dln/.config/shelman-theme/current/wezterm")
 
@@ -161,7 +171,7 @@ return {
 	cursor_thickness = "3px",
 	cursor_blink_rate = 300,
 	enable_wayland = true,
-	enable_tab_bar = false,
+	enable_tab_bar = true,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = true,
 	show_tab_index_in_tab_bar = true,
@@ -182,7 +192,8 @@ return {
 		{ key = "Enter", mods = "ALT", action = "ToggleFullScreen" },
 		{ key = "r", mods = "ALT", action = act.ReloadConfiguration },
 		-- mux
-		{ key = "E", mods = "CTRL|SHIFT", action = act.DetachDomain({ DomainName = "dln-dev" }) },
+		{ key = "A", mods = "ALT", action = act.AttachDomain("dln-dev") },
+		{ key = "E", mods = "ALT", action = act.DetachDomain({ DomainName = "dln-dev" }) },
 		{ key = "1", mods = "ALT", action = act.EmitEvent("tab-1") },
 		{ key = "2", mods = "ALT", action = act.EmitEvent("tab-2") },
 		{ key = "3", mods = "ALT", action = act.EmitEvent("tab-3") },
