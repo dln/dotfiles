@@ -119,7 +119,7 @@ alias xc=clip
 alias w="history -1 | sed -e 's/[0-9]*  //' | xargs viddy -n1"
 
 ## ripgrep 
-export RIPGREP_CONFIG_PATH=${HOME}/.config/rg/rg.conf
+export RIPGREP_CONFIG_PATH=${HOME}/.config/shelman-theme/current/rg/rg.conf
 
 # "auto paging"
 rg() {
