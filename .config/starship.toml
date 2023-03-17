@@ -1,13 +1,14 @@
 add_newline = false
 
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_status\
+# ${custom.sl_status}\
+
 format = """\
 $hostname\
 $directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-${custom.sl_status}\
 ($character)\
 """
 
