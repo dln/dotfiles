@@ -69,3 +69,7 @@ vim.g.netrw_dirhistmax = 0
 --- Key mappings
 vim.keymap.set("n", "<C-l>", ':let @/=""<CR>') -- clear search
 vim.keymap.set("n", ",L", ":luafile %<CR>") -- Reload lua file
+
+-- AutoCommand OSC7 workaround for tmux
+-- see https://github.com/neovim/neovim/issues/21771
+vim.cmd([[autocmd DirChanged * call chansend(v:stderr, printf("\033]7;file://%s\033\\", v:event.cwd))]])
