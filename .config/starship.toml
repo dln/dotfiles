@@ -4,11 +4,11 @@ add_newline = false
 # $git_commit\
 # $git_state\
 # $git_status\
-# ${custom.sl_status}\
 
 format = """\
 $hostname\
 $directory\
+${custom.sl_status}\
 ($character)\
 """
 
