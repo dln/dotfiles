@@ -186,7 +186,7 @@ return {
 	disable_default_key_bindings = true,
 	keys = {
 		{ key = "c", mods = "ALT|SHIFT", action = act.CopyTo("ClipboardAndPrimarySelection") },
-		{ key = "v", mods = "ALT|SHIFT", action = act.PasteFrom("PrimarySelection") },
+		{ key = "v", mods = "ALT|SHIFT", action = act.PasteFrom("Clipboard") },
 		{ key = "0", mods = "CTRL", action = "ResetFontSize" },
 		{ key = "-", mods = "CTRL", action = "DecreaseFontSize" },
 		{ key = "=", mods = "CTRL", action = "IncreaseFontSize" },
