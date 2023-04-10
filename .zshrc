@@ -219,7 +219,6 @@ fi
 
 ## Golang
 export PATH=$HOME/go/bin:$PATH
-GOPROXY=https://athens.aarn.shelman.io
 
 ## Ansible
 export ANSIBLE_NOCOWS=1
