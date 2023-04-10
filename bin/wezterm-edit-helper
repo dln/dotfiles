@@ -17,10 +17,11 @@ fi
 _nvim_socket="$XDG_RUNTIME_DIR/nvim-persistent.sock"
 
 function _nvim_setenv() {
-	nvim --server "$_nvim_socket" --remote-expr "execute(\"let \$${1} = \\\"${2}\\\"\")"
+	nvim --server "$_nvim_socket" --remote-expr "execute(\"let \$${1} = \\\"${2}\\\"\")" 2>&1 >/dev/null
 }
 
-nvim --server "$_nvim_socket" --remote-expr "42" 2>/dev/null ||
+
+nvim --server "$_nvim_socket" --remote-expr "42" 2>&1 >/dev/null ||
 	(rm -f "$_nvim_socket" && wezterm cli spawn --cwd "${PWD}" nvim --listen "$_nvim_socket" && sleep 0.5)
 
 _nvim_setenv BUILD_COMMAND "$BUILD_COMMAND"
