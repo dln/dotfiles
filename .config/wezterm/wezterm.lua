@@ -66,22 +66,6 @@ end)
 local function activate_tab(index)
 	return function(window, pane)
 		window:perform_action(act.ActivateTab(index), pane)
-		-- wezterm.log_info(title)
-		-- for _, t in ipairs(window:mux_window():tabs_with_info()) do
-		-- 	if t.tab:get_title() == title then
-		-- 		window:perform_action(
-		-- 			act.Multiple({
-		-- 				act.ActivateTab(t.index),
-		-- 				act.MoveTab(index),
-		-- 			}),
-		-- 			pane
-		-- 		)
-		-- 		return
-		-- 	end
-		-- end
-		-- local tab, _, _ = window:mux_window():spawn_tab({})
-		-- tab:set_title(title)
-		-- window:perform_action(act.MoveTab(index), pane)
 	end
 end
 
@@ -141,12 +125,6 @@ return {
 	initial_rows = 45,
 	use_resize_increments = true,
 	window_background_opacity = 1.0,
-	window_padding = {
-		left = "0.75cell",
-		right = "0.5cell",
-		top = "0.25cell",
-		bottom = "0cell",
-	},
 	colors = {
 		tab_bar = {
 			active_tab = {
@@ -155,24 +133,11 @@ return {
 			},
 		},
 	},
-	window_decorations = "RESIZE",
-	window_frame = {
-		border_left_width = "2px",
-		border_right_width = "2px",
-		border_bottom_height = "2px",
-		border_top_height = "2px",
-		border_left_color = "#333333",
-		border_right_color = "#333333",
-		border_bottom_color = "#333333",
-		border_top_color = "#333333",
-		inactive_titlebar_bg = "#21262e",
-		active_titlebar_bg = "#252b34",
-	},
 	default_cursor_style = "SteadyBlock",
 	cursor_thickness = "3px",
-	cursor_blink_rate = 300,
+	cursor_blink_rate = 0,
 	enable_wayland = true,
-	enable_tab_bar = true,
+	enable_tab_bar = false,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = true,
 	show_tab_index_in_tab_bar = true,
