@@ -109,11 +109,7 @@ return {
 			font = font_with_fallback("Iosevka Shelman SS09", { weight = "DemiBold" }),
 		},
 	},
-	freetype_load_target = "Light",
-	freetype_render_target = "HorizontalLcd",
-	--freetype_load_flags = "NO_HINTING",
-	--custom_block_glyphs = false,
-
+	front_end = "WebGpu",
 	warn_about_missing_glyphs = false,
 	bold_brightens_ansi_colors = false,
 	allow_square_glyphs_to_overflow_width = "Always",
