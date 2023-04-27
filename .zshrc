@@ -172,6 +172,11 @@ pyenv() {
   esac
 }
 
+
+autoload -Uz compdef
+autoload -U +X bashcompinit && bashcompinit
+autoload -U +X compinit && compinit
+
 ## eksctl
 if [ ! -f "${fpath[1]}/_eksctl" ]; then
 	command -v eksctl >/dev/null 2>&1 && eksctl completion zsh > "${fpath[1]}/_eksctl"
@@ -214,8 +219,13 @@ if [ ! -f "${fpath[1]}/_talosctl" ]; then
 	command -v talosctl >/dev/null 2>&1 && talosctl completion zsh > "${fpath[1]}/_talosctl"
 fi
 
+## vault
+complete -o nospace -C /usr/bin/vault vault
+
 ## Google Cloud
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
+if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/completion.zsh.inc'; fi
 
 ## Golang
 export PATH=$HOME/go/bin:$PATH
@@ -226,21 +236,8 @@ export ANSIBLE_NOCOWS=1
 ## Docker
 export DOCKER_BUILDKIT=1
 
-autoload -Uz compinit
-compinit
-
-autoload -Uz compdef
-
 PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete.zsh"
 
 ## AWS
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
 complete -C '/usr/bin/aws_completer' aws
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/dln/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/google-cloud-sdk/completion.zsh.inc'; fi
