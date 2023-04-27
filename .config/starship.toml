@@ -17,7 +17,7 @@ right_format = """\
 
 [custom.sl_status]
 command = '''~/bin/starship-sl-status'''
-when = true
+when = false
 style = "italic fg:#79AE6F"
 format = '[(🌱 $output )]($style)'
 
