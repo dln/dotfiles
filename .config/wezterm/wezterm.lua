@@ -2,6 +2,9 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
 
+local dev_host = "dln-dev"
+local spawn_dev_nvim = { "ssh", dev_host, "nvim", "--listen", os.getenv("XDG_RUNTIME_DIR") .. "/nvim-persistent.sock" }
+
 local function font_with_fallback(name, params)
 	local names = { name, "Noto Color Emoji" }
 	return wezterm.font_with_fallback(names, params)
@@ -13,35 +16,34 @@ wezterm.on("gui-startup", function(cmd)
 		args = cmd.args
 	end
 
-	local _, _, window = mux.spawn_window({
+	local tab, pane, window = mux.spawn_window({
 		workspace = "local",
-		args = args,
+		args = { "nvim", "--listen", os.getenv("XDG_RUNTIME_DIR") .. "/nvim-persistent.sock" },
 	})
-	-- spawn 10 tabs
-	for _ = 1, 10 do
+	tab:set_title("nvim")
+
+	for _ = 1, 9 do
 		window:spawn_tab({})
+	end
+	window:gui_window():perform_action(act.ActivateTab(1), pane)
+
+	local tab, pane, window = mux.spawn_window({
+		workspace = dev_host,
+		args = spawn_dev_nvim,
+	})
+	tab:set_title("nvim")
+
+	for _ = 1, 9 do
+		window:spawn_tab({ args = { "ssh", dev_host } })
 	end
 
 	mux.set_active_workspace("local")
 end)
 
-wezterm.on("mux-startup", function()
-	local _, _, window = mux.spawn_window({
-		workspace = "dln-dev",
-	})
-	-- Spawn 10 mux tabs (on dev server)
-	for _ = 1, 10 do
-		window:spawn_tab({})
-	end
-end)
-
-local is_server = wezterm.hostname() == "dln-dev"
-
 local function activate_nvim(window, pane)
-	wezterm.log_info("activate_nvim")
 	for _, t in ipairs(window:mux_window():tabs_with_info()) do
 		for _, p in ipairs(t.tab:panes()) do
-			if p:get_title() == "nvim" then
+			if p:get_title() == "nvim" or t.tab:get_title() == "nvim" then
 				window:perform_action(
 					act.Multiple({
 						act.ActivateTab(t.index),
@@ -53,39 +55,31 @@ local function activate_nvim(window, pane)
 			end
 		end
 	end
+
+	local nvim = { "nvim", "--listen", os.getenv("XDG_RUNTIME_DIR") .. "/nvim-persistent.sock" }
+	if window:mux_window():get_workspace() == dev_host then
+		nvim = spawn_dev_nvim
+	end
+
+	local tab, pane, _ = window:mux_window():spawn_tab({ args = nvim })
+	window:perform_action(act.MoveTab(0), pane)
+	tab:set_title("nvim")
 end
 
 wezterm.on("user-var-changed", function(window, pane, name, value)
-	wezterm.log_info("user-var-changed", name, value)
-
 	if name == "nvim_activate" then
 		activate_nvim(window, pane)
 	end
 end)
 
-local function activate_tab(index)
-	return function(window, pane)
-		window:perform_action(act.ActivateTab(index), pane)
-	end
-end
+wezterm.on("activate-nvim", activate_nvim)
 
-wezterm.on("tab-1", activate_nvim)
-wezterm.on("tab-2", activate_tab(1))
-wezterm.on("tab-3", activate_tab(2))
-wezterm.on("tab-4", activate_tab(3))
-wezterm.on("tab-5", activate_tab(4))
-wezterm.on("tab-6", activate_tab(5))
-wezterm.on("tab-7", activate_tab(6))
-wezterm.on("tab-8", activate_tab(7))
-wezterm.on("tab-9", activate_tab(8))
-wezterm.on("tab-10", activate_tab(9))
-
-wezterm.add_to_config_reload_watch_list("/home/dln/.config/shelman-theme/current/wezterm")
+wezterm.add_to_config_reload_watch_list(os.getenv("HOME") .. "/.config/shelman-theme/current/wezterm")
 
 return {
 	color_scheme = "Shelman Theme",
 	color_scheme_dirs = {
-		"/home/dln/.config/shelman-theme/current/wezterm",
+		os.getenv("HOME") .. "/.config/shelman-theme/current/wezterm",
 	},
 	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
 	font_rules = {
@@ -110,6 +104,7 @@ return {
 		},
 	},
 	front_end = "WebGpu",
+	webgpu_power_preference = "HighPerformance",
 	warn_about_missing_glyphs = false,
 	bold_brightens_ansi_colors = false,
 	allow_square_glyphs_to_overflow_width = "Always",
@@ -135,7 +130,7 @@ return {
 	enable_wayland = true,
 	enable_tab_bar = false,
 	tab_bar_at_bottom = true,
-	use_fancy_tab_bar = true,
+	use_fancy_tab_bar = false,
 	show_tab_index_in_tab_bar = true,
 	enable_scroll_bar = false,
 	scrollback_lines = 5000,
@@ -153,19 +148,18 @@ return {
 		{ key = "=", mods = "CTRL", action = "IncreaseFontSize" },
 		{ key = "Enter", mods = "ALT", action = "ToggleFullScreen" },
 		{ key = "r", mods = "ALT", action = act.ReloadConfiguration },
+		{ key = "L", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
 		-- mux
-		{ key = "A", mods = "ALT", action = act.AttachDomain("dln-dev") },
-		{ key = "E", mods = "ALT", action = act.DetachDomain({ DomainName = "dln-dev" }) },
-		{ key = "1", mods = "ALT", action = act.EmitEvent("tab-1") },
-		{ key = "2", mods = "ALT", action = act.EmitEvent("tab-2") },
-		{ key = "3", mods = "ALT", action = act.EmitEvent("tab-3") },
-		{ key = "4", mods = "ALT", action = act.EmitEvent("tab-4") },
-		{ key = "5", mods = "ALT", action = act.EmitEvent("tab-5") },
-		{ key = "6", mods = "ALT", action = act.EmitEvent("tab-6") },
-		{ key = "7", mods = "ALT", action = act.EmitEvent("tab-7") },
-		{ key = "8", mods = "ALT", action = act.EmitEvent("tab-8") },
-		{ key = "9", mods = "ALT", action = act.EmitEvent("tab-9") },
-		{ key = "0", mods = "ALT", action = act.EmitEvent("tab-10") },
+		{ key = "1", mods = "ALT", action = act.EmitEvent("activate-nvim") },
+		{ key = "2", mods = "ALT", action = act.ActivateTab(1) },
+		{ key = "3", mods = "ALT", action = act.ActivateTab(2) },
+		{ key = "4", mods = "ALT", action = act.ActivateTab(3) },
+		{ key = "5", mods = "ALT", action = act.ActivateTab(4) },
+		{ key = "6", mods = "ALT", action = act.ActivateTab(5) },
+		{ key = "7", mods = "ALT", action = act.ActivateTab(6) },
+		{ key = "8", mods = "ALT", action = act.ActivateTab(7) },
+		{ key = "9", mods = "ALT", action = act.ActivateTab(8) },
+		{ key = "0", mods = "ALT", action = act.ActivateTab(9) },
 		{ key = "RightArrow", mods = "CTRL", action = act.ActivateTabRelative(1) },
 		{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "ALT", action = wezterm.action.ActivateCommandPalette },
@@ -193,13 +187,6 @@ return {
 		{
 			event = { Down = { streak = 1, button = { WheelDown = 1 } } },
 			action = act.ScrollByPage(0.25),
-		},
-	},
-	unix_domains = {
-		{
-			name = "dln-dev",
-			local_echo_threshold_ms = 100,
-			proxy_command = is_server == false and { "ssh", "dln-dev", "wezterm", "cli", "proxy" } or nil,
 		},
 	},
 }
