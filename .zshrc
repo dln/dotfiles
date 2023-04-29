@@ -51,6 +51,10 @@ setopt null_glob
 # ZSH_AUTOSUGGEST_USE_ASYNC=1
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+# FIXME: Why does this work? Otherwise zshrc gets the wrong prompt length for unicode chars.
+export LC_ALL=en_US.UTF-8
+export LC_ALL=en_SE.UTF-8
+
 export PATH=$HOME/bin:$PATH
 
 redraw-prompt() {
