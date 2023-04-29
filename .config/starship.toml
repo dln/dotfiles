@@ -1,19 +1,25 @@
 add_newline = false
 
-# $git_branch\
-# $git_commit\
-# $git_state\
-# $git_status\
 
 format = """\
+${env_var.TMUX_WINDOW}\
 $hostname\
 $directory\
 ${custom.sl_status}\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
 ($character)\
 """
 
 right_format = """\
 """
+
+[env_var.TMUX_WINDOW]
+default = ""
+format = '[ $env_value ]($style)[](fg:#d1002f) '
+style = 'italic bg:#d1002f fg:#ffffff'
 
 [custom.sl_status]
 command = '''~/bin/starship-sl-status'''
