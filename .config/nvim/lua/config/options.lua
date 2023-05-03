@@ -9,7 +9,7 @@ vim.o.splitright = true
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
 vim.o.updatetime = 100
-vim.o.autochdir = false
+vim.o.autochdir = true
 vim.o.backupdir = "/home/dln/.local/share/nvim/backup/"
 vim.o.backup = true
 vim.g.netrw_dirhistmax = 0
@@ -72,4 +72,7 @@ vim.keymap.set("n", ",L", ":luafile %<CR>") -- Reload lua file
 
 -- AutoCommand OSC7 workaround for tmux
 -- see https://github.com/neovim/neovim/issues/21771
-vim.cmd([[autocmd DirChanged * call chansend(v:stderr, printf("\033]7;file://%s\033\\", v:event.cwd))]])
+vim.api.nvim_create_autocmd("dirchanged", {
+	pattern = "*",
+	command = 'call chansend(v:stderr, printf("\\033]7;%s\\033", v:event.cwd))',
+})
