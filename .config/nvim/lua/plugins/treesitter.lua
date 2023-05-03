@@ -112,6 +112,12 @@ return {
 							["[M"] = "@class.outer",
 						},
 					},
+					select = {
+						enable = true,
+						keymaps = {
+							["uc"] = "@comment.outer",
+						},
+					},
 				},
 				--- nvim-ts-autotag ---
 				autotag = {
