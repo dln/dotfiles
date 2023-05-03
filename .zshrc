@@ -53,7 +53,7 @@ setopt null_glob
 
 # FIXME: Why does this work? Otherwise zshrc gets the wrong prompt length for unicode chars.
 export LC_ALL=en_US.UTF-8
-export LC_ALL=en_SE.UTF-8
+export LC_ALL=en_DK.UTF-8
 
 export PATH=$HOME/bin:$PATH
 
@@ -193,9 +193,9 @@ fi
 export PATH=$HOME/.krew/bin:$PATH
 
 ## bazel
-if [ ! -f "${fpath[1]}/_bazel" ]; then
-  curl -sLo "${fpath[1]}/_bazel" https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel
-fi
+#if [ ! -f "${fpath[1]}/_bazel" ]; then
+#  curl -sLo "${fpath[1]}/_bazel" https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel
+#fi
 
 ## sapling
 if [ ! -f "${fpath[1]}/_sl" ]; then
