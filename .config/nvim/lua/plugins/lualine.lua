@@ -15,10 +15,12 @@ function M.config()
 		options = {
 			globalstatus = true,
 			theme = "onedark",
+			-- theme = "wombat",
 			component_separators = { left = "╲", right = "╱" },
 			section_separators = { left = "", right = "" },
 		},
 		sections = {
+			lualine_a = { "hostname" },
 			lualine_c = {
 				{
 					"filename",
