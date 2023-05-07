@@ -17,26 +17,26 @@ return {
 	color_scheme_dirs = {
 		os.getenv("HOME") .. "/.config/shelman-theme/current/wezterm",
 	},
-	font = font_with_fallback("Iosevka Shelman SS09", { weight = "Regular" }),
+	font = font_with_fallback("Iosevka Term SS09", { weight = "Light" }),
 	font_rules = {
 		{
 			italic = false,
 			intensity = "Half",
-			font = font_with_fallback("Iosevka Shelman SS09", { weight = "Thin" }),
+			font = font_with_fallback("Iosevka Term SS09", { weight = "Thin" }),
 		},
 		{
 			italic = true,
 			intensity = "Normal",
-			font = font_with_fallback("Iosevka Shelman Curly Slab", { weight = "Light", italic = true }),
+			font = font_with_fallback("Iosevka Term Curly Slab", { weight = "Light", italic = true }),
 		},
 		{
 			italic = true,
 			intensity = "Bold",
-			font = font_with_fallback("Iosevka Shelman SS15", { weight = "ExtraLight", italic = true }),
+			font = font_with_fallback("Iosevka Term SS15", { weight = "ExtraLight", italic = true }),
 		},
 		{
 			intensity = "Bold",
-			font = font_with_fallback("Iosevka Shelman SS09", { weight = "DemiBold" }),
+			font = font_with_fallback("Iosevka Term SS09", { weight = "DemiBold" }),
 		},
 	},
 	front_end = "WebGpu",
@@ -46,13 +46,18 @@ return {
 	allow_square_glyphs_to_overflow_width = "Always",
 	font_size = 13.5,
 	command_palette_font_size = 13.5,
-	line_height = 1.0,
-	cell_width = 0.95,
+	line_height = 1.065,
 	initial_cols = 132,
 	initial_rows = 45,
 	use_resize_increments = true,
 	window_decorations = "RESIZE",
 	window_background_opacity = 1.0,
+	window_padding = {
+		left = 0,
+		right = 0,
+		top = 0,
+		bottom = 0,
+	},
 	colors = {
 		tab_bar = {
 			active_tab = {
