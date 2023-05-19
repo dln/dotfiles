@@ -29,6 +29,7 @@ patch = !git --no-pager diff --no-color
 co = checkout
 st = status -sb
 pullr = pull --rebase
+t = tag --sort=-v:refname --format='%(color:bold italic)%(objectname:short)%(color:noitalic) %(refname:short)'
 
 sl = branchless smartlog
 sync = branchless sync
@@ -121,3 +122,5 @@ concurrenttransfers = 32
 	repo = /tmp/k2/src
 [fetch]
 	showForcedUpdates = true
+[tag]
+	sort = -v:refname
