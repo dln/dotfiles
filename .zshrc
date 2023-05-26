@@ -103,6 +103,8 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 ## Pager
 export LESS="--mouse --wheel-lines=1 -nRXF"
+export PAGER="bat"
+export BAT_PAGER="less -r"
 
 ## Clipboard OSC 52
  function clip { echo -en "\x1b]52;c;$(base64 -w0)\x07" }
@@ -111,12 +113,10 @@ export LESS="--mouse --wheel-lines=1 -nRXF"
 alias c='cut -c-${COLUMNS}'
 alias e='tmux-edit-helper'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
-alias l=bat
-alias lw='bat --wrap=never'
+alias l='bat --wrap=never'
 alias ls=exa
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
-alias tree='exa --tree'
 alias v=vgrep
 alias ve='env EDITOR= vgrep -s'
 alias xc=clip
@@ -124,6 +124,11 @@ alias w="history -1 | sed -e 's/[0-9]*  //' | xargs viddy -n1"
 
 ## ripgrep 
 export RIPGREP_CONFIG_PATH=${HOME}/.config/shelman-theme/current/rg/rg.conf
+
+
+tree() {
+   exa --tree --color=always "$@" | bat --wrap=never
+}
 
 # "auto paging"
 rg() {
