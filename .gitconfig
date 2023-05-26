@@ -34,6 +34,8 @@ t = tag --sort=-v:refname --format='%(color:bold italic)%(objectname:short)%(col
 sl = branchless smartlog
 sync = branchless sync
 sw = branchless switch
+s = branchless switch -i
+n = branchless switch -d main
 
 gerrit-new = !git fetch origin main && git checkout --detach origin/main
 gerrit-push = !git push origin HEAD:refs/for/main
