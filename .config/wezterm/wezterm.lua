@@ -50,6 +50,7 @@ return {
 	initial_cols = 132,
 	initial_rows = 45,
 	use_resize_increments = true,
+	adjust_window_size_when_changing_font_size = false,
 	window_decorations = "RESIZE",
 	window_background_opacity = 1.0,
 	window_padding = {
