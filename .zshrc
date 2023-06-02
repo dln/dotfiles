@@ -113,10 +113,11 @@ export BAT_PAGER="less -r"
 alias c='cut -c-${COLUMNS}'
 alias e='tmux-edit-helper'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
-alias l='bat --wrap=never'
+alias l='bat --wrap=never --pager="less -S"'
 alias ls=exa
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
+alias top='btm --basic --enable_cache_memory --enable_gpu_memory --battery'
 alias v=vgrep
 alias ve='env EDITOR= vgrep -s'
 alias xc=clip
