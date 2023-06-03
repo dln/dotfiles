@@ -13,9 +13,12 @@ autoload -Uz _zinit
 zi ice wait lucid
 zi load zsh-users/zsh-completions
 zi ice wait lucid
-zi load zsh-users/zsh-syntax-highlighting
+zi load zdharma-continuum/fast-syntax-highlighting
 zi ice wait lucid
 zi load zsh-users/zsh-history-substring-search
+zi ice wait lucid
+zi load Aloxaf/fzf-tab
+zi ice wait lucid
 
 ## History
 HISTSIZE=50000
