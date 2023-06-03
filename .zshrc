@@ -19,7 +19,14 @@ zi load zsh-users/zsh-history-substring-search
 zi ice wait lucid
 zi load Aloxaf/fzf-tab
 zi ice wait lucid
+zi load Freed-Wu/fzf-tab-source
+zi ice wait lucid
 
+## fzf-tab
+zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+zstyle ':fzf-tab:*' continuous-trigger '/'
+zstyle ':fzf-tab:*' fzf-min-height 30
+ 
 ## History
 HISTSIZE=50000
 SAVEHIST=50000
@@ -106,6 +113,8 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 ## Pager
 export LESS="--mouse --wheel-lines=1 -nRXF"
+export LESSCOLORIZER="bat"
+export LESSOPEN="|lesspipe.sh %s"
 export PAGER="bat"
 export BAT_PAGER="less -r"
 
