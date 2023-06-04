@@ -20,12 +20,6 @@ zi ice wait lucid
 zi load Aloxaf/fzf-tab
 zi ice wait lucid
 zi load Freed-Wu/fzf-tab-source
-zi ice wait lucid
-
-export EMOJI_CLI_FILTER="fzf-tmux -p 50%:fzf:peco:percol:fzy"
-export EMOJI_CLI_KEYBIND="^_"
-export EMOJI_CLI_USE_EMOJI="true"
-zi load b4b4r07/emoji-cli
 
 ## fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
@@ -214,6 +208,8 @@ if [ ! -f "${fpath[1]}/_kubectl" ]; then
   command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
 fi
 export PATH=$HOME/.krew/bin:$PATH
+alias kubectl=kubecolor
+compdef kubecolor=kubectl
 
 ## bazel
 #if [ ! -f "${fpath[1]}/_bazel" ]; then
