@@ -219,7 +219,9 @@ if [ ! -f "${fpath[1]}/_sl" ]; then
 fi
 
 ## jujutsu
-source <(jj util completion --zsh)
+if [ ! -f "${fpath[1]}/_jj" ]; then
+	command -v jj >/dev/null 2>&1 && jj util completion --zsh > "${fpath[1]}/_jj"
+fi
 
 ## Tekton cli
 if [ ! -f "${fpath[1]}/_tkn" ]; then
