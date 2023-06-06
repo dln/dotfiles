@@ -106,10 +106,6 @@ bindkey '^g' _jump
 bindkey '^_' _cwd_gitroot
 
 
-## Gnupg  / gpg / ssh / yubikey
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
-
 ## Pager
 export LESS="--mouse --wheel-lines=1 -nRXF"
 export LESSCOLORIZER="bat"
