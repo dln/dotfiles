@@ -44,6 +44,7 @@ setopt hist_subst_pattern
 setopt hist_verify
 setopt share_history
 export HISTORY_IGNORE="(ls *|cd *|rm *|pwd|reboot|exit|e *|*AWS*|*SECRET*|*PASSWORD*|*TOKEN*|*API*|*KEY*|*PASS*|*SECRETS*|*SECRET_KEY*|*SECRET_TOKEN*|*SECRET_KEY_BASE*|*SECRET_TOKEN_BASE*)"
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 
 ## zsh settings
