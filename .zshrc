@@ -204,8 +204,7 @@ if [ ! -f "${fpath[1]}/_kubectl" ]; then
   command -v kubectl >/dev/null 2>&1 && kubectl completion zsh > "${fpath[1]}/_kubectl"
 fi
 export PATH=$HOME/.krew/bin:$PATH
-alias kubectl=kubecolor
-compdef kubecolor=kubectl
+alias kubectl='grc kubectl'
 
 ## bazel
 #if [ ! -f "${fpath[1]}/_bazel" ]; then
@@ -260,3 +259,10 @@ PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/dln/.config/tea/autocomplete
 ## AWS
 complete -o nospace -C /usr/bin/mcli mcli
 complete -C '/usr/bin/aws_completer' aws
+
+function _grc() {
+  shift words
+  (( CURRENT-- ))
+  _normal
+}
+compdef _grc grc
