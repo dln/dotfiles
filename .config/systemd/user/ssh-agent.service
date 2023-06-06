@@ -6,6 +6,7 @@ Type=simple
 Restart=on-failure
 Environment=DISPLAY=:0
 Environment=WAYLAND_DISPLAY=wayland-0
+Environment=QT_QPA_PLATFORM=wayland
 Environment=SSH_ASKPASS=/usr/bin/ksshaskpass
 Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
 ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
