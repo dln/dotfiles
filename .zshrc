@@ -217,6 +217,9 @@ if [ ! -f "${fpath[1]}/_sl" ]; then
   curl -sLo "${fpath[1]}/_sl" https://github.com/facebook/sapling/raw/d6157db1ebc0868cf70805756e32541bd681bac2/eden/scm/contrib/zsh_completion_sl
 fi
 
+## jujutsu
+source <(jj util completion --zsh)
+
 ## Tekton cli
 if [ ! -f "${fpath[1]}/_tkn" ]; then
 	command -v tkn >/dev/null 2>&1 && tkn completion zsh > "${fpath[1]}/_tkn"
