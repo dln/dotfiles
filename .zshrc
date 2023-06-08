@@ -90,7 +90,7 @@ typeset -gaU chpwd_functions
 chpwd_functions+=fre_chpwd
 
 _cwd_gitroot() {
-  _gitroot=$(git rev-parse --show-toplevel 2>/dev/null || sl root 2>/dev/null || pwd)
+  _gitroot=$(git rev-parse --show-toplevel 2>/dev/null || jj workspace root 2>/dev/null || pwd)
   _dir=$((echo "$_gitroot" && fd -td . "$_gitroot") | fzf-tmux -p 90%,40% -y 0)
   [ -n "$_dir" ] && cd $_dir
   zle && zle redraw-prompt
