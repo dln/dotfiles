@@ -1,0 +1,7 @@
+[user]
+name = "Daniel Lundin"
+email = "daniel@arity.se"
+
+[ui]
+default-command = "log"
+diff-editor = "vimdiff"
