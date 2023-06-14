@@ -51,21 +51,11 @@ return {
 	initial_rows = 45,
 	use_resize_increments = true,
 	adjust_window_size_when_changing_font_size = false,
-	window_decorations = "RESIZE",
-	window_background_opacity = 1.0,
 	window_padding = {
 		left = 0,
 		right = 0,
 		top = 0,
 		bottom = 0,
-	},
-	colors = {
-		tab_bar = {
-			active_tab = {
-				fg_color = "#e0e0e0",
-				bg_color = "#374f66",
-			},
-		},
 	},
 	default_cursor_style = "SteadyBlock",
 	cursor_thickness = "3px",
