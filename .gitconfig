@@ -92,7 +92,7 @@ gpgsign = false
 
 [user]
 name = Daniel Lundin
-email = daniel@arity.se
+email = dln@arity.se
 
 [init]
 defaultBranch = main
