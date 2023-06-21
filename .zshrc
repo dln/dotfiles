@@ -65,7 +65,7 @@ setopt null_glob
 export LC_ALL=en_US.UTF-8
 export LC_ALL=en_DK.UTF-8
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 
 redraw-prompt() {
     local precmd
