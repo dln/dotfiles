@@ -229,11 +229,6 @@ if [ ! -f "${fpath[1]}/_jj" ]; then
 	command -v jj >/dev/null 2>&1 && jj util completion --zsh > "${fpath[1]}/_jj"
 fi
 
-## Tekton cli
-if [ ! -f "${fpath[1]}/_tkn" ]; then
-	command -v tkn >/dev/null 2>&1 && tkn completion zsh > "${fpath[1]}/_tkn"
-fi
-
 ## kapp
 if [ ! -f "${fpath[1]}/_kapp" ]; then
 	command -v kapp >/dev/null 2>&1 && kapp completion zsh --tty=false > "${fpath[1]}/_kapp"
