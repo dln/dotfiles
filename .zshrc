@@ -198,6 +198,9 @@ autoload -Uz compdef
 autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
 
+## Nix
+export PATH=$HOME/.nix-profile/bin:$PATH
+
 ## eksctl
 if [ ! -f "${fpath[1]}/_eksctl" ]; then
 	command -v eksctl >/dev/null 2>&1 && eksctl completion zsh > "${fpath[1]}/_eksctl"
