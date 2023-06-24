@@ -21,6 +21,9 @@ zi load Aloxaf/fzf-tab
 zi ice wait lucid
 zi load Freed-Wu/fzf-tab-source
 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
 ## fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
 zstyle ':fzf-tab:*' continuous-trigger '/'
