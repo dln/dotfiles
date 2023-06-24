@@ -3,5 +3,13 @@ name = "Daniel Lundin"
 email = "dln@arity.se"
 
 [ui]
-default-command = "log"
-diff-editor = "vimdiff"
+default-command = "l"
+diff-editor = ["scm-diff-editor", "--dir-diff", "$left", "$right"]
+pager = ["delta", "--line-numbers", "--max-line-distance=0.9"]
+
+[aliases]
+l = ["log", "--ignore-working-copy", "-r", "(main..@): | (main..@)-"]
+la = ["log", "--ignore-working-copy", "-r", "all()"]
+b = ["branch", "list"]
+n = ["new", "main"]
+d = ["diff"]
