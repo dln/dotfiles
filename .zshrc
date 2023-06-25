@@ -64,10 +64,6 @@ setopt null_glob
 # ZSH_AUTOSUGGEST_USE_ASYNC=1
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# FIXME: Why does this work? Otherwise zshrc gets the wrong prompt length for unicode chars.
-export LC_ALL=en_US.UTF-8
-export LC_ALL=en_DK.UTF-8
-
 export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 
 redraw-prompt() {
@@ -200,6 +196,7 @@ autoload -U +X compinit && compinit
 
 ## Nix
 export PATH=$HOME/.nix-profile/bin:$PATH
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 ## eksctl
 if [ ! -f "${fpath[1]}/_eksctl" ]; then
