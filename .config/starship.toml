@@ -10,11 +10,19 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_status\
+$nix_shell\
 ($character)\
 """
 
 right_format = """\
 """
+
+[nix_shell]
+disabled = true
+impure_msg = '[impure shell](bold red)'
+pure_msg = '[pure shell](bold green)'
+unknown_msg = '[unknown shell](bold yellow)'
+format = 'via [☃️ $state( \($name\))](bold blue) '
 
 [env_var.TMUX_WINDOW]
 default = ""
@@ -38,7 +46,7 @@ disabled = true
 fish_style_pwd_dir_length = 1
 truncation_length = 1
 truncate_to_repo = false
-style = "italic bold"
+style = "italic dimmed"
 
 [git_branch]
 format = "[$symbol$branch]($style)"
@@ -60,7 +68,7 @@ style = "dimmed"
 
 [hostname]
 ssh_only = false
-format =  "[$hostname](bold italic):"
+format =  "[$hostname](dimmed italic):"
 disabled = false
 
 [kubernetes]
