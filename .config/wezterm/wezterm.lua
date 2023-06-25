@@ -31,8 +31,18 @@ return {
 		},
 		{
 			italic = true,
-			intensity = "Bold",
+			intensity = "Half",
 			font = font_with_fallback("Iosevka Term SS15", { weight = "ExtraLight", italic = true }),
+		},
+		{
+			italic = true,
+			intensity = "Bold",
+			font = font_with_fallback("Iosevka Term Curly Slab Ex", { weight = "Regular", italic = true }),
+		},
+		{
+			reverse = true,
+			intensity = "Bold",
+			font = font_with_fallback("Iosevka Term SS09", { weight = "Bold" }),
 		},
 		{
 			intensity = "Bold",
