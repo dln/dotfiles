@@ -22,31 +22,70 @@ return {
 		{
 			italic = false,
 			intensity = "Half",
+			reverse = false,
 			font = font_with_fallback("Iosevka Term SS09", { weight = "Thin" }),
+		},
+		{
+			italic = false,
+			intensity = "Bold",
+			reverse = false,
+			font = font_with_fallback("Iosevka Term SS09", { weight = "DemiBold" }),
 		},
 		{
 			italic = true,
 			intensity = "Normal",
+			reverse = false,
 			font = font_with_fallback("Iosevka Term Curly Slab", { weight = "Light", italic = true }),
 		},
 		{
 			italic = true,
 			intensity = "Half",
+			reverse = false,
 			font = font_with_fallback("Iosevka Term SS15", { weight = "ExtraLight", italic = true }),
 		},
 		{
 			italic = true,
 			intensity = "Bold",
+			reverse = false,
 			font = font_with_fallback("Iosevka Term Curly Slab Ex", { weight = "Regular", italic = true }),
+		},
+
+		-- Reversed
+		{
+			reverse = true,
+			italic = false,
+			intensity = "Normal",
+			font = font_with_fallback("Iosevka Term SS09", { weight = "Regular" }),
 		},
 		{
 			reverse = true,
-			intensity = "Bold",
-			font = font_with_fallback("Iosevka Term SS09", { weight = "Bold" }),
+			italic = false,
+			intensity = "Half",
+			font = font_with_fallback("Iosevka Term SS09", { weight = "Light" }),
 		},
 		{
+			reverse = true,
+			italic = true,
+			intensity = "Half",
+			font = font_with_fallback("Iosevka Term Curly Slab", { weight = "ExtraLight", italic = true }),
+		},
+		{
+			reverse = true,
+			italic = true,
+			intensity = "Normal",
+			font = font_with_fallback("Iosevka Term Curly Slab", { weight = "Light", italic = true }),
+		},
+		{
+			reverse = true,
+			italic = true,
 			intensity = "Bold",
-			font = font_with_fallback("Iosevka Term SS09", { weight = "DemiBold" }),
+			font = font_with_fallback("Iosevka Term Curly Slab Ex", { weight = "Bold", italic = true }),
+		},
+		{
+			reverse = true,
+			italic = false,
+			intensity = "Bold",
+			font = font_with_fallback("Iosevka Term SS09", { weight = "Bold" }),
 		},
 	},
 	front_end = "WebGpu",
