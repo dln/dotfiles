@@ -197,6 +197,7 @@ autoload -U +X compinit && compinit
 ## Nix
 export PATH=$HOME/.nix-profile/bin:$PATH
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+export NIX_REMOTE=daemon
 
 ## eksctl
 if [ ! -f "${fpath[1]}/_eksctl" ]; then
