@@ -20,6 +20,8 @@ zi ice wait lucid
 zi load Aloxaf/fzf-tab
 zi ice wait lucid
 zi load Freed-Wu/fzf-tab-source
+zi ice wait lucid
+zi load nix-community/nix-zsh-completions
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
