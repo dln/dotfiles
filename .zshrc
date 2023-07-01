@@ -18,6 +18,8 @@ zi ice wait lucid
 zi load zsh-users/zsh-history-substring-search
 zi ice wait lucid
 zi load nix-community/nix-zsh-completions
+zi ice wait lucid
+zi snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/shrink-path/shrink-path.plugin.zsh
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -54,6 +56,8 @@ setopt no_rm_star_silent
 setopt extended_glob
 setopt ksh_glob
 setopt null_glob
+
+export LC_ALL=en_US.UTF-8
 
 ## Autosuggest
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
@@ -99,7 +103,6 @@ bindkey '^[[B' history-beginning-search-forward
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 bindkey '^g' _jump
-bindkey '^_' _cwd_gitroot
 
 
 ## Pager
@@ -139,15 +142,35 @@ rg() {
   /usr/bin/rg -p "$@" | bat
 }
 
-fix_cursor() {
-  echo -ne '\e[5 q'
+## Prompt
+
+prompt_chpwd() {
+  if [[ ${#PWD} < 25 ]]; then
+    PROMPT_PWD="$PWD"
+  else
+    PROMPT_PWD="$(shrink_path -t -l -e "%{%G\e[2;3;38;5;202m\U2026\e[0;2;3m%}")"
+  fi
+}
+chpwd_functions+=prompt_chpwd
+
+prompt_precmd() {
+  # PROMPT_LABEL="%B$(tmux display-message -p "#I")%b"
+  PROMPT_LABEL="$HOST"
 }
 
-precmd_functions+=(fix_cursor)
+precmd_functions+=(prompt_precmd)
 
+autoload -Uz vcs_info
+chpwd_functions+=vcs_info
+precmd_functions+=vcs_info
 
-## Prompt
-eval "$(starship init zsh)"
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '%F{#559955} %b%u%c%f '
+zstyle ':vcs_info:*' unstagedstr ' %F{#ff0}󰦒'
+zstyle ':vcs_info:*' stagedstr ' %F{#9ff}󰐖'
+
+setopt PROMPT_SUBST
+PROMPT=$'%F{#fff}%K{#d1002f}%{\e[3m%} ${PROMPT_LABEL} %{\e[0m%}%S%F{#d1002f}%k%{%G\Ue0ba%}%k%s%f%{\e[2;3m%}${PROMPT_PWD}%{\e[0m%} ${vcs_info_msg_0_}%# '
 
 ## vim
 export EDITOR=nvim
