@@ -154,8 +154,8 @@ prompt_chpwd() {
 chpwd_functions+=prompt_chpwd
 
 prompt_precmd() {
-  # PROMPT_LABEL="%B$(tmux display-message -p "#I")%b"
   PROMPT_LABEL="$HOST"
+  echo -ne '\e[5 q'    # Fix cursor
 }
 
 precmd_functions+=(prompt_precmd)
