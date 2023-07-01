@@ -1,6 +1,6 @@
 [core]
 excludesfile = "~/.gitignore"
-pager = delta --line-numbers --max-line-distance 0.9
+pager = delta 
 compression = 0
 looseCompression = 0
 
@@ -22,8 +22,10 @@ rebase = true
 [alias]
 b = branch -va
 cl = clone --filter=blob:none
-d = diff --stat -p -C
-ds = diff --staged --stat -p -C
+d = diff --stat -p -C --color-words
+dg = diff --stat -p -C
+ds = diff --staged --stat -p -C --color-words
+sh = show --color-words
 dt = difftool
 patch = !git --no-pager diff --no-color
 co = checkout
@@ -72,8 +74,13 @@ threads = 0
 date = relative
 
 [delta]
-# syntax-theme = GitHub
-hunk-header-style = line-number syntax
+; # syntax-theme = GitHub
+  file-decoration-style=none
+  hunk-header-decoration-style=none
+  hunk-header-decoration-style='blue ul' 
+  hunk-header-style = line-number syntax
+  line-numbers = true
+  max-line-distance = 0.9
 
 [hub]
 protocol = git
