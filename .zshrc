@@ -17,19 +17,10 @@ zi load zdharma-continuum/fast-syntax-highlighting
 zi ice wait lucid
 zi load zsh-users/zsh-history-substring-search
 zi ice wait lucid
-zi load Aloxaf/fzf-tab
-zi ice wait lucid
-zi load Freed-Wu/fzf-tab-source
-zi ice wait lucid
 zi load nix-community/nix-zsh-completions
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-
-## fzf-tab
-zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
-zstyle ':fzf-tab:*' continuous-trigger '/'
-zstyle ':fzf-tab:*' fzf-min-height 30
  
 ## History
 HISTSIZE=50000
