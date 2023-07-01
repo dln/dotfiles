@@ -100,6 +100,7 @@ return {
 	initial_rows = 45,
 	use_resize_increments = true,
 	adjust_window_size_when_changing_font_size = false,
+	window_decorations = "RESIZE",
 	window_padding = {
 		left = 0,
 		right = 0,
