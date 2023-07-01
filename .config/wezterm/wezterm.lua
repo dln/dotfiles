@@ -107,7 +107,7 @@ return {
 		bottom = 0,
 	},
 	default_cursor_style = "SteadyBlock",
-	cursor_thickness = "3px",
+	cursor_thickness = "6px",
 	cursor_blink_rate = 0,
 	hide_mouse_cursor_when_typing = false,
 	enable_wayland = true,
