@@ -22,6 +22,9 @@ zi load nix-community/nix-zsh-completions
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
  
+# Highlighting
+zle_highlight=('paste:none')
+
 ## History
 HISTSIZE=50000
 SAVEHIST=50000
