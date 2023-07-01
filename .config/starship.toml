@@ -5,15 +5,13 @@ format = """\
 ${env_var.TMUX_WINDOW}\
 $hostname\
 $directory\
-${custom.sl_status}\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$nix_shell\
 ($character)\
 """
 
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_status\
 right_format = """\
 """
 
@@ -26,7 +24,7 @@ format = 'via [☃️ $state( \($name\))](bold blue) '
 
 [env_var.TMUX_WINDOW]
 default = ""
-format = '[ $env_value ]($style)[](fg:#d1002f) '
+format = '[ $env_value ]($style) '
 style = 'italic bg:#d1002f fg:#ffffff'
 
 [custom.sl_status]
