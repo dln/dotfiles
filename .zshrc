@@ -19,6 +19,8 @@ zi load zsh-users/zsh-history-substring-search
 zi ice wait lucid
 zi load nix-community/nix-zsh-completions
 zi ice wait lucid
+zi load olets/zsh-abbr
+zi ice wait lucid
 zi snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/shrink-path/shrink-path.plugin.zsh
 
 zstyle ':completion:*' use-cache on

@@ -1,0 +1,6 @@
+abbr add -S --force "c"="jj commit"
+abbr add -S --force "new"="jj new main"
+abbr add -S --force "p"="jj git push"
+abbr add -S --force "s"="jj status"
+abbr add -S --force "sl"="jj log --ignore-working-copy"
+abbr add -S --force "d"="jj show"
