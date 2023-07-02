@@ -200,7 +200,7 @@ chpwd_functions+=vcs_info
 precmd_functions+=vcs_info
 
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '%F{#559955} %b%u%c%f '
+zstyle ':vcs_info:git:*' formats '%F{#559955} %1.25b%u%c%f '
 zstyle ':vcs_info:*' unstagedstr ' %F{#ff0}󰦒'
 zstyle ':vcs_info:*' stagedstr ' %F{#9ff}󰐖'
 
