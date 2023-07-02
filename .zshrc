@@ -155,7 +155,8 @@ chpwd_functions+=prompt_chpwd
 
 prompt_precmd() {
   PROMPT_LABEL="$HOST"
-  echo -ne '\e[5 q'    # Fix cursor
+  print -n '\e[5 q'          # Fix cursor
+  print -n "\e]7;${PWD}\a"   # OSC 7 for terminal pwd
 }
 
 precmd_functions+=(prompt_precmd)
