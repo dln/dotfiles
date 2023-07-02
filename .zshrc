@@ -145,6 +145,37 @@ rg() {
   /usr/bin/rg -p "$@" | bat
 }
 
+
+## Jujutsu
+jj_chpwd() {
+  _state="$JJ_REPO"
+  JJ_REPO=$(jj workspace root --ignore-working-copy 2>/dev/null)
+  if [[ "$JJ_REPO" == "$_state" ]]; then
+    return
+  fi
+  if [[ -n "$JJ_REPO" ]]; then
+    abbr add -S --force "b"="jj branch list"
+    abbr add -S --force "c"="jj commit"
+    abbr add -S --force "d"="jj show"
+    abbr add -S --force "new"="jj new main"
+    abbr add -S --force "p"="jj git push"
+    abbr add -S --force "s"="jj status"
+    abbr add -S --force "sl"="jj log --ignore-working-copy"
+    abbr add -S --force "sy"="jj git fetch"
+  else
+    abbr erase -S b
+    abbr erase -S c
+    abbr erase -S d
+    abbr erase -S new
+    abbr erase -S p
+    abbr erase -S s
+    abbr erase -S sl
+    abbr erase -S sy
+  fi
+}
+chpwd_functions+=jj_chpwd
+
+
 ## Prompt
 
 prompt_chpwd() {
