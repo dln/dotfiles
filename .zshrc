@@ -275,6 +275,11 @@ if [ ! -f "${fpath[1]}/_git_branchless" ]; then
   curl -sLo "${fpath[1]}/_git_branchless" https://gist.githubusercontent.com/minijackson/68effb0e6c7d8333e20f07da20076c28/raw/5469ffa1c6adc245adb82316f1013937c5148da7/_git-branchless
 fi
 
+## go-task
+if [ ! -f "${fpath[1]}/_task" ]; then
+  curl -sLo "${fpath[1]}/_task" https://raw.githubusercontent.com/go-task/task/main/completion/zsh/_task
+fi
+
 ## sapling
 if [ ! -f "${fpath[1]}/_sl" ]; then
   # See: https://github.com/facebook/sapling/pull/369
