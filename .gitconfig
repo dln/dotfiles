@@ -25,7 +25,7 @@ cl = clone --filter=blob:none
 d = diff --stat -p -C --color-words
 dg = diff --stat -p -C
 ds = diff --staged --stat -p -C --color-words
-sh = show --color-words
+sh = show --stat -p -C --color-words
 dt = difftool
 patch = !git --no-pager diff --no-color
 co = checkout
