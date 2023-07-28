@@ -40,6 +40,7 @@ function M.config()
 	vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 	vim.keymap.set("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 	vim.keymap.set("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
+	vim.keymap.set("n", "gi", '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
 	vim.keymap.set("n", "g/", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
 	vim.keymap.set(
 		"n",
