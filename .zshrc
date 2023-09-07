@@ -123,7 +123,7 @@ alias e='tmux-edit-helper'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias git='git-branchless wrap --'
 alias l='bat --wrap=never --pager="less -S"'
-alias ls=exa
+alias ls=eza
 alias tail='tail -n $LINES'
 alias timestamp='TZ=Z date "+%Y%m%dT%H%M%SZ"'
 alias top='btm --basic --enable_cache_memory --enable_gpu_memory --battery'
@@ -137,7 +137,7 @@ export RIPGREP_CONFIG_PATH=${HOME}/.config/shelman-theme/current/rg/rg.conf
 
 
 tree() {
-   exa --tree --color=always "$@" | bat --wrap=never
+   eza --tree --color=always "$@" | bat --wrap=never
 }
 
 # "auto paging"
