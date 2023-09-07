@@ -306,6 +306,11 @@ if [ ! -f "${fpath[1]}/_talosctl" ]; then
 	command -v talosctl >/dev/null 2>&1 && talosctl completion zsh > "${fpath[1]}/_talosctl"
 fi
 
+## pulumi
+if [ ! -f "${fpath[1]}/_pulumi" ]; then
+	command -v pulumi >/dev/null 2>&1 && pulumi gen-completion zsh > "${fpath[1]}/_pulumi"
+fi
+
 ## vault
 complete -o nospace -C /usr/bin/vault vault
 
