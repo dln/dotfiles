@@ -1,18 +1,6 @@
-local M = {
+return {
   "zbirenbaum/copilot.lua",
-  event = { "VeryLazy" },
-  dependencies = {
-    {
-      "zbirenbaum/copilot-cmp",
-      config = function()
-        require("copilot_cmp").setup()
-      end,
-    },
-  },
-}
-
-function M.config()
-  require("copilot").setup({
+  opts = {
     panel = {
       enabled = true,
       auto_refresh = false,
@@ -48,7 +36,5 @@ function M.config()
     },
     copilot_node_command = "node", -- Node version must be < 18
     server_opts_overrides = {},
-  })
-end
-
-return M
+  },
+}
