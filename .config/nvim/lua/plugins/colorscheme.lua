@@ -27,6 +27,9 @@ return {
 						secondary = "#B0BEC5",
 						-- background = "#1d2229",
 						background = "#0d1219",
+
+						diagnostic_info = "#00d992",
+						diagnostic_hint = "#00d992",
 					},
 				})
 
@@ -38,7 +41,7 @@ return {
 				Color.new("hlargs", "#FFF8E1")
 
 				Color.new("illuminate_bg", "#112210")
-				Color.new("illuminate_fg", "#66FFEE")
+				Color.new("illuminate_fg", "#00d992")
 
 				-- Color.new("search_bg", "#554411")
 				-- Color.new("search_fg", "#FFF0C0")
@@ -59,11 +62,62 @@ return {
 				Group.new("IndentBlanklineIndent5", colors.IndentBlanklineIndent5:dark(0.2))
 				Group.new("IndentBlanklineIndent6", colors.IndentBlanklineIndent6:dark(0.2))
 
-				Color.new("IndentBlanklineContextChar", "#00AABB", styles.nocombine)
+				Color.new("IndentBlanklineContextChar", "#00a972", styles.nocombine)
 				Group.new("IndentBlanklineContextChar", colors.IndentBlanklineContextChar)
 
-				Color.new("MiniIndentscopeSymbol", "#57FAF0")
+				Color.new("MiniIndentscopeSymbol", "#00d992")
 				Group.new("MiniIndentscopeSymbol", colors.MiniIndentscopeSymbol)
+
+				Color.new("NavicTextFg", "#5fbf9f")
+				Color.new("NavicTextBg", "#333333")
+				Color.new("NavicIcon", "#5fbf9f")
+
+				Group.new("NavicText", colors.NavicTextFg, colors.NavicTextBg)
+				Group.new("NavicIcon", colors.NavicIcon, colors.NavicTextBg)
+				Group.link("NavicIconsFile", groups.NavicIcon)
+				Group.link("NavicIconsModule", groups.NavicIcon)
+				Group.link("NavicIconsNamespace", groups.NavicIcon)
+				Group.link("NavicIconsPackage", groups.NavicIcon)
+				Group.link("NavicIconsClass", groups.NavicIcon)
+				Group.link("NavicIconsMethod", groups.NavicIcon)
+				Group.link("NavicIconsProperty", groups.NavicIcon)
+				Group.link("NavicIconsField", groups.NavicIcon)
+				Group.link("NavicIconsConstructor", groups.NavicIcon)
+				Group.link("NavicIconsEnum", groups.NavicIcon)
+				Group.link("NavicIconsInterface", groups.NavicIcon)
+				Group.link("NavicIconsFunction", groups.NavicIcon)
+				Group.link("NavicIconsVariable", groups.NavicIcon)
+				Group.link("NavicIconsConstant", groups.NavicIcon)
+				Group.link("NavicIconsString", groups.NavicIcon)
+				Group.link("NavicIconsNumber", groups.NavicIcon)
+				Group.link("NavicIconsBoolean", groups.NavicIcon)
+				Group.link("NavicIconsArray", groups.NavicIcon)
+				Group.link("NavicIconsObject", groups.NavicIcon)
+				Group.link("NavicIconsKey", groups.NavicIcon)
+				Group.link("NavicIconsNull", groups.NavicIcon)
+				Group.link("NavicIconsEnumMember", groups.NavicIcon)
+				Group.link("NavicIconsStruct", groups.NavicIcon)
+				Group.link("NavicIconsEvent", groups.NavicIcon)
+				Group.link("NavicIconsOperator", groups.NavicIcon)
+				Group.link("NavicIconsTypeParameter", groups.NavicIcon)
+
+				Color.new("NormalFloatFg", "#b8d1ef", styles.nocombine)
+				Color.new("NormalFloatBg", "#335a88", styles.nocombine)
+				Group.new("NormalFloat", colors.NormalFloatFg, colors.NormalFloatBg)
+
+				Color.new("PmenuSelFg", "#f3d390", styles.nocombine)
+				Color.new("PmenuSelBg", "#335a88", styles.nocombine)
+				Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg)
+				--
+				-- Color.new("TroubleFg", "#ffce60", styles.nocombine)
+				-- Color.new("TroubleBg", "#260200", styles.nocombine)
+				-- Group.new("TroubleNormal", colors.TroubleFg, colors.TroubleBg)
+				-- Group.link("TroubleText", groups.TroubleNormal)
+				-- Group.link("TroubleSource", groups.TroubleNormal)
+
+				Color.new("FlashLabelFg", "#002211")
+				Color.new("FlashLabelBg", "#11EA99")
+				Group.new("FlashLabel", colors.FlashLabelFg, colors.FlashLabelBg)
 
 				Group.new("TelescopeTitle", colors.primary)
 				Group.new("TelescopeBorder", colors.secondary)
