@@ -23,10 +23,10 @@ return {
 						undercurl = true,
 					},
 					colors = {
+						-- background = "#0d1219",
+						background = "#11171d",
 						primary = "#FFECB3",
 						secondary = "#B0BEC5",
-						-- background = "#1d2229",
-						background = "#0d1219",
 
 						diagnostic_info = "#00d992",
 						diagnostic_hint = "#00d992",
