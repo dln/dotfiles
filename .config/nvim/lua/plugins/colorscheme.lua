@@ -68,6 +68,10 @@ return {
 				Color.new("MiniIndentscopeSymbol", "#00d992")
 				Group.new("MiniIndentscopeSymbol", colors.MiniIndentscopeSymbol)
 
+				Color.new("CursorFg", "#000000", styles.nocombine)
+				Color.new("CursorBg", "#00d992", styles.nocombine)
+				Group.new("Cursor", colors.CursorFg, colors.CursorBg)
+
 				Color.new("NavicTextFg", "#5fbf9f")
 				Color.new("NavicTextBg", "#333333")
 				Color.new("NavicIcon", "#5fbf9f")
@@ -115,8 +119,11 @@ return {
 				-- Group.link("TroubleText", groups.TroubleNormal)
 				-- Group.link("TroubleSource", groups.TroubleNormal)
 
-				Color.new("FlashLabelFg", "#002211")
-				Color.new("FlashLabelBg", "#11EA99")
+				Color.new("Error", "#ffce60", styles.nocombine)
+				Group.new("ErrorMsg", colors.Error)
+
+				Color.new("FlashLabelFg", "#220011")
+				Color.new("FlashLabelBg", "#EA1199")
 				Group.new("FlashLabel", colors.FlashLabelFg, colors.FlashLabelBg)
 
 				Group.new("TelescopeTitle", colors.primary)

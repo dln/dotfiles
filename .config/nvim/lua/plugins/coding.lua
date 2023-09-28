@@ -8,4 +8,9 @@ return {
 			{ "<C-_>", "gc", remap = true, silent = true, mode = "v" },
 		},
 	},
+
+	{
+		"echasnovski/mini.pairs",
+		enabled = false,
+	},
 }

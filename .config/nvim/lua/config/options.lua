@@ -7,7 +7,9 @@ local opt = vim.opt
 opt.relativenumber = false
 opt.clipboard = ""
 
-vim.o.fillchars = "stl: ,stlnc: ,eob:🮙"
-vim.o.autochdir = true
-vim.o.updatetime = 100
 vim.g.do_filetype_lua = 1
+
+vim.o.autochdir = true
+vim.o.fillchars = "stl: ,stlnc: ,eob:🮙"
+vim.o.scrolloff = 7
+vim.o.updatetime = 100
