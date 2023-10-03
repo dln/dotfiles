@@ -95,7 +95,7 @@ return {
 	allow_square_glyphs_to_overflow_width = "Always",
 	font_size = 13.5,
 	command_palette_font_size = 13.5,
-	line_height = 1.065,
+	line_height = 1.1,
 	initial_cols = 132,
 	initial_rows = 45,
 	use_resize_increments = true,
