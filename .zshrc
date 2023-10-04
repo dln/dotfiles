@@ -205,7 +205,7 @@ zstyle ':vcs_info:*' unstagedstr ' %F{#ff0}󰦒'
 zstyle ':vcs_info:*' stagedstr ' %F{#9ff}󰐖'
 
 setopt PROMPT_SUBST
-PROMPT=$'%F{#fff}%K{#d1002f}%{\e[3m%} ${PROMPT_LABEL} %{\e[0m%}%S%F{#d1002f}%k%{%G\Ue0ba%}%k%s%f%{\e[2;3m%}${PROMPT_PWD}%{\e[0m%} ${vcs_info_msg_0_}%# '
+PROMPT=$'%F{#aaa}%K{#333}%{\e[3m%} ${PROMPT_LABEL} %{\e[0m%}%S%F{#333}%k%{%G\Ue0ba%}%k%s%f%{\e[2;3m%}${PROMPT_PWD}%{\e[0m%} ${vcs_info_msg_0_}%# '
 
 ## vim
 export EDITOR=nvim
