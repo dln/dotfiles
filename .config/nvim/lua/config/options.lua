@@ -9,6 +9,7 @@ opt.clipboard = ""
 
 vim.g.do_filetype_lua = 1
 
+vim.g.root_spec = { { ".git", "lua" }, "lsp", "cwd" }
 vim.o.autochdir = true
 vim.o.fillchars = "stl: ,stlnc: ,eob:🮙"
 vim.o.scrolloff = 7
