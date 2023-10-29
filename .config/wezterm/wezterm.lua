@@ -93,7 +93,7 @@ return {
 	warn_about_missing_glyphs = false,
 	bold_brightens_ansi_colors = false,
 	allow_square_glyphs_to_overflow_width = "Always",
-	font_size = 13.5,
+	font_size = 20,
 	command_palette_font_size = 13.5,
 	line_height = 1.1,
 	initial_cols = 132,
