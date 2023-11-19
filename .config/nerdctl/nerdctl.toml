@@ -1,0 +1,3 @@
+debug_full = false
+snapshotter = "native"
+insecure_registry = false
