@@ -41,6 +41,12 @@ new = !git fetch -u origin main:main && git branchless switch -d origin/main
 
 gerrit-clone = "!f() { git clone ssh://gerrit-ssh.shelman.io:2222/$1 && (cd $1 && mkdir -p `git rev-parse --git-dir`/hooks/ && scp -O -P 2222 gerrit-ssh.shelman.io:hooks/commit-msg `git rev-parse --git-dir`/hooks/commit-msg && chmod +x `git rev-parse --git-dir`/hooks/commit-msg && git branchless init); }; f"
 
+gerrit-switch = !(ssh `git remote get-url origin | cut -d / -f -3` gerrit query --format=JSON --current-patch-set status:open project:`git remote get-url origin | cut -d / -f 4-` \
+    | jq -sr 'map(select(.number) | \"\\(.number) @ \\(.currentPatchSet.ref) - \\(.subject)\")|join(\"\\n\")' \
+    | fzf +s -d ' ' \
+    | cut -d ' ' -f3 \
+    | xargs -n1 git fetch origin) && git checkout FETCH_HEAD
+
 gerrit-push = !git push origin HEAD:refs/for/main
 gerrit-push-wip = !git push origin HEAD:refs/for/main%wip
 gerrit-push-ready = !git push origin HEAD:refs/for/main%ready
