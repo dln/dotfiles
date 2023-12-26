@@ -37,13 +37,14 @@ sl = branchless smartlog
 sync = branchless sync
 sw = branchless switch
 s = branchless switch -i
-n = branchless switch -d main
+new = !git fetch -u origin main:main && git branchless switch -d origin/main
 
-gerrit-new = !git fetch origin main && git checkout --detach origin/main
+gerrit-clone = "!f() { git clone ssh://gerrit-ssh.shelman.io:2222/$1 && (cd $1 && mkdir -p `git rev-parse --git-dir`/hooks/ && scp -O -P 2222 gerrit-ssh.shelman.io:hooks/commit-msg `git rev-parse --git-dir`/hooks/commit-msg && chmod +x `git rev-parse --git-dir`/hooks/commit-msg && git branchless init); }; f"
+
 gerrit-push = !git push origin HEAD:refs/for/main
 gerrit-push-wip = !git push origin HEAD:refs/for/main%wip
 gerrit-push-ready = !git push origin HEAD:refs/for/main%ready
-gerrit-replace = !git commit --amend -a && git push origin HEAD:refs/for/main
+gerrit-replace = !git branchless amend && git push origin HEAD:refs/for/main
 gerrit-config = !git fetch origin refs/meta/config:refs/remotes/origin/meta/config && git checkout FETCH_HEAD
 gerrit-config-push = !git push origin HEAD:refs/meta/config
 gp = gerrit-push
