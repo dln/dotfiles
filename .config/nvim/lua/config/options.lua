@@ -14,3 +14,10 @@ vim.o.autochdir = true
 vim.o.fillchars = "stl: ,stlnc: ,eob:🮙"
 vim.o.scrolloff = 7
 vim.o.updatetime = 100
+
+-- additional filetypes
+vim.filetype.add({
+	extension = {
+		templ = "templ",
+	},
+})
