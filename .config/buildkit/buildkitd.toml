@@ -4,3 +4,4 @@
 [worker.containerd]
   enabled = true
   rootless = true
+  address = "/run/user/1000/containerd/containerd.sock"
