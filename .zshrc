@@ -321,6 +321,7 @@ if [ -f '/home/dln/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dln/goo
 
 ## Golang
 export PATH=$HOME/go/bin:$PATH
+export GOPROXY=https://athens.aarn.shelman.io
 
 ## Ansible
 export ANSIBLE_NOCOWS=1
