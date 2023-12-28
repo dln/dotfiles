@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-git branchless smartlog || true
-printf '\n'
+if git branchless query HEAD >/dev/null 2>&1; then
+	printf '\n ● \e[1m'
+	git branchless query HEAD
+	printf '\e[2;38;5;242m%*s\e[0m\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '-'
+fi
 
 awk -vOFS='' '
     NR==FNR {
@@ -27,5 +30,7 @@ awk -vOFS='' '
         }
     }
 ' \
-    <(git diff --color --stat=$(($(tput cols) - 3)) HEAD | sed '$d; s/^ //')\
-    <(git -c color.status=always status -sb)
+	<(git diff --color --stat=$(($(tput cols) - 3)) HEAD | sed '$d; s/^ //') \
+	<(git -c color.status=always status -sb)
+
+printf '\n'
