@@ -10,3 +10,13 @@ plugins:
       - -c
       - |
         kubectl logs $NAME -n $NAMESPACE --context $CONTEXT | bat --wrap=never --pager="less" --force-colorization
+  toolbox:
+    shortCut: Shift-K
+    description: ktoolbox in current namespace
+    scopes:
+      - all
+    command: ktoolbox
+    background: false
+    args:
+      - -n
+      - $NAMESPACE
