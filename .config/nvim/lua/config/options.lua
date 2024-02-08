@@ -21,3 +21,10 @@ vim.filetype.add({
 		templ = "templ",
 	},
 })
+
+-- AutoCommand OSC7 workaround for tmux
+-- see https://github.com/neovim/neovim/issues/21771
+vim.api.nvim_create_autocmd("dirchanged", {
+	pattern = "*",
+	command = 'call chansend(v:stderr, printf("\\033]7;%s\\033", v:event.cwd))',
+})
