@@ -15,8 +15,6 @@ zi load zsh-users/zsh-completions
 zi ice wait lucid
 zi load zdharma-continuum/fast-syntax-highlighting
 zi ice wait lucid
-zi load zsh-users/zsh-history-substring-search
-zi ice wait lucid
 zi load nix-community/nix-zsh-completions
 zi ice wait lucid
 zi load olets/zsh-abbr
@@ -98,12 +96,12 @@ _cwd_gitroot() {
 }
 zle -N _cwd_gitroot
 
+source $HOME/.zsh/history.zsh
+
 ## Keybindings
 bindkey -e
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
+bindkey '^P' my-history-prefix-search-backward-widget
+bindkey '^N' my-history-prefix-search-forward-widget
 bindkey '^g' _jump
 
 
@@ -341,3 +339,6 @@ function _grc() {
   _normal
 }
 compdef _grc grc
+
+# Atuin history
+eval "$(atuin init zsh)"
