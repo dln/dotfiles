@@ -96,12 +96,9 @@ _cwd_gitroot() {
 }
 zle -N _cwd_gitroot
 
-source $HOME/.zsh/history.zsh
-
 ## Keybindings
 bindkey -e
-bindkey '^P' my-history-prefix-search-backward-widget
-bindkey '^N' my-history-prefix-search-forward-widget
+bindkey '^P' atuin-up-search
 bindkey '^g' _jump
 
 
