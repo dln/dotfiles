@@ -43,12 +43,12 @@
 ## which filter mode to use
 ## possible values: global, host, session, directory
 # filter_mode = "global"
-filter_mode = "session"
+#filter_mode = "session"
 
 ## With workspace filtering enabled, Atuin will filter for commands executed
 ## in any directory within a git repository tree (default: false)
 # workspaces = false
-workspaces = true
+# workspaces = true
 
 ## which filter mode to use when atuin is invoked from a shell up-key binding
 ## the accepted values are identical to those of "filter_mode"
@@ -69,11 +69,11 @@ style = "compact"
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
 # inline_height = 0
-inline_height = 10
+inline_height = 6
 
 ## Invert the UI - put the search bar at the top , Default to `false`
 # invert = false
-invert = true
+# invert = true
 
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
@@ -111,9 +111,7 @@ ctrl_n_shortcuts = true
 #   "^innocuous-cmd .*--secret=.+"
 # ]
 
-history_filter = [
-  "VAULT_TOKEN=",
-]
+history_filter = ["VAULT_TOKEN="]
 
 ## prevent commands run with cwd matching any of these regexes from being written
 ## to history. Note that these regular expressions are unanchored, i.e. if they don't
@@ -124,10 +122,7 @@ history_filter = [
 #   "^/very/secret/area"
 # ]
 
-cwd_filter = [
-  "^~/media",
-  "^/home/dln/media"
-]
+cwd_filter = ["^~/media", "^/home/dln/media"]
 
 ## Configure the maximum height of the preview to show.
 ## Useful when you have long scripts in your history that you want to distinguish
@@ -150,7 +145,8 @@ show_help = false
 
 ## Defaults to true. If enabled, upon hitting enter Atuin will immediately execute the command. Press tab to return to the shell and edit.
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
-enter_accept = false
+# enter_accept = false
+enter_accept = true
 
 
 ## Defaults to "emacs".  This specifies the keymap on the startup of `atuin
