@@ -1,0 +1,50 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """\
+$directory\
+($character)\
+"""
+
+right_format = """\
+$git_status$git_state$git_branch$git_commit
+$hostname"""
+
+[hostname]
+ssh_only = false
+format =  " [](fg:#333333)[ $hostname ](italic dimmed bg:#333333)"
+disabled = false
+
+[directory]
+fish_style_pwd_dir_length = 1
+truncation_length = 1
+truncate_to_repo = false
+truncation_symbol = "…"
+style = "italic dimmed"
+
+[character]
+success_symbol = "[%](bold)"
+error_symbol = "[%](bold red)"
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+style = "italic bold fg:#00d992"
+symbol = " "
+truncation_length = 16
+truncation_symbol = ""
+
+[git_commit]
+format = "[ $hash$tag]($style) "
+style = "fg:#00d992"
+
+[git_state]
+style = ""
+
+[git_status]
+format = '([$all_status$ahead_behind]($style)) '
+style = "fg:#00d992"
+modified = "[ 󰦒](fg:#FFEE58)"
+deleted = "[ ✘](fg:#FF5722)"
+untracked = "[ ?](fg:#CE93D8)"
+staged = "[ 󰐖](fg:#80DEEA)"

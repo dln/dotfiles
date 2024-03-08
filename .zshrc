@@ -59,11 +59,6 @@ setopt null_glob
 
 export LC_ALL=en_US.UTF-8
 
-## Autosuggest
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#D7CCC8,italic"
-# ZSH_AUTOSUGGEST_USE_ASYNC=1
-# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 
 redraw-prompt() {
@@ -89,7 +84,7 @@ typeset -gaU chpwd_functions
 chpwd_functions+=fre_chpwd
 
 _cwd_gitroot() {
-  _gitroot=$(git rev-parse --show-toplevel 2>/dev/null || jj workspace root 2>/dev/null || pwd)
+  _gitroot=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
   _dir=$((echo "$_gitroot" && fd -td . "$_gitroot") | fzf-tmux -p 90%,40% -y 0)
   [ -n "$_dir" ] && cd $_dir
   zle && zle redraw-prompt
@@ -141,66 +136,9 @@ rg() {
 }
 
 
-## Jujutsu
-jj_chpwd() {
-  _state="$JJ_REPO"
-  JJ_REPO=$(jj workspace root --ignore-working-copy 2>/dev/null)
-  if [[ "$JJ_REPO" == "$_state" ]]; then
-    return
-  fi
-  if [[ -n "$JJ_REPO" ]]; then
-    abbr add -S --force "b"="jj branch list"
-    abbr add -S --force "c"="jj commit"
-    abbr add -S --force "d"="jj show"
-    abbr add -S --force "new"="jj new main"
-    abbr add -S --force "p"="jj git push"
-    abbr add -S --force "s"="jj status"
-    abbr add -S --force "sl"="jj log --ignore-working-copy"
-    abbr add -S --force "sy"="jj git fetch"
-  else
-    abbr erase -S b
-    abbr erase -S c
-    abbr erase -S d
-    abbr erase -S new
-    abbr erase -S p
-    abbr erase -S s
-    abbr erase -S sl
-    abbr erase -S sy
-  fi
-}
-chpwd_functions+=jj_chpwd
-
-
 ## Prompt
-
-prompt_chpwd() {
-  if [[ ${#PWD} < 25 ]]; then
-    PROMPT_PWD="$PWD"
-  else
-    PROMPT_PWD="$(shrink_path -t -l -e "%{%G\e[2;3;38;5;202m\U2026\e[0;2;3m%}")"
-  fi
-}
-chpwd_functions+=prompt_chpwd
-
-prompt_precmd() {
-  PROMPT_LABEL="$HOST"
-  print -n '\e[5 q'          # Fix cursor
-  print -n "\e]7;${PWD}\a"   # OSC 7 for terminal pwd
-}
-
-precmd_functions+=(prompt_precmd)
-
-autoload -Uz vcs_info
-chpwd_functions+=vcs_info
-precmd_functions+=vcs_info
-
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '%F{#559955} %1.25b%u%c%f '
-zstyle ':vcs_info:*' unstagedstr ' %F{#ff0}󰦒'
-zstyle ':vcs_info:*' stagedstr ' %F{#9ff}󰐖'
-
-setopt PROMPT_SUBST
-PROMPT=$'%F{#aaa}%K{#333}%{\e[3m%} ${PROMPT_LABEL} %{\e[0m%}%S%F{#333}%k%{%G\Ue0ba%}%k%s%f%{\e[2;3m%}${PROMPT_PWD}%{\e[0m%} ${vcs_info_msg_0_}%# '
+setopt TRANSIENT_RPROMPT
+eval "$(starship init zsh)"
 
 ## vim
 export EDITOR=nvim
@@ -273,17 +211,6 @@ fi
 ## go-task
 if [ ! -f "${fpath[1]}/_task" ]; then
   curl -sLo "${fpath[1]}/_task" https://raw.githubusercontent.com/go-task/task/main/completion/zsh/_task
-fi
-
-## sapling
-if [ ! -f "${fpath[1]}/_sl" ]; then
-  # See: https://github.com/facebook/sapling/pull/369
-  curl -sLo "${fpath[1]}/_sl" https://github.com/facebook/sapling/raw/d6157db1ebc0868cf70805756e32541bd681bac2/eden/scm/contrib/zsh_completion_sl
-fi
-
-## jujutsu
-if [ ! -f "${fpath[1]}/_jj" ]; then
-	command -v jj >/dev/null 2>&1 && jj util completion --zsh > "${fpath[1]}/_jj"
 fi
 
 ## kapp
