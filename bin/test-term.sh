@@ -1,19 +1,19 @@
-echo -ne '\e[0mnormal\e[0m\t\t\t\t\t'
+echo -ne '\e[0mnormal\e[0m\t\t\t'
 echo -e '\e[7m reverse \e[0m'
 
-echo -ne '\e[2mdim\e[0m\t\t\t\t\t\t'
+echo -ne '\e[2mdim\e[0m\t\t\t'
 echo -e '\e[7;2m reverse dim \e[0m'
 
-echo -ne '\e[1mbold\e[0m\t\t\t\t\t'
+echo -ne '\e[1mbold\e[0m\t\t\t'
 echo -e '\e[7;1m reverse bold \e[0m'
 
-echo -ne '\e[3mitalic\e[0m\t\t\t\t\t'
+echo -ne '\e[3mitalic\e[0m\t\t\t'
 echo -e '\e[7;3m reverse italic \e[0m'
 
-echo -ne '\e[2;3mdim italic\e[0m\t\t\t\t'
+echo -ne '\e[2;3mdim italic\e[0m\t\t'
 echo -e '\e[7;2;3m reverse dim italic \e[0m'
 
-echo -ne '\e[1;3mbold italic\e[0m\t\t\t\t'
+echo -ne '\e[1;3mbold italic\e[0m\t\t'
 echo -e '\e[7;1;3m reverse bold italic \e[0m'
 
 echo
@@ -55,7 +55,7 @@ echo -e '\e[48:2:240:143:104mtruecolor background, rarely used incorrect format 
 echo -e '\e[48;2;240;143;104mtruecolor background, de facto standard (commonly used)\e[0m'
 
 echo
-echo "Emoji: 🚀 💩 😁 🍖 🔥 🔷"
+echo "Emoji: 🚀 💩 😁 🍖 🔥 🔷 ❤️ "
 
 echo
 echo "Ligatures:"
