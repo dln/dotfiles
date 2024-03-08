@@ -1,20 +1,32 @@
 return {
-	{
-		"kvrohit/rasmus.nvim",
-		dependencies = {
-			{ "tjdevries/colorbuddy.nvim" },
-		},
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.g.rasmus_variant = "monochrome"
-			vim.g.rasmus_bold_functions = true
-			vim.g.rasmus_bold_comments = false
-			vim.g.rasmus_italic_comments = true
-			vim.g.rasmus_transparent = true
+	-- {
+	-- 	"kvrohit/rasmus.nvim",
+	-- 	dependencies = {
+	-- 		{ "tjdevries/colorbuddy.nvim" },
+	-- 	},
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.g.rasmus_variant = "monochrome"
+	-- 		vim.g.rasmus_bold_functions = true
+	-- 		vim.g.rasmus_bold_comments = false
+	-- 		vim.g.rasmus_italic_comments = true
+	-- 		vim.g.rasmus_transparent = true
+	--
+	-- 		-- vim.cmd("colorscheme rasmus")
+	-- 	end,
+	-- },
 
-			-- vim.cmd("colorscheme rasmus")
-		end,
+	-- {
+	-- 	"LazyVim/LazyVim",
+	-- 	opts = {
+	-- 		colorscheme = "default",
+	-- 	},
+	-- },
+
+	{
+		"p00f/alabaster.nvim",
+		lazy = false,
 	},
 
 	{
@@ -39,9 +51,7 @@ return {
 						undercurl = true,
 					},
 					colors = {
-						-- background = "#0d1219",
 						background = "#11171d",
-						-- background = "#1e2835",
 						primary = "#FFECD3",
 						secondary = "#B0BEC5",
 						--
@@ -51,6 +61,12 @@ return {
 				})
 				--
 				local Color, colors, Group, groups, styles = require("colorbuddy").setup()
+
+				Color.new("ColorColumn", "#171e26")
+				Group.new("ColorColumn", nil, colors.ColorColumn)
+				Color.new("normal", "#e3e0cd")
+				Group.new("Normal", colors.normal, nil)
+
 				Color.new("string", "#D7CCC8")
 				Color.new("symbol", "#ECEFF1")
 				--
@@ -70,15 +86,15 @@ return {
 				Group.new("MiniIndentscopeSymbol", colors.MiniIndentscopeSymbol)
 				--
 				Color.new("CursorFg", "#000000", styles.nocombine)
-				Color.new("CursorBg", "#00d992", styles.nocombine)
+				Color.new("CursorBg", "#23fdb6", styles.nocombine)
 				Group.new("Cursor", colors.CursorFg, colors.CursorBg)
 				Color.new("CursorLine", "#141b23")
 				Group.new("CursorLine", nil, colors.CursorLine)
-				--
+
 				Color.new("NavicTextFg", "#5fbf9f")
 				Color.new("NavicTextBg", "#333333")
 				Color.new("NavicIcon", "#5fbf9f")
-				--
+
 				Group.new("NavicText", colors.NavicTextFg, colors.NavicTextBg)
 				Group.new("NavicIcon", colors.NavicIcon, colors.NavicTextBg)
 				Group.link("NavicIconsFile", groups.NavicIcon)
@@ -107,15 +123,39 @@ return {
 				Group.link("NavicIconsEvent", groups.NavicIcon)
 				Group.link("NavicIconsOperator", groups.NavicIcon)
 				Group.link("NavicIconsTypeParameter", groups.NavicIcon)
-				--
+
 				Color.new("NormalFloatFg", "#b8d1ef", styles.nocombine)
 				Color.new("NormalFloatBg", "#335a88", styles.nocombine)
 				Group.new("NormalFloat", colors.NormalFloatFg, colors.NormalFloatBg)
-				--
+
 				Color.new("PmenuSelFg", "#f3d390", styles.nocombine)
 				Color.new("PmenuSelBg", "#335a88", styles.nocombine)
 				Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg)
+
+				Color.new("PmenuSelBg", "#335a88", styles.nocombine)
+				Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg)
+
+				Color.new("TreesitterContext", "#233344", styles.nocombine)
+				Group.new("TreesitterContext", nil, colors.TreesitterContext)
+
+				-- Color.new("NonText", "#955252", styles.nocombine)
+				Color.new("NonText", "#955252", styles.nocombine)
+
+				Color.new("comment2", "#51a0cf")
+				Group.new("Comment", colors.NonText, nil, styles.italic + styles.bold)
+				Group.new("LspInlayHint", colors.comment2, nil, styles.italic)
+
+				Group.new("NonText", colors.NonText, nil, styles.italic)
+				Group.new("NonText", colors.NonText, nil, styles.italic)
+
+				Color.new("spelling", "#ffce60")
+				Group.new("SpellBad", colors.spelling, nil, styles.undercurl)
+
+				Color.new("LspInfoTitle", "#955252")
+				Group.new("LspInfoTitle", colors.LspInfoTitle, nil, styles.italic)
+				-- Group.new("DiagnosticHint", colors.LspInfoTitle, nil, styles.italic)
 				--
+				-- Color.new("TroubleFg", "#ffce60", styles.nocombine)
 				-- Color.new("TroubleFg", "#ffce60", styles.nocombine)
 				-- Color.new("TroubleBg", "#260200", styles.nocombine)
 				-- Group.new("TroubleNormal", colors.TroubleFg, colors.TroubleBg)
@@ -131,8 +171,9 @@ return {
 				--
 				Group.new("TelescopeTitle", colors.primary)
 				Group.new("TelescopeBorder", colors.secondary)
-				Group.new("@comment", colors.comment, nil, styles.italic)
+				Group.new("@comment", colors.comment, nil, styles.italic + styles.bold)
 				Group.new("@string", colors.string, nil, styles.italic)
+
 				--
 				Group.new("@keyword", colors.noir_2)
 				Group.new("@keyword.function", colors.noir_2)
@@ -143,8 +184,8 @@ return {
 				-- Group.new("Hlargs", colors.noir_3, nil, styles.italic)
 				Group.new("@type.builtin", colors.noir_2)
 				--
-				Group.new("@variable", colors.symbol, nil, styles.italic)
-				Group.new("Hlargs", colors.hlargs, nil, styles.italic)
+				Group.new("@variable", colors.symbol, nil)
+				Group.new("Hlargs", colors.hlargs, nil)
 				--
 				Group.new("@function", colors.noir_1, nil, styles.bold)
 				Group.new("@method", colors.noir_1, nil, styles.bold)
