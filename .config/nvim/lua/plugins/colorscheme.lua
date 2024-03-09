@@ -64,6 +64,7 @@ return {
 
 				Color.new("ColorColumn", "#171e26")
 				Group.new("ColorColumn", nil, colors.ColorColumn)
+
 				Color.new("normal", "#e3e0cd")
 				Group.new("Normal", colors.normal, nil)
 

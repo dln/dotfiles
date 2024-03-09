@@ -19,6 +19,8 @@ autoload -Uz _zinit
 
 zi ice wait lucid
 zi load zsh-users/zsh-completions
+# zi ice wait lucid
+# zi load zsh-users/zsh-autosuggestions
 zi ice wait lucid
 zi load zdharma-continuum/fast-syntax-highlighting
 zi ice wait lucid
@@ -100,9 +102,14 @@ _cwd_gitroot() {
 zle -N _cwd_gitroot
 
 ## Keybindings
+source $HOME/.zsh/history.zsh
 bindkey -e
-bindkey '^P' atuin-up-search
 bindkey '^g' _jump
+# bindkey '^P' atuin-up-search
+bindkey '^p' my-history-prefix-search-backward-widget
+bindkey '^n' my-history-prefix-search-forward-widget
+bindkey "^[[A" my-history-prefix-search-backward-widget
+bindkey "^[[B" my-history-prefix-search-forward-widget
 
 
 ## Pager
@@ -273,7 +280,7 @@ function _grc() {
 compdef _grc grc
 
 # Atuin history
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
