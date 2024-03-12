@@ -1,8 +1,12 @@
 [core]
 excludesfile = "~/.gitignore"
 pager = delta 
-compression = 0
-looseCompression = 0
+compression = 3
+looseCompression = 3
+
+[pack]
+threads = 0
+compression = 3
 
 [user]
 useConfigOnly = true
@@ -78,9 +82,6 @@ status = auto
 
 [apply]
 whitespace = nowarn
-
-[pack]
-threads = 0
 
 [blame]
 date = relative
