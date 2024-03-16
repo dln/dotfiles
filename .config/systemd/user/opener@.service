@@ -1,5 +1,6 @@
 [Unit]
 Description=Open URL in your local web browser from the SSH-connected remote environment.
+After=graphical-session.target
 
 [Service]
 Restart=always
