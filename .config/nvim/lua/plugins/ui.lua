@@ -2,7 +2,12 @@ local hooks = require("ibl.hooks")
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-	local Color, colors, Group, groups, styles = require("colorbuddy").setup()
+	local colorbuddy = require("colorbuddy")
+	local Color = colorbuddy.Color
+	local colors = colorbuddy.colors
+	local Group = colorbuddy.Group
+	local groups = colorbuddy.groups
+	local styles = colorbuddy.styles
 	Color.new("IndentBlanklineIndent", "#1e2835", styles.nocombine)
 	Group.new("IndentBlanklineIndent1", colors.IndentBlanklineIndent:light(0.1))
 	Group.new("IndentBlanklineIndent2", colors.IndentBlanklineIndent:light(0.15))

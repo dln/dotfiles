@@ -60,7 +60,12 @@ return {
 					},
 				})
 				--
-				local Color, colors, Group, groups, styles = require("colorbuddy").setup()
+				local colorbuddy = require("colorbuddy")
+				local Color = colorbuddy.Color
+				local colors = colorbuddy.colors
+				local Group = colorbuddy.Group
+				local groups = colorbuddy.groups
+				local styles = colorbuddy.styles
 
 				Color.new("ColorColumn", "#171e26")
 				Group.new("ColorColumn", nil, colors.ColorColumn)
