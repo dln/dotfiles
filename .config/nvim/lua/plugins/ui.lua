@@ -22,6 +22,14 @@ end)
 
 return {
 	{
+		"echasnovski/mini.indentscope",
+		opts = {
+			draw = {
+				delay = 25, -- ms
+			},
+		},
+	},
+	{
 		"akinsho/bufferline.nvim",
 		enabled = false,
 	},
