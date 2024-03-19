@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-set -eu
+set -e
 
 # Use local xdg-open if not in an ssh session
 [ -n "$SSH_TTY" ] || exec /usr/bin/xdg-open "$@"
