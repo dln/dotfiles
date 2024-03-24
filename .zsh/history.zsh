@@ -13,6 +13,7 @@ function my-history-prefix-search() {
     (($offset < 0)) && return
     local result=$(
         atuin search \
+            --filter-mode session \
             --search-mode prefix \
             --limit 1 \
             --offset $offset \
