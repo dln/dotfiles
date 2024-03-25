@@ -18,7 +18,13 @@ function my-history-prefix-search() {
             --limit 1 \
             --offset $offset \
             --format '{command}' \
-            "$MY_HISTORY_SEARCH_PREFIX"
+            "$MY_HISTORY_SEARCH_PREFIX" ||
+          atuin search \
+              --search-mode prefix \
+              --limit 1 \
+              --offset $offset \
+              --format '{command}' \
+              "$MY_HISTORY_SEARCH_PREFIX" ||
     )
     if [[ -n "$result" ]]; then
         BUFFER=$result
