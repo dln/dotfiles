@@ -1,6 +1,6 @@
 [core]
 excludesfile = "~/.gitignore"
-pager = delta 
+pager = delta
 compression = 3
 looseCompression = 3
 
@@ -104,6 +104,8 @@ date = relative
   hunk-label = " "
   line-numbers = true
   max-line-distance = 0.9
+
+
 
 [hub]
 protocol = git

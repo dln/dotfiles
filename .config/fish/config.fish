@@ -4,8 +4,14 @@ set fish_greeting
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/bin
 
-
 if status is-interactive
+
+    export LESS="--mouse --wheel-lines=1 -nRXF"
+    export LESSCOLORIZER="bat"
+    export LESSOPEN="|lesspipe.sh %s"
+    export PAGER="bat"
+    export BAT_PAGER="less -r"
+
 
     ## Utilities
 
@@ -30,6 +36,11 @@ if status is-interactive
     end
     bind \cg jump
 
+    ## Kubernetes
+    fish_add_path $HOME/.krew/bin
+    function kubectl --wraps kubectl
+        command grc --colour=on kubectl $argv
+    end
 
     ## History
 
