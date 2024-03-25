@@ -34,15 +34,6 @@ if status is-interactive
     ## History
 
     atuin init fish | source
-
-
-    ## Prompt
-
-    function starship_transient_prompt_func
-        starship module character
-    end
-    starship init fish | source
-    enable_transience
 end
 
 ## Direnv
