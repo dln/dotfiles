@@ -22,7 +22,23 @@ _nvim_socket="$XDG_RUNTIME_DIR/nvim-persistent.sock"
 
 # nvim is not running/listening on remote socket, so start it.
 tmux new-window -S -n nvim \
+	-e "AR=$AR" \
+	-e "AS=$AS" \
 	-e "BUILD_COMMAND=$BUILD_COMMAND" \
-	-e "GOPACKAGESDRIVER=$GOPACKAGESDRIVER" \
+	-e "CC=$CC" \
+	-e "CXX=$CXX" \
 	-e "GOFLAGS=$GOFLAGS" \
+	-e "GOPACKAGESDRIVER=$GOPACKAGESDRIVER" \
+	-e "LC_ALL=$LC_ALL" \
+	-e "LD=$LD" \
+	-e "NM=$NM" \
+	-e "NM=$NM" \
+	-e "OBJCOPY=$OBJCOPY" \
+	-e "OBJDUMP=$OBJDUMP" \
+	-e "PATH=$PATH" \
+	-e "RANLIB=$RANLIB" \
+	-e "READELF=$READELF" \
+	-e "RUST_SRC_PATH=$RUST_SRC_PATH" \
+	-e "SIZE=$SIZE" \
+	-e "STRIP=$STRIP" \
 	nvim --listen "$_nvim_socket" "$_file"
