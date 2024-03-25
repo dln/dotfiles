@@ -3,15 +3,10 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			inlay_hints = { enabled = true },
-			-- capabilities = {
-			-- 	workspace = {
-			-- 		didChangeWatchedFiles = {
-			-- 			dynamicRegistration = false,
-			-- 		},
-			-- 	},
-			-- },
 			servers = {
 				rust_analyzer = {
+					mason = false,
+					targetDir = true,
 					keys = {
 						{ "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
 						{ "<leader>cR", "<cmd>RustCodeAction<cr>", desc = "Code Action (Rust)" },
@@ -23,12 +18,7 @@ return {
 								allFeatures = true,
 								loadOutDirsFromCheck = true,
 								runBuildScripts = true,
-							},
-							-- Add clippy lints for Rust.
-							checkOnSave = {
-								allFeatures = true,
-								command = "clippy",
-								extraArgs = { "--no-deps" },
+								targetDir = true,
 							},
 							procMacro = {
 								enable = true,
