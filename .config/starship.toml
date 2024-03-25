@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
+add_newline = true
 
 format = """\
 $directory\
@@ -13,7 +13,7 @@ $hostname"""
 
 [hostname]
 ssh_only = false
-format =  " [](fg:#333333)[ $hostname ](italic dimmed bg:#333333)"
+format = " [](fg:#333333)[ $hostname ](italic dimmed bg:#333333)"
 disabled = false
 
 [directory]
