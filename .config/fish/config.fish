@@ -4,14 +4,19 @@ set fish_greeting
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/bin
 
+## Nix
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+export NIX_REMOTE=daemon
+fish_add_path $HOME/.nix-profile/bin
+
 if status is-interactive
 
+    ## Pager
     export LESS="--mouse --wheel-lines=1 -nRXF"
     export LESSCOLORIZER="bat"
     export LESSOPEN="|lesspipe.sh %s"
     export PAGER="bat"
     export BAT_PAGER="less -r"
-
 
     ## Utilities
 
@@ -38,9 +43,7 @@ if status is-interactive
 
     ## Kubernetes
     fish_add_path $HOME/.krew/bin
-    function kubectl --wraps kubectl
-        command grc --colour=on kubectl $argv
-    end
+    alias kubectl=kubecolor
 
     ## History
 
