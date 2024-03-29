@@ -3,6 +3,17 @@ return {
 	config = function()
 		local devicons = require("nvim-web-devicons")
 		require("incline").setup({
+			window = {
+				margin = {
+					horizontal = 0,
+					vertical = 0,
+				},
+				padding = 0,
+				placement = {
+					horizontal = "right",
+					vertical = "bottom",
+				},
+			},
 			render = function(props)
 				local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
 				if filename == "" then
@@ -11,7 +22,7 @@ return {
 				local ft_icon, ft_color = devicons.get_icon_color(filename)
 
 				local function get_git_diff()
-					local icons = { removed = "", changed = "", added = "" }
+					local icons = { removed = " ", changed = " ", added = " " }
 					local signs = vim.b[props.buf].gitsigns_status_dict
 					local labels = {}
 					if signs == nil then
@@ -23,13 +34,13 @@ return {
 						end
 					end
 					if #labels > 0 then
-						table.insert(labels, { "┊" })
+						table.insert(labels, { "╱ " })
 					end
 					return labels
 				end
 
 				local function get_diagnostic_label()
-					local icons = { error = " ", warn = "󰀪 ", info = " ", hint = "󰌶 " }
+					local icons = { error = " ", warn = "󰀪 ", info = " ", hint = " " }
 					local label = {}
 
 					for severity, icon in pairs(icons) do
@@ -42,7 +53,7 @@ return {
 						end
 					end
 					if #label > 0 then
-						table.insert(label, { "┊", guifg = "#0d1117" })
+						table.insert(label, { "╱ " })
 					end
 					return label
 				end
@@ -50,11 +61,10 @@ return {
 				local bg_color = "#242e38"
 
 				return {
-					{ "┊", guibg = bg_color, guifg = "#0d1117" },
+					{ "", guibg = "#0d1117", guifg = bg_color },
+					{ " ", guifg = "#0d1117", guibg = bg_color },
 					{ get_diagnostic_label(), guibg = bg_color },
-					{ " ", guibg = bg_color },
 					{ get_git_diff() },
-					-- { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
 					{ filename .. " ", gui = "italic" },
 				}
 			end,
