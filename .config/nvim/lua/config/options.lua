@@ -35,5 +35,5 @@ vim.api.nvim_create_autocmd("dirchanged", {
 vim.opt.laststatus = 0
 vim.api.nvim_set_hl(0, "Statusline", { link = "Normal" })
 vim.api.nvim_set_hl(0, "StatuslineNC", { link = "Normal" })
-local line = string.rep("┅", vim.api.nvim_win_get_width(0))
+local line = string.rep("▁", vim.api.nvim_win_get_width(0))
 vim.opt.statusline = "%#WinSeparator#" .. line .. "%*"

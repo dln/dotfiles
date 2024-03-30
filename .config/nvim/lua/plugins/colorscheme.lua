@@ -1,8 +1,24 @@
 return {
+	--[=====[
+	{ "echasnovski/mini.colors", version = false },
+
 	{
-		"p00f/alabaster.nvim",
+		"shelmangroup/sumi-e",
+		dir = "/home/dln/src/git.shelman.io/shelmangroup/sumi-e.nvim",
 		lazy = false,
+		dependencies = {
+			{ "tjdevries/colorbuddy.nvim" },
+		},
 	},
+
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "sumi-e",
+		},
+	},
+
+  --]=====]
 
 	{
 		"jesseleite/nvim-noirbuddy",
@@ -48,7 +64,7 @@ return {
 				Color.new("normal", "#e3e0cd")
 				Group.new("Normal", colors.normal, nil)
 
-				Color.new("WinSeparator", "#446688")
+				Color.new("WinSeparator", "#223344")
 				Group.new("WinSeparator", colors.WinSeparator, nil)
 
 				Color.new("string", "#D7CCC8")
@@ -71,6 +87,12 @@ return {
 				Group.new("Cursor", colors.CursorFg, colors.CursorBg)
 				Color.new("CursorLine", "#141b23")
 				Group.new("CursorLine", nil, colors.CursorLine)
+
+				-- Color.new("TroubleBg", "#171e26")
+				Color.new("TroubleFg", "#e1d4c1")
+				Color.new("TroubleBg", "#10161d")
+				-- Color.new("TroubleBg", "#1d140f")
+				Group.new("TroubleNormal", colors.TroubleFg, colors.TroubleBg)
 
 				Color.new("NavicTextFg", "#5fbf9f")
 				Color.new("NavicTextBg", "#333333")
