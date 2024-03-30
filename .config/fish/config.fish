@@ -18,6 +18,11 @@ if status is-interactive
     export PAGER="bat"
     export BAT_PAGER="less -r"
 
+    ## OpenTelemetry
+    export OTEL_EXPORTER_OTLP_ENDPOINT=https://otel.aarn.shelman.io
+    export OTEL_RESOURCE_ATTRIBUTES=instance=dln-dev
+    export OTEL_LOG_LEVEL=debug
+
     ## Utilities
 
     function tree
@@ -43,7 +48,9 @@ if status is-interactive
 
     ## Kubernetes
     fish_add_path $HOME/.krew/bin
-    alias kubectl=kubecolor
+    # function kubectl --wraps kubectl
+    #     command kubecolor $argv
+    # end
 
     ## History
 
