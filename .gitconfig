@@ -42,6 +42,12 @@ sync = branchless sync
 sw = branchless switch
 s = branchless switch -i
 new = !git fetch -u origin main:main && git branchless switch -d origin/main
+copr = "!f() { \
+  pr=$1 \
+  && test -n \"$pr\" || pr=`tea pr list -o simple | fzf --bind 'enter:become(echo {+1})'` \
+  && git fetch origin refs/pull/$pr/head \
+  && git checkout --detach FETCH_HEAD \
+  ;};f"
 
 gerrit-clone = "!f() { \
   git clone ssh://gerrit-ssh.shelman.io:2222/$1 \
