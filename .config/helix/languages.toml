@@ -5,6 +5,17 @@ roots = [
   "Cargo.toml",
   "Cargo.lock"
 ]
+language-servers = [
+    "rust-analyzer",
+    "gpt",
+]
+
+[[language]]
+name = "go"
+language-servers = [
+    "gopls",
+    "gpt",
+]
 
 [language.auto-pairs]
 '(' = ')'
@@ -28,3 +39,8 @@ lifetimeElisionHints.enable = "skip_trivial"
 parameterHints.enable = true
 typeHints.enable = true
 typeHints.hideClosureInitialization = false
+
+[language-server.gpt]
+command = "helix-gpt"
+args = ["--handler", "copilot", "--logFile", "/home/dln/.cache/helix/helix-gpt.log"]
+
