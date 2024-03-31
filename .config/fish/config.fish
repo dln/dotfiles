@@ -54,6 +54,10 @@ if status is-interactive
 
     ## History
 
+    # FIXME: how to use autin history for these?
+    bind \cn history-prefix-search-forward
+    bind \cp history-prefix-search-backward
+
     atuin init fish | source
 end
 
