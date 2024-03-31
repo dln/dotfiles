@@ -6,6 +6,7 @@ undercurl = true
 cursorline = true
 color-modes = true
 auto-pairs = false 
+popup-border = "all"
 
 [editor.cursor-shape]
 insert = "bar"
