@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eo pipefail
+_file=$(fre --store_name edit-history --sorted | exec fzf --no-sort)
+[ -n "$_file" ] && exec tmux-edit-helper "$_file"

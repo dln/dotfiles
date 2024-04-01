@@ -1,4 +1,5 @@
 alias e='tmux-edit-helper'
+alias eh='tmux-edit-history'
 alias dotgit='git --work-tree $HOME --git-dir $HOME/.dot_git'
 alias git='git-branchless wrap --'
 alias l='bat --wrap=never --pager="less -S"'
