@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -eo pipefail
-_file=$(fre --store_name edit-history --sorted | exec fzf --no-sort)
+_file=$(fre --store_name edit-history --sorted | exec fzf --no-sort --preview "bat {}" --preview-window=down,70%,wrap,border-top --color=bg+:16,fg+:49,pointer:49 --layout=reverse "--bind=alt-e:become(tmux-edit-helper)")
 [ -n "$_file" ] && exec tmux-edit-helper "$_file"
