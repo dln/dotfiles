@@ -25,6 +25,8 @@ if status is-interactive
 
     ## Utilities
 
+    export EDITOR=helix
+
     function tree
         eza --tree --color=always $argv | bat --wrap=never
     end
@@ -40,7 +42,7 @@ if status is-interactive
     end
 
     function jump
-        set _dir $(fre --sorted | fzf-tmux --no-sort -p 90%,40% -y 0)
+        set _dir $(fre --sorted | fzf-tmux --no-sort -p 90%,40% -y 0 -- --color=fg:248,bg+:16,fg+:49,pointer:49,border:49 --layout=reverse)
         [ -n "$_dir" ] && pushd $_dir >>/dev/null
         commandline -f repaint
     end
