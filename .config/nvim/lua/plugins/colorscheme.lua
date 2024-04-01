@@ -1,5 +1,18 @@
 return {
+	{
+		"p00f/alabaster.nvim",
+		url = "https://git.sr.ht/~p00f/alabaster.nvim",
+		lazy = false,
+	},
+
 	--[=====[
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "alabaster",
+		},
+	},
+
 	{ "echasnovski/mini.colors", version = false },
 
 	{
@@ -128,8 +141,11 @@ return {
 				Group.link("NavicIconsTypeParameter", groups.NavicIcon)
 
 				Color.new("NormalFloatFg", "#b8d1ef", styles.nocombine)
-				Color.new("NormalFloatBg", "#335a88", styles.nocombine)
+				-- Color.new("NormalFloatBg", "#335a88", styles.nocombine)
+				Color.new("NormalFloatBg", "#242d38", styles.nocombine)
+				Color.new("NormalFloatBorder", "#00d992", styles.nocombine)
 				Group.new("NormalFloat", colors.NormalFloatFg, colors.NormalFloatBg)
+				Group.new("FloatBorder", colors.NormalFloatBorder, colors.NormalFloatBg)
 
 				Color.new("PmenuSelFg", "#f3d390", styles.nocombine)
 				Color.new("PmenuSelBg", "#335a88", styles.nocombine)
