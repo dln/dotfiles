@@ -10,7 +10,7 @@ compression = 3
 
 [user]
 useConfigOnly = true
-signingKey = key::sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIFtd5SEEgKWzR6617GqxhSIi//4Afq7iRP0ny6fbwU7kAAAABHNzaDo=
+# signingKey = key::sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIFtd5SEEgKWzR6617GqxhSIi//4Afq7iRP0ny6fbwU7kAAAABHNzaDo=
 
 [column]
 ui = auto
@@ -134,6 +134,7 @@ format = ssh
 
 [gpg "ssh"]
 allowedSignersFile = ~/.config/git/allowed_signers
+defaultKeyCommand = /home/dln/.config/git/signing-key.sh
 
 [user]
 name = Daniel Lundin
