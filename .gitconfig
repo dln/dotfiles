@@ -10,7 +10,6 @@ compression = 3
 
 [user]
 useConfigOnly = true
-# signingKey = key::sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIFtd5SEEgKWzR6617GqxhSIi//4Afq7iRP0ny6fbwU7kAAAABHNzaDo=
 
 [column]
 ui = auto
@@ -50,36 +49,12 @@ copr = "!f() { \
   && git checkout --detach FETCH_HEAD \
   ;};f"
 
-gerrit-clone = "!f() { \
-  git clone ssh://gerrit-ssh.shelman.io:2222/$1 \
-  && (cd $1 && mkdir -p `git rev-parse --git-dir`/hooks/ \
-  && scp -O -P 2222 gerrit-ssh.shelman.io:hooks/commit-msg `git rev-parse --git-dir`/hooks/commit-msg \
-  && chmod +x `git rev-parse --git-dir`/hooks/commit-msg \
-  && git branchless init); }; f"
-
-gerrit-switch = !(ssh `git remote get-url origin | cut -d / -f -3` gerrit query --format=JSON --current-patch-set status:open project:`git remote get-url origin | cut -d / -f 4-` \
-    | jq -sr 'map(select(.number) | \"\\(.number) @ \\(.currentPatchSet.ref) - \\(.subject)\")|join(\"\\n\")' \
-    | fzf +s -d ' ' \
-    | cut -d ' ' -f3 \
-    | xargs -n1 git fetch origin) && git checkout FETCH_HEAD
-
-gerrit-push = !git push origin HEAD:refs/for/main
-gerrit-push-wip = !git push origin HEAD:refs/for/main%wip
-gerrit-push-ready = !git push origin HEAD:refs/for/main%ready
-gerrit-replace = !git branchless amend && git push origin HEAD:refs/for/main
-gerrit-config = !git fetch origin refs/meta/config:refs/remotes/origin/meta/config && git checkout FETCH_HEAD
-gerrit-config-push = !git push origin HEAD:refs/meta/config
-gp = gerrit-push
-gpw = gerrit-push-wip
-gpr = gerrit-push-ready
-
 ll = log --graph --date=relative --topo-order --pretty='format:%C(yellow)%h%C(yellow)%d %Cblue%ar %Cgreenby %an%Creset -- %s'
 lla = log --graph --date=relative --topo-order --pretty='format:%Cgreen%h %Cblue%ar %Credby %an%Creset -- %s' --all
 
 guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -rn; }; f"
 serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
-identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
 
 [color]
 ui = auto
@@ -157,17 +132,12 @@ concurrenttransfers = 32
 
 [diff]
   tool = difft
-  # external = difft
 
 [difftool]
   prompt = false
 
 [difftool "difft"]
-  cmd = difft --display inline "$LOCAL" "$REMOTE"
-[scalar]
-	repo = /tmp/k2/src
-[maintenance]
-	repo = /tmp/k2/src
+  cmd = difft --color=always --display inline "$LOCAL" "$REMOTE" | bat
 [fetch]
 	showForcedUpdates = true
 [tag]
