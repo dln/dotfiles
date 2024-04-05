@@ -18,26 +18,27 @@ fi
 
 fre --store_name "edit-history" --add "$_file"
 
-(tmux select-window -t helix && 
-tmux send-keys -t helix Escape &&
-tmux send-keys -t helix ":open ${_file}" Enter) || tmux new-window -t 42 -n helix \
-	-e "AR=$AR" \
-	-e "AS=$AS" \
-	-e "BUILD_COMMAND=$BUILD_COMMAND" \
-	-e "CC=$CC" \
-	-e "CXX=$CXX" \
-	-e "GOFLAGS=$GOFLAGS" \
-	-e "GOPACKAGESDRIVER=$GOPACKAGESDRIVER" \
-	-e "LC_ALL=$LC_ALL" \
-	-e "LD=$LD" \
-	-e "NM=$NM" \
-	-e "NM=$NM" \
-	-e "OBJCOPY=$OBJCOPY" \
-	-e "OBJDUMP=$OBJDUMP" \
-	-e "PATH=$PATH" \
-	-e "RANLIB=$RANLIB" \
-	-e "READELF=$READELF" \
-	-e "RUST_SRC_PATH=$RUST_SRC_PATH" \
-	-e "SIZE=$SIZE" \
-	-e "STRIP=$STRIP" \
+tmux-shortcut 1 env \
+	"AR=$AR" \
+	"AS=$AS" \
+	"BUILD_COMMAND=$BUILD_COMMAND" \
+	"CC=$CC" \
+	"CXX=$CXX" \
+	"GOFLAGS=$GOFLAGS" \
+	"GOPACKAGESDRIVER=$GOPACKAGESDRIVER" \
+	"LC_ALL=$LC_ALL" \
+	"LD=$LD" \
+	"NM=$NM" \
+	"NM=$NM" \
+	"OBJCOPY=$OBJCOPY" \
+	"OBJDUMP=$OBJDUMP" \
+	"PATH=$PATH" \
+	"RANLIB=$RANLIB" \
+	"READELF=$READELF" \
+	"RUST_SRC_PATH=$RUST_SRC_PATH" \
+	"SIZE=$SIZE" \
+	"STRIP=$STRIP" \
 	helix "${_file}"
+sleep 0.1
+tmux send-keys Escape &&
+	tmux send-keys ":open ${_file}" Enter
