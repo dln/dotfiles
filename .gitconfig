@@ -1,47 +1,22 @@
-[core]
-excludesfile = "~/.gitignore"
-pager = delta
-compression = 3
-looseCompression = 3
-
-[pack]
-threads = 0
-compression = 3
-
-[user]
-useConfigOnly = true
-
-[column]
-ui = auto
-
-[push]
-default = tracking
-
-[branch "main"]
-rebase = true
-
-[branch "master"]
-rebase = true
-
 [alias]
 b = branch -va
 cl = clone --filter=blob:none
+co = checkout
 d = diff --stat -p -C --color-words
-dg = diff --stat -p -C
 ds = diff --staged --stat -p -C --color-words
-sh = show --stat -p -C --color-words
 dt = difftool
 patch = !git --no-pager diff --no-color
-co = checkout
+pullr = pull --rebase --autostash
+sh = show --stat -p -C --color-words
 st = status -sb
-pullr = pull --rebase
 t = tag --sort=-v:refname --format='%(color:bold italic)%(objectname:short)%(color:noitalic) %(refname:short)'
 
+new = !git fetch -u origin main:main && git branchless switch -d origin/main
 sl = branchless smartlog
 sync = branchless sync
 sw = branchless switch
 s = branchless switch -i
-new = !git fetch -u origin main:main && git branchless switch -d origin/main
+
 copr = "!f() { \
   pr=$1 \
   && test -n \"$pr\" || pr=`tea pr list -o simple | fzf --bind 'enter:become(echo {+1})'` \
@@ -55,54 +30,87 @@ lla = log --graph --date=relative --topo-order --pretty='format:%Cgreen%h %Cblue
 guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -rn; }; f"
 serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
-
-[color]
-ui = auto
-branch = auto
-diff = auto
-status = auto
-
 [apply]
 whitespace = nowarn
 
 [blame]
 date = relative
 
+[branch "main"]
+rebase = true
+
+[branch "master"]
+rebase = true
+
+[color]
+branch = auto
+diff = auto
+status = auto
+ui = auto
+
+[column]
+ui = auto
+
+[core]
+compression = 3
+excludesfile = "~/.gitignore"
+looseCompression = 3
+pager = delta
+
 [delta]
 ; # syntax-theme = GitHub
-  file-style = bold "#ffff66" "#333300"
-  file-transformation = "s/$/ ══  /"
-  file-decoration-style=none
-  file-added-label =  "   ══"
-  file-modified-label = "   ══"
-  file-removed-label = "   ══"
-  file-renamed-label = "   ══"
-  hunk-header-decoration-style=none
-  ; hunk-header-decoration-style='#99eeff' 
-  hunk-header-file-style = bold "#66ddff"
-  hunk-header-style = line-number bold "#99eeff" "#001133"
-  hunk-header-line-number-style = bold "#66ccff"
-  hunk-label-style = bold "#66ccff"
-  hunk-label = " "
-  line-numbers = true
-  max-line-distance = 0.9
-
-
-
-[hub]
-protocol = git
+file-added-label =  "   ══"
+file-decoration-style=none
+file-modified-label = "   ══"
+file-removed-label = "   ══"
+file-renamed-label = "   ══"
+file-style = bold "#ffff66" "#333300"
+file-transformation = "s/$/ ══  /"
+hunk-header-decoration-style=none
+hunk-header-file-style = bold "#66ddff"
+hunk-header-line-number-style = bold "#66ccff"
+hunk-header-style = line-number bold "#99eeff" "#001133"
+hunk-label = " "
+hunk-label-style = bold "#66ccff"
+line-numbers = true
+max-line-distance = 0.9
 
 [http]
 cookiefile = /home/dln/.gitcookies
 
+[hub]
+protocol = git
+
 [interactive]
 diffFilter = delta --color-only --features=interactive
+
+[commit]
+gpgsign = true
+verbose = true
 
 [credential]
 helper = store
 
-[commit]
-gpgsign = true
+[diff]
+algorithm = histogram
+tool = difft
+
+[difftool]
+prompt = false
+
+[difftool "difft"]
+cmd = difft --color=always --display inline "$LOCAL" "$REMOTE" | bat
+
+[fetch]
+prune = true
+prunetags = true
+showForcedUpdates = true
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+process = git-lfs filter-process
+required = true
+smudge = git-lfs smudge -- %f
 
 [gpg]
 format = ssh
@@ -111,34 +119,32 @@ format = ssh
 allowedSignersFile = ~/.config/git/allowed_signers
 defaultKeyCommand = /home/dln/.config/git/signing-key.sh
 
-[user]
-name = Daniel Lundin
-email = dln@arity.se
-
 [init]
 defaultBranch = main
-
-; [url "git@github.com:"]
-; 	insteadOf = https://github.com/
 
 [lfs]
 concurrenttransfers = 32
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[merge]
+conflictstyle = zdiff3
 
-[diff]
-  tool = difft
+[pack]
+compression = 3
+threads = 0
 
-[difftool]
-  prompt = false
+[push]
+default = tracking
 
-[difftool "difft"]
-  cmd = difft --color=always --display inline "$LOCAL" "$REMOTE" | bat
-[fetch]
-	showForcedUpdates = true
+[rebase]
+autosquash = true
+
+[rerere]
+enabled = true
+
 [tag]
-	sort = -v:refname
+sort = -v:refname
+
+[user]
+email = dln@arity.se
+name = Daniel Lundin
+useConfigOnly = true
