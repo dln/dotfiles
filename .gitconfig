@@ -25,7 +25,7 @@ copr = "!f() { \
   ;};f"
 
 g = graph -S -m simple -s round
-ll = "log --first-parent --topo-order --pretty='format:%x1B[1;2;3;38:2:127:114:88m%h%x1B[38:2:154:234:255m%d%Creset %x1B[3;38:2:194:203:226m%s %x1B[38:2:93:112:164m᠁ %x1B[38:2:74:119:163m%al %x1B[2;38:2:93:112:164m%ah'"
+ll = "log --first-parent --topo-order --pretty='format:%Creset%x1B[1;3;38:2:127:114:88m%h %G? ┼%x1B[0;38:2:154:234:255m%d%Creset %x1B[3;38:2:194:203:226m%s %x1B[38:2:93:112:164m᠁᠁᠁ %x1B[38:2:74:119:163m%al %x1B[2;38:2:93:112:164m%ah'"
 lla = "log --graph --all --topo-order --pretty='format:%x1B[38:2:233:218:190m%h%x1B[38:2:154:234:255m%d%Creset %x1B[1;3;38:2:194:203:226m%s %x1B[38:2:93:112:164m᠁ %x1B[38:2:74:119:163m%al %x1B[2;38:2:93:112:164m%ah'"
 
 guilt = "!f(){ git log --pretty='format:%an <%ae>' $@ | sort | uniq -c | sort -rn; }; f"
