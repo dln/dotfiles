@@ -7,3 +7,5 @@ vim.api.nvim_del_keymap("n", "<c-_>")
 vim.api.nvim_set_keymap("n", "<c-_>", "gcc", {})
 vim.api.nvim_set_keymap("v", "<c-_>", "gc", {})
 vim.api.nvim_set_keymap("n", "<Leader><c-_>", "gcgc", {})
+
+vim.api.nvim_set_keymap("n", "<Tab>", "<Space>,", {})
