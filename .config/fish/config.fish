@@ -25,7 +25,7 @@ if status is-interactive
 
     ## Utilities
 
-    export EDITOR=helix
+    export EDITOR=nvim
 
     function tree
         eza --tree --color=always $argv | bat --wrap=never

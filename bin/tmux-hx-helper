@@ -41,4 +41,4 @@ tmux-shortcut 1 env \
 	helix "${_file}"
 sleep 0.1
 tmux send-keys Escape &&
-	tmux send-keys ":open ${_file}" Enter
+	tmux send-keys ":open ${_file}" Enter ":reload" Enter

@@ -23,7 +23,7 @@ _nvim_socket="$XDG_RUNTIME_DIR/nvim-persistent.sock"
 (tmux select-window -t nvim 2>/dev/null && tmux select-pane -t 0) && exec nvim --server "$_nvim_socket" --remote "$_file"
 
 # nvim is not running/listening on remote socket, so start it.
-tmux new-window -S -t 43 -n nvim \
+tmux new-window -S -t 42 -n nvim \
 	-e "AR=$AR" \
 	-e "AS=$AS" \
 	-e "BUILD_COMMAND=$BUILD_COMMAND" \
