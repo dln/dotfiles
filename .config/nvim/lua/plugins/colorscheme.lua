@@ -35,7 +35,6 @@ return {
 
 	{
 		"jesseleite/nvim-noirbuddy",
-		as = "noirbuddy",
 		lazy = false,
 		dependencies = {
 			{ "tjdevries/colorbuddy.nvim" },
@@ -147,12 +146,14 @@ return {
 				Group.new("NormalFloat", colors.NormalFloatFg, colors.NormalFloatBg)
 				Group.new("FloatBorder", colors.NormalFloatBorder, colors.NormalFloatBg)
 
-				Color.new("PmenuSelFg", "#f3d390", styles.nocombine)
-				Color.new("PmenuSelBg", "#335a88", styles.nocombine)
-				Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg)
+				-- Color.new("PmenuSelFg", "#f3d390", styles.nocombine)
+				-- Color.new("PmenuSelBg", "#335a88", styles.nocombine)
+				Color.new("PmenuSelFg", "#52ffb5", styles.nocombine)
+				Color.new("PmenuSelBg", "#003322", styles.nocombine)
+				Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg, styles.bold)
 
-				Color.new("PmenuSelBg", "#335a88", styles.nocombine)
-				Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg)
+				-- Color.new("PmenuSelBg", "#335a88", styles.nocombine)
+				-- Group.new("PmenuSel", colors.PmenuSelFg, colors.PmenuSelBg)
 
 				Color.new("TreesitterContext", "#242e38", styles.nocombine)
 				Group.new("TreesitterContext", nil, colors.TreesitterContext)

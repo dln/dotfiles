@@ -6,30 +6,12 @@ return {
 			servers = {
 				rust_analyzer = {
 					mason = false,
-					targetDir = true,
-					keys = {
-						{ "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
-						{ "<leader>cR", "<cmd>RustCodeAction<cr>", desc = "Code Action (Rust)" },
-						{ "<leader>dr", "<cmd>RustDebuggables<cr>", desc = "Run Debuggables (Rust)" },
-					},
-					settings = {
-						["rust-analyzer"] = {
-							cargo = {
-								allFeatures = true,
-								loadOutDirsFromCheck = true,
-								runBuildScripts = true,
-								targetDir = true,
-							},
-							procMacro = {
-								enable = true,
-								ignored = {
-									["async-trait"] = { "async_trait" },
-									["napi-derive"] = { "napi" },
-									["async-recursion"] = { "async_recursion" },
-								},
-							},
-						},
-					},
+					-- targetDir = true,
+					-- keys = {
+					-- 	{ "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
+					-- 	{ "<leader>cR", "<cmd>RustCodeAction<cr>", desc = "Code Action (Rust)" },
+					-- 	{ "<leader>dr", "<cmd>RustDebuggables<cr>", desc = "Run Debuggables (Rust)" },
+					-- },
 				},
 				yamlls = {
 					settings = {

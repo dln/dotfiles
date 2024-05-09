@@ -56,6 +56,36 @@ return {
 					end, { desc = "Rust external documentation", buffer = bufnr })
 				end,
 			},
+
+			settings = {
+				-- rust-analyzer language server configuration
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+						loadOutDirsFromCheck = true,
+						runBuildScripts = true,
+						targetDir = true,
+						-- extraEnv = {
+						-- 	RUSTC_LINKER = "clang",
+						-- 	RUSTFLAGS = "-Clink-arg=-fuse-ld=mold",
+						-- },
+					},
+					-- Add clippy lints for Rust.
+					checkOnSave = {
+						allFeatures = true,
+						command = "clippy",
+						extraArgs = { "--no-deps" },
+					},
+					procMacro = {
+						enable = true,
+						ignored = {
+							["async-trait"] = { "async_trait" },
+							["napi-derive"] = { "napi" },
+							["async-recursion"] = { "async_recursion" },
+						},
+					},
+				},
+			},
 		},
 	},
 
@@ -66,6 +96,7 @@ return {
 			local neocodeium = require("neocodeium")
 			neocodeium.setup()
 			vim.keymap.set("i", "<C-j>", neocodeium.accept)
+			vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete)
 		end,
 	},
 }
