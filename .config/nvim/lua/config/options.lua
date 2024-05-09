@@ -4,7 +4,7 @@
 
 vim.opt.number = true
 vim.opt.relativenumber = false
-vim.opt.clipboard = "unnamed" --"unnamedplus"
+-- vim.opt.clipboard = "unnamed" --"unnamedplus"
 
 vim.g.do_filetype_lua = 1
 vim.g.root_spec = { { ".git", "lua" }, "lsp", "cwd" }

@@ -76,6 +76,18 @@ return {
 				Color.new("normal", "#e3e0cd")
 				Group.new("Normal", colors.normal, nil)
 
+				Color.new("Visual", "#440066")
+				Group.new("ModesVisualVisual", nil, colors.Visual)
+				Group.new("Visual", nil, colors.Visual)
+				Group.new("VisualNOS", nil, colors.Visual)
+
+				Color.new("NeoCodeiumLabelBg", "#eda92d")
+				Color.new("NeoCodeiumLabelFg", "#000000")
+				Group.new("NeoCodeiumLabel", colors.NeoCodeiumLabelFg, colors.NeoCodeiumLabelBg)
+
+				Color.new("NeoCodeiumSuggestion", "#996611")
+				Group.new("NeoCodeiumSuggestion", colors.NeoCodeiumSuggestion, nil, styles.italic)
+
 				Color.new("WinSeparator", "#223344")
 				Group.new("WinSeparator", colors.WinSeparator, nil)
 

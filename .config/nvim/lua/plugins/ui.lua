@@ -70,6 +70,21 @@ return {
 	},
 
 	{
+		"mvllow/modes.nvim",
+		opts = {
+			colors = {
+				copy = "#f5c359",
+				delete = "#c75c6a",
+				insert = "#ffcc00",
+				visual = "#c343fc",
+			},
+			set_cursor = true,
+			set_cursorline = true,
+			set_number = true,
+		},
+	},
+
+	{
 		"rcarriga/nvim-notify",
 		opts = {
 			timeout = 2000,
