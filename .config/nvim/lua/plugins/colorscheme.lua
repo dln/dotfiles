@@ -80,6 +80,7 @@ return {
 				Group.new("ModesVisualVisual", nil, colors.Visual)
 				Group.new("Visual", nil, colors.Visual)
 				Group.new("VisualNOS", nil, colors.Visual)
+				Group.new("MatchParen", nil, colors.Visual)
 
 				Color.new("NeoCodeiumLabelBg", "#eda92d")
 				Color.new("NeoCodeiumLabelFg", "#000000")
@@ -87,6 +88,15 @@ return {
 
 				Color.new("NeoCodeiumSuggestion", "#996611")
 				Group.new("NeoCodeiumSuggestion", colors.NeoCodeiumSuggestion, nil, styles.italic)
+
+				Color.new("NoiceCmdLineBg", "#112233")
+				Color.new("NoiceCmdLineFg", "#99ccff")
+				Group.new("NoiceCmdLine", colors.NoiceCmdLineFg, colors.NoiceCmdLineBg)
+
+				Color.new("NoiceFormatProgressTodo", "#223344")
+				Group.new("NoiceFormatProgressTodo", nil, colors.NoiceFormatProgressTodo)
+				Color.new("NoiceFormatProgressDone", "#446699")
+				Group.new("NoiceFormatProgressDone", nil, colors.NoiceFormatProgressDone)
 
 				Color.new("WinSeparator", "#223344")
 				Group.new("WinSeparator", colors.WinSeparator, nil)

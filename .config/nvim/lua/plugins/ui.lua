@@ -85,11 +85,48 @@ return {
 	},
 
 	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		keys = {
+			{ "<leader>sna", "<cmd>NoiceTelescope<cr>", desc = "Show all messages in Telescope" },
+		},
+		opts = function()
+			local enable_conceal = true -- Hide command text if true
+			return {
+				presets = { bottom_search = true }, -- The kind of popup used for /
+				cmdline = {
+					view = "cmdline", -- The kind of popup used for :
+					format = {
+						cmdline = { conceal = enable_conceal },
+						search_down = { conceal = enable_conceal },
+						search_up = { conceal = enable_conceal },
+						filter = { conceal = enable_conceal },
+						lua = { conceal = enable_conceal },
+						help = { conceal = enable_conceal },
+						input = { conceal = enable_conceal },
+					},
+				},
+
+				messages = { enabled = true },
+				lsp = {
+					hover = { enabled = false },
+					signature = { enabled = false },
+					progress = { enabled = true, view = "cmdline" },
+					message = { enabled = false },
+					smart_move = { enabled = false },
+				},
+			}
+		end,
+	},
+
+	{
 		"rcarriga/nvim-notify",
 		opts = {
-			timeout = 2000,
+			stages = "fade_in_slide_out",
+			timeout = 1000,
 			background_colour = "#1e2835",
 			render = "wrapped-compact",
+			top_down = false,
 		},
 	},
 
