@@ -60,18 +60,18 @@ pager = delta
 
 [delta]
 ; # syntax-theme = GitHub
-file-added-label =  "   ══"
+file-added-label =  " ➕ ══"
 file-decoration-style=none
-file-modified-label = "   ══"
-file-removed-label = "   ══"
-file-renamed-label = "   ══"
+file-modified-label = " ▲ ══"
+file-removed-label = " ➖══"
+file-renamed-label = " ➞ ══"
 file-style = bold "#ffff66" "#333300"
 file-transformation = "s/$/ ══  /"
 hunk-header-decoration-style=none
 hunk-header-file-style = bold "#66ddff"
 hunk-header-line-number-style = bold "#66ccff"
 hunk-header-style = line-number bold "#99eeff" "#001133"
-hunk-label = " "
+hunk-label = "⯁"
 hunk-label-style = bold "#66ccff"
 line-numbers = true
 max-line-distance = 0.9
