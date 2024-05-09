@@ -15,7 +15,7 @@ vim.o.scrolloff = 7
 vim.o.splitkeep = "screen"
 vim.o.updatetime = 250
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 0
 
 -- additional filetypes
 vim.filetype.add({
