@@ -13,6 +13,7 @@ return {
 					-- 	{ "<leader>dr", "<cmd>RustDebuggables<cr>", desc = "Run Debuggables (Rust)" },
 					-- },
 				},
+				starpls = {},
 				yamlls = {
 					settings = {
 						yaml = {

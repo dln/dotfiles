@@ -10,6 +10,7 @@ return {
 				nls.builtins.formatting.stylua,
 				nls.builtins.formatting.shfmt,
 				nls.builtins.formatting.buf,
+				nls.builtins.formatting.buildifier,
 				nls.builtins.diagnostics.buf.with({
 					args = { "lint", "--disable-symlinks", "--path", "$FILENAME" },
 					cwd = function()
