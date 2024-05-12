@@ -217,8 +217,20 @@ return {
 				Color.new("FlashLabelBg", "#EA1199")
 				Group.new("FlashLabel", colors.FlashLabelFg, colors.FlashLabelBg)
 
-				Group.new("TelescopeTitle", colors.primary)
-				Group.new("TelescopeBorder", colors.secondary)
+				Color.new("TelescopeBorder", "#23fdb6")
+				Group.new("TelescopeTitle", colors.TelescopeBorder)
+				Group.new("telescopeborder", colors.TelescopeBorder)
+				Group.new("telescoperesultsnormal", colors.TelescopeBorder)
+
+				Color.new("TelescopeSelectionBg", "#00401d")
+				Color.new("TelescopeSelectionFg", "#f6fb2d")
+				Group.new(
+					"TelescopeSelection",
+					colors.TelescopeSelectionFg,
+					colors.TelescopeSelectionBg,
+					styles.nocombine + styles.bold
+				)
+
 				Group.new("@comment", colors.comment, nil, styles.italic + styles.bold)
 				Group.new("@string", colors.string, nil, styles.italic)
 

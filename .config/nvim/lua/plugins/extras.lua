@@ -1,5 +1,12 @@
 return {
 	{
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+	},
+
+	{
 		"nvimtools/none-ls.nvim",
 		opts = function(_, opts)
 			local nls = require("null-ls")
@@ -11,6 +18,7 @@ return {
 				nls.builtins.formatting.shfmt,
 				nls.builtins.formatting.buf,
 				nls.builtins.formatting.buildifier,
+				nls.builtins.diagnostics.buildifier,
 				nls.builtins.diagnostics.buf.with({
 					args = { "lint", "--disable-symlinks", "--path", "$FILENAME" },
 					cwd = function()
