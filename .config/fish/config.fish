@@ -1,31 +1,35 @@
-
 set fish_greeting
+set fish_emoji_width 2
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/bin
 
 ## Nix
-export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
-export NIX_REMOTE=daemon
+set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
+set -gx NIX_REMOTE daemon
 fish_add_path $HOME/.nix-profile/bin
 
 if status is-interactive
 
     ## Pager
-    export LESS="--mouse --wheel-lines=1 -nRXF"
-    export LESSCOLORIZER="bat"
-    export LESSOPEN="|lesspipe.sh %s"
-    export PAGER="bat"
-    export BAT_PAGER="less -r"
+    set -gx LESS "--mouse --wheel-lines=1 -nRXF"
+    set -gx LESSCOLORIZER bat
+    set -gx LESSOPEN "|lesspipe.sh %s"
+    set -gx PAGER bat
+    set -gx BAT_PAGER "less -r"
 
     ## OpenTelemetry
-    export OTEL_EXPORTER_OTLP_ENDPOINT=https://otel.aarn.shelman.io
-    export OTEL_RESOURCE_ATTRIBUTES=instance=dln-dev
-    export OTEL_LOG_LEVEL=debug
+    set -gx OTEL_EXPORTER_OTLP_ENDPOINT https://otel.aarn.shelman.io
+    set -gx OTEL_RESOURCE_ATTRIBUTES instance=dln-dev
+    set -gx OTEL_LOG_LEVEL debug
 
     ## Utilities
 
-    export EDITOR=nvim
+    set -gx EDITOR (which nvim)
+    set -gx VISUAL $EDITOR
+    set -gx SUDO_EDITOR $EDITOR
+
+
 
     function tree
         eza --tree --color=always $argv | bat --wrap=never
@@ -59,6 +63,8 @@ if status is-interactive
     # FIXME: how to use autin history for these?
     bind \cn history-prefix-search-forward
     bind \cp history-prefix-search-backward
+    # bind \cP _atuin_bind_up
+    bind \cJ forward-char
 
     atuin init fish | source
 end
