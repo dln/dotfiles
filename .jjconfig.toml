@@ -13,3 +13,9 @@ la = ["log", "--ignore-working-copy", "-r", "all()"]
 b = ["branch", "list"]
 n = ["new", "main"]
 d = ["diff"]
+
+[revset-aliases]
+# The `main.. &` bit is an optimization to scan for non-`mine()` commits only
+# among commits that are not in `main`.
+"immutable_heads()" = "main@origin | (main@origin.. & ~mine())"
+
