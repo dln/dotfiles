@@ -1,17 +1,20 @@
 return {
+	--[=====[
 	{
-		"p00f/alabaster.nvim",
-		url = "https://git.sr.ht/~p00f/alabaster.nvim",
+		-- "p00f/alabaster.nvim",
+		-- url = "https://git.sr.ht/~p00f/alabaster.nvim",
+		"lsjostro/alabaster.nvim",
 		lazy = false,
+		priority = 1000,
 	},
 
-	--[=====[
 	{
 		"LazyVim/LazyVim",
 		opts = {
 			colorscheme = "alabaster",
 		},
 	},
+
 
 	{ "echasnovski/mini.colors", version = false },
 
@@ -32,6 +35,9 @@ return {
 	},
 
   --]=====]
+	--
+	--
+	--
 
 	{
 		"jesseleite/nvim-noirbuddy",
@@ -220,9 +226,13 @@ return {
 				Color.new("TelescopeBorder", "#23fdb6")
 				Group.new("TelescopeTitle", colors.TelescopeBorder)
 				Group.new("telescopeborder", colors.TelescopeBorder)
-				Group.new("telescoperesultsnormal", colors.TelescopeBorder)
 
-				Color.new("TelescopeSelectionBg", "#00401d")
+				Color.new("TelescopeBorder", "#23fdb6")
+
+				Color.new("TelescopeNormal", "#b6c5bd")
+				Group.new("telescoperesultsnormal", colors.TelescopeNormal)
+
+				Color.new("TelescopeSelectionBg", "#003f29")
 				Color.new("TelescopeSelectionFg", "#f6fb2d")
 				Group.new(
 					"TelescopeSelection",
