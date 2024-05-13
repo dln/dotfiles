@@ -7,15 +7,32 @@ local spawn_dev_nvim = { "ssh", dev_host, "nvim", "--listen", os.getenv("XDG_RUN
 
 wezterm.add_to_config_reload_watch_list(os.getenv("HOME") .. "/.config/shelman-theme/current/wezterm")
 
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Shelman Dark"
+	else
+		return "Shelman Light"
+	end
+end
+
+local function font_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return wezterm.font({
+			family = "IosevkaShelman Nerd Font",
+			weight = "Light",
+		})
+	else
+		return wezterm.font({
+			family = "IosevkaShelman Nerd Font",
+			--	weight = "Regular",
+			--weight = "Regular",
+		})
+	end
+end
+
 return {
-	color_scheme = "Shelman Theme",
-	color_scheme_dirs = {
-		os.getenv("HOME") .. "/.config/shelman-theme/current/wezterm",
-	},
-	font = wezterm.font({
-		family = "IosevkaShelman Nerd Font",
-		weight = "Light",
-	}),
+	color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
+	font = font_for_appearance(wezterm.gui.get_appearance()),
 	font_rules = {
 		{
 			italic = true,
