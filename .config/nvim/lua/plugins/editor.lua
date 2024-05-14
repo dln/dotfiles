@@ -24,6 +24,9 @@ return {
 				winblend = 0,
 				wrap_results = true,
 				previewer = false,
+				preview = {
+					hide_on_startup = true,
+				},
 			},
 		},
 	},
