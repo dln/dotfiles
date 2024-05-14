@@ -20,15 +20,39 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 	Group.new("IndentBlanklineContextChar", colors.IndentBlanklineContextChar)
 end)
 
+local logo = [[
+███████ ██   ██ ███████ ██      ███    ███  █████  ███    ██      ██████  ██████   ██████  ██    ██ ██████ 
+██      ██   ██ ██      ██      ████  ████ ██   ██ ████   ██     ██       ██   ██ ██    ██ ██    ██ ██   ██
+███████ ███████ █████   ██      ██ ████ ██ ███████ ██ ██  ██     ██   ███ ██████  ██    ██ ██    ██ ██████ 
+     ██ ██   ██ ██      ██      ██  ██  ██ ██   ██ ██  ██ ██     ██    ██ ██   ██ ██    ██ ██    ██ ██     
+███████ ██   ██ ███████ ███████ ██      ██ ██   ██ ██   ████      ██████  ██   ██  ██████   ██████  ██     
+]]
+
 return {
+	{
+		"nvimdev/dashboard-nvim",
+		opts = {
+			theme = "hyper",
+			config = {
+				header = vim.split(string.rep("\n", 8) .. logo, "\n"),
+				week_header = { enable = false },
+				packages = { enable = false },
+				project = { enable = false },
+				footer = {},
+				shortcut = {},
+			},
+		},
+	},
+
 	{
 		"echasnovski/mini.indentscope",
 		opts = {
 			draw = {
-				delay = 25, -- ms
+				delay = 50, -- ms
 			},
 		},
 	},
+
 	{
 		"akinsho/bufferline.nvim",
 		enabled = false,
@@ -54,7 +78,7 @@ return {
 				},
 			},
 			scope = {
-				enabled = true,
+				enabled = false,
 				show_start = false,
 				char = "│",
 				highlight = {
