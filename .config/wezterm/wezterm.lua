@@ -33,6 +33,7 @@ end
 return {
 	color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
 	font = font_for_appearance(wezterm.gui.get_appearance()),
+
 	font_rules = {
 		{
 			italic = true,
@@ -40,7 +41,30 @@ return {
 			reverse = false,
 			font = wezterm.font("IosevkaShelman Nerd Font", { weight = "ExtraLight", italic = true }),
 			-- font = wezterm.font("Iosevka Term Curly Slab", { weight = "Thin", italic = true }),
+
+			-- font = wezterm.font({ -- Normal text
+			-- 	-- family = "Monaspace Radon",
+			-- 	family = "Monaspace Argon",
+			-- 	harfbuzz_features = {
+			-- 		"calt",
+			-- 		"liga",
+			-- 		"dlig",
+			-- 		"ss01",
+			-- 		"ss02",
+			-- 		"ss03",
+			-- 		"ss04",
+			-- 		"ss05",
+			-- 		"ss06",
+			-- 		"ss07",
+			-- 		"ss08",
+			-- 	},
+			-- 	weight = "Regular",
+			-- 	-- weight = "ExtraLight",
+			-- 	stretch = "Normal",
+			-- 	style = "Normal",
+			-- }),
 		},
+
 		{
 			italic = true,
 			intensity = "Normal",
@@ -48,8 +72,9 @@ return {
 			font = wezterm.font("IosevkaShelman Nerd Font", { weight = "Light", italic = true }),
 		},
 	},
-	front_end = "WebGpu",
-	webgpu_power_preference = "HighPerformance",
+	-- front_end = "WebGpu",
+	-- webgpu_power_preference = "HighPerformance",
+	front_end = "OpenGL",
 	warn_about_missing_glyphs = false,
 	bold_brightens_ansi_colors = false,
 	-- allow_square_glyphs_to_overflow_width = "Never",
