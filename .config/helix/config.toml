@@ -1,4 +1,5 @@
 theme = "sumi-e"
+# theme = "github_light"
 
 [editor]
 true-color = true
