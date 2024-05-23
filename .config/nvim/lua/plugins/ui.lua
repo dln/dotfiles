@@ -158,4 +158,16 @@ return {
 		"nvim-lualine/lualine.nvim",
 		enabled = false,
 	},
+
+	{
+		"linrongbin16/fzfx.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons", "junegunn/fzf" },
+
+		-- specify version to avoid break changes
+		version = "v5.*",
+
+		config = function()
+			require("fzfx").setup()
+		end,
+	},
 }

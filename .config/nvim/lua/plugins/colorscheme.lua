@@ -1,5 +1,6 @@
 return {
-	--[=====[
+	{ "echasnovski/mini.colors", version = false },
+
 	{
 		-- "p00f/alabaster.nvim",
 		-- url = "https://git.sr.ht/~p00f/alabaster.nvim",
@@ -8,6 +9,7 @@ return {
 		priority = 1000,
 	},
 
+	--[=====[
 	{
 		"LazyVim/LazyVim",
 		opts = {
@@ -15,29 +17,7 @@ return {
 		},
 	},
 
-
-	{ "echasnovski/mini.colors", version = false },
-
-	{
-		"shelmangroup/sumi-e",
-		dir = "/home/dln/src/git.shelman.io/shelmangroup/sumi-e.nvim",
-		lazy = false,
-		dependencies = {
-			{ "tjdevries/colorbuddy.nvim" },
-		},
-	},
-
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "sumi-e",
-		},
-	},
-
-  --]=====]
-	--
-	--
-	--
+	--]=====]
 
 	{
 		"jesseleite/nvim-noirbuddy",

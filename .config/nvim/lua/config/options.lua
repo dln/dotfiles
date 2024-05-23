@@ -13,9 +13,9 @@ vim.o.autochdir = true
 vim.o.fillchars = "stl: ,stlnc: ,eob:🮙"
 vim.o.scrolloff = 7
 vim.o.splitkeep = "screen"
-vim.o.updatetime = 250
+vim.o.updatetime = 1500
 vim.o.timeout = true
-vim.o.timeoutlen = 150
+vim.o.timeoutlen = 15
 
 -- additional filetypes
 vim.filetype.add({

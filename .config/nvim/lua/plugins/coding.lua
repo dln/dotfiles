@@ -12,9 +12,9 @@ return {
 			table.insert(opts.sources, { name = "emoji" })
 
 			opts.view = { docs = { auto_open = false }, entries = { follow_cursor = true } }
-			opts.completion = {
-				autocomplete = false,
-			}
+			-- opts.completion = {
+			-- 	autocomplete = false,
+			-- }
 
 			local winhighlight =
 				"Normal:NoiceCmdlinePopupTitle,FloatBorder:NoiceCmdlinePopupBorder,CursorLine:PMenuSel,Search:Search"
