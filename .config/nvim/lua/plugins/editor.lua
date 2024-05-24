@@ -3,6 +3,7 @@ return {
 		"folke/flash.nvim",
 		enabled = false,
 	},
+	{ "aohoyd/broot.nvim", opts = {} },
 	{
 		"telescope.nvim",
 		config = function()

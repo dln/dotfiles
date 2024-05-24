@@ -46,11 +46,16 @@ if status is-interactive
     end
 
     function jump
-        set _dir $(fre --sorted | fzf-tmux --no-sort -p 90%,40% -y 0 -- --color=fg:248,bg+:16,fg+:49,pointer:49,border:49 --layout=reverse)
+        set _dir $(fre --sorted | fzf --no-sort --color=fg:248,bg+:16,fg+:49,pointer:49,border:49 --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.toml $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
         [ -n "$_dir" ] && pushd $_dir >>/dev/null
         commandline -f repaint
     end
     bind \cg jump
+
+    bind \c_ 'do something'
+    bind \ee 'br $(git rev-parse --show-toplevel 2>/dev/null || pwd)'
+    bind \eg gitui
+
 
     ## Kubernetes
     fish_add_path $HOME/.krew/bin
