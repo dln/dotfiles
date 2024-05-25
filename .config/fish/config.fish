@@ -46,14 +46,28 @@ if status is-interactive
     end
 
     function jump
-        set _dir $(fre --sorted | fzf --no-sort --color=fg:248,bg+:16,fg+:49,pointer:49,border:49 --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.toml $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
+        set _dir $(fre --sorted | fzf --no-sort --color=fg:248,bg+:16,fg+:49,pointer:49,border:49 --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.hjson $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
         [ -n "$_dir" ] && pushd $_dir >>/dev/null
         commandline -f repaint
     end
     bind \cg jump
 
-    bind \c_ 'do something'
-    bind \ee 'br $(git rev-parse --show-toplevel 2>/dev/null || pwd)'
+    function git_jump
+        set _dir $(git rev-parse --show-toplevel 2>/dev/null || pwd)
+        if [ "$_dir" = "$PWD" ]
+            set _dir $(br -f --conf ~/.config/broot/select.hjson)
+        end
+        [ -n "$_dir" ] && pushd $_dir >>/dev/null
+        commandline -f repaint
+    end
+    bind \c_ git_jump
+
+    function git_broot
+        br $(git rev-parse --show-toplevel 2>/dev/null || pwd)
+        commandline -f repaint
+    end
+
+    bind \ee git_broot
     bind \eg gitui
 
 

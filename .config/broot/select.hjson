@@ -1,0 +1,17 @@
+verbs: [
+  {
+    invocation: "ok"
+      key: "enter"
+      leave_broot: true
+      execution: ":print_path"
+      apply_to: "directory"
+  }
+
+  {
+    invocation: "broot_home"
+      keys: ["ctrl-7", "ctrl-g"]
+      execution: "broot -f --conf ~/.config/broot/select.hjson $HOME"
+      leave_broot: true
+  }
+]
+

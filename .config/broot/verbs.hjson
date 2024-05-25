@@ -16,6 +16,13 @@ verbs: [
         leave_broot: true
     }
 
+    {
+        invocation: broot_home
+        key: ctrl-7
+        execution: broot $HOME
+        leave_broot: true
+    }
+
     # You should customize this standard opening of text files.
     # If you edit text files in your terminal (vi, emacs, helix, eg.), then
     #  you'll find it convenient to change the 'key' from 'ctrl-e' to 'enter'.
