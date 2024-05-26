@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=wezterm-dev
+GenericName=wezterm-dev
+StartupWMClass=org.wezfurlong.wezterm-dev
+Type=Application
+TryExec=/usr/bin/wezterm
+Icon=org.wezfurlong.wezterm
+Terminal=false
+Categories=System;TerminalEmulator;
+Exec=/usr/bin/wezterm --config 'default_prog={"/usr/bin/fish"}' start --class=org.wezfurlong.wezterm-dev --domain=dev

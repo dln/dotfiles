@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -fe -o pipefail
+
+eval "$(direnv export bash 2>/dev/null)"
+
+PATH="$HOME/bin:$PATH"
+
+if [ -n "$1" ]; then
+	_file=$(readlink -f "$@")
+else
+	FZF=${FZF:-"fzf-tmux -p 90%,50% -y 0 --layout=reverse"}
+	_root=$(git rev-parse --show-toplevel 2>/dev/null || jj workspace root 2>/dev/null || pwd)
+	_store=$(echo "$_root" | sha1sum | cut -d ' ' -f 1)
+	_file=$( ( (fre --store_name "$_store" --sorted | xargs -n 100 ls -d 2>/dev/null || true) && fd --type f --hidden --follow --exclude .git --exclude .jj --ignore-file "${_root}/.gitignore" . "$_root") | cat -n | sort -k2 -k1n | uniq -f1 | sort -nk1,1 | cut -f2- | sed -e "s#^${_root}/##" | $FZF --no-sort)
+	_file="${_root}/${_file}"
+	fre --store_name "$_store" --add "$_file"
+fi
+
+fre --store_name "edit-history" --add "$_file"
+
+_nvim_socket="$XDG_RUNTIME_DIR/nvim-persistent.sock"
+
+nvim --server "$_nvim_socket" --remote "$_file"
+
+function _nvim_setenv() {
+	nvim --server "$_nvim_socket" --remote-expr "execute(\"let \$${1} = \\\"${2}\\\"\")" 2>&1 >/dev/null
+}
+
+_nvim_setenv AR "$AR"
+_nvim_setenv AS "$AS"
+_nvim_setenv BUILD_COMMAND "$BUILD_COMMAND"
+_nvim_setenv CC "$CC"
+_nvim_setenv CXX "$CXX"
+_nvim_setenv GOFLAGS "$GOFLAGS"
+_nvim_setenv GOPACKAGESDRIVER "$GOPACKAGESDRIVER"
+_nvim_setenv LC_ALL "$LC_ALL"
+_nvim_setenv LD "$LD"
+_nvim_setenv NM "$NM"
+_nvim_setenv NM "$NM"
+_nvim_setenv OBJCOPY "$OBJCOPY"
+_nvim_setenv OBJDUMP "$OBJDUMP"
+_nvim_setenv PATH "$PATH"
+_nvim_setenv RANLIB "$RANLIB"
+_nvim_setenv READELF "$READELF"
+_nvim_setenv RUST_SRC_PATH "$RUST_SRC_PATH"
+_nvim_setenv SIZE "$SIZE"
+_nvim_setenv STRIP "$STRIP"
+
+# Wezterm: switch tab to nvim
+printf "\033]1337;SetUserVar=%s=%s\007" nvim_activate $(date +%s | base64)
