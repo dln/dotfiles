@@ -12,13 +12,6 @@ return {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-fzy-native.nvim" },
 		},
-		keys = {
-			{
-				"<leader><leader>",
-				":lua require('telescope').extensions.smart_open.smart_open {filename_first = false }<cr>",
-				desc = "Telescope smart open",
-			},
-		},
 		config = function()
 			local util = require("lazyvim.util")
 			util.on_load("telescope.nvim", function()
@@ -30,6 +23,17 @@ return {
 
 	{
 		"telescope.nvim",
+		keys = {
+			{
+				"<leader><leader>",
+				function()
+					require("telescope").extensions.smart_open.smart_open({
+						filename_first = false,
+					})
+				end,
+				desc = "Telescope smart open",
+			},
+		},
 		opts = function(_, opts)
 			local actions = require("telescope.actions")
 			opts.defaults = {
@@ -50,15 +54,17 @@ return {
 					i = {
 						["<esc>"] = actions.close, -- <Esc> close popup
 						["<C-u>"] = false, -- <C-u> clear prompt
+						["<C-w>"] = false, -- <C-u> clear prompt
 					},
 				},
-				sorting_strategy = "ascending",
-				winblend = 0,
-				wrap_results = true,
+				path_display = { "filename_first" },
 				previewer = false,
 				preview = {
 					hide_on_startup = true,
 				},
+				sorting_strategy = "ascending",
+				winblend = 0,
+				wrap_results = true,
 			}
 		end,
 	},

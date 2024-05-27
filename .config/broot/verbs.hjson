@@ -12,7 +12,7 @@ verbs: [
         invocation: nvim
         key: enter
         apply_to: text_file
-        execution: "tmux-edit-helper {file}"
+        execution: "wezterm-edit-helper {file}"
         leave_broot: true
     }
 

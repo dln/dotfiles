@@ -3,9 +3,9 @@
 -- Add any additional keymaps here
 
 -- C-/ should be comment instead of lazyterm
-vim.api.nvim_del_keymap("n", "<c-_>")
-vim.api.nvim_set_keymap("n", "<c-_>", "gcc", {})
-vim.api.nvim_set_keymap("v", "<c-_>", "gc", {})
-vim.api.nvim_set_keymap("n", "<Leader><c-_>", "gcgc", {})
+vim.api.nvim_del_keymap("n", "<c-/>")
+vim.api.nvim_set_keymap("n", "<c-/>", "gcc", {})
+vim.api.nvim_set_keymap("v", "<c-/>", "gc", {})
+vim.api.nvim_set_keymap("n", "<Leader><c-/>", "gcgc", {})
 vim.api.nvim_set_keymap("n", "<Tab>", "<Space>,", {})
 vim.api.nvim_set_keymap("n", "zz", "zt", {})
