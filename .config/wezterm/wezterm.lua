@@ -168,6 +168,14 @@ config.window_padding = {
 	bottom = 0,
 }
 
+-- Hyperlinks
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+
+table.insert(config.hyperlink_rules, {
+	regex = [[`rustc --explain E(\d+)`]],
+	format = "https://doc.rust-lang.org/error_codes/E$1.html",
+})
+
 -- Tabs
 config.enable_tab_bar = false
 config.tab_bar_at_bottom = true
