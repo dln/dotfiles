@@ -1,5 +1,11 @@
 return {
 	{
+		"direnv/direnv.vim",
+		lazy = false,
+		priority = 900,
+	},
+
+	{
 		"nvimtools/none-ls.nvim",
 		opts = function(_, opts)
 			local nls = require("null-ls")
