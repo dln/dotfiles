@@ -46,6 +46,7 @@ return {
 		"simrat39/rust-tools.nvim",
 		enabled = false,
 	},
+
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^4", -- Recommended
