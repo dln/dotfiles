@@ -137,8 +137,6 @@ config.unicode_version = 14
 
 -- Config
 config.enable_wayland = true
-config.front_end = "WebGpu"
-config.webgpu_power_preference = "HighPerformance"
 config.term = "wezterm"
 config.check_for_updates = false
 
