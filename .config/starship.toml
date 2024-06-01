@@ -3,9 +3,10 @@
 add_newline = true
 
 format = """\
-${custom.pwd}\
 $fill\
+${custom.pwd}\
 $line_break\
+$hostname\
 $directory\
 ($character)\
 """
@@ -13,43 +14,41 @@ $directory\
 right_format = """\
 $cmd_duration\
 $git_branch$git_commit$git_status$git_state\
-$hostname\
 """
 
 [hostname]
 ssh_only = false
-format = " [](fg:#222222)[ $hostname ](italic dimmed bg:#222222 fg:#999999)"
+format = "[$hostname](italic bold)"
 disabled = false
 
 [time]
 disabled = false
-format = ' [$time]($style)'
-style = "italic dimmed fg:#666666"
+format = '[ $time](italic dimmed inverted)'
 time_format = '%R'
 
 [custom.pwd]
-command = "pwd"
+command = "prompt_pwd -D 100"
 when = true
-format = "[($output)]($style) "
-style = "italic dimmed fg:#777777"
+format = "[ $output]($style)"
+style = "italic dimmed"
 
 [directory]
 fish_style_pwd_dir_length = 1
 truncation_length = 1
 truncate_to_repo = false
 truncation_symbol = "…"
-style = "italic fg:#88aabb"
+style = "italic"
 
 [line_break]
 disabled = false
 
 [fill]
-symbol = '⎯'
-style = 'fg:#333333'
+symbol = '┄'
+style = 'dimmed fg:#888888'
 
 [character]
-success_symbol = "[%](bold fg:#66cc99)"
-error_symbol = "[%](bold red)"
+success_symbol = "[%](bold)"
+error_symbol = "[✖](bold red)"
 
 [cmd_duration]
 min_time = 500
@@ -57,22 +56,22 @@ format = '[󱦟 $duration ](yellow)'
 
 [git_branch]
 format = "[$symbol$branch]($style)"
-style = "italic bold fg:#00ac73"
+style = "italic bold green"
 symbol = " "
 truncation_length = 16
 truncation_symbol = ""
 
 [git_commit]
 format = "[ $hash$tag]($style) "
-style = "fg:#00d992"
+style = "cyan"
 
 [git_state]
 style = ""
 
 [git_status]
-format = '([$all_status$ahead_behind]($style)) '
+format = '([$all_status$ahead_behind]($style))'
 style = "fg:#00ac73"
-modified = "[ 󰦒](fg:#d1c000)"
-deleted = "[ ✘](fg:#b93400)"
-untracked = "[ ?](fg:#9c49aa)"
-staged = "[ 󰐖](fg:#71a4aa)"
+modified = "[ 󰦒](yellow)"
+deleted = "[ ✘](red)"
+untracked = "[ ?](purple)"
+staged = "[ 󰐖](cyan)"
