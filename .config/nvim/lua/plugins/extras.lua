@@ -3,6 +3,9 @@ return {
 		"direnv/direnv.vim",
 		lazy = false,
 		priority = 900,
+		config = function()
+			vim.g.direnv_silent_load = 1
+		end,
 	},
 
 	{
