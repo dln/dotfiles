@@ -103,7 +103,7 @@ local function font_for_appearance(appearance)
 	else
 		return wezterm.font({
 			family = "IosevkaShelman Nerd Font",
-			--weight = "Regular",
+			-- weight = "Regular",
 		})
 	end
 end
@@ -129,11 +129,14 @@ config.font_rules = {
 	},
 }
 -- config.dpi = 192
-config.font_size = 15
+config.dpi = 144
+config.font_size = 14
 config.line_height = 1.0
 config.warn_about_missing_glyphs = false
 config.bold_brightens_ansi_colors = false
 config.unicode_version = 14
+config.freetype_load_flags = "NO_HINTING"
+config.freetype_load_target = "HorizontalLcd"
 
 -- Config
 config.enable_wayland = true
