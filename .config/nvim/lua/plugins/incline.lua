@@ -34,13 +34,13 @@ return {
 						end
 					end
 					if #labels > 0 then
-						table.insert(labels, { "╱ " })
+						table.insert(labels, { "│ " })
 					end
 					return labels
 				end
 
 				local function get_diagnostic_label()
-					local icons = { error = " ", warn = "󰀪 ", info = " ", hint = " " }
+					local icons = { error = "󰅜 ", warn = " ", info = " ", hint = " " }
 					local label = {}
 
 					for severity, icon in pairs(icons) do
@@ -53,23 +53,22 @@ return {
 						end
 					end
 					if #label > 0 then
-						table.insert(label, { "╱ " })
+						table.insert(label, { "│ " })
 					end
 					return label
 				end
 
-				local bg_color = "#242e38"
-
 				return {
-					{ "", guibg = "#0d1117", guifg = bg_color },
-					{ " ", guifg = "#0d1117", guibg = bg_color },
-					{ get_diagnostic_label(), guibg = bg_color },
-					{ get_git_diff() },
-					{ filename .. " ", gui = "italic" },
+					-- { "" },
+					{ "  ", gui = "reverse" },
+					{ get_diagnostic_label(), guibg = "fg", guifg = "bg" },
+					{ get_git_diff(), gui = "reverse" },
+					{ filename, gui = "reverse" },
+					{ "  ", gui = "reverse" },
+					-- { "" },
 				}
 			end,
 		})
 	end,
-	-- Optional: Lazy load Incline
 	event = "VeryLazy",
 }
