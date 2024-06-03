@@ -94,49 +94,31 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-local function font_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return wezterm.font({
-			family = "IosevkaShelman Nerd Font",
-			weight = "Light",
-		})
-	else
-		return wezterm.font({
-			family = "IosevkaShelman Nerd Font",
-			-- weight = "Regular",
-		})
-	end
-end
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
 -- ------------------------------------------------------------------------------------
 -- Fonts
-config.font = font_for_appearance(wezterm.gui.get_appearance())
-config.font_rules = {
-	{
-		italic = true,
-		intensity = "Bold",
-		reverse = false,
-		font = wezterm.font("IosevkaShelman Nerd Font", { weight = "ExtraLight", italic = true }),
-		-- font = wezterm.font("Iosevka Term Curly Slab", { weight = "Thin", italic = true }),
-	},
-
-	{
-		italic = true,
-		intensity = "Normal",
-		reverse = false,
-		font = wezterm.font("IosevkaShelman Nerd Font", { weight = "Light", italic = true }),
-	},
-}
--- config.dpi = 192
-config.dpi = 144
+config.font = wezterm.font({ family = "Berkeley Mono Variable", weight = "Regular", stretch = "ExtraCondensed" })
+-- config.font = wezterm.font({ family = "Berkeley Mono" })
+-- config.font_rules = {
+-- 	{
+-- 		italic = true,
+-- 		intensity = "Bold",
+-- 		reverse = false,
+-- 		-- font = wezterm.font("IosevkaShelman Nerd Font", { weight = "ExtraLight", italic = true }),
+-- 		-- font = wezterm.font("Iosevka Term Curly Slab", { weight = "Light", italic = true }),
+-- 		font = wezterm.font("Monaspace Krypton", { weight = "ExtraLight", italic = true }),
+-- 	},
+-- }
 config.font_size = 14
-config.line_height = 1.0
+config.font_size = 18
+-- config.line_height = 1.15
 config.warn_about_missing_glyphs = false
 config.bold_brightens_ansi_colors = false
 config.unicode_version = 14
 config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "HorizontalLcd"
+config.custom_block_glyphs = false
 
 -- Config
 config.enable_wayland = true
@@ -153,10 +135,10 @@ config.use_resize_increments = true
 config.adjust_window_size_when_changing_font_size = false
 config.window_decorations = "RESIZE"
 config.window_frame = {
-	border_left_width = "4px",
-	border_right_width = "4px",
-	border_bottom_height = "4px",
-	border_top_height = "4px",
+	border_left_width = "3px",
+	border_right_width = "3px",
+	border_bottom_height = "3px",
+	border_top_height = "3px",
 	border_left_color = "#000000",
 	border_right_color = "#000000",
 	border_bottom_color = "#000000",
@@ -210,6 +192,8 @@ config.keys = {
 	{ key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(0.5) },
 	{ key = "r", mods = "ALT", action = act.ReloadConfiguration },
 	{ key = "o", mods = "ALT", action = act.ActivateCommandPalette },
+	{ key = "RightArrow", mods = "CTRL", action = act.ActivateTabRelative(1) },
+	{ key = "LeftArrow", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 	{ key = "Backspace", mods = "ALT", action = act.SwitchWorkspaceRelative(1) },
 	{ key = "1", mods = "ALT", action = act.EmitEvent("activate-nvim") },
 	{ key = "2", mods = "ALT", action = act.EmitEvent("tab-2") },
