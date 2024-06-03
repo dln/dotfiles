@@ -43,7 +43,6 @@ require("lazy").setup({
 			Running = " ",
 		},
 	},
-	install = { colorscheme = { "default" } },
 	checker = { enabled = false }, -- automatically check for plugin updates
 	performance = {
 		rtp = {
