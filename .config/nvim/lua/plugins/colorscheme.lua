@@ -1,9 +1,6 @@
 return {
-	{ "echasnovski/mini.colors", version = false },
 
 	{
-		-- "p00f/alabaster.nvim",
-		-- url = "https://git.sr.ht/~p00f/alabaster.nvim",
 		"lsjostro/alabaster.nvim",
 		lazy = false,
 		priority = 1000,
@@ -19,6 +16,7 @@ return {
 
 	--]=====]
 
+	--[=====[
 	{
 		"jesseleite/nvim-noirbuddy",
 		lazy = false,
@@ -250,4 +248,5 @@ return {
 			end,
 		},
 	},
+	--]=====]
 }

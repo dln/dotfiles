@@ -98,7 +98,7 @@ config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
 -- ------------------------------------------------------------------------------------
 -- Fonts
-config.font = wezterm.font({ family = "Berkeley Mono Variable", weight = "Regular", stretch = "ExtraCondensed" })
+config.font = wezterm.font({ family = "Berkeley Mono", weight = "Regular" })
 -- config.font = wezterm.font({ family = "Berkeley Mono" })
 -- config.font_rules = {
 -- 	{
@@ -111,14 +111,20 @@ config.font = wezterm.font({ family = "Berkeley Mono Variable", weight = "Regula
 -- 	},
 -- }
 config.font_size = 14
-config.font_size = 18
--- config.line_height = 1.15
+-- config.font_size = 18
 config.warn_about_missing_glyphs = false
 config.bold_brightens_ansi_colors = false
 config.unicode_version = 14
+-- config.freetype_load_flags = "DEFAULT"
+--
+config.front_end = "OpenGL"
 config.freetype_load_flags = "NO_HINTING"
-config.freetype_load_target = "HorizontalLcd"
+config.freetype_load_target = "Light"
+config.freetype_render_target = "HorizontalLcd"
+
 config.custom_block_glyphs = false
+config.allow_square_glyphs_to_overflow_width = "Always"
+-- config.use_cap_height_to_scale_fallback_fonts = true
 
 -- Config
 config.enable_wayland = true
@@ -127,18 +133,20 @@ config.check_for_updates = false
 
 -- UI
 config.command_palette_font_size = 13.5
-config.initial_cols = 132
-config.initial_rows = 45
+config.initial_cols = 116
+config.initial_rows = 36
 config.status_update_interval = 100
+config.max_fps = 90
 config.audible_bell = "Disabled"
 config.use_resize_increments = true
 config.adjust_window_size_when_changing_font_size = false
+config.use_resize_increments = true
 config.window_decorations = "RESIZE"
 config.window_frame = {
-	border_left_width = "3px",
-	border_right_width = "3px",
-	border_bottom_height = "3px",
-	border_top_height = "3px",
+	border_left_width = "4px",
+	border_right_width = "4px",
+	border_bottom_height = "4px",
+	border_top_height = "4px",
 	border_left_color = "#000000",
 	border_right_color = "#000000",
 	border_bottom_color = "#000000",
