@@ -98,18 +98,21 @@ config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
 -- ------------------------------------------------------------------------------------
 -- Fonts
-config.font = wezterm.font({ family = "Berkeley Mono", weight = "Regular" })
--- config.font = wezterm.font({ family = "Berkeley Mono" })
--- config.font_rules = {
--- 	{
--- 		italic = true,
--- 		intensity = "Bold",
--- 		reverse = false,
--- 		-- font = wezterm.font("IosevkaShelman Nerd Font", { weight = "ExtraLight", italic = true }),
--- 		-- font = wezterm.font("Iosevka Term Curly Slab", { weight = "Light", italic = true }),
--- 		font = wezterm.font("Monaspace Krypton", { weight = "ExtraLight", italic = true }),
--- 	},
--- }
+config.font = wezterm.font({ family = "Berkeley Mono Nerd Font", weight = "Regular" })
+config.font_rules = {
+	{
+		italic = true,
+		intensity = "Bold",
+		reverse = false,
+		-- font = wezterm.font("Iosevka Term SS15 Lt Ex Obl", { weight = "Light", italic = true }),
+		-- font = wezterm.font("Iosevka Term Curly Slab Lt Ex", { weight = "Light", italic = true }),
+		-- font = wezterm.font("Iosevka Term Curly Slab Ex", { weight = "Light", italic = true }),
+		-- font = wezterm.font("Monaspace Neon Var", { weight = "Regular", italic = false }),
+		-- font = wezterm.font("Monaspace Radon Var", { weight = "Regular", italic = false }),
+		font = wezterm.font({ family = "Berkeley Mono Nerd Font", italic = true }),
+	},
+}
+
 config.font_size = 14
 -- config.font_size = 18
 config.warn_about_missing_glyphs = false
@@ -153,8 +156,8 @@ config.window_frame = {
 	border_top_color = "#000000",
 }
 config.window_padding = {
-	left = 0,
-	right = 0,
+	left = 10,
+	right = 10,
 	top = 0,
 	bottom = 0,
 }
@@ -163,7 +166,7 @@ config.window_padding = {
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 table.insert(config.hyperlink_rules, {
-	regex = [[`rustc --explain E(\d+)`]],
+	regex = [[E(\d+)]],
 	format = "https://doc.rust-lang.org/error_codes/E$1.html",
 })
 
