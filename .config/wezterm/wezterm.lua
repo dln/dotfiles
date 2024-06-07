@@ -7,7 +7,7 @@ local config = {}
 -- ------------------------------------------------------------------------------------
 -- Workspace behavior
 
--- local nvim_args = { "nvim", "--listen", "$XDG_RUNTIME_DIR" .. "/nvim-persistent.sock" }
+-- FIXME: use of the local env var here only works with the same UID on all machines
 local nvim_args = { "nvim", "--listen", os.getenv("XDG_RUNTIME_DIR") .. "/nvim-persistent.sock" }
 
 config.exec_domains = {
@@ -86,15 +86,36 @@ end)
 -- ------------------------------------------------------------------------------------
 -- Appearance
 
-local function scheme_for_appearance(appearance)
+local function colors_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "Shelman Dark"
+		return {
+			background = "#0d1117",
+			-- background = "#000000",
+			foreground = "#b2b2b2",
+			cursor_bg = "#00d992",
+			cursor_fg = "#000000",
+			cursor_border = "#000000",
+			selection_bg = "#d7d7d7",
+			selection_fg = "#000000",
+			ansi = { "#000000", "#ff0035", "#85ff00", "#ffc900", "#00a7ff", "#cb01ff", "#00e0ff", "#f0f0f0" },
+			brights = { "#000000", "#ff8c88", "#baff94", "#ffe090", "#88ccff", "#e38dff", "#97eeff", "#ffffff" },
+		}
 	else
-		return "Shelman Light"
+		return {
+			background = "#fefeff",
+			foreground = "#000000",
+			cursor_bg = "#aa0000",
+			cursor_fg = "#ffffff",
+			cursor_border = "#ffffff",
+			selection_bg = "#ffe6a4",
+			selection_fg = "#483600",
+			ansi = { "#000000", "#9e001d", "#306300", "#deae00", "#00669e", "#7d009e", "#008a9e", "#f7f7f7" },
+			brights = { "#000000", "#ff0035", "#509e00", "#ffc900", "#00a7ff", "#cb01ff", "#00e0ff", "#ffffff" },
+		}
 	end
 end
 
-config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+config.colors = colors_for_appearance(wezterm.gui.get_appearance())
 
 -- ------------------------------------------------------------------------------------
 -- Fonts
@@ -107,7 +128,6 @@ config.font_rules = {
 		-- font = wezterm.font("Iosevka Term SS15 Lt Ex Obl", { weight = "Light", italic = true }),
 		-- font = wezterm.font("Iosevka Term Curly Slab Lt Ex", { weight = "Light", italic = true }),
 		-- font = wezterm.font("Iosevka Term Curly Slab Ex", { weight = "Light", italic = true }),
-		-- font = wezterm.font("Monaspace Neon Var", { weight = "Regular", italic = false }),
 		-- font = wezterm.font("Monaspace Radon Var", { weight = "Regular", italic = false }),
 		font = wezterm.font({ family = "Berkeley Mono Nerd Font", italic = true }),
 	},
