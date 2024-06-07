@@ -9,3 +9,6 @@ vim.api.nvim_set_keymap("v", "<c-/>", "gc", {})
 vim.api.nvim_set_keymap("n", "<Leader><c-/>", "gcgc", {})
 vim.api.nvim_set_keymap("n", "<Tab>", "<Space>,", {})
 vim.api.nvim_set_keymap("n", "zz", "zt", {})
+
+vim.api.nvim_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev { float = false }<Enter>", {})
+vim.api.nvim_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next { float = false }<Enter>", {})

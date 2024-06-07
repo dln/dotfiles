@@ -40,7 +40,7 @@ return {
 				end
 
 				local function get_diagnostic_label()
-					local icons = { error = "󰅜 ", warn = " ", info = " ", hint = " " }
+					local icons = { error = " ", warn = " ", info = " ", hint = " " }
 					local label = {}
 
 					for severity, icon in pairs(icons) do
@@ -59,13 +59,11 @@ return {
 				end
 
 				return {
-					-- { "" },
-					{ "  ", gui = "reverse" },
-					{ get_diagnostic_label(), guibg = "fg", guifg = "bg" },
-					{ get_git_diff(), gui = "reverse" },
-					{ filename, gui = "reverse" },
-					{ "  ", gui = "reverse" },
-					-- { "" },
+					{ "  " },
+					{ get_diagnostic_label() },
+					{ get_git_diff() },
+					{ filename, group = "Label" },
+					{ "  " },
 				}
 			end,
 		})

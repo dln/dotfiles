@@ -23,6 +23,18 @@ return {
 	},
 
 	{
+		"dgagn/diagflow.nvim",
+		-- event = 'LspAttach', This is what I use personnally and it works great
+		opts = {
+			scope = "line",
+			gap_size = 0,
+			max_width = 50,
+			max_height = 20,
+			show_borders = true,
+		},
+	},
+
+	{
 		"akinsho/bufferline.nvim",
 		enabled = false,
 	},
@@ -94,7 +106,6 @@ return {
 		opts = {
 			stages = "fade_in_slide_out",
 			timeout = 1000,
-			background_colour = "#1e2835",
 			render = "wrapped-compact",
 			top_down = false,
 		},

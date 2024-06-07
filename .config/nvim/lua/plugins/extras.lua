@@ -52,6 +52,7 @@ return {
 
 	{
 		"mrcjkb/rustaceanvim",
+		enabled = false,
 		version = "^4", -- Recommended
 		ft = { "rust" },
 		opts = {
@@ -77,10 +78,6 @@ return {
 						loadOutDirsFromCheck = true,
 						runBuildScripts = true,
 						targetDir = true,
-						-- extraEnv = {
-						-- 	RUSTC_LINKER = "clang",
-						-- 	RUSTFLAGS = "-Clink-arg=-fuse-ld=mold",
-						-- },
 					},
 					-- Add clippy lints for Rust.
 					checkOnSave = {
