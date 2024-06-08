@@ -10,15 +10,6 @@ return {
 			-- 	enabled = true,
 			-- },
 			servers = {
-				rust_analyzer = {
-					mason = false,
-					-- targetDir = true,
-					-- keys = {
-					-- 	{ "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
-					-- 	{ "<leader>cR", "<cmd>RustCodeAction<cr>", desc = "Code Action (Rust)" },
-					-- 	{ "<leader>dr", "<cmd>RustDebuggables<cr>", desc = "Run Debuggables (Rust)" },
-					-- },
-				},
 				starpls = {},
 				yamlls = {
 					settings = {
