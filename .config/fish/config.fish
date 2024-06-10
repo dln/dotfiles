@@ -46,7 +46,7 @@ if status is-interactive
     end
 
     function jump
-        set _dir $(fre --sorted | fzf --no-sort --color=fg:248,bg+:16,fg+:49,pointer:49,border:49 --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.hjson $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
+        set _dir $(fre --sorted | fzf --no-sort --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.hjson $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
         [ -n "$_dir" ] && pushd $_dir >>/dev/null
         commandline -f repaint
     end
