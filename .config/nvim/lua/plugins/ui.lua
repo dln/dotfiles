@@ -31,6 +31,7 @@ return {
 			max_width = 50,
 			max_height = 20,
 			show_borders = true,
+			toggle_event = { "InsertEnter", "InsertLeave" },
 		},
 	},
 
@@ -117,14 +118,9 @@ return {
 	},
 
 	{
-		"linrongbin16/fzfx.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons", "junegunn/fzf" },
-
-		-- specify version to avoid break changes
-		version = "v5.*",
-
-		config = function()
-			require("fzfx").setup()
-		end,
+		"ahmedkhalf/project.nvim",
+		opts = {
+			manual_mode = false,
+		},
 	},
 }

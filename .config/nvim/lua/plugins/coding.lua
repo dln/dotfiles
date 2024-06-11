@@ -13,9 +13,9 @@ return {
 			table.insert(opts.sources, { name = "emoji" })
 
 			opts.view = { docs = { auto_open = false }, entries = { follow_cursor = true } }
-			-- opts.completion = {
-			-- 	autocomplete = false,
-			-- }
+			opts.completion = {
+				autocomplete = false,
+			}
 
 			local winhighlight =
 				"Normal:NoiceCmdlinePopupTitle,FloatBorder:NoiceCmdlinePopupBorder,CursorLine:PMenuSel,Search:Search"
@@ -53,5 +53,17 @@ return {
 		opts = {
 			enable_chat = false,
 		},
+	},
+
+	{
+		"monkoose/neocodeium",
+		event = "VeryLazy",
+		config = function()
+			local neocodeium = require("neocodeium")
+			neocodeium.setup()
+			vim.keymap.set("i", "<C-j>", neocodeium.accept)
+			vim.keymap.set("i", "<A-f>", neocodeium.accept)
+			vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete)
+		end,
 	},
 }

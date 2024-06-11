@@ -43,7 +43,7 @@ return {
 					horizontal = {
 						prompt_position = "top",
 						mirror = false,
-						preview_width = 0.4,
+						preview_width = 0.49,
 						-- preview_height = 0.5,
 					},
 					width = 0.9,
@@ -57,15 +57,19 @@ return {
 						["<C-w>"] = false, -- <C-u> clear prompt
 					},
 				},
-				path_display = { "filename_first" },
-				previewer = false,
+				-- path_display = { "filename_first" },
+				-- previewer = false,
 				preview = {
-					hide_on_startup = true,
+					-- hide_on_startup = true,
 				},
 				sorting_strategy = "ascending",
 				winblend = 0,
 				wrap_results = true,
 			}
 		end,
+	},
+
+	{
+		"natecraddock/telescope-zf-native.nvim",
 	},
 }
