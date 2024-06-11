@@ -222,7 +222,7 @@ config.default_cursor_style = "SteadyBlock"
 config.cursor_thickness = "6px"
 config.cursor_blink_rate = 700
 config.hide_mouse_cursor_when_typing = false
-config.underline_position = -7
+config.underline_position = -3
 config.underline_thickness = 2
 
 -- Scrolling
