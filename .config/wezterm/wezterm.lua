@@ -119,7 +119,24 @@ config.colors = colors_for_appearance(wezterm.gui.get_appearance())
 
 -- ------------------------------------------------------------------------------------
 -- Fonts
-config.font = wezterm.font({ family = "Berkeley Mono Nerd Font", weight = "Regular" })
+local berkeley_mono_features = {
+	-- "calt=1",
+	-- "dlig=0",
+	-- "liga",
+	-- "calt=1",
+	-- "clig=1",
+	-- "ss02", -- Clean Zero
+	"ss03", -- Slashed Zero
+	-- "ss04", -- Cut Zero
+}
+
+-- #[ ## ### #### ################
+
+config.font = wezterm.font({
+	family = "Berkeley Mono Nerd Font",
+	weight = "Regular",
+	harfbuzz_features = berkeley_mono_features,
+})
 config.font_rules = {
 	{
 		italic = true,
@@ -129,7 +146,11 @@ config.font_rules = {
 		-- font = wezterm.font("Iosevka Term Curly Slab Lt Ex", { weight = "Light", italic = true }),
 		-- font = wezterm.font("Iosevka Term Curly Slab Ex", { weight = "Light", italic = true }),
 		-- font = wezterm.font("Monaspace Radon Var", { weight = "Regular", italic = false }),
-		font = wezterm.font({ family = "Berkeley Mono Nerd Font", italic = true }),
+		font = wezterm.font({
+			family = "Berkeley Mono Nerd Font",
+			italic = true,
+			harfbuzz_features = berkeley_mono_features,
+		}),
 	},
 }
 
@@ -140,7 +161,7 @@ config.bold_brightens_ansi_colors = false
 config.unicode_version = 14
 -- config.freetype_load_flags = "DEFAULT"
 --
-config.front_end = "OpenGL"
+-- config.front_end = "OpenGL"
 config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
@@ -201,8 +222,8 @@ config.default_cursor_style = "SteadyBlock"
 config.cursor_thickness = "6px"
 config.cursor_blink_rate = 700
 config.hide_mouse_cursor_when_typing = false
-config.underline_position = -9
-config.underline_thickness = 1
+config.underline_position = -7
+config.underline_thickness = 2
 
 -- Scrolling
 config.enable_scroll_bar = false
