@@ -58,8 +58,22 @@ echo
 echo "Emoji: 🚀 💩 😁 🍖 🔥 🔷 ❤️ "
 
 echo
+echo "Geometrical:"
+echo -e '◆ ◇ ◈ ● ○ ◉ ◎ ◍ ◌'
+echo -e '■ □ ▢ ▣ ▤ ▥ ▦ ▧ ▨ ▩'
+echo -e '◧ ◨ ◩ ◪ ◫ ◬ ◭ ◮ △ ▲ ▱ ▰ ▽ ▼ ▾ ▿'
+echo -e '◠ ◡ ◢ ◣ ◤ ◥ ◦ ◧ ◨ ◩ ◪ ◫ ◬ ◭ ◮ ◯ ◰ ◱ ◲ ◳ ◴ ◵ ◶ ◷ ◸ ◹ ◺ ◻ ◼ ◽ ◾ ◿'
+
+echo "Arrows:"
+echo -e '← → ↑ ↓ ↔ ↔ ↕ ↖ ↗ ↙ ↘ ↠ ↣ ↦ ↧ ↨ ↩ ↪ ↫ ↬ ↭ ↮ ↯ ↰ ↱ ↲ ↳ ↴ ↵ ↶ ↷ ↸ ↹ ↺ ↻ ↼ ↽ ↾ ↿ ↼ ↽ ↾ ↿'
+echo -e '⇄ ↔ ⇀ ⇂ ⇄ ⇆ ⇌ ⇎ ⇐ ⇑ ⇓ ⇕ ⇖ ⇗ ⇘ ⇙ ⇚ ⇛ ⇜ ⇝ ⇞ ⇟'
+
+echo
 echo "Blocks:"
-echo -e '🮙\n🮙\n🮙'
+echo -e '🮙 ░ ▒ ▓ █ █ ▊ ▋ ▌ ▍ ▎ ▏'
+echo -e '🮙 ░ ▒ ▓ █ █ ▊ ▋ ▌ ▍ ▎ ▏'
+echo -e '🮙 ░ ▒ ▓ █ █ ▊ ▋ ▌ ▍ ▎ ▏'
+echo -e '▄ ▀ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █'
 echo
 echo -e '╭──────────────╮'
 echo -e '│ border chars │'
