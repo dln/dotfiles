@@ -103,7 +103,7 @@ local function colors_for_appearance(appearance)
 	else
 		return {
 			background = "#fefeff",
-			foreground = "#000000",
+			foreground = "#333333",
 			cursor_bg = "#aa0000",
 			cursor_fg = "#ffffff",
 			cursor_border = "#ffffff",
@@ -154,17 +154,12 @@ config.font_rules = {
 	},
 }
 
-config.font_size = 14
+config.font_size = 15
 -- config.font_size = 18
 config.warn_about_missing_glyphs = false
 config.bold_brightens_ansi_colors = false
 config.unicode_version = 14
--- config.freetype_load_flags = "DEFAULT"
---
--- config.front_end = "OpenGL"
-config.freetype_load_flags = "NO_HINTING"
-config.freetype_load_target = "Light"
-config.freetype_render_target = "HorizontalLcd"
+config.freetype_load_target = "HorizontalLcd"
 
 config.custom_block_glyphs = false
 config.allow_square_glyphs_to_overflow_width = "Always"
