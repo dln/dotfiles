@@ -154,8 +154,18 @@ config.font_rules = {
 	},
 }
 
-config.font_size = 15
--- config.font_size = 18
+wezterm.on('window-config-reloaded', function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  local dpi = wezterm.gui.screens().active.effective_dpi
+
+  if dpi > 96 then
+    overrides.font_size = 15
+  else
+    overrides.font_size = 18
+  end
+  window:set_config_overrides(overrides)
+end)
+
 config.warn_about_missing_glyphs = false
 config.bold_brightens_ansi_colors = false
 config.unicode_version = 14
