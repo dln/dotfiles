@@ -7,13 +7,13 @@ k9s:
   noExitOnCtrlC: false
   ui:
     enableMouse: false
-    headless: false
-    logoless: false
-    crumbsless: false
+    headless: true
+    logoless: true
+    crumbsless: true
     reactive: false
     noIcons: false
-    defaultsToFullScreen: false
-    skin: kiss
+    defaultsToFullScreen: true
+    skin: dieter
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:

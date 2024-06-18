@@ -1,9 +1,5 @@
-# -----------------------------------------------------------------------------
-# K9s Kiss Skin
-# Author: [@beejeebus](justin.p.randell@gmail.com)
-# -----------------------------------------------------------------------------
+# Dieter
 
-# Skin...
 k9s:
   body:
     fgColor: default
@@ -21,8 +17,8 @@ k9s:
     bgColor: default
     buttonFgColor: default
     buttonBgColor: default
-    buttonFocusFgColor: default
-    buttonFocusBgColor: default
+    buttonFocusFgColor: white
+    buttonFocusBgColor: darkblue
     labelFgColor: default
     fieldFgColor: default
   frame:
@@ -41,7 +37,7 @@ k9s:
       newColor: default
       modifyColor: default
       addColor: default
-      errorColor: default
+      errorColor: red
       highlightColor: default
       killColor: default
       completedColor: default
@@ -55,12 +51,17 @@ k9s:
     table:
       fgColor: default
       bgColor: default
-      cursorFgColor: default
-      cursorBfColor: default
+      cursorFgColor: teal
+      cursorBgColor: darkblue
       header:
         fgColor: default
         bgColor: default
-        sorterColor: default
+        sorterColor: blue
+    xray:
+      fgColor: default
+      bgColor: default
+      cursorColor: blue
+      graphicColor: blue
     yaml:
       keyColor: default
       colonColor: default
