@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=wezterm-nemo
+GenericName=wezterm-nemo
+StartupWMClass=org.wezfurlong.wezterm-nemo
+Type=Application
+TryExec=/usr/bin/wezterm
+Icon=org.wezfurlong.wezterm
+Terminal=false
+Categories=System;TerminalEmulator;
+Exec=/usr/bin/wezterm --config 'default_prog={"/usr/bin/fish"}' start --class=org.wezfurlong.wezterm-nemo --domain=nemo
