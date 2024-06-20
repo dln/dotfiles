@@ -19,6 +19,14 @@ config.exec_domains = {
 		cmd.args = wrapped
 		return cmd
 	end),
+	wezterm.exec_domain("nemo", function(cmd)
+		local wrapped = { "/usr/bin/ssh", "-t", "nemo" }
+		for _, arg in ipairs(cmd.args or { os.getenv("SHELL") }) do
+			table.insert(wrapped, arg)
+		end
+		cmd.args = wrapped
+		return cmd
+	end),
 }
 
 local function activate_nvim(window, pane)
@@ -177,7 +185,6 @@ config.allow_square_glyphs_to_overflow_width = "Always"
 
 -- Config
 config.enable_wayland = true
-config.term = "wezterm"
 config.check_for_updates = false
 
 -- UI
