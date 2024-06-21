@@ -162,16 +162,16 @@ config.font_rules = {
 	},
 }
 
-wezterm.on('window-config-reloaded', function(window, pane)
-  local overrides = window:get_config_overrides() or {}
-  local dpi = wezterm.gui.screens().active.effective_dpi
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local dpi = wezterm.gui.screens().active.effective_dpi
 
-  if dpi > 96 then
-    overrides.font_size = 15
-  else
-    overrides.font_size = 18
-  end
-  window:set_config_overrides(overrides)
+	if dpi > 96 then
+		overrides.font_size = 14
+	else
+		overrides.font_size = 18
+	end
+	window:set_config_overrides(overrides)
 end)
 
 config.warn_about_missing_glyphs = false
@@ -250,6 +250,8 @@ config.keys = {
 	{ key = "0", mods = "CTRL", action = "ResetFontSize" },
 	{ key = "-", mods = "CTRL", action = "DecreaseFontSize" },
 	{ key = "=", mods = "CTRL", action = "IncreaseFontSize" },
+	{ key = "UpArrow", mods = "CTRL", action = act.ScrollToPrompt(-1) },
+	{ key = "DownArrow", mods = "CTRL", action = act.ScrollToPrompt(1) },
 	{ key = "UpArrow", mods = "SHIFT", action = act.ScrollByLine(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = act.ScrollByLine(1) },
 	{ key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-0.5) },
@@ -276,20 +278,20 @@ config.mouse_bindings = {
 	{
 		event = { Down = { streak = 1, button = { WheelUp = 1 } } },
 		mods = "SHIFT",
-		action = act.ScrollByLine(-1),
+		action = act.ScrollByLine(-5),
 	},
 	{
 		event = { Down = { streak = 1, button = { WheelDown = 1 } } },
 		mods = "SHIFT",
-		action = act.ScrollByLine(1),
+		action = act.ScrollByLine(5),
 	},
 	{
 		event = { Down = { streak = 1, button = { WheelUp = 1 } } },
-		action = act.ScrollByPage(-0.25),
+		action = act.ScrollByLine(-1),
 	},
 	{
 		event = { Down = { streak = 1, button = { WheelDown = 1 } } },
-		action = act.ScrollByPage(0.25),
+		action = act.ScrollByLine(1),
 	},
 }
 
