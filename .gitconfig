@@ -85,7 +85,7 @@ protocol = git
 diffFilter = delta --color-only --features=interactive
 
 [commit]
-gpgsign = true
+gpgsign = false
 verbose = true
 
 [credential]

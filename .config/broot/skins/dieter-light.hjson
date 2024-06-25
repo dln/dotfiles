@@ -10,10 +10,10 @@
 syntax_theme: base16-ocean.light
 
 skin: {
-	default: gray(1) None
-	tree: gray(7) None / gray(18) None
-	file: gray(3) None / gray(8) None
-	directory: ansi(25) None Bold / ansi(25) None
+	default: gray(0) None
+	tree: gray(20) None / gray(18) None
+	file: gray(1) None / gray(8) None
+	directory: gray(4) None Bold / ansi(4) None
 	exe: ansi(130) None
 	link: Magenta None
 	pruning: gray(12) None Italic
@@ -34,8 +34,8 @@ skin: {
 	git_status_ignored: gray(17) None
 	git_status_conflicted: ansi(88) None
 	git_status_other: ansi(88) None
-	selected_line: None gray(19) / None gray(21)
-	char_match: ansi(22) None
+  selected_line: None gray(20)
+	char_match: None ansi(226)
 	file_error: Red None
 	flag_label: gray(9) None
 	flag_value: ansi(166) None Bold

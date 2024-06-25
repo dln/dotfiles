@@ -111,7 +111,7 @@ local function colors_for_appearance(appearance)
 	else
 		return {
 			background = "#fefeff",
-			foreground = "#333333",
+			foreground = "#222222",
 			cursor_bg = "#aa0000",
 			cursor_fg = "#ffffff",
 			cursor_border = "#ffffff",

@@ -8,6 +8,15 @@
 ###############################################################
 
 verbs: [
+  {
+      invocation: edit
+      key: enter
+      shortcut: e
+      execution: "wezterm-edit-helper {file}"
+      apply_to: text_file
+      leave_broot: true
+  }
+
     {
         invocation: nvim
         key: enter
@@ -19,7 +28,7 @@ verbs: [
     {
         invocation: broot_home
         key: ctrl-7
-        execution: broot $HOME
+        execution: br $HOME
         leave_broot: true
     }
 

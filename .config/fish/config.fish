@@ -55,7 +55,8 @@ if status is-interactive
     function git_jump
         set _dir $(git rev-parse --show-toplevel 2>/dev/null || pwd)
         if [ "$_dir" = "$PWD" ]
-            set _dir $(br -f --conf ~/.config/broot/select.hjson)
+            #set _dir $(br -f --conf ~/.config/broot/select.hjson)
+            set _dir $(br -f --conf "$HOME/.config/broot/conf.hjson")
         end
         [ -n "$_dir" ] && pushd $_dir >>/dev/null
         commandline -f repaint
