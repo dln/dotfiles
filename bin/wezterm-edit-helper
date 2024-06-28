@@ -18,6 +18,7 @@ fi
 
 fre --store_name "edit-history" --add "$_file"
 
+rm -f "$XDG_RUNTIME_DIR/nvim-persistent.sock"
 nvim --server "$XDG_RUNTIME_DIR/nvim-persistent.sock" --remote "$_file" &>/dev/null
 
 # Wezterm: switch tab to nvim

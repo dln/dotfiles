@@ -4,11 +4,6 @@ set fish_emoji_width 2
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/bin
 
-## Nix
-set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
-set -gx NIX_REMOTE daemon
-fish_add_path $HOME/.nix-profile/bin
-
 if status is-interactive
 
     ## Pager
@@ -29,14 +24,8 @@ if status is-interactive
     set -gx VISUAL $EDITOR
     set -gx SUDO_EDITOR $EDITOR
 
-
-
     function tree
         eza --tree --color=always $argv | bat --wrap=never
-    end
-
-    function rg --wraps rg --description 'ripgrep with bat'
-        /usr/bin/rg --color=always $argv | bat --wrap=never
     end
 
     ## Directory jumping with frecency 

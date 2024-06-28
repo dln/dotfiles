@@ -2,7 +2,7 @@
 set -e
 
 # Use local xdg-open if not in an ssh session
-[ -n "$SSH_TTY" ] || exec /usr/bin/xdg-open "$@"
+[ -n "$SSH_TTY" ] || exec xdg-open "$@"
 
 if [ -p /dev/stdin ]; then
 	exec nc -U "$XDG_RUNTIME_DIR/opener.sock" </dev/stdin

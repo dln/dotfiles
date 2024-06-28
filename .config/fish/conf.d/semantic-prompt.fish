@@ -1,4 +1,3 @@
-#!/usr/bin/fish
 # SPDX-License-Identifier: CC0-1.0
 if status --is-interactive
     set _fishprompt_aid "fish"$fish_pid
