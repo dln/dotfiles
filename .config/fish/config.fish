@@ -28,43 +28,7 @@ if status is-interactive
         eza --tree --color=always $argv | bat --wrap=never
     end
 
-<<<<<<< HEAD
-    ## Directory jumping with frecency 
-
-    function fre_after_cd --on-variable PWD
-        fre --add "$PWD"
-    end
-
-    function jump
-        set _dir $(fre --sorted | fzf --no-sort --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.hjson $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
-        [ -n "$_dir" ] && pushd $_dir >>/dev/null
-        commandline -f repaint
-    end
-    bind \cg jump
-||||||| parent of 931ae14 (fish: use zoxide instead of fre + fzf)
-    function rg --wraps rg --description 'ripgrep with bat'
-        /usr/bin/rg --color=always $argv | bat --wrap=never
-    end
-
-    ## Directory jumping with frecency 
-
-    function fre_after_cd --on-variable PWD
-        fre --add "$PWD"
-    end
-
-    function jump
-        set _dir $(fre --sorted | fzf --no-sort --border=rounded --layout=reverse '--bind=ctrl-g:become(br -f --conf ~/.config/broot/select.hjson $(git rev-parse --show-toplevel 2>/dev/null || pwd))')
-        [ -n "$_dir" ] && pushd $_dir >>/dev/null
-        commandline -f repaint
-    end
-    bind \cg jump
-=======
-    function rg --wraps rg --description 'ripgrep with bat'
-        /usr/bin/rg --color=always $argv | bat --wrap=never
-    end
-
     bind \cg __zoxide_zi
->>>>>>> 931ae14 (fish: use zoxide instead of fre + fzf)
 
     function git_jump
         set _dir $(git rev-parse --show-toplevel 2>/dev/null || pwd)
