@@ -93,7 +93,7 @@
 
       rg.body = ''
         if status is-interactive
-          command rg -p $argv | bat
+          command rg --json $argv | delta
         else
           command rg $argv
         end
