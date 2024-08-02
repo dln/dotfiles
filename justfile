@@ -4,14 +4,26 @@ set shell := ["/usr/bin/env", "bash", "-euo", "pipefail", "-c"]
 default:
 	@just --list
 
+boot:
+  nh os boot .
+
+build:
+  nh os build .
+
+switch:
+  nh os switch .
+
+update:
+  nh os switch --update --ask .
+
 clean:
   nh clean all
 
-build:
+home-build:
   nh home build .
 
-switch:
+home-switch:
   nh home switch .
 
-update:
+home-update:
   nh home switch --update --ask .

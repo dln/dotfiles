@@ -8,7 +8,7 @@
   home.file = {
     ".local/bin" = {
       recursive = true;
-      source = ./../files/scripts;
+      source = ./../../files/scripts;
     };
 
   };

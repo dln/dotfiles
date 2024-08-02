@@ -12,6 +12,7 @@
     {
       self,
       nixpkgs,
+      colmena,
       home-manager,
       ...
     }@inputs:
@@ -21,18 +22,27 @@
       mkHome =
         modules:
         home-manager.lib.homeManagerConfiguration {
-          modules = [ ./common ] ++ modules;
+          modules = [ ./home/common ] ++ modules;
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;
           };
         };
 
+      mkHost =
+        modules:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          system = "x86_64-linux";
+          modules = [ ./common ] ++ modules;
+        };
+
       supportedSystems = [
         "x86_64-linux"
         "aarch64-linux"
       ];
-
       forEachSystem =
         f:
         builtins.listToAttrs (
@@ -58,14 +68,19 @@
       devShells = forEachSystem' (
         { system, pkgs, ... }:
         {
-          default = pkgs.mkShell { packages = [ pkgs.just ]; };
+          default = pkgs.mkShell { packages = [ pkgs.colmena ]; };
         }
       );
 
       homeConfigurations = {
-        "dln@dinky" = mkHome [ ./users/dln/dinky.nix ];
-        "dln@nemo" = mkHome [ ./users/dln/nemo.nix ];
-        "lsjostro@nemo" = mkHome [ ./users/lsjostro/nemo.nix ];
+        "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
+        "dln@nemo" = mkHome [ ./home/dln/nemo.nix ];
+        "lsjostro@nemo" = mkHome [ ./home/lsjostro/nemo.nix ];
+      };
+
+      nixosConfigurations = {
+        dinky = mkHost [ ./hosts/dinky ];
+        nemo = mkHost [ ./hosts/nemo ];
       };
 
     };
