@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-ssh-add -L | awk '/^sk-ssh/ { print "key::" $1 " " $2 }'

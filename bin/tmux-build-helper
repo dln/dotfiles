@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -ef -o pipefail
-eval "$(direnv export bash)"
-eval "${BUILD_COMMAND:-echo 'BUILD_COMMAND not set'}" | bat --paging=always
