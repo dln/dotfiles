@@ -112,6 +112,7 @@ in
   programs.ssh.matchBlocks = {
     dev = {
       hostname = "10.1.100.16";
+      forwardAgent = true;
     };
 
     nemo = {
