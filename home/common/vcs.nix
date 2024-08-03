@@ -5,6 +5,7 @@
     delta
     diffedit3
     difftastic
+    git-branchless
     git-graph
     git-town
     lazyjj
