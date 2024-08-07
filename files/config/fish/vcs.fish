@@ -23,7 +23,9 @@ end
 
 function vcs_status
     if __jj_in_repo
-        jj status --ignore-working-copy
+        jj status
+        echo
+        jj log --limit=20 -T builtin_log_comfortable -r "(main..@) | (main..@)-"
     else
         git status -sb
     end

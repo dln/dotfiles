@@ -42,11 +42,11 @@ in
       ui = {
         "default-command" = [
           "log"
-          "--limit=20"
-          "--template=builtin_log_comfortable"
+          "--limit=25"
+          "-T"
+          "builtin_log_comfortable"
         ];
-
-        pager = "bat";
+        pager = "delta";
       };
 
       "merge-tools" = {
@@ -55,11 +55,21 @@ in
           "$left"
           "$right"
         ];
+        difftu = {
+          program = "difft";
+          "diff-args" = [
+            "--color=always"
+            "--display=inline"
+            "$left"
+            "$right"
+          ];
+        };
       };
 
       aliases = {
         l = [
           "log"
+          "--limit=25"
           "-T"
           "builtin_log_comfortable"
           "-r"
@@ -67,6 +77,7 @@ in
         ];
         la = [
           "log"
+          "--limit=25"
           "-T"
           "builtin_log_oneline"
           "-r"
@@ -80,9 +91,23 @@ in
           "new"
           "main"
         ];
-        d = [ "diff" ];
-        s = [ "show" ];
-        sh = [
+        d = [
+          "diff"
+          "--tool=difftu"
+        ];
+        dd = [
+          "diff"
+          "--git"
+        ];
+        ds = [
+          "diff"
+          "--tool=difft"
+        ];
+        s = [
+          "show"
+          "--tool=difftu"
+        ];
+        ss = [
           "show"
           "--tool=difft"
         ];
