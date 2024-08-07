@@ -115,6 +115,7 @@
       ".direnv"
       ".idea"
       ".null-ls_*"
+      "result"
     ];
 
     signing = {
