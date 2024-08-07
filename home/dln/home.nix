@@ -52,6 +52,7 @@ in
       "merge-tools" = {
         difft."diff-args" = [
           "--color=always"
+          "--missing-as-empty"
           "$left"
           "$right"
         ];
@@ -60,6 +61,7 @@ in
           "diff-args" = [
             "--color=always"
             "--display=inline"
+            "--missing-as-empty"
             "$left"
             "$right"
           ];
