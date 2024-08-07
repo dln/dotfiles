@@ -23,22 +23,22 @@ in
         gnome-tour
         snapshot
       ])
-      ++ (with pkgs.gnome; [
-        atomix # puzzle game
+      ++ (with pkgs; [
         baobab # disk usage analyzer
         cheese # webcam tool
         epiphany # web browser
         geary # email reader
-        gnome-clocks
-        gnome-contacts
+        gnome.atomix # puzzle game
         gnome-disk-utility
-        gnome-logs
-        gnome-music
+        gnome.gnome-clocks
+        gnome.gnome-contacts
+        gnome.gnome-logs
+        gnome.gnome-music
+        gnome.hitori # sudoku game
+        gnome.iagno # go game
+        gnome.tali # poker game
         gnome-terminal
-        hitori # sudoku game
-        iagno # go game
         simple-scan
-        tali # poker game
         yelp # help viewer
       ]);
 
@@ -84,9 +84,10 @@ in
 
     services.printing.enable = true;
 
+    services.displayManager.defaultSession = "gnome";
+
     services.xserver = {
       enable = true;
-      displayManager.defaultSession = "gnome";
       displayManager.gdm.enable = true;
       displayManager.gdm.autoSuspend = false;
       desktopManager.gnome.enable = true;

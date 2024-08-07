@@ -104,8 +104,8 @@
     podman.enable = true;
   };
 
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "dln";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "dln";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
