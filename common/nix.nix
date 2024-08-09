@@ -20,14 +20,10 @@
         # Workaround for https://github.com/NixOS/nix/issues/9574
         nix-path = config.nix.nixPath;
         substituters = [
-          "https://nix-attic.aarn.shelman.io/shared"
           "https://cache-nixos-org.aarn.shelman.io"
           "https://cache.nixos.org/"
         ];
-        trusted-public-keys = [
-          "shared:vbOVOQpXO/hLiTJ/7FmtSio75ZE25+mNGOC+a4TcV84="
-          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        ];
+        trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
       };
       channel.enable = false;
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
