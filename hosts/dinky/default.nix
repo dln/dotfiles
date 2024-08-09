@@ -109,5 +109,22 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  nix.buildMachines = [
+    {
+      hostName = "nemo.aarn.shelman.io";
+      sshUser = "nixremote";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      maxJobs = 32;
+      speedFactor = 2;
+      supportedFeatures = [ ];
+      mandatoryFeatures = [ ];
+    }
+  ];
+  nix.distributedBuilds = true;
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+
   system.stateVersion = "24.05"; # Did you read the comment?
 }
