@@ -188,5 +188,22 @@
     ];
   };
 
+  users.users.nixremote = {
+    name = "nixremote";
+    isSystemUser = true;
+    shell = pkgs.bashInteractive;
+    group = "nixremote";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJjhHem/l3p/79Rqo3Wtk9ksxmt7Q/pkRdnXiNzP4Cf"
+    ];
+  };
+  users.groups.nixremote = { };
+
+  nix.settings.trusted-users = [
+    "dln"
+    "lsjostro"
+    "nixremote"
+  ];
+
   system.stateVersion = "24.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }
