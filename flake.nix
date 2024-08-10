@@ -6,6 +6,15 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+      inputs = {
+        nixpkgs-stable.follows = "nixpkgs";
+        nixpkgs-unstable.follows = "nixpkgs";
+      };
+    };
+    ghostty-hm.url = "github:clo4/ghostty-hm-module";
   };
 
   outputs =
@@ -13,6 +22,8 @@
       self,
       nixpkgs,
       colmena,
+      ghostty,
+      ghostty-hm,
       home-manager,
       ...
     }@inputs:
@@ -22,7 +33,10 @@
       mkHome =
         modules:
         home-manager.lib.homeManagerConfiguration {
-          modules = [ ./home/common ] ++ modules;
+          modules = [
+            ghostty-hm.homeModules.default
+            ./home/common
+          ] ++ modules;
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;

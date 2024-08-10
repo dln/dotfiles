@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   shelman = {
     desktop.enable = true;
@@ -11,6 +11,7 @@
     gimp-with-plugins
     helvum
     inkscape
+    inputs.ghostty.packages.${pkgs.system}.default
     moonlight-qt
     obsidian
     pavucontrol

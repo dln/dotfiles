@@ -5,6 +5,7 @@
     ./broot.nix
     ./devel.nix
     ./fish.nix
+    ./ghostty.nix
     ./gnome.nix
     ./k8s.nix
     ./nix.nix
