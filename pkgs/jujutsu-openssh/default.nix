@@ -19,10 +19,10 @@ rustPlatform.buildRustPackage rec {
   version = "0.19.0+pr3191.openssh";
 
   src = fetchFromGitHub {
-    owner = "martinvonz";
+    owner = "dln";
     repo = "jj";
-    rev = "f97577cf3f8da3f8cba40bb908a21d5b932cf68f"; # https://github.com/martinvonz/jj/pull/3191/commits
-    hash = "sha256-njRXH1JGBflIPU8nWPawjVEbqXm+zCITjI7EIcpVt84=";
+    rev = "02d38813680f9c78bebad75b3aa69f3523584f1e"; # https://github.com/dln/jj/tree/openssh
+    hash = "sha256-D9H6o1+l2wgDlX1idIXTqq9FHqKb9+lgI7haRUrQlKw=";
   };
 
   # cargoHash = "";
