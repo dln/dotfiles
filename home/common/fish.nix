@@ -34,6 +34,10 @@
         '';
       };
 
+      jl.body = ''
+        jj log --color=always --no-graph -T builtin_log_oneline -r 'all()' | fzf --ansi --reverse --wrap --preview 'jj show --tool=difftu {1}' --preview-window=down,70% --color=light
+      '';
+
       __zoxide_zi_repaint.body = ''
         __zoxide_zi
         commandline -f repaint

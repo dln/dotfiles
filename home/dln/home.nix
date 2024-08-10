@@ -129,9 +129,6 @@ in
         "commit_id prefix" = {
           bold = true;
         };
-        "diff token" = {
-          underline = false;
-        };
       };
     };
   };
