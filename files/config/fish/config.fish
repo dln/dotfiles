@@ -3,6 +3,7 @@ bind \cg __zoxide_zi_repaint
 bind \cJ forward-char
 bind \cn history-prefix-search-forward
 bind \cp history-prefix-search-backward
+bind \e\[109\;5u execute # C-m in ghostty
 
 # Settings
 set fish_greeting

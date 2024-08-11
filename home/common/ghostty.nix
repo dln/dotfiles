@@ -46,8 +46,8 @@ in
 
         window-decoration = true;
         gtk-tabs-location = "bottom";
-        window-padding-x = 4;
-        window-padding-y = 4;
+        window-padding-x = 12;
+        window-padding-y = 0;
         window-padding-balance = true;
         window-padding-color = "extend";
         window-theme = "system";
