@@ -6,6 +6,7 @@
     diffedit3
     difftastic
     git-branchless
+    git-get
     git-graph
     git-town
     lazyjj
@@ -77,6 +78,9 @@
         prune = true;
         prunetags = true;
         showForcedUpdates = true;
+      };
+      gitget = {
+        root = "${config.home.homeDirectory}/src/oss";
       };
       gpg = {
         format = "ssh";
