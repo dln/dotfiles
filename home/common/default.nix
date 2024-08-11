@@ -12,6 +12,7 @@
     ./nvim.nix
     ./scripts.nix
     ./ssh.nix
+    ./tmux.nix
     ./utils.nix
     ./vcs.nix
     ./web.nix

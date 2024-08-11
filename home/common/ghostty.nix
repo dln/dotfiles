@@ -57,6 +57,15 @@ in
           "alt+shift+v=paste_from_clipboard"
           "ctrl+tab=goto_split:previous"
           "alt+enter=toggle_fullscreen"
+          "alt+one=unbind"
+          "alt+two=unbind"
+          "alt+three=unbind"
+          "alt+four=unbind"
+          "alt+five=unbind"
+          "alt+six=unbind"
+          "alt+seven=unbind"
+          "alt+eight=unbind"
+          "alt+nine=unbind"
         ];
       };
     };
