@@ -44,7 +44,7 @@ in
 
         shell-integration = "fish";
 
-        window-decoration = true;
+        window-decoration = false;
         gtk-tabs-location = "bottom";
         window-padding-x = 12;
         window-padding-y = 0;
