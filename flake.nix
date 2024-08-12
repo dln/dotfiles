@@ -96,6 +96,5 @@
         dinky = mkHost [ ./hosts/dinky ];
         nemo = mkHost [ ./hosts/nemo ];
       };
-
     };
 }

@@ -2,42 +2,46 @@
 {
   programs.tmux = {
     enable = true;
-    baseIndex = 1;
+    baseIndex = 0;
     clock24 = true;
     escapeTime = 10;
     mouse = true;
     shortcut = "o";
     extraConfig = ''
       set -g allow-passthrough on
+      set -g default-terminal "tmux-256color"
       set -g display-panes-time 3000
       set -g history-limit 10000
       set -g status off
+      set -g status-style "italics,reverse"
+      set -g status-left-length 0
+      set -g status-right-length 0
+      set -g status-left '#W #{pane_current_path}'
+      set -g status-right '%F |  %R'
+      set -g status off
+      set -g set-titles on
+      set -g set-titles-string "#H - #T"
+      set -g update-environment "SSH_AUTH_SOCK"
+      setenv -g "SSH_AUTH_SOCK" "$XDG_RUNTIME_DIR/ssh-agent"
       setw -g alternate-screen on
       setw -g automatic-rename off
-      bind -n M-1 select-window -t 42
-      bind -n M-2 select-window -t 2
-      bind -n M-3 select-window -t 3
-      bind -n M-4 select-window -t 4
-      bind -n M-5 select-window -t 5
-      bind -n M-6 select-window -t 6
-      bind -n M-7 select-window -t 7
-      bind -n M-8 select-window -t 8
-      bind -n M-9 select-window -t 9
-      bind -n M-0 select-window -t 10
+      setw -g window-status-format ""
+      setw -g window-status-current-format ""
+      setw -g window-status-separator ""
+      bind -n M-1 if-shell 'tmux select-window -t nvim' refresh-client 'new-window -S -n nvim nvim --listen $XDG_RUNTIME_DIR/nvim-persistent.sock'
+      bind -n M-2 if-shell 'tmux select-window -t t1' refresh-client 'new-window -S -n t1'
+      bind -n M-3 if-shell 'tmux select-window -t t2' refresh-client 'new-window -S -n t2'
+      bind -n M-4 if-shell 'tmux select-window -t t3' refresh-client 'new-window -S -n t3'
+      bind -n M-5 if-shell 'tmux select-window -t t4' refresh-client 'new-window -S -n t4'
+      bind -n M-6 if-shell 'tmux select-window -t t5' refresh-client 'new-window -S -n t5'
+      bind -n M-7 if-shell 'tmux select-window -t t6' refresh-client 'new-window -S -n t6'
+      bind -n M-8 if-shell 'tmux select-window -t t7' refresh-client 'new-window -S -n t7'
+      bind -n M-9 if-shell 'tmux select-window -t t8' refresh-client 'new-window -S -n t8'
+      bind -n M-0 if-shell 'tmux select-window -t t9' refresh-client 'new-window -S -n t9'
       bind -T copy-mode-vi WheelUpPane select-pane \; send-keys -X -N 1 scroll-up
       bind -T copy-mode-vi WheelDownPane select-pane \; send-keys -X -N 1 scroll-down
       bind C-s set-option -g status
       bind K confirm kill-server
-      new -s0 -n 1
-      new-window -n 2
-      new-window -n 3
-      new-window -n 4
-      new-window -n 5
-      new-window -n 6
-      new-window -n 7
-      new-window -n 8
-      new-window -n 9
-      new-window -n 0
     '';
   };
 }

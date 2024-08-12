@@ -27,10 +27,12 @@
               set _file (fd --type f . "$_root" | sed -e "s#^$_root/##" | fzf --no-sort --layout=reverse)
               set _file "$_root/$_file"
           end
-          nvim --server "$XDG_RUNTIME_DIR/nvim-persistent.sock" --remote "$_file" &>/dev/null
-          or return 1
-          # Wezterm: switch tab to nvim
-          printf "\033]1337;SetUserVar=nvim_activate=\007"
+          set _nvim_socket "$XDG_RUNTIME_DIR/nvim-persistent.sock"
+          if test -S "$_nvim_socket" && tmux select-window -t nvim 2>/dev/null
+            nvim --server "$_nvim_socket" --remote "$_file"
+            return 0
+          end
+          tmux new-window -S -n nvim nvim --listen "$_nvim_socket" "$_file"
         '';
       };
 
