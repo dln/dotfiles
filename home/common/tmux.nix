@@ -4,7 +4,7 @@
     enable = true;
     baseIndex = 0;
     clock24 = true;
-    escapeTime = 10;
+    escapeTime = 500;
     mouse = true;
     shortcut = "o";
     extraConfig = ''
