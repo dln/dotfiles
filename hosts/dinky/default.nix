@@ -58,6 +58,7 @@
     ];
   };
 
+  hardware.enableAllFirmware = true;
   hardware.nitrokey.enable = true;
 
   swapDevices = [ { device = "/dev/disk/by-uuid/c9cc5270-87b0-4ed4-9891-7df924b0f55a"; } ];
