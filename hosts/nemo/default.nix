@@ -72,6 +72,8 @@
     ];
   };
 
+  hardware.enableAllFirmware = true;
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -111,7 +113,7 @@
 
   systemd.network.enable = true;
   systemd.network.networks."10-wifi" = {
-    matchConfig.Name = "wlan0";
+    matchConfig.Name = "wlan1";
     address = [ "10.1.100.20/22" ];
     gateway = [ "10.1.100.1" ];
     linkConfig.RequiredForOnline = "routable";
