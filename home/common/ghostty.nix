@@ -31,7 +31,7 @@ in
       settings = {
         font-size = 14;
         font-family = "Berkeley Mono Variable";
-        font-codepoint-map = [ "U+2191-U+2195,U+2500-U+259F=BerkeleyMono Nerd Font" ];
+        font-codepoint-map = [ "U+2191-U+2195,U+2500-U+259F=Berkeley Mono Variable" ];
         font-family-bold-italic = "Monaspace Xenon";
         font-style-bold-italic = "ExtraLight Italic";
         font-variation-italic = [ "wght=100" ];
@@ -55,7 +55,6 @@ in
           "alt+shift+c=copy_to_clipboard"
           "alt+shift+v=paste_from_clipboard"
           "ctrl+tab=goto_split:previous"
-          "alt+enter=toggle_fullscreen"
           "alt+one=unbind"
           "alt+two=unbind"
           "alt+three=unbind"
