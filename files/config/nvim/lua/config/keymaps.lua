@@ -12,8 +12,8 @@ vim.keymap.set({ "n" }, "<c-_>", "gcc", { remap = true })
 vim.keymap.set({ "v" }, "<c-_>", "gc", { remap = true })
 vim.keymap.set({ "n" }, "<Leader><c-_>", "gcgc", { remap = true })
 
-vim.keymap.set("n", "<Tab>", "<Space>,", {})
-vim.keymap.set("n", "zz", "zt", {})
+vim.keymap.set("n", "<Tab>", "<Space>,", { remap = true })
+vim.keymap.set("n", "zz", "zt", { remap = true })
 
-vim.keymap.set("n", "[d", ":lua vim.diagnostic.goto_prev { float = false }<Enter>", {})
-vim.keymap.set("n", "]d", ":lua vim.diagnostic.goto_next { float = false }<Enter>", {})
+vim.keymap.set("n", "[d", ":lua vim.diagnostic.goto_prev { float = false }<Enter>", { remap = true })
+vim.keymap.set("n", "]d", ":lua vim.diagnostic.goto_next { float = false }<Enter>", { remap = true })
