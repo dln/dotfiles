@@ -80,11 +80,13 @@
 
   networking = {
     hostName = "nemo"; # Define your hostname.
+    domain = "aarn.shelman.io";
     nameservers = [
       "10.1.100.11"
       "10.1.100.12"
       "10.1.100.13"
     ];
+    firewall.enable = false;
     networkmanager.enable = false;
     useDHCP = false;
     wireless.iwd = {
@@ -103,13 +105,7 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [
-    22000 # Syncthing
-  ];
-  networking.firewall.allowedUDPPorts = [
-    22000 # Synchthing
-    21027
-  ];
+  services.nscd.enableNsncd = false;
 
   systemd.network.enable = true;
   systemd.network.networks."10-wifi" = {
@@ -136,7 +132,11 @@
 
   services.resolved = {
     enable = true;
-    domains = [ "~." ];
+    domains = [
+      "aarn.shelman.io"
+      "shelman.io"
+    ];
+    llmnr = "false";
     fallbackDns = [ "9.9.9.9" ];
   };
 
@@ -165,7 +165,6 @@
     ffado
     lm_sensors
     openconnect
-    pam_rssh
   ];
 
   programs.coolercontrol.enable = true;
