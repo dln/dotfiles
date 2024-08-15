@@ -129,6 +129,11 @@ in
         "commit_id prefix" = {
           bold = true;
         };
+
+        "rest" = {
+          fg = "bright black";
+          bold = false;
+        };
       };
     };
   };

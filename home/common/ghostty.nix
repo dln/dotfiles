@@ -88,7 +88,7 @@ in
       palette = 5=#cb01ff
       palette = 6=#00e0ff
       palette = 7=#f0f0f0
-      palette = 8=#000000
+      palette = 8=#444444
       palette = 9=#ff8c88
       palette = 10=#baff94
       palette = 11=#ffe090
@@ -112,7 +112,7 @@ in
       palette = 5=#7d009e
       palette = 6=#008a9e
       palette = 7=#f7f7f7
-      palette = 8=#000000
+      palette = 8=#b0b0b0
       palette = 9=#ff0035
       palette = 10=#509e00
       palette = 11=#ffc900

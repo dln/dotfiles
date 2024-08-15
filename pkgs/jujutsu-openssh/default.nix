@@ -16,7 +16,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "jujutsu-openssh";
-  version = "0.19.0+pr3191.openssh";
+  version = "0.20.0+pr3191.openssh";
 
   src = fetchFromGitHub {
     owner = "dln";
