@@ -46,6 +46,7 @@
         file-renamed-label = "[>]";
         file-style = "bold reverse";
         file-transformation = "s/$/  ░▒▓/";
+        grep-file-style = "bold reverse";
         hunk-header-decoration-style = "none";
         hunk-header-file-style = "bold";
         hunk-header-line-number-style = "bold";

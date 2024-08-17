@@ -135,8 +135,8 @@
   services.resolved = {
     enable = true;
     domains = [
-      "aarn.shelman.io"
       "shelman.io"
+      "aarn.shelman.io"
     ];
     llmnr = "false";
     fallbackDns = [ "9.9.9.9" ];
