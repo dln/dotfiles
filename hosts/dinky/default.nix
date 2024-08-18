@@ -11,6 +11,11 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  system.switch = {
+    enable = false;
+    enableNg = true;
+  };
+
   boot = {
     initrd = {
       availableKernelModules = [
@@ -78,8 +83,15 @@
 
   networking = {
     hostName = "dinky";
+    domain = "aarn.shelman.io";
+    search = [
+      "shelman.io"
+      "aarn.shelman.io"
+    ];
     useDHCP = lib.mkDefault true;
   };
+
+  networking.networkmanager.wifi.backend = "iwd";
 
   services.mullvad-vpn.enable = true;
 

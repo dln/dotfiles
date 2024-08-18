@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    age-plugin-fido2-hmac
     bacon
     cargo
     clang
