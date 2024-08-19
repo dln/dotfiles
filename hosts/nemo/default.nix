@@ -89,6 +89,7 @@
     firewall.enable = false;
     networkmanager.enable = false;
     useDHCP = false;
+
     wireless.iwd = {
       enable = true;
       settings = {
@@ -97,7 +98,6 @@
           EnableIPv6 = false;
           NameResolvingService = "systemd";
         };
-        Scan.DisablePeriodicScan = true;
         Settings = {
           AutoConnect = true;
         };
@@ -115,22 +115,20 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
-  # FIXME: pam_rssh is broken from rust 1.80 upgrade
-  # environment.systemPackages = [ pkgs.pam_rssh ];
-  # security = {
-  #   pam.services.doas =
-  #     { config, ... }:
-  #     {
-  #       rules.auth.rssh = {
-  #         order = config.rules.auth.ssh_agent_auth.order - 1;
-  #         control = "sufficient";
-  #         modulePath = "${pkgs.pam_rssh}/lib/libpam_rssh.so";
-  #         settings.authorized_keys_command = pkgs.writeShellScript "get-authorized-keys" ''
-  #           cat "/etc/ssh/authorized_keys.d/$1"
-  #         '';
-  #       };
-  #     };
-  # };
+  security = {
+    pam.services.doas =
+      { config, ... }:
+      {
+        rules.auth.rssh = {
+          order = config.rules.auth.ssh_agent_auth.order - 1;
+          control = "sufficient";
+          modulePath = "${pkgs.pam_rssh}/lib/libpam_rssh.so";
+          settings.authorized_keys_command = pkgs.writeShellScript "get-authorized-keys" ''
+            cat "/etc/ssh/authorized_keys.d/$1"
+          '';
+        };
+      };
+  };
 
   services.resolved = {
     enable = true;
@@ -166,6 +164,7 @@
   environment.systemPackages = with pkgs; [
     ffado
     lm_sensors
+    pkgs.pam_rssh
     openconnect
   ];
 
