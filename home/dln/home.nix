@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   realName = "Daniel Lundin";
   email = "dln@arity.se";
@@ -137,6 +137,10 @@ in
       };
     };
   };
+
+  programs.ssh.extraConfig = ''
+    Include ${config.home.homeDirectory}/.ssh/config_local
+  '';
 
   programs.ssh.matchBlocks = {
     dev = {
