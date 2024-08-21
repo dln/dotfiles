@@ -90,7 +90,7 @@
 
       fish_prompt.body = ''
         echo
-        string join "" -- (set_color --italics) (prompt_hostname) ':' (prompt_pwd) (set_color green) ' ❯ ' (set_color normal)
+        string join "" -- (set_color --italics) (prompt_hostname) ':' (prompt_pwd --full-length-dirs=4) (set_color green) ' ❯ ' (set_color normal)
       '';
 
       fish_right_prompt.body = ''
