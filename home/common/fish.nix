@@ -6,17 +6,22 @@
 
     plugins = [
       {
-        name = "transient-fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "zzhaolei";
-          repo = "transient.fish";
-          rev = "deb35c4d07ea6acc56b073d7ba84f8ed76356abd";
-          sha256 = "sha256-BQvuqY7D+9fTDeLb7Fz9Ll/7uIlqrmRmn0S+G9v+2Uc=";
-        };
+        name = "grc";
+        src = pkgs.fishPlugins.grc.src;
+      }
+      {
+        name = "transient";
+        src = pkgs.fishPlugins.transient-fish.src;
       }
     ];
 
     functions = {
+      kubectl = {
+        description = "Wraps kubectl in grc";
+        wraps = "kubectl";
+        body = "grc.wrap kubectl $argv";
+      };
+
       edit = {
         description = "Open a file in already running nvim and switch tab";
         argumentNames = [ "file" ];
