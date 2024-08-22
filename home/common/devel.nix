@@ -10,6 +10,7 @@
     go
     just
     ldns
+    minio-client
     nixfmt-rfc-style
     nodejs_22
     passage
