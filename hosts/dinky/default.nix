@@ -11,11 +11,6 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  system.switch = {
-    enable = false;
-    enableNg = true;
-  };
-
   boot = {
     initrd = {
       availableKernelModules = [

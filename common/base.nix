@@ -5,7 +5,23 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_zen;
+    initrd.systemd.enable = true;
+
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
+
+  # Temporary files
+  boot.tmp.useTmpfs = true;
+  systemd.services.nix-daemon = {
+    environment.TMPDIR = "/var/tmp";
+  };
+
+  system.switch = {
+    enable = false;
+    enableNg = true;
+  };
+
+  services.fstrim.enable = true;
 
   time.timeZone = "Europe/Stockholm";
 
