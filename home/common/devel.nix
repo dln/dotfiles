@@ -23,4 +23,8 @@
     tree-sitter
     zig
   ];
+
+  home.sessionVariables = {
+    GOPROXY = "https://athena.patagia.dev";
+  };
 }
