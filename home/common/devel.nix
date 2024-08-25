@@ -6,6 +6,7 @@
     cargo
     clang
     codeium
+    dogdns
     gnumake
     go
     just
