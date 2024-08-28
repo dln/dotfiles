@@ -24,21 +24,21 @@ in
         snapshot
       ])
       ++ (with pkgs; [
+        atomix # puzzle game
         baobab # disk usage analyzer
         cheese # webcam tool
         epiphany # web browser
         geary # email reader
-        gnome.atomix # puzzle game
+        gnome-clocks
+        gnome-contacts
         gnome-disk-utility
-        gnome.gnome-clocks
-        gnome.gnome-contacts
-        gnome.gnome-logs
-        gnome.gnome-music
-        gnome.hitori # sudoku game
-        gnome.iagno # go game
-        gnome.tali # poker game
+        gnome-logs
+        gnome-music
         gnome-terminal
+        hitori # sudoku game
+        iagno # go game
         simple-scan
+        tali # poker game
         yelp # help viewer
       ]);
 
