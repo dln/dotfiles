@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./home.nix
@@ -16,4 +16,6 @@
       enabled-extensions = [ "azclock@azclock.gitlab.com" ];
     };
   };
+
+  home.packages = with pkgs; [ calibre ];
 }
