@@ -5,10 +5,8 @@
     delta
     diffedit3
     difftastic
-    git-branchless
     git-get
     git-graph
-    git-town
     lazyjj
     tea
   ];
