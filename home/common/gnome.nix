@@ -11,6 +11,7 @@ with lib.hm.gvariant;
       gnome-tweaks
       gnome-pomodoro
       gnomeExtensions.desktop-clock
+      gnomeExtensions.emoji-copy
       gnomeExtensions.just-perfection
       gnomeExtensions.vitals
     ];
