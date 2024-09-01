@@ -166,9 +166,14 @@ with lib.hm.gvariant;
 
       "org/gnome/shell" = {
         enabled-extensions = [
+          "emoji-copy@felipeftn"
           "just-perfection-desktop@just-perfection"
           "Vitals@CoreCoding.com"
         ];
+      };
+
+      "org/gnome/shell/extensions/emoji-copy" = {
+        emoji-keybind = [ "<Super>e" ];
       };
 
       "org/gnome/shell/extensions/just-perfection" = {
