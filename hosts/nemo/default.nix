@@ -80,7 +80,7 @@
 
   networking = {
     hostName = "nemo"; # Define your hostname.
-    domain = "aarn.shelman.io";
+    domain = "aarn.patagia.dev";
     nameservers = [
       "10.1.100.11"
       "10.1.100.12"
@@ -135,8 +135,8 @@
   services.resolved = {
     enable = true;
     domains = [
-      "shelman.io"
-      "aarn.shelman.io"
+      "patagia.dev"
+      "aarn.patagia.dev"
     ];
     llmnr = "false";
     fallbackDns = [ "9.9.9.9" ];
@@ -157,7 +157,7 @@
     settings = { };
   };
 
-  shelman = {
+  patagia = {
     desktop.enable = true;
     plymouth.enable = true;
     podman.enable = true;
@@ -165,6 +165,7 @@
 
   environment.systemPackages = with pkgs; [
     ffado
+    libcamera
     lm_sensors
     # pkgs.pam_rssh
     openconnect

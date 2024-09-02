@@ -7,10 +7,10 @@
 
 let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.shelman.plymouth;
+  cfg = config.patagia.plymouth;
 in
 {
-  options.shelman.plymouth.enable = mkEnableOption "Fancy boot splash";
+  options.patagia.plymouth.enable = mkEnableOption "Fancy boot splash";
 
   config = mkIf cfg.enable {
     boot = {

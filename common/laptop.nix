@@ -7,10 +7,10 @@
 
 let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.shelman.podman;
+  cfg = config.patagia.podman;
 in
 {
-  options.shelman.laptop.enable = mkEnableOption "Laptop tools and configuration";
+  options.patagia.laptop.enable = mkEnableOption "Laptop tools and configuration";
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ gnomeExtensions.battery-health-charging ];

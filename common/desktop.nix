@@ -7,10 +7,10 @@
 
 let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.shelman.podman;
+  cfg = config.patagia.podman;
 in
 {
-  options.shelman.desktop.enable = mkEnableOption "Desktop environment and common applications";
+  options.patagia.desktop.enable = mkEnableOption "Desktop environment and common applications";
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ gnome-ssh-askpass4 ];

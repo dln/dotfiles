@@ -1,6 +1,6 @@
 { config, lib, ... }:
 {
-  config = lib.mkIf config.shelman.desktop.enable {
+  config = lib.mkIf config.patagia.desktop.enable {
 
     programs.wezterm = {
       enable = true;

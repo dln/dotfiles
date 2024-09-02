@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.shelman.desktop.enable {
+  config = lib.mkIf config.patagia.desktop.enable {
 
     home.packages = with pkgs; [ tor-browser ];
 

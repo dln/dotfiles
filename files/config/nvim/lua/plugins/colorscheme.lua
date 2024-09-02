@@ -1,6 +1,6 @@
 return {
 	{
-		"https://git.shelman.io/shelmangroup/dieter.nvim.git",
+		"https://patagia.dev/patagia/dieter.nvim.git",
 		lazy = false,
 		priority = 1000,
 	},

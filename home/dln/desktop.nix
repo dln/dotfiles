@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 {
-  shelman = {
+  patagia = {
     desktop.enable = true;
   };
 

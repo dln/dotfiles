@@ -7,10 +7,10 @@
 
 let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.shelman.podman;
+  cfg = config.patagia.podman;
 in
 {
-  options.shelman.podman.enable = mkEnableOption "Podman";
+  options.patagia.podman.enable = mkEnableOption "Podman";
 
   config = mkIf cfg.enable {
     environment.extraInit = ''

@@ -19,5 +19,5 @@
     ./wezterm.nix
   ];
 
-  options.shelman.desktop.enable = lib.mkEnableOption "Desktop environment";
+  options.patagia.desktop.enable = lib.mkEnableOption "Desktop environment";
 }

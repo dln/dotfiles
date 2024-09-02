@@ -78,10 +78,10 @@
 
   networking = {
     hostName = "dinky";
-    domain = "aarn.shelman.io";
+    domain = "aarn.patagia.dev";
     search = [
-      "shelman.io"
-      "aarn.shelman.io"
+      "patagia.dev"
+      "aarn.patagia.dev"
     ];
     useDHCP = lib.mkDefault true;
   };
@@ -105,7 +105,7 @@
     ];
   };
 
-  shelman = {
+  patagia = {
     desktop.enable = true;
     laptop.enable = true;
     plymouth.enable = true;
@@ -119,7 +119,7 @@
 
   nix.buildMachines = [
     {
-      hostName = "nemo.aarn.shelman.io";
+      hostName = "nemo.aarn.patagia.dev";
       sshUser = "nixremote";
       system = "x86_64-linux";
       protocol = "ssh-ng";

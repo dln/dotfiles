@@ -8,7 +8,7 @@ IT in a box!
 2. Clone this repo:
 
    ```
-   nix-shell -p git --command 'git clone https://git.shelman.io/shelmangroup/nixos-config.git'
+   nix-shell -p git --command 'git clone https://patagia.dev/dln/nixos-config.git'
    ```
 
 3. Ensure host configuration exists at `./nixos-config/hosts/${HOSTNAME}` and contains at minimum the hardware configuration. The NixOS installer will write this out to `/etc/nixos/hardware-configuration.nix`.
