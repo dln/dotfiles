@@ -33,6 +33,7 @@ in
         font-family = "Berkeley Mono Variable";
         font-family-bold-italic = "Monaspace Xenon";
         font-style-bold-italic = "ExtraLight Italic";
+        font-synthetic-style = false;
         font-variation-italic = [ "wght=100" ];
 
         adjust-cell-height = 1;
