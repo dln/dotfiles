@@ -13,7 +13,7 @@
       search_mode_shell_up_key_binding = "prefix";
       show_help = false;
       style = "compact";
-      sync_address = "https://atuin.aarn.shelman.io";
+      sync_address = "https://atuin.patagia.dev";
       sync.records = true;
 
       stats.common_subcommands = [
