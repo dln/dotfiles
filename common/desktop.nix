@@ -50,7 +50,6 @@ in
         defaultFonts = {
           serif = [ "Liberation Serif" ];
           sansSerif = [ "Inter" ];
-          monospace = [ "BerkeleyMono Nerd Font" ];
         };
         hinting.enable = true;
         hinting.style = "slight";

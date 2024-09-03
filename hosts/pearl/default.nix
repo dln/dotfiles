@@ -8,7 +8,10 @@
   ...
 }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./apps.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,13 +28,8 @@
 
   hardware.enableAllFirmware = true;
 
-  #environment.systemPackages = with pkgs; [
-  #];
-
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];
-
-  programs.adb.enable = true;
 
   networking = {
     hostName = "pearl";
@@ -48,17 +46,30 @@
 
   time.timeZone = "Europe/Stockholm";
 
-  users.users.dln = {
-    isNormalUser = true;
-    description = "Daniel Lundin";
-    extraGroups = [
-      "lp"
-      "wheel"
-    ];
-    openssh.authorizedKeys.keys = [
-      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILwakA+EeuR23vRhjvjMkzK+FtWIhpnbs7z1pfnBehCUAAAABHNzaDo= dln@dinky"
-      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIJNOBFoU7Cdsgi4KpYRcv7EhR/8kD4DYjEZnwk6urRx7AAAABHNzaDo= dln@nemo"
-    ];
+  users.users = {
+    annso = {
+      isNormalUser = true;
+      description = "Ann-Sofie Stenberg";
+      extraGroups = [
+        "lp"
+        "video"
+        "audio"
+        "wheel"
+      ];
+    };
+
+    dln = {
+      isNormalUser = true;
+      description = "Daniel Lundin";
+      extraGroups = [
+        "lp"
+        "wheel"
+      ];
+      openssh.authorizedKeys.keys = [
+        "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILwakA+EeuR23vRhjvjMkzK+FtWIhpnbs7z1pfnBehCUAAAABHNzaDo= dln@dinky"
+        "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIJNOBFoU7Cdsgi4KpYRcv7EhR/8kD4DYjEZnwk6urRx7AAAABHNzaDo= dln@nemo"
+      ];
+    };
   };
 
   patagia = {
@@ -71,7 +82,7 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-    # Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
@@ -81,7 +92,7 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "se";
-    variant = "us";
+    # variant = "us";
   };
 
   # Configure console keymap
