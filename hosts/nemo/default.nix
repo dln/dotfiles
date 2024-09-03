@@ -10,7 +10,10 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    extraModulePackages = with config.boot.kernelPackages; [ nct6687d ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      nct6687d
+      v4l2loopback
+    ];
     initrd.availableKernelModules = [
       "xhci_pci"
       "ahci"
@@ -28,6 +31,7 @@
     ];
     extraModprobeConfig = ''
       options nct6687 force=1
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
     kernelParams = [ "mitigations=off" ];
   };
@@ -169,6 +173,7 @@
     lm_sensors
     # pkgs.pam_rssh
     openconnect
+    v4l-utils
   ];
 
   programs.coolercontrol.enable = true;
