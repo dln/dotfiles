@@ -21,7 +21,6 @@
     {
       self,
       nixpkgs,
-      colmena,
       ghostty,
       ghostty-hm,
       home-manager,
@@ -82,19 +81,21 @@
       devShells = forEachSystem' (
         { system, pkgs, ... }:
         {
-          default = pkgs.mkShell { packages = [ pkgs.colmena ]; };
+          default = pkgs.mkShell { packages = [ ]; };
         }
       );
 
       homeConfigurations = {
         "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
         "dln@nemo" = mkHome [ ./home/dln/nemo.nix ];
+        "dln@pearl" = mkHome [ ./home/dln/pearl.nix ];
         "lsjostro@nemo" = mkHome [ ./home/lsjostro/nemo.nix ];
       };
 
       nixosConfigurations = {
         dinky = mkHost [ ./hosts/dinky ];
         nemo = mkHost [ ./hosts/nemo ];
+        pearl = mkHost [ ./hosts/pearl ];
       };
     };
 }
