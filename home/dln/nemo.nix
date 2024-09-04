@@ -5,8 +5,6 @@
     ./desktop.nix
   ];
 
-  # Host specific user config goes here
-  #
   programs.ghostty.settings = {
     font-size = lib.mkForce 18;
   };
