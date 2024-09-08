@@ -50,7 +50,7 @@ return {
 		enabled = false,
 	},
 
-	{ "nvimdev/indentmini.nvim", opts = { char = "⸽" } },
+	{ "nvimdev/indentmini.nvim", opts = { char = "│" } },
 
 	{
 		"mvllow/modes.nvim",
