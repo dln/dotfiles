@@ -50,6 +50,7 @@ in
 
         window-decoration = false;
         gtk-tabs-location = "bottom";
+        gtk-titlebar = false;
         window-padding-x = 12;
         window-padding-y = 0;
         window-padding-balance = true;
