@@ -1,25 +1,7 @@
-local logo = [[
-███████ ██   ██ ███████ ██      ███    ███  █████  ███    ██      ██████  ██████   ██████  ██    ██ ██████ 
-██      ██   ██ ██      ██      ████  ████ ██   ██ ████   ██     ██       ██   ██ ██    ██ ██    ██ ██   ██
-███████ ███████ █████   ██      ██ ████ ██ ███████ ██ ██  ██     ██   ███ ██████  ██    ██ ██    ██ ██████ 
-     ██ ██   ██ ██      ██      ██  ██  ██ ██   ██ ██  ██ ██     ██    ██ ██   ██ ██    ██ ██    ██ ██     
-███████ ██   ██ ███████ ███████ ██      ██ ██   ██ ██   ████      ██████  ██   ██  ██████   ██████  ██     
-]]
-
 return {
 	{
 		"nvimdev/dashboard-nvim",
-		opts = {
-			theme = "hyper",
-			config = {
-				header = vim.split(string.rep("\n", 8) .. logo, "\n"),
-				week_header = { enable = false },
-				packages = { enable = false },
-				project = { enable = false },
-				footer = {},
-				shortcut = {},
-			},
-		},
+		enabled = false,
 	},
 
 	{
@@ -126,7 +108,15 @@ return {
 	},
 
 	{
-		"ahmedkhalf/project.nvim",
+		"DrKJeff16/project.nvim",
+		config = function(_, opts)
+			if vim.fn.argv()[1] == nil then
+				require("project_nvim").setup(opts) -- Workaround for project.nvim not setting up
+				vim.schedule(function()
+					vim.cmd("Telescope projects")
+				end)
+			end
+		end,
 		opts = {
 			exclude_dirs = {
 				"~/.cargo/*",

@@ -22,6 +22,11 @@ return {
 				end,
 				desc = "VCS Files",
 			},
+			{
+				"<C-p>",
+				"<cmd>Telescope projects<cr>",
+				desc = "Projects",
+			},
 		},
 		opts = function(_, opts)
 			local actions = require("telescope.actions")
