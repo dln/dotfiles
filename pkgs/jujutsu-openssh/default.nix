@@ -16,18 +16,18 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "jujutsu-openssh";
-  version = "0.20.0+pr3191.openssh";
+  version = "0.21.0+pr3191.openssh";
 
   src = fetchFromGitHub {
     owner = "dln";
     repo = "jj";
-    rev = "02d38813680f9c78bebad75b3aa69f3523584f1e"; # https://github.com/dln/jj/tree/openssh
-    hash = "sha256-D9H6o1+l2wgDlX1idIXTqq9FHqKb9+lgI7haRUrQlKw=";
+    rev = "5eb51bddb5fe3dbc08fd141cf50c62c73a0e1432"; # https://github.com/dln/jj/tree/openssh
+    hash = "sha256-sKMq8xgb2oJ3gi3cThdyjeQ0lfNfgkv495LcRo8H+uc=";
   };
 
   cargoLock.lockFile = ./Cargo.lock;
   cargoLock.outputHashes = {
-    "git2-0.18.3" = "sha256-3g7ajPfLfuPWh46rIa70wQRWLZ+jZXBApkyPlJULi/I=";
+    "git2-0.19.0" = "sha256-fV8dFChGeDhb20bMyqefpAD5/+raQQ2sMdkEtlA1jaE=";
   };
 
   cargoBuildFlags = [
