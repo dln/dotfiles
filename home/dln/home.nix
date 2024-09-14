@@ -8,6 +8,7 @@ in
     username = "dln";
     homeDirectory = "/home/dln";
     packages = with pkgs; [
+      asciinema
       openconnect
       ouch
     ];
