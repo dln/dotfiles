@@ -16,6 +16,18 @@
     ];
 
     functions = {
+      tmux-refresh-env = {
+        description = "Refresh environment variables from tmux session";
+        body = ''
+          for var in (tmux show-environment | string match -rv '^-')
+            set -l parts (string split -m 1 '=' $var)
+            if test (count $parts) -eq 2
+              set -Ux $parts[1] $parts[2]
+            end
+          end
+        '';
+      };
+
       kubectl = {
         description = "Wraps kubectl in grc";
         wraps = "kubectl";
