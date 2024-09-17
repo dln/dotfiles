@@ -11,16 +11,19 @@
       set -g allow-passthrough on
       set -g default-terminal "tmux-256color"
       set -g display-panes-time 3000
-      set -g history-limit 10000
+      set -g escape-time 10
+      set -g history-limit 50000
+      set -g set-clipboard on
+      set -g set-titles on
+      set -g set-titles-string "#H - #T"
       set -g status off
+      set -g status-interval 30
       set -g status-style "italics,reverse"
       set -g status-left-length 0
       set -g status-right-length 0
       set -g status-left '#W #{pane_current_path}'
       set -g status-right '%F |  %R'
       set -g status off
-      set -g set-titles on
-      set -g set-titles-string "#H - #T"
       set -g update-environment "SSH_AUTH_SOCK"
       setenv -g "SSH_AUTH_SOCK" "$XDG_RUNTIME_DIR/ssh-agent"
       setw -g alternate-screen on
@@ -41,6 +44,7 @@
       bind -T copy-mode-vi WheelUpPane select-pane \; send-keys -X -N 1 scroll-up
       bind -T copy-mode-vi WheelDownPane select-pane \; send-keys -X -N 1 scroll-down
       bind C-s set-option -g status
+      bind-key ] paste-buffer -p
       bind K confirm kill-server
     '';
   };
