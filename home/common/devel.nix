@@ -6,6 +6,7 @@
     cargo
     clang
     codeium
+    comma
     dogdns
     gnumake
     go
@@ -19,10 +20,8 @@
     prettierd
     rust-analyzer
     rustc
-    sqlite
     stylua
     tree-sitter
-    zig
   ];
 
   home.sessionVariables = {

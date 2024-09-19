@@ -41,7 +41,7 @@ in
       };
 
       git = {
-        push-branch-prefix = "dln/push-"
+        push-branch-prefix = "dln/push-";
       };
 
       ui = {
