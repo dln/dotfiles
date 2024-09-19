@@ -22,6 +22,7 @@
   };
 
   services.fstrim.enable = true;
+  services.fwupd.enable = true;
 
   time.timeZone = "Europe/Stockholm";
 
