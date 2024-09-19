@@ -40,6 +40,10 @@ in
         key = "/home/dln/.ssh/git_signing_key.pub";
       };
 
+      git = {
+        push-branch-prefix = "dln/push-"
+      };
+
       ui = {
         "default-command" = [
           "log"
@@ -85,14 +89,6 @@ in
           "builtin_log_oneline"
           "-r"
           "all()"
-        ];
-        b = [
-          "branch"
-          "list"
-        ];
-        n = [
-          "new"
-          "main"
         ];
         d = [
           "diff"
