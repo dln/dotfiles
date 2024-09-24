@@ -20,7 +20,7 @@
         # Workaround for https://github.com/NixOS/nix/issues/9574
         nix-path = config.nix.nixPath;
         substituters = [
-          "https://cache-nixos-org.aarn.shelman.io"
+          # "https://cache-nixos-org.aarn.shelman.io"
           "https://cache.nixos.org/"
         ];
         trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];

@@ -19,11 +19,6 @@ in
       fi
     '';
 
-    environment.systemPackages = with pkgs; [
-      docker-compose
-      podman-compose
-    ];
-
     virtualisation = {
       containers = {
         enable = true;
