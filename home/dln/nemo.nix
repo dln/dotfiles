@@ -25,4 +25,12 @@
   };
 
   home.packages = with pkgs; [ calibre ];
+
+  programs.gpg.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    enableScDaemon = false;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
 }
