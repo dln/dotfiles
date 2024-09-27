@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.atuin = {
     enable = true;
@@ -15,6 +15,12 @@
       style = "compact";
       sync_address = "https://atuin.patagia.dev";
       sync.records = true;
+
+      daemon = {
+        enabled = true;
+        socket_path = "/run/user/1000/atuin.socket"; # FIXME: remove hard coded uid
+        systemd_socket = true;
+      };
 
       stats.common_subcommands = [
         "cargo"
@@ -35,6 +41,40 @@
         "doas"
         "sudo"
       ];
+    };
+  };
+
+  systemd.user.services.atuin-daemon = {
+    Unit = {
+      Description = "atuin shell history daemon";
+      Requires = [ "atuin-daemon.socket" ];
+    };
+    Service = {
+      ExecStart = "${lib.getExe pkgs.atuin} daemon";
+      Environment = [ "ATUIN_LOG=info" ];
+      Restart = "on-failure";
+      RestartSteps = 5;
+      RestartMaxDelaySec = 10;
+    };
+    Install = {
+      Also = [ "atuin-daemon.socket" ];
+      WantedBy = [ "default.target" ];
+    };
+  };
+
+  systemd.user.sockets.atuin-daemon = {
+    Unit = {
+      Description = "Unix socket activation for atuin shell history daemon";
+    };
+
+    Socket = {
+      ListenStream = "%t/atuin.socket";
+      SocketMode = "0600";
+      RemoveOnStop = true;
+    };
+
+    Install = {
+      WantedBy = [ "sockets.target" ];
     };
   };
 }

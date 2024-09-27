@@ -15,9 +15,19 @@ in
   };
 
   programs.atuin.settings = {
+    show_tabs = false;
+
     cwd_filter = [
       "^~/media"
       "^/home/dln/media"
+      "^/tmp"
+    ];
+
+    history_filter = [
+      "^kubectl create secret.*--from-literal"
+      "^kubectl delete ns"
+      "^kubectl delete namespace"
+      "^talosctl reset"
     ];
   };
 
