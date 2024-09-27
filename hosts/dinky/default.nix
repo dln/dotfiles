@@ -66,13 +66,13 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   environment.systemPackages = with pkgs; [
-    android-tools
-    android-udev-rules
     mullvad-vpn
   ];
 
-  services.printing.enable = true;
+  services.printing.enable = lib.mkForce false;
   services.printing.drivers = [ pkgs.brlaser ];
+
+  services.udev.packages = [ pkgs.nitrokey-udev-rules ];
 
   programs.adb.enable = true;
 
