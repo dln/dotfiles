@@ -140,6 +140,16 @@ in
           fg = "bright black";
           bold = false;
         };
+
+        "diff added token" = {
+          bg = "#002200";
+          fg = "#66ffcc";
+          underline = false;
+        };
+        "diff removed token" = {
+          bg = "#220011";
+          underline = true;
+        };
       };
     };
   };

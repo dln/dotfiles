@@ -23,9 +23,11 @@ end
 
 function vcs_status
     if __jj_in_repo
-        jj status
         echo
-        jj log --limit=20 -T builtin_log_comfortable -r "(main..@) | (main..@)-"
+        printf '\e[38;5;240m\u2504%.0s\e[0m' (seq 1 (tput cols)) '\n'
+        jj show --stat
+        printf '\e[38;5;240m\u2504%.0s\e[0m' (seq 1 (tput cols)) '\n'
+        jj log --ignore-working-copy --limit=20 -T builtin_log_comfortable -r "(main..@) | (main..@)-"
     else
         git status -sb
     end
