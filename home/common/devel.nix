@@ -13,6 +13,8 @@
     just
     ldns
     minio-client
+    nil
+    nixd
     nixfmt-rfc-style
     nodejs_22
     passage

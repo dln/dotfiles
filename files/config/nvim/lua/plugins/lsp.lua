@@ -10,6 +10,8 @@ return {
 			-- 	enabled = true,
 			-- },
 			servers = {
+				nil_ls = {},
+				nixd = {},
 				starpls = {},
 				yamlls = {
 					settings = {
