@@ -36,6 +36,11 @@ in
     userEmail = email;
   };
 
+  programs.helix = {
+    enable = true;
+    # extraPackages = [];
+  };
+
   programs.jujutsu = {
     settings = {
       user = {

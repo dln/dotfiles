@@ -91,6 +91,7 @@
       "10.1.100.13"
     ];
     firewall.enable = false;
+
     networkmanager.enable = false;
     useDHCP = false;
 

@@ -5,19 +5,21 @@
   };
 
   home.packages = with pkgs; [
-    audacity
-    bitwig-studio
+    # audacity
+    # bitwig-studio
+    # helvum
+    # reaper
+    cameractrls-gtk4
     dynamic-wallpaper
     gimp-with-plugins
-    helvum
     inkscape
     inputs.ghostty.packages.${pkgs.system}.default
     moonlight-qt
     obsidian
     pavucontrol
     plexamp
-    reaper
     signal-desktop
+    zed-editor
   ];
 
   xdg.desktopEntries = {
