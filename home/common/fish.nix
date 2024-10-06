@@ -107,6 +107,12 @@
 
       fish_right_prompt.body = ''
         fish_jj_prompt || fish_vcs_prompt
+        if test $CMD_DURATION -gt 3000
+          # Show duration of the last command in seconds
+          set duration (echo "$CMD_DURATION 1000" | awk '{printf "%.1fs", $1 / $2}')
+          echo " ⏳$duration"
+        end
+
       '';
 
       transient_prompt_func.body = ''
