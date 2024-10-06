@@ -90,7 +90,7 @@
                         ),
                         "(no description set)"
                     ),
-                    branches.join(", "),
+                    bookmarks.join(", "),
                     commit_id.shortest(),
                     if(conflict, "(conflict)"),
                     if(empty, "(empty)"),

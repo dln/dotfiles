@@ -56,7 +56,7 @@ in
       };
 
       git = {
-        push-branch-prefix = "dln/push-";
+        push-bookmark-prefix = "dln/push-";
       };
 
       ui = {
