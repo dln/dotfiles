@@ -9,7 +9,7 @@
     ./gnome.nix
     ./k8s.nix
     ./nix.nix
-    ./nvim.nix
+    ./nvim
     ./scripts.nix
     ./ssh.nix
     ./tmux.nix
