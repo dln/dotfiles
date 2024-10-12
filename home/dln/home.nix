@@ -130,7 +130,7 @@ in
       "revset-aliases" = {
         # Prevent rewriting commits on main@origin and commits authored by other users;
         "user(x)" = "author(x) | committer(x)";
-        "trunk()" = "latest((present(main) | present(master)) & remote_branches())";
+        "trunk()" = "latest((present(main) | present(master)) & remote_bookmarks())";
         "open" = "(mine() ~ ::trunk()) ~ heads(empty())";
         "wip" = ''description("wip: ")'';
         "ready" = "open() ~ (wip::)";
