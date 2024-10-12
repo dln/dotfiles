@@ -16,6 +16,33 @@
     ];
 
     functions = {
+      confirm = {
+        description = "Ask for confirmation";
+        argumentNames = [ "message" ];
+        body = ''
+          read -l -p 'printf "\\e[31;1m$message\\e[0m (y/N) "' confirm
+          test "$confirm" = 'y'
+        '';
+      };
+
+      poweroff = {
+        description = "Wraps poweroff to first prompt for confirmation";
+        wraps = "poweroff";
+        body = ''confirm "⚠ Really poweroff $(hostname)?" && command poweroff $argv'';
+      };
+
+      reboot = {
+        description = "Wraps reboot to first prompt for confirmation";
+        wraps = "reboot";
+        body = ''confirm "⚠ Really reboot $(hostname)?" && command reboot $argv'';
+      };
+
+      shutdown = {
+        description = "Wraps shutdown to first prompt for confirmation";
+        wraps = "shutdown";
+        body = ''confirm "⚠ Really shutdown $(hostname)?" && command shutdown $argv'';
+      };
+
       tmux-refresh-env = {
         description = "Refresh environment variables from tmux session";
         body = ''
