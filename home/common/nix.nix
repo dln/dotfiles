@@ -1,4 +1,8 @@
-{ outputs, ... }:
+{
+  pkgs,
+  outputs,
+  ...
+}:
 {
   nixpkgs = {
     config.allowUnfree = true;

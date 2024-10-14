@@ -14,6 +14,7 @@
     ldns
     minio-client
     nil
+    nix-output-monitor
     nixd
     nixfmt-rfc-style
     nodejs_22

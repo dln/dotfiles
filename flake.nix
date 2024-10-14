@@ -2,16 +2,17 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
       inputs = {
-        nixpkgs-stable.follows = "nixpkgs";
-        nixpkgs-unstable.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs-stable";
+        nixpkgs-unstable.follows = "nixpkgs-unstable";
       };
     };
     ghostty-hm.url = "github:clo4/ghostty-hm-module";
@@ -20,17 +21,28 @@
   outputs =
     inputs@{
       self,
-      nixpkgs,
+      nixpkgs-stable,
+      nixpkgs-unstable,
       ghostty-hm,
       home-manager,
       ...
     }:
     let
       inherit (self) outputs;
-
       system = "x86_64-linux";
 
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs-unstable.legacyPackages.${system};
+
+      overlays-nixpkgs = final: prev: {
+        stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
 
       mkHome =
         modules:
@@ -42,13 +54,18 @@
           modules = [
             ghostty-hm.homeModules.default
             ./home/common
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [ overlays-nixpkgs ];
+              }
+            )
           ] ++ modules;
         };
 
       mkHost =
         modules:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
+        nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
           };
