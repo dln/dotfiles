@@ -62,7 +62,7 @@ in
         monaspace
         (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         noto-fonts
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         noto-fonts-color-emoji
         roboto
         ubuntu_font_family
