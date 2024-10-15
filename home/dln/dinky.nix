@@ -11,7 +11,7 @@
     };
   };
 
-  home.packages = with pkgs; [ calibre ];
+  home.packages = with pkgs; [ ];
 
   programs.gpg.enable = true;
   services.gpg-agent = {
