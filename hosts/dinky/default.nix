@@ -117,22 +117,29 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  nix.settings.trusted-users = [ "dln" ];
   nix.buildMachines = [
     {
       hostName = "nemo.aarn.patagia.dev";
       sshUser = "nixremote";
+      sshKey = "/root/.ssh/id_ed25519";
       system = "x86_64-linux";
       protocol = "ssh-ng";
       maxJobs = 32;
       speedFactor = 2;
-      supportedFeatures = [ ];
+      supportedFeatures = [
+        "nixos-test"
+        "big-parallel"
+        "kvm"
+      ];
       mandatoryFeatures = [ ];
     }
   ];
   nix.distributedBuilds = true;
-  nix.extraOptions = ''
-    builders-use-substitutes = true
-  '';
+  nix.settings.builders-use-substitutes = true;
+  nix.settings.trusted-substituters = [
+    "ssh-ng://nemo.aarn.patagia.dev"
+  ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
