@@ -21,7 +21,7 @@
     "ghostty": {
       "inputs": {
         "nixpkgs-stable": [
-          "nixpkgs-stable"
+          "nixpkgs-unstable"
         ],
         "nixpkgs-unstable": [
           "nixpkgs-unstable"
