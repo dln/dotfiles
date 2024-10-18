@@ -18,72 +18,52 @@
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
-      ghostty,
       ghostty-hm,
       home-manager,
       ...
-    }@inputs:
+    }:
     let
       inherit (self) outputs;
+
+      system = "x86_64-linux";
+
+      pkgs = nixpkgs.legacyPackages.${system};
 
       mkHome =
         modules:
         home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
           modules = [
             ghostty-hm.homeModules.default
             ./home/common
           ] ++ modules;
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
         };
 
       mkHost =
         modules:
         nixpkgs.lib.nixosSystem {
+          inherit system;
           specialArgs = {
             inherit inputs outputs;
           };
-          system = "x86_64-linux";
           modules = [ ./common ] ++ modules;
         };
-
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-      forEachSystem =
-        f:
-        builtins.listToAttrs (
-          map (system: {
-            name = system;
-            value = f system;
-          }) supportedSystems
-        );
-      systemBits = forEachSystem (system: rec {
-        inherit system;
-        pkgs = import nixpkgs {
-          localSystem = system;
-          overlays = [ ];
-        };
-      });
-
-      forEachSystem' = f: forEachSystem (system: (f systemBits.${system}));
-      inherit (nixpkgs) lib;
     in
     {
       overlays = import ./overlays { inherit inputs outputs; };
 
-      devShells = forEachSystem' (
-        { system, pkgs, ... }:
-        {
-          default = pkgs.mkShell { packages = [ ]; };
-        }
-      );
+      devShell.${system} = pkgs.mkShell {
+        packages = with pkgs; [
+          just
+          nh
+        ];
+      };
 
       homeConfigurations = {
         "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
