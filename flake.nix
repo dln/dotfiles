@@ -21,7 +21,6 @@
   outputs =
     inputs@{
       self,
-      nixpkgs-stable,
       nixpkgs-unstable,
       ghostty-hm,
       home-manager,
@@ -30,19 +29,16 @@
     let
       inherit (self) outputs;
       system = "x86_64-linux";
-
       pkgs = nixpkgs-unstable.legacyPackages.${system};
 
-      overlays-nixpkgs = final: prev: {
-        stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
+      mkHost =
+        modules:
+        nixpkgs-unstable.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./common ] ++ modules;
         };
-        unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      };
 
       mkHome =
         modules:
@@ -54,22 +50,7 @@
           modules = [
             ghostty-hm.homeModules.default
             ./home/common
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [ overlays-nixpkgs ];
-              }
-            )
           ] ++ modules;
-        };
-
-      mkHost =
-        modules:
-        nixpkgs-unstable.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./common ] ++ modules;
         };
     in
     {
@@ -82,17 +63,17 @@
         ];
       };
 
+      nixosConfigurations = {
+        dinky = mkHost [ ./hosts/dinky ];
+        nemo = mkHost [ ./hosts/nemo ];
+        pearl = mkHost [ ./hosts/pearl ];
+      };
+
       homeConfigurations = {
         "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
         "dln@nemo" = mkHome [ ./home/dln/nemo.nix ];
         "dln@pearl" = mkHome [ ./home/dln/pearl.nix ];
         "lsjostro@nemo" = mkHome [ ./home/lsjostro/nemo.nix ];
-      };
-
-      nixosConfigurations = {
-        dinky = mkHost [ ./hosts/dinky ];
-        nemo = mkHost [ ./hosts/nemo ];
-        pearl = mkHost [ ./hosts/pearl ];
       };
     };
 }
