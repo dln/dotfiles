@@ -5,10 +5,6 @@
   };
 
   home.packages = with pkgs; [
-    # audacity
-    # bitwig-studio
-    # helvum
-    # reaper
     cameractrls-gtk4
     dynamic-wallpaper
     gimp-with-plugins
@@ -45,23 +41,6 @@
       settings = {
         StartupWMClass = "firefox-work";
         Keywords = "web;browser;internet";
-      };
-      terminal = false;
-      type = "Application";
-    };
-
-    wezterm-nemo = {
-      categories = [
-        "System"
-        "TerminalEmulator"
-      ];
-      exec = "wezterm start --class=org.wezfurlong.wezterm-nemo --domain=nemo";
-      genericName = "wezterm-nemo";
-      icon = "org.wezfurlong.wezterm";
-      name = "wezterm-nemo";
-      settings = {
-        StartupWMClass = "org.wezfurlong.wezterm-nemo";
-        TryExec = "wezterm";
       };
       terminal = false;
       type = "Application";

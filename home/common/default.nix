@@ -16,7 +16,6 @@
     ./utils.nix
     ./vcs.nix
     ./web.nix
-    ./wezterm.nix
   ];
 
   options.patagia.desktop.enable = lib.mkEnableOption "Desktop environment";

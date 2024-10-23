@@ -9,12 +9,6 @@ bind \e\[109\;5u execute # C-m in ghostty
 set fish_greeting
 set fish_emoji_width 2
 
-# xdg-open support on ssh remotes
-if test -n SSH_TTY; and type -q wezterm-open-url
-    set -x DE generic
-    set -x BROWSER wezterm-open-url
-end
-
 # Colors
 set fish_color_command --bold
 set fish_color_comment --italics --dim
