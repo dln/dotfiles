@@ -34,8 +34,7 @@
         gtk-titlebar-hide-when-maximized = true;
         window-padding-balance = true;
         window-padding-color = "extend";
-        window-theme = "system";
-        theme = "light:PatagiaLight,dark:PatagiaDark";
+        theme = "PatagiaDark";
 
         keybind = [
           "alt+shift+c=copy_to_clipboard"

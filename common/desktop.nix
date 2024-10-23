@@ -15,33 +15,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ gnome-ssh-askpass4 ];
 
-    # Excluding some GNOME applications from the default install
-    environment.gnome.excludePackages =
-      (with pkgs; [
-        gnome-connections
-        gnome-photos
-        gnome-tour
-        snapshot
-      ])
-      ++ (with pkgs; [
-        atomix # puzzle game
-        baobab # disk usage analyzer
-        cheese # webcam tool
-        epiphany # web browser
-        geary # email reader
-        gnome-clocks
-        gnome-contacts
-        gnome-disk-utility
-        gnome-logs
-        gnome-music
-        gnome-terminal
-        hitori # sudoku game
-        iagno # go game
-        simple-scan
-        tali # poker game
-        yelp # help viewer
-      ]);
-
     fonts = {
       fontDir.enable = true;
       fontconfig = {
@@ -78,19 +51,19 @@ in
       localNetworkGameTransfers.openFirewall = true;
     };
 
-    services.gnome.gnome-keyring.enable = true;
+    security.polkit.enable = true;
 
-    services.printing.enable = true;
+    # services.printing.enable = true;
 
-    services.displayManager.defaultSession = "gnome";
-
-    services.xserver = {
+    # services.displayManager.defaultSession = "gnome";
+    services.greetd = {
       enable = true;
-      displayManager.gdm.enable = true;
-      displayManager.gdm.autoSuspend = false;
-      desktopManager.gnome.enable = true;
-      xkb.layout = "se";
-      xkb.variant = "us";
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          user = "greeter";
+        };
+      };
     };
 
     services.pulseaudio.enable = false;
@@ -99,6 +72,7 @@ in
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
+      audio.enable = true;
       pulse.enable = true;
       jack.enable = true;
     };

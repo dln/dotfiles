@@ -83,12 +83,40 @@
       "patagia.net"
       "aarn.patagia.net"
     ];
+    networkmanager.enable = false;
     useDHCP = lib.mkDefault true;
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        Settings = {
+          AutoConnect = true;
+        };
+      };
+    };
   };
 
-  networking.networkmanager.wifi.backend = "iwd";
+  services.nscd.enableNsncd = false;
+
+  systemd.network.enable = true;
+  #networking.networkmanager.wifi.backend = "iwd";
+
+  services.resolved = {
+    enable = true;
+    domains = [
+      "patagia.net"
+      "aarn.patagia.net"
+    ];
+    llmnr = "false";
+    fallbackDns = [ "9.9.9.9" ];
+  };
 
   services.mullvad-vpn.enable = true;
+
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
 
   users.users.dln = {
     isNormalUser = true;
@@ -108,12 +136,12 @@
   patagia = {
     desktop.enable = true;
     laptop.enable = true;
-    plymouth.enable = true;
+    #  plymouth.enable = true;
     podman.enable = true;
   };
 
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "dln";
+  #  services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "dln";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 

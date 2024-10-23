@@ -12,6 +12,8 @@
     ./nvim
     ./scripts.nix
     ./ssh.nix
+    ./sway.nix
+    ./theme-dark.nix
     ./tmux.nix
     ./utils.nix
     ./vcs.nix
