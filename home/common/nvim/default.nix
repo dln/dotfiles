@@ -10,6 +10,7 @@
     withRuby      = false;
 
     extraLuaConfig = lib.fileContents ./init.lua;
+
     extraPackages = with pkgs; [
       black
       cue
