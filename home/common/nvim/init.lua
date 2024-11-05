@@ -1,5 +1,5 @@
--- vim.g.mapleader = "<space>"
-vim.g.maplocalleader = ','
+vim.g.mapleader = "<space>"
+vim.g.maplocalleader = ","
 
 -- UI
 
@@ -20,10 +20,6 @@ function GetIndicators()
 	local warn_string = warnings > 0 and "%#DiagnosticWarn# " .. warnings .. " " or "  "
 	local error_string = errors > 0 and "%#DiagnosticError# " .. errors .. " " or "  "
 	return warn_string .. error_string
-end
-function GetRulerIcon()
-	local icon = vim.bo.modified and "" or ""
-	return "%#CustomRulerSeparator#%#CustomRulerIcon#" .. icon .. " "
 end
 vim.opt.rulerformat = "%40(%=%{%v:lua.GetIndicators()%}%#Label#│ %t %)"
 
@@ -46,14 +42,13 @@ vim.opt.smartindent = true
 vim.opt.tabstop = 2
 vim.opt.wrap = false
 vim.opt.list = true
-im.opt.listchars = "tab:»·,trail:·"
+vim.opt.listchars = "tab:»·,trail:·"
 
 -- Folds
 vim.opt.foldenable = false
 vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-qqq
 --
 
 vim.o.autochdir = true
