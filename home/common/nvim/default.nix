@@ -25,18 +25,39 @@
       nodePackages.typescript-language-server
       nodePackages.bash-language-server 
       rust-analyzer
+      rustfmt
       shellcheck
       shfmt
       stylua
       tree-sitter
       tree-sitter-grammars.tree-sitter-bash
-      tree-sitter-grammars.tree-sitter-yaml
+      tree-sitter-grammars.tree-sitter-c
+      tree-sitter-grammars.tree-sitter-comment
+      tree-sitter-grammars.tree-sitter-css
+      tree-sitter-grammars.tree-sitter-cue
+      tree-sitter-grammars.tree-sitter-fish
+      tree-sitter-grammars.tree-sitter-gdscript
       tree-sitter-grammars.tree-sitter-go
-      tree-sitter-grammars.tree-sitter-markdown
-      tree-sitter-grammars.tree-sitter-lua
+      tree-sitter-grammars.tree-sitter-gomod
+      tree-sitter-grammars.tree-sitter-hcl
       tree-sitter-grammars.tree-sitter-html
-      tree-sitter-grammars.tree-sitter-vim
+      tree-sitter-grammars.tree-sitter-javascript
+      tree-sitter-grammars.tree-sitter-json
+      tree-sitter-grammars.tree-sitter-lua
+      tree-sitter-grammars.tree-sitter-markdown
       tree-sitter-grammars.tree-sitter-nix
+      tree-sitter-grammars.tree-sitter-proto
+      tree-sitter-grammars.tree-sitter-rego
+      tree-sitter-grammars.tree-sitter-rust
+      tree-sitter-grammars.tree-sitter-scss
+      tree-sitter-grammars.tree-sitter-sql
+      tree-sitter-grammars.tree-sitter-svelte
+      tree-sitter-grammars.tree-sitter-toml
+      tree-sitter-grammars.tree-sitter-tsx
+      tree-sitter-grammars.tree-sitter-typescript
+      tree-sitter-grammars.tree-sitter-vim
+      tree-sitter-grammars.tree-sitter-yaml
+      tree-sitter-grammars.tree-sitter-zig
       vscode-langservers-extracted
     ];
 
@@ -45,6 +66,7 @@
       go-nvim
       rustaceanvim
       targets-vim 
+      ts-comments-nvim
 
       {
         plugin = pkgs.vimUtils.buildVimPlugin {
@@ -85,12 +107,26 @@
       }
 
       {
-        plugin = nvim-treesitter.withAllGrammars; # Treesitter
+        plugin = nvim-treesitter-context;
+        type = "lua";
+        config = ''
+          vim.keymap.set('n', '<space>ut', "<cmd>TSContextToggle<cr>", {noremap = true, silent = true, desc = "TS Context"})
+        '';
+      }
+
+      {
+        plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = ''
           require'nvim-treesitter.configs'.setup {
             highlight = { enable = true, },
             indent = { enable = true },
+            textobjects = {
+              select = {
+                enable = true,
+                lookahead = true,
+              },
+            },
           }
         '';
       }
