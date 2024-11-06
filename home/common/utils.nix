@@ -55,6 +55,8 @@
       arguments = [
         "--glob=!.git/*"
         "--glob=!.jj/*"
+        "--glob=!result/*"
+        "--glob=!target/*"
       ];
     };
 
