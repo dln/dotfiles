@@ -12,6 +12,11 @@
           require('mini.surround').setup()
           require('mini.splitjoin').setup()
 
+          -- require('mini.bufremove').setup()
+          local bufremove = require('mini.bufremove')
+          bufremove.setup()
+          vim.keymap.set('n', '<space>bd', bufremove.delete, opts("Delete"))
+
           require('mini.files').setup()
           local oil_style = function()
             if not MiniFiles.close() then
@@ -65,10 +70,10 @@
             return MiniPick.builtin.grep_live(local_opts, opts)
           end
           vim.keymap.set('n', '<space>/', "<cmd>Pick grep_live_root<cr>", opts("Live Grep"))
-          vim.keymap.set('n', '<space>F', "<cmd>Pick files<cr>", opts("Find Files in CWD"))
-          vim.keymap.set('n', '<space>ff', "<cmd>Pick files_root<cr>", opts("Find Files"))
-          vim.keymap.set('n', '<space>fr', "<cmd>Pick oldfiles<cr>", opts("Recent Files"))
-          vim.keymap.set('n', '<space>b', "<cmd>Pick buffers<cr>", opts("Buffers"))
+          vim.keymap.set('n', '<space>F', "<cmd>Pick files<cr>", opts("Find in CWD"))
+          vim.keymap.set('n', '<space>ff', "<cmd>Pick files_root<cr>", opts("Find"))
+          vim.keymap.set('n', '<space>fr', "<cmd>Pick oldfiles<cr>", opts("Recent"))
+          vim.keymap.set('n', '<space>bb', "<cmd>Pick buffers<cr>", opts("Switch"))
           vim.keymap.set('n', '<space>d', "<cmd>Pick diagnostics<cr>", opts("Diagnostics"))
           vim.keymap.set('n', '<tab>', "<cmd>Pick buffers include_current=false<cr>", opts("Buffers"))
           vim.keymap.set('n', "<space>'", "<cmd>Pick resume<cr>", opts("Last Picker"))
