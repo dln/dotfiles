@@ -5,6 +5,9 @@
   ...
 }:
 {
+
+  programs.man.generateCaches = false;
+
   programs.neovim = {
     enable = true;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
@@ -99,11 +102,7 @@
       {
         plugin = pkgs.vimUtils.buildVimPlugin {
           name = "dieter-nvim";
-          src = pkgs.fetchgit {
-            url = "https://patagia.dev/Patagia/dieter.nvim.git";
-            rev = "08fae6ffec4ae70ba6b2e1cafa780ff317ef0b61";
-            hash = "sha256-C+Vo2SUVfNMkBwuLWqLoA59Pmy9aFwur7fBpfVkLm6Q=";
-          };
+          src = ./dieter;
         };
         type = "lua";
         config = ''
@@ -115,6 +114,10 @@
         plugin = nvim-treesitter-context;
         type = "lua";
         config = ''
+          require'treesitter-context'.setup{
+            enable = false,
+          }
+
           vim.keymap.set('n', '<space>ut', "<cmd>TSContextToggle<cr>", {noremap = true, silent = true, desc = "TS Context"})
         '';
       }
