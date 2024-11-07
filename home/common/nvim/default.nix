@@ -1,13 +1,19 @@
-{ lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.neovim = {
-    enable        = true;
+    enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     defaultEditor = true;
-    viAlias       = true;
-    vimAlias      = true;
-    withNodeJs    = false;
-    withPython3   = false;
-    withRuby      = false;
+    viAlias = true;
+    vimAlias = true;
+    withNodeJs = false;
+    withPython3 = false;
+    withRuby = false;
 
     extraLuaConfig = lib.fileContents ./init.lua;
 
@@ -21,9 +27,9 @@
       nil
       nixd
       nodePackages.prettier
-      nodePackages.typescript 
+      nodePackages.typescript
       nodePackages.typescript-language-server
-      nodePackages.bash-language-server 
+      nodePackages.bash-language-server
       rust-analyzer
       rustfmt
       shellcheck
@@ -61,11 +67,10 @@
       vscode-langservers-extracted
     ];
 
-
     plugins = with pkgs.vimPlugins; [
       go-nvim
       rustaceanvim
-      targets-vim 
+      targets-vim
       ts-comments-nvim
 
       {

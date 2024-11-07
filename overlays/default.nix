@@ -9,7 +9,6 @@
     gnome-keyring = prev.gnome-keyring.overrideAttrs (oldAttrs: {
       configureFlags = oldAttrs.configureFlags or [ ] ++ [ "--disable-ssh-agent" ];
     });
-
   };
 
   unstable-packages = final: _prev: {

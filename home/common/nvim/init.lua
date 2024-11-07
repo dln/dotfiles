@@ -60,7 +60,7 @@ vim.o.updatetime = 50
 vim.o.timeout = true
 vim.o.timeoutlen = 10
 vim.o.icm = "split"
--- vim.o.cia = 'kind,abbr,menu' wait for nightly to drop
+vim.o.cia = 'kind,abbr,menu'
 
 vim.o.showmode = false
 
