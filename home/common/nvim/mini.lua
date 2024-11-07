@@ -23,15 +23,13 @@ require('mini.cursorword').setup({
 })
 
 local hipatterns = require('mini.hipatterns')
-hipatterns.setup({ -- highlight strings and colors
+hipatterns.setup({
   highlighters = {
     -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
     fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
     hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
     todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
     note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-
-    -- Highlight hex color strings (`#rrggbb`) using that color
     hex_color = hipatterns.gen_highlighter.hex_color(),
   }
 })
@@ -46,18 +44,12 @@ indentscope.setup({
 })
 
 require('mini.jump2d').setup({
-  mappings = {
-    start_jumping = 'gw'
-  }
+  mappings = { start_jumping = 'gw' }
 })
 
 require('mini.pick').setup({
-  mappings = {
-    move_down = '<tab>'
-  },
-  options = {
-    use_cache = true
-  }
+  mappings = { move_down = '<tab>' },
+  options = { use_cache = true }
 })
 MiniPick.registry.files_root = function(local_opts)
   local root_patterns = { ".jj", ".git" }
