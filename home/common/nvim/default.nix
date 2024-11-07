@@ -22,6 +22,7 @@
 
     extraPackages = with pkgs; [
       black
+      codeium
       cue
       go
       gopls
@@ -75,6 +76,36 @@
       rustaceanvim
       targets-vim
       ts-comments-nvim
+
+      {
+        plugin = codeium-nvim;
+        type = "lua";
+        config = ''
+          require'codeium'.setup {
+            enable_chat = false,
+          }
+        '';
+      }
+
+      {
+        plugin = pkgs.vimUtils.buildVimPlugin {
+          name = "neocodeium";
+          src = pkgs.fetchFromGitHub {
+            owner = "monkoose";
+            repo = "neocodeium";
+            rev = "4da81528468b33585c411f31eb390dce573ccb14";  # v1.8.0
+            hash = "sha256-1n9nNqBNwNDSzbAkm8eB4HZLNy5HmMg25jPwQAnW5OU=";
+          };
+        };
+        type = "lua";
+        config = ''
+          local neocodeium =require('neocodeium')
+          neocodeium.setup()
+          vim.keymap.set("i", "<C-j>", neocodeium.accept, { remap = true })
+          vim.keymap.set("i", "<A-f>", neocodeium.accept, { remap = true })
+          vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete, { remap = true })
+        '';
+      }
 
       {
         plugin = pkgs.vimUtils.buildVimPlugin {
@@ -154,7 +185,7 @@
       }
 
       {
-        plugin = nvim-treesitter-textobjects; # helix-style selection of TS tree
+        plugin = nvim-treesitter-textobjects;
         type = "lua";
         config = ''
           require'nvim-treesitter.configs'.setup {
@@ -178,7 +209,7 @@
       }
 
       {
-        plugin = nvim-lspconfig; # Interface for LSPs
+        plugin = nvim-lspconfig;
         type = "lua";
         config = lib.fileContents ./lsp.lua;
       }
