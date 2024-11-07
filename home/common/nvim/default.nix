@@ -5,6 +5,9 @@
   ...
 }:
 {
+  imports = [
+    ./treesitter.nix
+  ];
 
   programs.man.generateCaches = false;
 
@@ -39,35 +42,6 @@
       shellcheck
       shfmt
       stylua
-      tree-sitter
-      tree-sitter-grammars.tree-sitter-bash
-      tree-sitter-grammars.tree-sitter-c
-      tree-sitter-grammars.tree-sitter-comment
-      tree-sitter-grammars.tree-sitter-css
-      tree-sitter-grammars.tree-sitter-cue
-      tree-sitter-grammars.tree-sitter-fish
-      tree-sitter-grammars.tree-sitter-gdscript
-      tree-sitter-grammars.tree-sitter-go
-      tree-sitter-grammars.tree-sitter-gomod
-      tree-sitter-grammars.tree-sitter-hcl
-      tree-sitter-grammars.tree-sitter-html
-      tree-sitter-grammars.tree-sitter-javascript
-      tree-sitter-grammars.tree-sitter-json
-      tree-sitter-grammars.tree-sitter-lua
-      tree-sitter-grammars.tree-sitter-markdown
-      tree-sitter-grammars.tree-sitter-nix
-      tree-sitter-grammars.tree-sitter-proto
-      tree-sitter-grammars.tree-sitter-rego
-      tree-sitter-grammars.tree-sitter-rust
-      tree-sitter-grammars.tree-sitter-scss
-      tree-sitter-grammars.tree-sitter-sql
-      tree-sitter-grammars.tree-sitter-svelte
-      tree-sitter-grammars.tree-sitter-toml
-      tree-sitter-grammars.tree-sitter-tsx
-      tree-sitter-grammars.tree-sitter-typescript
-      tree-sitter-grammars.tree-sitter-vim
-      tree-sitter-grammars.tree-sitter-yaml
-      tree-sitter-grammars.tree-sitter-zig
       vscode-langservers-extracted
     ];
 
@@ -138,67 +112,6 @@
         type = "lua";
         config = ''
           vim.cmd.colorscheme "dieter"
-        '';
-      }
-
-      {
-        plugin = nvim-treesitter-context;
-        type = "lua";
-        config = ''
-          require'treesitter-context'.setup{
-            enable = false,
-          }
-
-          vim.keymap.set('n', '<space>ut', "<cmd>TSContextToggle<cr>", {noremap = true, silent = true, desc = "TS Context"})
-        '';
-      }
-
-      {
-        plugin = nvim-treesitter.withAllGrammars;
-        type = "lua";
-        config = ''
-          require'nvim-treesitter.configs'.setup {
-            highlight = { enable = true, },
-            indent = { enable = true },
-            textobjects = {
-              select = {
-                enable = true,
-                lookahead = true,
-              },
-            },
-          }
-        '';
-      }
-
-      {
-        plugin = pkgs.vimUtils.buildVimPlugin {
-          name = "nvim-tree-pairs"; # make % match in TS
-          src = pkgs.fetchFromGitHub {
-            owner = "yorickpeterse";
-            repo = "nvim-tree-pairs";
-            rev = "e7f7b6cc28dda6f3fa271ce63b0d371d5b7641da";
-            hash = "sha256-fb4EsrWAbm8+dWAhiirCPuR44MEg+KYb9hZOIuEuT24=";
-          };
-        };
-        type = "lua";
-        config = "require('tree-pairs').setup()";
-      }
-
-      {
-        plugin = nvim-treesitter-textobjects;
-        type = "lua";
-        config = ''
-          require'nvim-treesitter.configs'.setup {
-            incremental_selection = {
-              enable = true,
-              keymaps = {
-                init_selection = "<M-o>",
-                scope_incremental = "<M-O>",
-                node_incremental = "<M-o>",
-                node_decremental = "<M-i>",
-              },
-            },
-          }
         '';
       }
 
