@@ -1,9 +1,7 @@
-local opts = function(label)
-  return { noremap = true, silent = true, desc = label }
-end
 require('mini.ai').setup()
 require('mini.align').setup()
 require('mini.bracketed').setup()
+require('mini.bufremove').setup()
 require('mini.comment').setup()
 require('mini.diff').setup()
 require('mini.extra').setup()
@@ -13,50 +11,16 @@ require('mini.surround').setup()
 require('mini.splitjoin').setup()
 require('mini.trailspace').setup()
 
-local bufremove = require('mini.bufremove')
-bufremove.setup()
-vim.keymap.set('n', '<space>bd', bufremove.delete, opts("Delete"))
-
 require('mini.cursorword').setup({
   delay = 800
 })
 
 require('mini.completion').setup({
-   window = {
+  window = {
     info = { height = 25, width = 80, border = 'rounded' },
     signature = { height = 25, width = 80, border = 'rounded' },
   },
 })
-local imap_expr = function(lhs, rhs)
-  vim.keymap.set('i', lhs, rhs, { expr = true })
-end
-imap_expr('<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]])
-imap_expr('<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]])
-
-  local keycode = vim.keycode or function(x)
-    return vim.api.nvim_replace_termcodes(x, true, true, true)
-  end
-  local keys = {
-    ['cr']        = keycode('<CR>'),
-    ['ctrl-y']    = keycode('<C-y>'),
-    ['ctrl-y_cr'] = keycode('<C-y><CR>'),
-  }
-
-  _G.cr_action = function()
-    if vim.fn.pumvisible() ~= 0 then
-      -- If popup is visible, confirm selected item or add new line otherwise
-      local item_selected = vim.fn.complete_info()['selected'] ~= -1
-      return item_selected and keys['ctrl-y'] or keys['ctrl-y_cr']
-    else
-      -- If popup is not visible, use plain `<CR>`. You might want to customize
-      -- according to other plugins. For example, to use 'mini.pairs', replace
-      -- next line with `return require('mini.pairs').cr()`
-      return keys['cr']
-    end
-  end
-
-  vim.keymap.set('i', '<CR>', 'v:lua._G.cr_action()', { expr = true })
-
 
 
 local hipatterns = require('mini.hipatterns')
@@ -84,9 +48,33 @@ require('mini.jump2d').setup({
   mappings = { start_jumping = 'gw' }
 })
 
+local picker_win_config = function()
+  height = vim.o.lines - 8
+  width = 80
+  return {
+    border = 'rounded',
+    anchor = 'NW',
+    height = height,
+    width = width,
+    row = 2,
+    col = math.floor((vim.o.columns - width) / 2),
+  }
+end
+
 require('mini.pick').setup({
-  mappings = { move_down = '<tab>' },
-  options = { use_cache = true }
+  mappings = {
+    move_down      = '<tab>',
+    toggle_info    = '<C-k>',
+    toggle_preview = '<C-p>',
+  },
+  options = { use_cache = true },
+  window = {
+    config = picker_win_config,
+    -- config = {
+    --   border = 'rounded',
+    --   width = 'auto',
+    -- },
+  },
 })
 MiniPick.registry.files_root = function(local_opts)
   local root_patterns = { ".jj", ".git" }
@@ -101,13 +89,6 @@ MiniPick.registry.grep_live_root = function(local_opts)
   local_opts.cwd = root_dir
   return MiniPick.builtin.grep_live(local_opts, { source = { cwd = root_dir } })
 end
-vim.keymap.set('n', '<space>/', "<cmd>Pick grep_live_root<cr>", opts("Live Grep"))
-vim.keymap.set('n', '<space>fF', "<cmd>Pick files<cr>", opts("FindCWD"))
-vim.keymap.set('n', '<space>ff', "<cmd>Pick files_root<cr>", opts("Find"))
-vim.keymap.set('n', '<space>fr', "<cmd>Pick oldfiles<cr>", opts("Recent"))
-vim.keymap.set('n', '<space>bb', "<cmd>Pick buffers<cr>", opts("Switch"))
-vim.keymap.set('n', '<space>d', "<cmd>Pick diagnostics<cr>", opts("Diagnostics"))
-vim.keymap.set('n', '<tab>', "<cmd>Pick buffers include_current=false<cr>", opts("Buffers"))
 
 
 local miniclue = require('mini.clue')
@@ -157,7 +138,11 @@ miniclue.setup({ -- cute prompts about bindings
     miniclue.gen_clues.z(),
   },
   window = {
-    delay = 15,
+    delay = 0,
+    config = {
+      border = 'rounded',
+      width = 'auto',
+    },
   }
 })
 
@@ -175,7 +160,7 @@ require('mini.notify').setup({
 
 require('mini.starter').setup({
   header =
-    [[ ______                      _
+  [[ ______                      _
 (_____ \     _              (_)
  _____) )___| |_  ____  ____ _  ____
 |  ____/ _  |  _)/ _  |/ _  | |/ _  |
