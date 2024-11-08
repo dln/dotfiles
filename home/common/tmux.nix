@@ -6,7 +6,7 @@
     clock24 = true;
     escapeTime = 500;
     mouse = true;
-    shortcut = "o";
+    shortcut = "t";
     extraConfig = ''
       set -g allow-passthrough on
       set -g default-terminal "tmux-256color"
