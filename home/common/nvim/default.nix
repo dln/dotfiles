@@ -52,6 +52,16 @@
       ts-comments-nvim
 
       {
+        plugin = blink-cmp;
+        type = "lua";
+        config = ''
+          require'blink-cmp'.setup({
+            keymap = 'super-tab',
+          })
+        '';
+      }
+
+      {
         plugin = codeium-nvim;
         type = "lua";
         config = ''

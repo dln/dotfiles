@@ -53,17 +53,16 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 --
 
 vim.o.autochdir = true
+vim.o.cia = 'kind,abbr,menu'
 vim.o.fillchars = "stl: ,stlnc: ,eob:░,vert:│"
+vim.o.icm = "split"
 vim.o.list = false
 vim.o.scrolloff = 7
-vim.o.splitkeep = "screen"
-vim.o.updatetime = 50
-vim.o.timeout = true
-vim.o.timeoutlen = 10
-vim.o.icm = "split"
-vim.o.cia = 'kind,abbr,menu'
-
 vim.o.showmode = false
+vim.o.splitkeep = "screen"
+vim.o.timeoutlen = 10
+vim.o.timeout = true
+vim.o.updatetime = 50
 
 
 -- Use rg
@@ -124,6 +123,8 @@ vim.keymap.set("n", '<Leader>k', vim.lsp.buf.hover, opts("Show docs for item und
 vim.keymap.set('n', '<Leader>q', require('mini.bufremove').delete, opts("Delete buffer"))
 vim.keymap.set('n', '<Leader>s', "<cmd>Pick lsp scope='document_symbol'<cr>", opts("Open symbol picker"))
 vim.keymap.set('n', '<Leader>S', "<cmd>Pick lsp scope='workspace_symbol'<cr>", opts("Open workspace symbol picker"))
+vim.keymap.set("n", "<Leader>ws", "<C-w>s", opts("Horizontal split"))
+vim.keymap.set("n", "<Leader>wv", "<C-w>v", opts("Vertical split"))
 vim.keymap.set('n', '<tab>', "<cmd>Pick buffers include_current=false<cr>", opts("Buffers"))
 vim.keymap.set("n", "zz", "zt", { remap = true })
 vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', opts("Yank to clipboard"))
@@ -135,33 +136,3 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Buffer References"))
 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts("Type Definition"))
 vim.keymap.set({"n", "i"}, "<M-k>", vim.lsp.buf.signature_help, opts("Signature Help"))
 vim.keymap.set({ "n", "v" }, "<Leader>aa", vim.lsp.buf.code_action, opts("Code Action"))
-vim.keymap.set("n", "<Leader>ws", "<C-w>s", opts("Horizontal split"))
-vim.keymap.set("n", "<Leader>wv", "<C-w>v", opts("Vertical split"))
-
--- Completion
-vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
-vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
-
-local keycode = vim.keycode or function(x)
-  return vim.api.nvim_replace_termcodes(x, true, true, true)
-end
-local keys = {
-  ['cr']        = keycode('<CR>'),
-  ['ctrl-y']    = keycode('<C-y>'),
-  ['ctrl-y_cr'] = keycode('<C-y><CR>'),
-}
-
-_G.cr_action = function()
-  if vim.fn.pumvisible() ~= 0 then
-    -- If popup is visible, confirm selected item or add new line otherwise
-    local item_selected = vim.fn.complete_info()['selected'] ~= -1
-    return item_selected and keys['ctrl-y'] or keys['ctrl-y_cr']
-  else
-    -- If popup is not visible, use plain `<CR>`. You might want to customize
-    -- according to other plugins. For example, to use 'mini.pairs', replace
-    -- next line with `return require('mini.pairs').cr()`
-    return keys['cr']
-  end
-end
-
-vim.keymap.set('i', '<CR>', 'v:lua._G.cr_action()', { expr = true })

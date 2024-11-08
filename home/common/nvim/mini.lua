@@ -15,14 +15,6 @@ require('mini.cursorword').setup({
   delay = 800
 })
 
-require('mini.completion').setup({
-  window = {
-    info = { height = 25, width = 80, border = 'rounded' },
-    signature = { height = 25, width = 80, border = 'rounded' },
-  },
-})
-
-
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup({
   highlighters = {
@@ -49,8 +41,8 @@ require('mini.jump2d').setup({
 })
 
 local picker_win_config = function()
-  height = vim.o.lines - 8
-  width = 80
+  local height = vim.o.lines - 8
+  local width = 80
   return {
     border = 'rounded',
     anchor = 'NW',
@@ -70,10 +62,6 @@ require('mini.pick').setup({
   options = { use_cache = true },
   window = {
     config = picker_win_config,
-    -- config = {
-    --   border = 'rounded',
-    --   width = 'auto',
-    -- },
   },
 })
 MiniPick.registry.files_root = function(local_opts)
