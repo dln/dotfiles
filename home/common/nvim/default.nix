@@ -57,6 +57,17 @@
         config = ''
           require'blink-cmp'.setup({
             keymap = 'super-tab',
+            windows = {
+              autocomplete = {
+                border = 'none',
+              },
+              documentation = {
+                border = 'rounded',
+              },
+              signature_help = {
+                border = 'rounded',
+              },
+            },
           })
         '';
       }
