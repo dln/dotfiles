@@ -46,23 +46,45 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      friendly-snippets
       go-nvim
       rustaceanvim
       targets-vim
       ts-comments-nvim
 
       {
-        plugin = blink-cmp;
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = lib.fileContents ./lsp.lua;
+      }
+
+      {
+        plugin = pkgs.nixpkgs-unstable.vimPlugins.blink-cmp;
         type = "lua";
         config = ''
           require'blink-cmp'.setup({
-            keymap = 'super-tab',
+            keymap = {
+              preset = 'enter',
+              ["<PageDown>"] = { "scroll_documentation_down" },
+              ["<PageUp>"] = { "scroll_documentation_up" },
+            },
+            trigger = {
+              completion = {
+                show_in_snippet = true,
+              },
+              signature_help = {
+                enabled = true,
+              },
+            },
             windows = {
               autocomplete = {
                 border = 'none',
+                selection = 'preselect',
               },
               documentation = {
                 border = 'rounded',
+                auto_show = false,
+                auto_show_delay_ms = 800,
               },
               signature_help = {
                 border = 'rounded',
@@ -88,7 +110,7 @@
           src = pkgs.fetchFromGitHub {
             owner = "monkoose";
             repo = "neocodeium";
-            rev = "4da81528468b33585c411f31eb390dce573ccb14";  # v1.8.0
+            rev = "4da81528468b33585c411f31eb390dce573ccb14"; # v1.8.0
             hash = "sha256-1n9nNqBNwNDSzbAkm8eB4HZLNy5HmMg25jPwQAnW5OU=";
           };
         };
@@ -140,12 +162,6 @@
         plugin = mini-nvim;
         type = "lua";
         config = lib.fileContents ./mini.lua;
-      }
-
-      {
-        plugin = nvim-lspconfig;
-        type = "lua";
-        config = lib.fileContents ./lsp.lua;
       }
     ];
   };

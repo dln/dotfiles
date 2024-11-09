@@ -16,7 +16,7 @@
       system = final.system;
       config.allowUnfree = true;
     };
-    unstable = import inputs.nixpkgs-unstable {
+    nixpkgs-unstable = import inputs.nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;
     };

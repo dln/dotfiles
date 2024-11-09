@@ -156,17 +156,25 @@ local theme = {
   InclineNormalNC = { bg = c.background },
 
   WinSeparator = { bg = c.dialog_bg, fg = c.dialog_fg },
-  NormalFloat = { bg = c.dialog_bg, fg = c.dialog_fg },
+  NormalFloat = { bg = c.doc_bg, fg = c.doc_fg },
+  FloatBorder = { fg = c.doc_fg },
+  FloatTitle = { fg = c.doc_fg, bold = true },
+
   Title = { fg = c.foreground, bold = true },
 
-  FloatBorder = { fg = c.dialog_fg },
-  FloatTitle = { fg = c.dialog_fg, bold = true },
-
+  MiniPickNormal = { link = "Normal" },
+  MiniPickBorder = { link = "MiniPickNormal" },
+  MiniPickBorderText = { link = "MiniPickBorder" },
   MiniPickMatchCurrent = { bg = c.background, fg = c.foreground, reverse = true },
-  MiniStarterCurrent = { link = "MiniPickMatchCurrent" },
-  MiniClueNextKey = { bg = c.dialog_bg, fg = c.dialog_fg, bold = true },
+
+  MiniClueBorder = { link = "MiniPickNormal" },
+  MiniClueTitle = { bg = c.background, fg = c.foreground, bold = true },
+  MiniClueNextKey = { link = "MiniClueTitle" },
   MiniClueDescGroup = { bg = c.background, fg = c.foreground, italic = true },
-  MiniClueSeparator = { link = "NormalFloat" },
+  MiniClueDescSingle = { bg = c.background, fg = c.foreground },
+  MiniClueSeparator = { link = "MiniClueBorder" },
+
+  MiniStarterCurrent = { link = "MiniPickMatchCurrent" },
 
   BlinkCmpMenu = { bg = c.cmp_bg, fg = c.cmp_fg },
   BlinkCmpMenuSelection = { bg = c.cmp_selected_bg, fg = c.cmp_selected_fg, reverse = false },

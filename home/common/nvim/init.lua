@@ -86,6 +86,7 @@ vim.fn.sign_define(
   { text = "", hl = "DiagnosticSignHint", texthl = "DiagnosticSignHint", culhl = "DiagnosticSignHintLine" }
 )
 
+
 -- Make <Tab> work for snippets
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
   if vim.snippet.active({ direction = 1 }) then
@@ -128,11 +129,20 @@ vim.keymap.set("n", "<Leader>wv", "<C-w>v", opts("Vertical split"))
 vim.keymap.set('n', '<tab>', "<cmd>Pick buffers include_current=false<cr>", opts("Buffers"))
 vim.keymap.set("n", "zz", "zt", { remap = true })
 vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', opts("Yank to clipboard"))
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("Declaration"))
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Definition"))
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("Implementation"))
 vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Buffer References"))
 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts("Type Definition"))
-vim.keymap.set({"n", "i"}, "<M-k>", vim.lsp.buf.signature_help, opts("Signature Help"))
+vim.keymap.set({ "n", "i" }, "<M-k>", vim.lsp.buf.signature_help, opts("Signature Help"))
 vim.keymap.set({ "n", "v" }, "<Leader>aa", vim.lsp.buf.code_action, opts("Code Action"))
+vim.keymap.set("n", "K", function()
+  vim.lsp.buf.hover {
+    border = 'rounded',
+    max_height = 24,
+    max_width = 80,
+    offset_x = 2,
+  }
+  end, {})
+
+
