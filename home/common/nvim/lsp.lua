@@ -3,7 +3,6 @@ local lspconfig = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local servers = {
   'gopls',
-  'nil_ls',
   'ts_ls',
 }
 
