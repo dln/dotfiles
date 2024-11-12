@@ -8,6 +8,7 @@
     codeium
     comma
     dogdns
+    file
     gnumake
     go
     just
