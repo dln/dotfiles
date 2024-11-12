@@ -62,7 +62,7 @@ in
       ui = {
         "default-command" = [
           "log"
-          "--limit=25"
+          "--limit=10"
           "-T"
           "builtin_log_comfortable"
         ];
