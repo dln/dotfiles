@@ -101,12 +101,9 @@
             "\e[0m",
             separate(
               " ",
-              surround("\e[0;35m", "\e[0m", bookmarks.join(":")),
-              separate(
-                " ",
-                surround("\e[0;1;95m", "\e[0;2;3m", change_id.shortest()),
-                surround("\e[0;34m",   "\e[0;2;3m", commit_id.shortest()),
-              ),
+              surround("\e[0;1;95m ", "\e[0;2;3m", change_id.shortest()),
+              surround("\e[0;35m󰸕 ", "\e[0m", bookmarks.join("╱")),
+              surround("\e[0;34m ",   "\e[0;2;3m", commit_id.shortest()),
               if(conflict,  "󰂭"),
               if(empty,     ""),
               if(divergent, ""),
