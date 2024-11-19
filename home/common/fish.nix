@@ -90,56 +90,71 @@
       '';
 
       fish_jj_prompt.body = ''
-        # Is jj installed?
-        if not command -sq jj
-            return 1
-        end
-
-        # Are we in a jj repo?
-        if not jj root --quiet &>/dev/null
-            return 1
+        if not command -sq jj || not jj root --quiet &>/dev/null
+          return 1
         end
 
         # Generate prompt
-        jj log --ignore-working-copy --no-graph --color always -r @ -T '
-                separate(
-                    " ",
-                    change_id.shortest(),
-                    coalesce(
-                        surround(
-                            "\"",
-                            "\"",
-                            if(
-                                description.first_line().substr(0, 24).starts_with(description.first_line()),
-                                description.first_line().substr(0, 24),
-                                description.first_line().substr(0, 23) ++ "…"
-                            )
-                        ),
-                        "(no description set)"
-                    ),
-                    bookmarks.join(", "),
-                    commit_id.shortest(),
-                    if(conflict, "(conflict)"),
-                    if(empty, "(empty)"),
-                    if(divergent, "(divergent)"),
-                    if(hidden, "(hidden)"),
+        jj log --ignore-working-copy --no-graph --color never -r @ -T '
+          surround(
+            " \e[2;3m",
+            "\e[0m",
+            separate(
+              " ",
+              surround("\e[0;35m", "\e[0m", bookmarks.join(":")),
+              separate(
+                " ",
+                surround("\e[0;1;95m", "\e[0;2;3m", change_id.shortest()),
+                surround("\e[0;34m",   "\e[0;2;3m", commit_id.shortest()),
+              ),
+              if(conflict,  "󰂭"),
+              if(empty,     ""),
+              if(divergent, ""),
+              if(hidden,    "󰘓"),
+            )
+          )
+        '
+      '';
+
+      fish_jj_desc.body = ''
+        if not command -sq jj || not jj root --quiet &>/dev/null
+          return 1
+        end
+
+        jj log --ignore-working-copy --no-graph --color never -r @ -T '
+          surround(
+            " \e[0;2;3m",
+            "\e[0m",
+            coalesce(
+              surround(
+                "\e[1;2;3m❝",
+                "❞\e[0m",
+                if(
+                  description.first_line().substr(0, 80).starts_with(description.first_line()),
+                  description.first_line().substr(0, 80),
+                  description.first_line().substr(0, 79) ++ "…"
                 )
+              ),
+              "…"
+            ),
+          )
         '
       '';
 
       fish_prompt.body = ''
-        echo
+        echo -e "\033[1;2;38;5;236m"
+        string pad -c '┄' -w $COLUMNS (fish_jj_desc)
+        echo -ne "\033[0;3m"
         string join "" -- (set_color --italics) (prompt_hostname) ':' (prompt_pwd --full-length-dirs=4) (set_color yellow) ' ❯ ' (set_color normal)
       '';
 
       fish_right_prompt.body = ''
-        fish_jj_prompt || fish_vcs_prompt
         if test $CMD_DURATION -gt 3000
           # Show duration of the last command in seconds
           set duration (echo "$CMD_DURATION 1000" | awk '{printf "%.1fs", $1 / $2}')
-          echo " ⏳$duration"
+          echo -n "⏳$duration "
         end
-
+        fish_jj_prompt || fish_vcs_prompt
       '';
 
       transient_prompt_func.body = ''
