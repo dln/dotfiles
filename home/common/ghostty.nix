@@ -64,7 +64,7 @@
     };
 
     xdg.configFile."ghostty/themes/PatagiaDark".text = ''
-      background = #0d1117
+      background = #000000
       foreground = #b2b2b2
       cursor-color = #00d992
       selection-background = #d7d7d7

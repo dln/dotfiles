@@ -39,7 +39,7 @@ local colors = {
   },
 
   dark = {
-    background = hsl(216, 28, 7),
+    background = hsl(216, 28, 0),
     foreground = hsl(0, 0, 80),
 
     accent1 = hsl(12, 100, 50),
