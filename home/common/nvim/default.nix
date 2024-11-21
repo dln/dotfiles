@@ -59,7 +59,7 @@
       }
 
       {
-        plugin = pkgs.nixpkgs-unstable.vimPlugins.blink-cmp;
+        plugin = blink-cmp;
         type = "lua";
         config = ''
           require'blink-cmp'.setup({
