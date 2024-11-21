@@ -5,25 +5,11 @@
   pkgs,
   ...
 }:
-let
-  launch-ghostty = pkgs.writeShellApplication {
-    name = "launch-ghostty";
-    text = ''
-      if [ "$(gsettings get org.gnome.desktop.interface color-scheme)" = "'prefer-dark'" ]; then
-        theme="theme_dark"
-      else
-        theme="theme_light"
-      fi
-      exec ghostty --config-file="$HOME/.config/ghostty/$theme" "$@"
-    '';
-  };
-in
 {
   config = lib.mkIf config.patagia.desktop.enable {
 
     home.packages = with pkgs; [
       inputs.ghostty.packages.${pkgs.system}.default
-      launch-ghostty
     ];
 
     programs.ghostty = {
@@ -56,6 +42,7 @@ in
         window-padding-balance = true;
         window-padding-color = "extend";
         window-theme = "system";
+        theme = "light:PatagiaLight,dark:PatagiaDark";
 
         keybind = [
           "alt+shift+c=copy_to_clipboard"
@@ -76,7 +63,7 @@ in
       };
     };
 
-    xdg.configFile."ghostty/theme_dark".text = ''
+    xdg.configFile."ghostty/themes/PatagiaDark".text = ''
       background = #0d1117
       foreground = #b2b2b2
       cursor-color = #00d992
@@ -100,7 +87,7 @@ in
       palette = 15=#ffffff
     '';
 
-    xdg.configFile."ghostty/theme_light".text = ''
+    xdg.configFile."ghostty/themes/PatagiaLight".text = ''
       background = #fefeff
       foreground = #222222
       cursor-color = #aa0000
@@ -130,13 +117,13 @@ in
           "System"
           "TerminalEmulator"
         ];
-        exec = ''launch-ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -s0 -nt1"'';
         genericName = "Ghostty (local)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (local)";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-local";
-          TryExec = "launch-ghostty";
+          TryExec = "ghostty";
         };
         terminal = false;
         type = "Application";
@@ -147,13 +134,13 @@ in
           "System"
           "TerminalEmulator"
         ];
-        exec = ''launch-ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -s0 -nt1"'';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-nemo";
-          TryExec = "launch-ghostty";
+          TryExec = "ghostty";
         };
         terminal = false;
         type = "Application";
