@@ -147,5 +147,8 @@ vim.keymap.set("n", "K", function()
     offset_x = 2,
   }
   end, {})
+vim.keymap.set("n", "<Leader>ub", function()
+  vim.o.background = (vim.o.background == "light" and "dark" or "light")
+  end, opts("Toggle dark/light background"))
 
 
