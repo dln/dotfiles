@@ -4,6 +4,20 @@
   ...
 }:
 {
+
+  users.users.woodpecker = {
+    isSystemUser = true;
+    group = "woodpecker";
+    extraGroups = [
+      "docker"
+      "podman"
+    ];
+    createHome = true;
+    home = "/etc/woodpecker";
+    homeMode = "764";
+  };
+  users.groups.woodpecker = { };
+
   services.woodpecker-agents.agents.docker = {
     enable = true;
     package = pkgs.woodpecker-agent;
@@ -27,7 +41,11 @@
     ];
     # restartIfChanged = false;
     serviceConfig = {
+      User = "woodpecker";
+      Group = "woodpecker";
+      WorkingDirectory = "/etc/woodpecker";
       BindPaths = [ "/run/podman/podman.sock" ];
     };
   };
+
 }
