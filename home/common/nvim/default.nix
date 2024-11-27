@@ -95,6 +95,22 @@
       }
 
       {
+        plugin = pkgs.vimUtils.buildVimPlugin {
+          name = "blink.compat";
+          src = pkgs.fetchFromGitHub {
+            owner = "saghen";
+            repo = "blink.compat";
+            rev = "cd2d3a040b76ad0eeab9a3bba48bc4c2b9d703bf"; # v1.0.2
+            hash = "sha256-4uoehv/qe74IivgXc69ekYLod3Zo+oPUvXJHtt4wc2U=";
+          };
+        };
+        type = "lua";
+        config = ''
+          require('blink.compat').setup()
+        '';
+      }
+
+      {
         plugin = codeium-nvim;
         type = "lua";
         config = ''
