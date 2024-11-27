@@ -69,7 +69,7 @@ MiniPick.registry.files_root = function(local_opts)
   local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
   local_opts.cwd = root_dir
   local_opts.tool = "rg"
-  return MiniPick.builtin.files(local_opts, { source = { cwd = root_dir, tool = "ripgrep" } })
+  return MiniPick.builtin.files(local_opts, { source = { cwd = root_dir, tool = "rg" } })
 end
 MiniPick.registry.grep_live_root = function(local_opts)
   local root_patterns = { ".jj", ".git" }
@@ -129,9 +129,6 @@ require("mini.pick").registry.buffers = function(local_opts, opts)
 		end
 		return require("mini.pick").start(opts)
 	end
-
-
-
 
 local miniclue = require('mini.clue')
 miniclue.setup({ -- cute prompts about bindings
