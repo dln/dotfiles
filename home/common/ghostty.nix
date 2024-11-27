@@ -64,7 +64,9 @@
     };
 
     xdg.configFile."ghostty/themes/PatagiaDark".text = ''
-      background = "#14151a"
+      # background = "#14151a"
+      # foreground = "#d1d5db"
+      background = "#000000"
       foreground = "#d1d5db"
       cursor-color = #00d992
       selection-background = #d7d7d7
@@ -117,7 +119,7 @@
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "fish -c tmux new-session -A -s0 -nt1"'';
         genericName = "Ghostty (local)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (local)";
@@ -134,7 +136,7 @@
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo fish -c tmux new-session -A -s0 -nt1"'';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";
