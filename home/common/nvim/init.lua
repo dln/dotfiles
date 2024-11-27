@@ -1,3 +1,5 @@
+vim.env.RIPGREP_CONFIG_PATH = vim.env.HOME .. "/.config/ripgrep/ripgreprc"
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ","
 

@@ -121,7 +121,7 @@
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "fish -c tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -s0 -nt1"'';
         genericName = "Ghostty (local)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (local)";
@@ -138,7 +138,7 @@
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo fish -c tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -s0 -nt1"'';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";
