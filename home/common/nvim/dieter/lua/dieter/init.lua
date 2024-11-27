@@ -2,8 +2,8 @@ local hsl = require("dieter.hsl").hslToHex
 
 local colors = {
   light = {
-    background = hsl(240, 100, 100),
-    foreground = hsl(0, 0, 13),
+    background = "NONE",
+    foreground = "NONE",
 
     accent1 = hsl(12, 100, 50),
 
@@ -40,7 +40,7 @@ local colors = {
 
   dark = {
     background = "NONE",
-    foreground = hsl(216, 12, 84),
+    foreground = "NONE",
 
     accent1 = hsl(12, 100, 50),
 
