@@ -63,10 +63,12 @@
       };
     };
 
-    xdg.configFile."ghostty/themes/PatagiaDark".text = ''
-      # background = "#14151a"
-      # foreground = "#d1d5db"
-      background = "#000000"
+    xdg.configFile."ghostty/themes/PatagiaDark".text =
+      let
+        background = if config.patagia.oled.enable then "#000000" else "#14151a";
+      in
+      ''
+      background = "${background}"
       foreground = "#d1d5db"
       cursor-color = #00d992
       selection-background = #d7d7d7

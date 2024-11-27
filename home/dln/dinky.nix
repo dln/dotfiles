@@ -5,6 +5,10 @@
     ./desktop.nix
   ];
 
+  patagia = {
+    oled.enable = true;
+  };
+
   dconf.settings = {
     "org/gnome/shell" = {
       enabled-extensions = [ "Battery-Health-Charging@maniacx.github.com" ];

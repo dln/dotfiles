@@ -19,4 +19,5 @@
   ];
 
   options.patagia.desktop.enable = lib.mkEnableOption "Desktop environment";
+  options.patagia.oled.enable = lib.mkEnableOption "Darker darks on oled screens";
 }
