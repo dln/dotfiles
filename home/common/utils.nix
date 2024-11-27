@@ -53,10 +53,13 @@
     ripgrep = {
       enable = true;
       arguments = [
-        "--glob=!.git/*"
-        "--glob=!.jj/*"
-        "--glob=!result/*"
-        "--glob=!target/*"
+        "--glob=!**/.cache/*"
+        "--glob=!**/.direnv/*"
+        "--glob=!**/.git/*"
+        "--glob=!**/.jj/*"
+        "--glob=!**/{node_modules,.npm,dist}/*"
+        "--glob=!**/target/*"
+        "--glob=!**/result/*"
       ];
     };
 

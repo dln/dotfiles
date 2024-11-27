@@ -116,9 +116,12 @@
       "*.so"
       "*.swp"
       ".direnv"
+      ".env"
       ".idea"
+      ".nixos-test-history"
       ".null-ls_*"
-      "result"
+      "/result*"
+      "/target"
     ];
 
     signing = {
