@@ -121,7 +121,7 @@
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -s main"'';
         genericName = "Ghostty (local)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (local)";
@@ -133,12 +133,29 @@
         type = "Application";
       };
 
+      ghostty-local-secondary = {
+        categories = [
+          "System"
+          "TerminalEmulator"
+        ];
+        exec = ''ghostty --class=com.mitchellh.ghostty-local-secondary -e "tmux new-session -A -s secondary -t main"'';
+        genericName = "Ghostty (local) Secondary";
+        icon = "com.mitchellh.ghostty";
+        name = "Ghostty (local) Secondary";
+        settings = {
+          StartupWMClass = "com.mitchellh.ghostty-local-secondary";
+          TryExec = "ghostty";
+        };
+        terminal = false;
+        type = "Application";
+      };
+
       ghostty-nemo = {
         categories = [
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -s0 -nt1"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -s main"'';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";
