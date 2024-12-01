@@ -57,10 +57,9 @@ in
       };
       packages = with pkgs; [
         inter
-        jetbrains-mono
         liberation_ttf
         monaspace
-        (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        nerd-fonts.symbols-only
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-color-emoji
