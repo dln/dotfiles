@@ -15,7 +15,6 @@
     pavucontrol
     plexamp
     signal-desktop
-    zed-editor
   ];
 
   xdg.desktopEntries = {
