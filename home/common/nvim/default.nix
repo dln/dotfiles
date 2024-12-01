@@ -24,36 +24,38 @@
     extraLuaConfig = lib.fileContents ./init.lua;
 
     extraPackages = with pkgs; [
-      black
       codeium
-      cue
-      go
-      gopls
-      gotools
       harper
       lua-language-server
-      nil
       nixd
-      nodePackages.prettier
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.bash-language-server
-      rust-analyzer
-      rustfmt
       shellcheck
       shfmt
       stylua
-      superhtml
-      vscode-langservers-extracted
     ];
 
     plugins = with pkgs.vimPlugins; [
-      direnv-vim
       friendly-snippets
       go-nvim
       targets-vim
       ts-comments-nvim
 
+      {
+        plugin = pkgs.vimUtils.buildVimPlugin {
+          name = "direnv-nvim";
+          src = pkgs.fetchFromGitHub {
+            owner = "actionshrimp";
+            repo = "direnv.nvim";
+            rev = "main";
+            hash = "sha256-7NcVskgAurbIuEVIXxHvXZfYQBOEXLURGzllfVEQKNE=";
+          };
+        };
+        type = "lua";
+        config = ''
+          require('direnv-nvim').setup {
+            type = "dir"
+          }
+        '';
+      }
       {
         plugin = nvim-lspconfig;
         type = "lua";
@@ -174,6 +176,7 @@
         type = "lua";
         config = lib.fileContents ./rust.lua;
       }
+
     ];
   };
 }
