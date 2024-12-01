@@ -6,6 +6,7 @@
   ];
 
   patagia = {
+    laptop.enable = true;
     oled.enable = true;
   };
 
