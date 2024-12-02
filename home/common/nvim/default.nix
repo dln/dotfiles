@@ -50,7 +50,6 @@
     plugins = with pkgs.vimPlugins; [
       friendly-snippets
       go-nvim
-      rustaceanvim
       targets-vim
       ts-comments-nvim
 
@@ -113,6 +112,23 @@
         type = "lua";
         config = ''
           require('blink.compat').setup()
+        '';
+      }
+
+      {
+        plugin = pkgs.vimUtils.buildVimPlugin {
+          name = "inlay-hints";
+          src = pkgs.fetchFromGitHub {
+            owner = "MysticalDevil";
+            repo = "inlay-hints.nvim";
+            rev = "af84dee42cd118af6d592b06c1c0e45d6432a6c0"; # 2024-08-23
+            hash = "sha256-DZVtFAUK9c8GInp+JdCQ1BKe0dkAheHKI67oxdMmA24=";
+          };
+        };
+        type = "lua";
+        config = ''
+          require('inlay-hints').setup()
+          require("inlay-hints.utils").enable_inlay_hints()
         '';
       }
 
@@ -184,6 +200,12 @@
         plugin = mini-nvim;
         type = "lua";
         config = lib.fileContents ./mini.lua;
+      }
+
+      {
+        plugin = rustaceanvim;
+        type = "lua";
+        config = lib.fileContents ./rust.lua;
       }
     ];
   };

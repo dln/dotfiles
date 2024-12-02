@@ -152,5 +152,5 @@ vim.keymap.set("n", "K", function()
 vim.keymap.set("n", "<Leader>ub", function()
   vim.o.background = (vim.o.background == "light" and "dark" or "light")
   end, opts("Toggle dark/light background"))
-
+vim.keymap.set("n", "<Leader>uh", "<cmd>InlayHintsToggle<cr>", opts("Toggle inlay hints"))
 

@@ -1,11 +1,26 @@
 local lspconfig = require("lspconfig")
 local servers = {
   cssls = {},
-  gopls = {},
   html = {},
   jsonls = {},
   superhtml = {},
   ts_ls = {},
+
+  gopls = {
+    settings = {
+      gopls = {
+        hints = {
+          rangeVariableTypes = true,
+          parameterNames = true,
+          constantValues = true,
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          functionTypeParameters = true,
+        },
+      },
+    },
+  },
 
   harper_ls = {
     filetypes = {
@@ -22,6 +37,7 @@ local servers = {
           path = vim.split(package.path, ";"),
         },
         diagnostics = { globals = { "vim", "hs" } },
+        hint = { enable = true },
         workspace = {
           library = {
             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
