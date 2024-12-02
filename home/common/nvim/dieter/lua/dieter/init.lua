@@ -42,16 +42,18 @@ local colors = {
     background = "NONE",
     foreground = "NONE",
 
-    accent1 = hsl(12, 100, 50),
+    accent1 = hsl(202, 57, 57),  -- Blue
+    accent2 = hsl(40, 57, 57),  -- Yellow
 
-    dimmed = hsl(0, 0, 25),
-    dimmed_subtle = hsl(0, 0, 50),
+    dimmed = hsl(212, 19, 25),
+    -- dimmed_subtle = hsl(212, 19, 70),
+    dimmed_subtle = hsl(212, 5, 65),
 
-    highlight_subtle = hsl(0, 0, 6),
+    highlight_subtle = hsl(212, 27, 11),
     highlight_intense = hsl(58, 100, 60),
 
-    string = hsl(96, 50, 70),
-    comment = hsl(220, 50, 60),
+    string = hsl(96, 35, 60),
+    comment = hsl(2, 69, 68),
     comment_error = hsl(2, 85, 50),
 
     diagnostic_error = hsl(353, 100, 45),
@@ -71,10 +73,6 @@ local colors = {
     delete = hsl(350, 100, 40),
     delete_quarter = hsl(350, 100, 15),
 
-    -- dialog_bg = background,
-    -- dialog_fg = hsl(216, 70, 80),
-    -- dialog_bg = hsl(216, 25, 20),
-    -- selection = hsl(216, 25, 33),
     selection = hsl(213, 60, 40),
 
     cmp_bg = hsl(218, 30, 13),
@@ -105,7 +103,7 @@ local theme = {
   Special = { link = "NormalNC" },
   Type = { link = "NormalNC" },
 
-  String = { fg = c.string },
+  String = { fg = c.string, italic = true },
 
   Comment = { fg = c.comment, italic = true, bold = true },
   CommentError = { fg = c.comment_error, italic = true, bold = true },
@@ -128,7 +126,8 @@ local theme = {
   ["@function"] = { link = "NormalNC" },
   ["@special"] = { link = "NormalNC" },
   ["@variable"] = { link = "NormalNC" },
-  ["@lsp.type.variable"] = { fg = c.dimmed_subtle },
+  ["@variable.parameter"] = { fg = c.accent2 },
+  ["@lsp.type.variable"] = { fg = c.dimmed_subtle, italic = true },
 
   -- UI Elements
   CursorLine = { bg = c.highlight_subtle },
@@ -148,8 +147,13 @@ local theme = {
   DiagnosticSignInfo = { fg = c.diagnostic_info },
   DiagnosticSignWarn = { fg = c.diagnostic_warning },
   LineNr = { fg = c.dimmed, italic = true },
-  IndentLine = { fg = c.background },
-  IndentLineCurrent = { fg = c.dimmed },
+  CursorLineNr = { fg = c.dimmed_subtle, bg = c.highlight_subtle, bold = true },
+
+  IndentLine = { fg = c.dimmed },
+  IndentLineCurrent = { fg = c.dimmed_subtle },
+  MiniIndentscopeSymbol = { link = "IndentLine" },
+  MiniIndentscopeSymbolOff = { link = "IndentLine" },
+
   TreesitterContext = { reverse = true },
   TreesitterContextLineNumber = { bg = c.dimmed, reverse = true, italic = true },
   InclineNormal = { bg = c.background },
@@ -200,6 +204,7 @@ local theme = {
 
   Visual = { bg = c.selection },
   LspReferenceText = { fg = c.highlight_intense, undercurl = true },
+  LspInlayHint = { fg = c.accent1, italic = true, bold = true },
 }
 
 vim.cmd("hi clear")
