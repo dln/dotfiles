@@ -42,6 +42,7 @@
       shellcheck
       shfmt
       stylua
+      superhtml
       vscode-langservers-extracted
     ];
 
@@ -59,7 +60,7 @@
       }
 
       {
-        plugin = blink-cmp;
+        plugin = pkgs.blink-cmp;
         type = "lua";
         config = ''
           require'blink-cmp'.setup({
@@ -68,27 +69,31 @@
               ["<PageDown>"] = { "scroll_documentation_down" },
               ["<PageUp>"] = { "scroll_documentation_up" },
             },
-            trigger = {
-              completion = {
-                show_in_snippet = true,
+            completion = {
+              accept = {
+                auto_brackets = {
+                  enabled = true,
+                },
               },
-              signature_help = {
-                enabled = true,
-              },
-            },
-            windows = {
-              autocomplete = {
-                border = 'none',
-                selection = 'preselect',
-              },
+
               documentation = {
-                border = 'rounded',
-                auto_show = false,
+                auto_show = true,
                 auto_show_delay_ms = 800,
+                window = {
+                  border = 'rounded',
+                },
+                ghost_text = {
+                  enabled = true,
+                },
               },
-              signature_help = {
-                border = 'rounded',
+
+              signature = {
+                enabled = true,
+                window = {
+                  border = 'rounded',
+                },
               },
+
             },
           })
         '';
@@ -100,8 +105,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "saghen";
             repo = "blink.compat";
-            rev = "cd2d3a040b76ad0eeab9a3bba48bc4c2b9d703bf"; # v1.0.2
-            hash = "sha256-4uoehv/qe74IivgXc69ekYLod3Zo+oPUvXJHtt4wc2U=";
+            rev = "78f3f7187ff4a1444e952548c556d936da8f72fc"; # v2.1.2
+            hash = "sha256-aqHDwrzPOyOw9UbJlQX10/cVQwNHg4v6i9jSm+pNKZc=";
           };
         };
         type = "lua";
