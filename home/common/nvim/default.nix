@@ -30,6 +30,7 @@
       go
       gopls
       gotools
+      harper
       lua-language-server
       nil
       nixd

@@ -7,6 +7,13 @@ local servers = {
   superhtml = {},
   ts_ls = {},
 
+  harper_ls = {
+    filetypes = {
+      "asciidoc", "c", "gitcommit", "go", "html", "javascript", "just", "lua", "markdown",
+      "nix", "python", "ruby", "rust", "text", "toml", "typescript", "zig",
+    }
+  },
+
   lua_ls = {
     settings = {
       Lua = {
