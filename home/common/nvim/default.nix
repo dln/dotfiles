@@ -60,7 +60,7 @@
       }
 
       {
-        plugin = pkgs.blink-cmp;
+        plugin = blink-cmp;
         type = "lua";
         config = ''
           require'blink-cmp'.setup({
