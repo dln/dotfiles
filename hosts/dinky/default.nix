@@ -78,10 +78,10 @@
 
   networking = {
     hostName = "dinky";
-    domain = "aarn.patagia.dev";
+    domain = "aarn.patagia.net";
     search = [
-      "patagia.dev"
-      "aarn.patagia.dev"
+      "patagia.net"
+      "aarn.patagia.net"
     ];
     useDHCP = lib.mkDefault true;
   };
@@ -120,7 +120,7 @@
   nix.settings.trusted-users = [ "dln" ];
   nix.buildMachines = [
     {
-      hostName = "nemo.aarn.patagia.dev";
+      hostName = "nemo.aarn.patagia.net";
       sshUser = "nixremote";
       sshKey = "/root/.ssh/id_ed25519";
       system = "x86_64-linux";
@@ -138,7 +138,7 @@
   nix.distributedBuilds = true;
   nix.settings.builders-use-substitutes = true;
   nix.settings.trusted-substituters = [
-    "ssh-ng://nemo.aarn.patagia.dev"
+    "ssh-ng://nemo.aarn.patagia.net"
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?

@@ -87,7 +87,7 @@
 
   networking = {
     hostName = "nemo"; # Define your hostname.
-    domain = "aarn.patagia.dev";
+    domain = "aarn.patagia.net";
     nameservers = [
       "10.1.100.11"
       "10.1.100.12"
@@ -143,8 +143,8 @@
   services.resolved = {
     enable = true;
     domains = [
-      "patagia.dev"
-      "aarn.patagia.dev"
+      "patagia.net"
+      "aarn.patagia.net"
     ];
     llmnr = "false";
     fallbackDns = [ "9.9.9.9" ];

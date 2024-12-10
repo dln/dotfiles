@@ -33,10 +33,10 @@
 
   networking = {
     hostName = "pearl";
-    domain = "aarn.patagia.dev";
+    domain = "aarn.patagia.net";
     search = [
       "patagia.dev"
-      "aarn.patagia.dev"
+      "aarn.patagia.net"
     ];
     useDHCP = lib.mkDefault true;
   };
