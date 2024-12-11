@@ -7,7 +7,7 @@
   home.packages = with pkgs; [
     cameractrls-gtk4
     dynamic-wallpaper
-    gimp-with-plugins
+    gimp
     inkscape
     inputs.ghostty.packages.${pkgs.system}.default
     moonlight-qt
