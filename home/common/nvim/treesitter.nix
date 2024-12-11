@@ -11,9 +11,9 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      ts-comments-nvim
       nvim-ts-context-commentstring
       playground
+      ts-comments-nvim
 
       {
         plugin = nvim-treesitter-context;

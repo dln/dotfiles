@@ -63,49 +63,7 @@
       {
         plugin = blink-cmp;
         type = "lua";
-        config = ''
-          require'blink-cmp'.setup({
-            keymap = {
-              preset = 'enter',
-              ["<PageDown>"] = { "scroll_documentation_down" },
-              ["<PageUp>"] = { "scroll_documentation_up" },
-            },
-            completion = {
-              accept = {
-                auto_brackets = { enabled = true, },
-              },
-
-              documentation = {
-                auto_show = true,
-                auto_show_delay_ms = 800,
-                window = { border = 'rounded', },
-              },
-
-              ghost_text = { enabled = true },
-
-              menu = {
-                auto_show = false,
-              },
-            },
-
-            fuzzy = {
-              prebuilt_binaries = {
-                download = false
-              },
-            },
-
-            signature = {
-              enabled = true,
-              window = { border = 'rounded', },
-            },
-
-             sources = {
-              default = { 'lsp', 'buffer', 'path', 'snippets' },
-              cmdline = {},
-            },
-
-          })
-        '';
+        config = lib.fileContents ./blink-cmp.lua;
       }
 
       {
