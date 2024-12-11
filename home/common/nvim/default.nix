@@ -48,6 +48,7 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      direnv-vim
       friendly-snippets
       go-nvim
       targets-vim
