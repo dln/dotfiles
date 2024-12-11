@@ -72,30 +72,38 @@
             },
             completion = {
               accept = {
-                auto_brackets = {
-                  enabled = true,
-                },
+                auto_brackets = { enabled = true, },
               },
 
               documentation = {
                 auto_show = true,
                 auto_show_delay_ms = 800,
-                window = {
-                  border = 'rounded',
-                },
-                ghost_text = {
-                  enabled = true,
-                },
+                window = { border = 'rounded', },
               },
 
-              signature = {
-                enabled = true,
-                window = {
-                  border = 'rounded',
-                },
-              },
+              ghost_text = { enabled = true },
 
+              menu = {
+                auto_show = false,
+              },
             },
+
+            fuzzy = {
+              prebuilt_binaries = {
+                download = false
+              },
+            },
+
+            signature = {
+              enabled = true,
+              window = { border = 'rounded', },
+            },
+
+             sources = {
+              default = { 'lsp', 'buffer', 'path', 'snippets' },
+              cmdline = {},
+            },
+
           })
         '';
       }
@@ -106,8 +114,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "saghen";
             repo = "blink.compat";
-            rev = "78f3f7187ff4a1444e952548c556d936da8f72fc"; # v2.1.2
-            hash = "sha256-aqHDwrzPOyOw9UbJlQX10/cVQwNHg4v6i9jSm+pNKZc=";
+            rev = "5ca8848c8cc32abdc980e5db4f0eb7bb8fbf84dc"; # Dec 25, 2024
+            hash = "sha256-tFQeKyqdo3mvptYnWxKhTpI4ROFNQ6u3P8cLqtlsozw=";
           };
         };
         type = "lua";
@@ -143,25 +151,25 @@
         '';
       }
 
-      {
-        plugin = pkgs.vimUtils.buildVimPlugin {
-          name = "neocodeium";
-          src = pkgs.fetchFromGitHub {
-            owner = "monkoose";
-            repo = "neocodeium";
-            rev = "4da81528468b33585c411f31eb390dce573ccb14"; # v1.8.0
-            hash = "sha256-1n9nNqBNwNDSzbAkm8eB4HZLNy5HmMg25jPwQAnW5OU=";
-          };
-        };
-        type = "lua";
-        config = ''
-          local neocodeium =require('neocodeium')
-          neocodeium.setup()
-          vim.keymap.set("i", "<C-j>", neocodeium.accept, { remap = true })
-          vim.keymap.set("i", "<A-f>", neocodeium.accept, { remap = true })
-          vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete, { remap = true })
-        '';
-      }
+      # {
+      #   plugin = pkgs.vimUtils.buildVimPlugin {
+      #     name = "neocodeium";
+      #     src = pkgs.fetchFromGitHub {
+      #       owner = "monkoose";
+      #       repo = "neocodeium";
+      #       rev = "4da81528468b33585c411f31eb390dce573ccb14"; # v1.8.0
+      #       hash = "sha256-1n9nNqBNwNDSzbAkm8eB4HZLNy5HmMg25jPwQAnW5OU=";
+      #     };
+      #   };
+      #   type = "lua";
+      #   config = ''
+      #     local neocodeium =require('neocodeium')
+      #     neocodeium.setup()
+      #     vim.keymap.set("i", "<C-j>", neocodeium.accept, { remap = true })
+      #     vim.keymap.set("i", "<A-f>", neocodeium.accept, { remap = true })
+      #     vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete, { remap = true })
+      #   '';
+      # }
 
       {
         plugin = pkgs.vimUtils.buildVimPlugin {
