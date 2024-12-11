@@ -124,6 +124,7 @@ vim.keymap.set("n", "<Leader>D", vim.diagnostic.setloclist, { desc = "Diagnostic
 vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts("Rename Symbol"))
 vim.keymap.set('n', '<Leader>F', "<cmd>Pick files<cr>", opts("Open file picker CWD"))
 vim.keymap.set('n', '<Leader>f', "<cmd>Pick files_root<cr>", opts("Open file picker"))
+vim.keymap.set('n', '<c-p>', "<Leader>f", { remap = true })
 vim.keymap.set('n', '<Leader>g', "<cmd>Pick oldfiles<cr>", opts("Open file picker history"))
 vim.keymap.set("n", '<Leader>k', vim.lsp.buf.hover, opts("Show docs for item under cursor"))
 vim.keymap.set('n', '<Leader>q', require('mini.bufremove').delete, opts("Delete buffer"))
