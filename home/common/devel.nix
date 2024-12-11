@@ -29,6 +29,6 @@
   ];
 
   home.sessionVariables = {
-    GOPROXY = "https://athena.patagia.dev";
+    GOPROXY = "https://athena.patagia.net";
   };
 }
