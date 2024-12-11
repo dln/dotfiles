@@ -14,6 +14,7 @@
   };
 
   inputs = {
+    ghostty.url = "github:ghostty-org/ghostty";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -21,14 +22,6 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    ghostty = {
-      url = "git+ssh://git@github.com/ghostty-org/ghostty";
-      inputs = {
-        nixpkgs-stable.follows = "nixpkgs";
-        nixpkgs-unstable.follows = "nixpkgs";
-      };
-    };
     ghostty-hm.url = "github:clo4/ghostty-hm-module";
   };
 
