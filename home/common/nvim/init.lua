@@ -127,6 +127,7 @@ vim.keymap.set('n', '<Leader>f', "<cmd>Pick files_root<cr>", opts("Open file pic
 vim.keymap.set('n', '<c-p>', "<Leader>f", { remap = true })
 vim.keymap.set('n', '<Leader>g', "<cmd>Pick oldfiles<cr>", opts("Open file picker history"))
 vim.keymap.set("n", '<Leader>k', vim.lsp.buf.hover, opts("Show docs for item under cursor"))
+vim.keymap.set('n', '<Leader>p', "<cmd>Pick projects<cr>", opts("Open projects picker"))
 vim.keymap.set('n', '<Leader>q', require('mini.bufremove').delete, opts("Delete buffer"))
 vim.keymap.set('n', '<Leader>s', "<cmd>Pick lsp scope='document_symbol'<cr>", opts("Open symbol picker"))
 vim.keymap.set('n', '<Leader>S', "<cmd>Pick lsp scope='workspace_symbol'<cr>", opts("Open workspace symbol picker"))

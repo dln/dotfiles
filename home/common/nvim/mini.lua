@@ -64,6 +64,45 @@ require('mini.pick').setup({
     config = picker_win_config,
   },
 })
+
+MiniPick.registry.projects = function(local_opts)
+  local root = vim.fn.expand("~/src")
+
+  local command = {
+    "fd",
+    "--max-depth=8",
+    "--one-file-system",
+    "--unrestricted",
+    "--full-path",
+    "/.jj/repo/store/type$|/.git/HEAD$",
+    root,
+  }
+
+  local postprocess = function(paths)
+    local result = {}
+    for _, path in ipairs(paths) do
+      path = path:gsub("%/.jj/repo/store/type$", "")
+      path = path:gsub("%/.git/HEAD$", "")
+      local item = {
+        path = path,
+        text = path:gsub("%" .. root .. "/", " "),
+      }
+      table.insert(result, item)
+    end
+    return result
+  end
+
+  local choose = function(item)
+    local_opts.cwd = item.path
+    vim.fn.chdir(item.path)
+    vim.schedule(function()
+      MiniPick.builtin.files(local_opts, { source = { cwd = item.path, tool = "rg" } })
+    end)
+  end
+
+  return MiniPick.builtin.cli({ command = command, postprocess = postprocess }, { source = { choose = choose } })
+end
+
 MiniPick.registry.files_root = function(local_opts)
   local root_patterns = { ".jj", ".git" }
   local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
