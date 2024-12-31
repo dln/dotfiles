@@ -90,14 +90,15 @@
           src = pkgs.fetchFromGitHub {
             owner = "MysticalDevil";
             repo = "inlay-hints.nvim";
-            rev = "af84dee42cd118af6d592b06c1c0e45d6432a6c0"; # 2024-08-23
-            hash = "sha256-DZVtFAUK9c8GInp+JdCQ1BKe0dkAheHKI67oxdMmA24=";
+            rev = "3259b54f3b954b4d8260f3ee49ceabe978ea5636";
+            hash = "sha256-99KCGoPowa4PA1jkCm4ZbbgrFl84NWnKQMgkfy8KS5E=";
           };
         };
         type = "lua";
         config = ''
-          require('inlay-hints').setup()
-          require("inlay-hints.utils").enable_inlay_hints()
+          require('inlay-hints').setup {
+            autocmd = { enable = false },
+          }
         '';
       }
 
