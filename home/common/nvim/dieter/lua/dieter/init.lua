@@ -52,9 +52,14 @@ local colors = {
     highlight_subtle = hsl(212, 27, 11),
     highlight_intense = hsl(58, 100, 60),
 
-    string = hsl(96, 35, 60),
+    -- string = hsl(96, 35, 60),
+    -- string = hsl(80, 79, 83),
+    string = hsl(90, 45, 70),
     comment = hsl(2, 69, 68),
     comment_error = hsl(2, 85, 50),
+    func = hsl(40, 57, 87),
+    member = hsl(213, 45, 75),
+    punc = hsl(213, 45, 50),
 
     diagnostic_error = hsl(353, 100, 45),
     diagnostic_warning = hsl(30, 100, 50),
@@ -97,13 +102,14 @@ local theme = {
 
   Constant = { link = "NormalNC" },
   Delimiter = { link = "NormalNC" },
+  Function = { fg = c.func },
   Identifier = { link = "NormalNC" },
   Keyword = { fg = c.foreground, bold = true },
   Operator = { link = "NormalNC" },
   Special = { link = "NormalNC" },
   Type = { link = "NormalNC" },
 
-  String = { fg = c.string, italic = true },
+  String = { fg = c.string },
 
   Comment = { fg = c.comment, italic = true, bold = true },
   CommentError = { fg = c.comment_error, italic = true, bold = true },
@@ -123,11 +129,13 @@ local theme = {
   GitSignsDeleteNr = { link = "DiffDelete" },
 
   -- Treesitter
-  ["@function"] = { link = "NormalNC" },
+  -- ["@function"] = { link = "NormalNC" },
+  ["@punctuation.special"] = { fg = c.punc },
   ["@special"] = { link = "NormalNC" },
   ["@variable"] = { link = "NormalNC" },
+  ["@variable.member"] = { fg = c.member },
   ["@variable.parameter"] = { fg = c.accent2 },
-  ["@lsp.type.variable"] = { fg = c.dimmed_subtle, italic = true },
+  -- ["@lsp.type.variable"] = { fg = c.dimmed_subtle, italic = true },
 
   -- UI Elements
   CursorLine = { bg = c.highlight_subtle },
