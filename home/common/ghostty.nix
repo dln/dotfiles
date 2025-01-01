@@ -34,8 +34,9 @@
 
         shell-integration = "fish";
 
-        window-decoration = false;
-        gtk-tabs-location = "bottom";
+        window-decoration = true;
+        gtk-single-instance = true;
+        gtk-tabs-location = "hidden";
         gtk-titlebar = false;
         window-padding-x = 12;
         window-padding-y = 0;
@@ -49,16 +50,6 @@
           "alt+shift+v=paste_from_clipboard"
           "ctrl+tab=goto_split:previous"
           "super+enter=toggle_fullscreen"
-          "ctrl+enter=unbind"
-          "alt+one=unbind"
-          "alt+two=unbind"
-          "alt+three=unbind"
-          "alt+four=unbind"
-          "alt+five=unbind"
-          "alt+six=unbind"
-          "alt+seven=unbind"
-          "alt+eight=unbind"
-          "alt+nine=unbind"
         ];
       };
     };
@@ -116,46 +107,12 @@
     '';
 
     xdg.desktopEntries = {
-      ghostty-local = {
-        categories = [
-          "System"
-          "TerminalEmulator"
-        ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-local -e "tmux new-session -A -D -s main -t main"'';
-        genericName = "Ghostty (local)";
-        icon = "com.mitchellh.ghostty";
-        name = "Ghostty (local)";
-        settings = {
-          StartupWMClass = "com.mitchellh.ghostty-local";
-          TryExec = "ghostty";
-        };
-        terminal = false;
-        type = "Application";
-      };
-
-      ghostty-local-secondary = {
-        categories = [
-          "System"
-          "TerminalEmulator"
-        ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-local-secondary -e "tmux new-session -A -D -s secondary -t main"'';
-        genericName = "Ghostty (local) Secondary";
-        icon = "com.mitchellh.ghostty";
-        name = "Ghostty (local) Secondary";
-        settings = {
-          StartupWMClass = "com.mitchellh.ghostty-local-secondary";
-          TryExec = "ghostty";
-        };
-        terminal = false;
-        type = "Application";
-      };
-
       ghostty-nemo = {
         categories = [
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-nemo -e "ssh -t nemo tmux new-session -A -D -s main -t main"'';
+        exec = ''ghostty --class=com.mitchellh.ghostty-nemo --command="ssh -t nemo"'';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";

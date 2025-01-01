@@ -43,40 +43,17 @@
         body = ''confirm "⚠ Really shutdown $(hostname)?" && command shutdown $argv'';
       };
 
-      tmux-refresh-env = {
-        description = "Refresh environment variables from tmux session";
-        body = ''
-          for var in (tmux show-environment | string match -rv '^-')
-            set -l parts (string split -m 1 '=' $var)
-            if test (count $parts) -eq 2
-              set -Ux $parts[1] $parts[2]
-            end
-          end
-        '';
-      };
-
       kubectl = {
         description = "Wraps kubectl in grc";
         wraps = "kubectl";
         body = "grc.wrap kubectl $argv";
       };
 
-      edit = {
-        description = "Open a file in already running nvim and switch tab";
+      e = {
+        description = "Open a file in already running nvim";
         argumentNames = [ "file" ];
         body = ''
-          set _file (readlink -f "$file")
-          if test -z "$file"
-              set _root (vcs_root)
-              set _file (fd --type f . "$_root" | sed -e "s#^$_root/##" | fzf --no-sort --layout=reverse)
-              set _file "$_root/$_file"
-          end
-          set _nvim_socket "$XDG_RUNTIME_DIR/nvim-persistent.sock"
-          if test -S "$_nvim_socket" && tmux select-window -t nvim 2>/dev/null
-            nvim --server "$_nvim_socket" --remote "$_file"
-            return 0
-          end
-          tmux new-window -S -n nvim nvim --listen "$_nvim_socket" "$_file"
+          nvim --server "$XDG_RUNTIME_DIR/nvim-persistent.sock" --remote (readlink -f "$file")
         '';
       };
 
@@ -156,7 +133,6 @@
     ];
 
     shellAbbrs = {
-      e = "edit";
       l = "bat";
       ls = "eza";
       tree = "eza --tree";
