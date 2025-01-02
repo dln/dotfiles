@@ -52,6 +52,8 @@ local colors = {
     highlight_subtle = hsl(212, 27, 11),
     highlight_intense = hsl(58, 100, 60),
 
+    dialog_fg = hsl(191, 15, 75),
+
     -- string = hsl(96, 35, 60),
     -- string = hsl(80, 79, 83),
     string = hsl(90, 45, 70),
@@ -81,7 +83,7 @@ local colors = {
     selection = hsl(213, 60, 40),
 
     cmp_bg = hsl(218, 30, 13),
-    cmp_fg = hsl(218, 30, 60),
+    cmp_fg = hsl(218, 30, 80),
     cmp_selected_bg = hsl(218, 30, 25),
     cmp_selected_fg = hsl(218, 50, 80),
 
@@ -94,7 +96,6 @@ local colors = {
 }
 
 local setupGroups = function(c)
-  c.dialog_fg = c.foreground
   c.dialog_bg = c.background
 
   return {
@@ -176,12 +177,12 @@ local setupGroups = function(c)
 
     Title = { fg = c.foreground, bold = true },
 
-    MiniPickNormal = { link = "Normal" },
+    MiniPickNormal = { bg = c.dialog_bg, fg = c.dialog_fg },
     MiniPickBorder = { link = "MiniPickNormal" },
     MiniPickBorderText = { link = "MiniPickBorder" },
-    MiniPickMatchCurrent = { bg = c.background, fg = c.foreground, reverse = true },
+    MiniPickMatchCurrent = { bg = c.dialog_bg, fg = c.dialog_fg, reverse = true },
 
-    MiniClueBorder = { link = "MiniPickNormal" },
+    MiniClueBorder = { link = "MiniPicBorder" },
     MiniClueTitle = { bg = c.background, fg = c.foreground, bold = true },
     MiniClueNextKey = { link = "MiniClueTitle" },
     MiniClueDescGroup = { bg = c.background, fg = c.foreground, italic = true },
