@@ -13,11 +13,12 @@
       package = inputs.ghostty.packages.${pkgs.system}.default;
       settings = {
         font-size = 14;
-        font-family = "Berkeley Mono Variable";
+        font-family = "TX-02";
         font-family-bold-italic = "Monaspace Xenon";
+        font-style-bold = "Bold";
+        font-style-italic = "Light Oblique";
         font-style-bold-italic = "ExtraLight Italic";
         font-synthetic-style = false;
-        font-variation-italic = [ "wght=100" ];
 
         adjust-cell-height = 1;
         adjust-cursor-thickness = 5;
