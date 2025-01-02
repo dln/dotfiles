@@ -78,7 +78,6 @@
         "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
         "dln@nemo" = mkHome [ ./home/dln/nemo.nix ];
         "dln@pearl" = mkHome [ ./home/dln/pearl.nix ];
-        "lsjostro@nemo" = mkHome [ ./home/lsjostro/nemo.nix ];
       };
     };
 }
