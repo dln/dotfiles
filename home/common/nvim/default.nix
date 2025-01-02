@@ -154,7 +154,7 @@ in
         };
         type = "lua";
         config = ''
-          vim.cmd.colorscheme "dieter"
+          vim.cmd.colorscheme "dieter-nocolor"
         '';
       }
 

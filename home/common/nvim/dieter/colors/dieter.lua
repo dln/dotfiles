@@ -1,2 +1,2 @@
 package.loaded["dieter"] = nil
-require("dieter")
+require("dieter").setup()
