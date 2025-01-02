@@ -53,7 +53,7 @@
         description = "Open a file in already running nvim";
         argumentNames = [ "file" ];
         body = ''
-          nvim --server "$XDG_RUNTIME_DIR/nvim-persistent.sock" --remote (readlink -f "$file")
+          nvim-remote --remote (readlink -f "$file")
         '';
       };
 

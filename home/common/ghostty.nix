@@ -33,6 +33,7 @@
         unfocused-split-opacity = 1.0;
 
         shell-integration = "fish";
+        initial-command = "nvim-remote";
 
         window-decoration = true;
         gtk-single-instance = true;
@@ -112,7 +113,9 @@
           "System"
           "TerminalEmulator"
         ];
-        exec = ''ghostty --class=com.mitchellh.ghostty-nemo --command="ssh -t nemo"'';
+        exec = ''
+        ghostty --class=com.mitchellh.ghostty-nemo --command="ssh -t nemo" --initial-command="ssh -t nemo nvim-remote"
+        '';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";

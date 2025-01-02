@@ -4,10 +4,22 @@
   pkgs,
   ...
 }:
+let
+  nvim-remote = pkgs.writeShellApplication {
+    name = "nvim-remote";
+    text = ''
+      _sess=$(echo -n "$USER@''${SSH_CONNECTION:-$HOSTNAME}" | tr -c '[:alnum:]@.' '_')
+      _nvim_sock="''${XDG_RUNTIME_DIR:-/tmp}/nvim.$_sess.sock"
+      exec nvim --listen "$_nvim_sock" --server "$_nvim_sock" "$@"
+    '';
+  };
+in
 {
   imports = [
     ./treesitter.nix
   ];
+
+  home.packages = [ nvim-remote ];
 
   programs.man.generateCaches = false;
 
