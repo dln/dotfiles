@@ -20,11 +20,9 @@
         font-style-bold-italic = "ExtraLight Italic";
         font-synthetic-style = false;
 
-        adjust-cell-height = 1;
-        adjust-cursor-thickness = 5;
-        adjust-font-baseline = 1;
+        adjust-cursor-thickness = 4;
         adjust-underline-position = 2;
-        adjust-underline-thickness = -1;
+        adjust-underline-thickness = -2;
 
         mouse-hide-while-typing = true;
         cursor-style = "block";
@@ -59,9 +57,9 @@
       in
       ''
       background = "${background}"
-      foreground = "#d1d5db"
-      cursor-color = #00d992
-      selection-background = #d7d7d7
+      foreground = #b7bec7
+      cursor-color = #e7e7b7
+      selection-background = #84979f
       selection-foreground = #000000
       palette = 0=#000000
       palette = 1=#ff0035
@@ -70,7 +68,7 @@
       palette = 4=#00a7ff
       palette = 5=#cb01ff
       palette = 6=#00e0ff
-      palette = 7=#f0f0f0
+      palette = 7=#b7bec7
       palette = 8=#444444
       palette = 9=#ff8c88
       palette = 10=#baff94
