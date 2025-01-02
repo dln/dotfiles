@@ -7,13 +7,10 @@
 }:
 {
   config = lib.mkIf config.patagia.desktop.enable {
-
-    home.packages = with pkgs; [
-      inputs.ghostty.packages.${pkgs.system}.default
-    ];
-
     programs.ghostty = {
       enable = true;
+      enableFishIntegration = true;
+      package = inputs.ghostty.packages.${pkgs.system}.default;
       settings = {
         font-size = 14;
         font-family = "Berkeley Mono Variable";

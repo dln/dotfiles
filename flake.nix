@@ -22,14 +22,12 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    ghostty-hm.url = "github:clo4/ghostty-hm-module";
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      ghostty-hm,
       home-manager,
       ...
     }:
@@ -55,7 +53,6 @@
             inherit inputs outputs;
           };
           modules = [
-            ghostty-hm.homeModules.default
             ./home/common
           ] ++ modules;
         };

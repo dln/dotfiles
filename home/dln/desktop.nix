@@ -9,7 +9,6 @@
     dynamic-wallpaper
     gimp
     inkscape
-    inputs.ghostty.packages.${pkgs.system}.default
     moonlight-qt
     obsidian
     pavucontrol
