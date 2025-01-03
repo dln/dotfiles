@@ -134,8 +134,6 @@
 
     shellAbbrs = {
       l = "bat";
-      ls = "eza";
-      tree = "eza --tree";
       top = "btm --basic --enable_cache_memory --battery";
       ts = "TZ=Z date '+%Y%m%dT%H%M%SZ'";
       w = "viddy $history[1]";
