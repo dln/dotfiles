@@ -66,7 +66,7 @@ local colors = {
     diagnostic_error = hsl(353, 100, 45),
     diagnostic_warning = hsl(30, 100, 50),
     diagnostic_info = hsl(176, 80, 60),
-    diagnostic_hint = hsl(176, 80, 60),
+    diagnostic_hint = hsl(210, 74, 60),
 
     popup_error_bg = hsl(0, 95, 7),
     popup_warning_bg = hsl(27, 95, 7),
@@ -188,6 +188,8 @@ local setupGroups = function(c)
     MiniClueDescGroup = { bg = c.background, fg = c.foreground, italic = true },
     MiniClueDescSingle = { bg = c.background, fg = c.foreground },
     MiniClueSeparator = { link = "MiniClueBorder" },
+
+    MiniCursorWord = { underdotted = true, bold = true, sp = c.diagnostic_hint },
 
     MiniStarterCurrent = { link = "MiniPickMatchCurrent" },
 
