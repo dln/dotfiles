@@ -29,7 +29,6 @@ local colors = {
     change = hsl(41, 80, 80),
     change_quarter = hsl(224, 100, 85),
     delete = hsl(350, 100, 40),
-    delete_quarter = hsl(350, 100, 85),
 
     dialog_bg = hsl(224, 5, 92),
     selection = hsl(270, 75, 92),
@@ -80,7 +79,10 @@ local colors = {
     delete = hsl(350, 100, 40),
     delete_quarter = hsl(350, 100, 15),
 
-    selection = hsl(213, 60, 40),
+    selection = hsl(218, 30, 20),
+
+    search_bg = hsl(43, 100, 8),
+    search_fg = hsl(43, 100, 85),
 
     cmp_bg = hsl(218, 30, 13),
     cmp_fg = hsl(218, 30, 80),
@@ -113,6 +115,9 @@ local setupGroups = function(c)
     String = { fg = c.string },
 
     Visual = { bg = c.selection },
+
+    Search = { bg = c.search_bg, fg = c.search_fg },
+    CurSearch = { link = "Search" },
 
     Comment = { fg = c.comment, italic = true, bold = true },
     CommentError = { fg = c.comment_error, italic = true, bold = true },
@@ -157,8 +162,8 @@ local setupGroups = function(c)
     DiagnosticSignHint = { fg = c.diagnostic_hint },
     DiagnosticSignInfo = { fg = c.diagnostic_info },
     DiagnosticSignWarn = { fg = c.diagnostic_warning },
-    LineNr = { fg = c.dimmed, italic = true },
-    CursorLineNr = { fg = c.dimmed_subtle, bg = c.highlight_subtle, bold = true },
+    LineNr = { fg = c.dimmed },
+    CursorLineNr = { fg = c.dimmed_subtle, bg = c.highlight_subtle },
 
     IndentLine = { fg = c.dimmed },
     IndentLineCurrent = { fg = c.dimmed_subtle },
