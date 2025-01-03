@@ -104,19 +104,57 @@
     '';
 
     xdg.desktopEntries = {
+      ghostty-secondary = {
+        categories = [
+          "System"
+          "TerminalEmulator"
+        ];
+        exec = ''
+          ghostty --class=com.mitchellh.ghostty-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique"
+        '';
+        genericName = "Ghostty Secondary";
+        icon = "com.mitchellh.ghostty";
+        name = "Ghostty (nemo)";
+        settings = {
+          StartupWMClass = "com.mitchellh.ghostty-secondary";
+          TryExec = "ghostty";
+        };
+        terminal = false;
+        type = "Application";
+      };
+
       ghostty-nemo = {
         categories = [
           "System"
           "TerminalEmulator"
         ];
         exec = ''
-        ghostty --class=com.mitchellh.ghostty-nemo --command="ssh -t nemo" --initial-command="ssh -t nemo nvim-remote"
+          ghostty --class=com.mitchellh.ghostty-nemo --command="ssh -t nemo" --initial-command="ssh -t nemo nvim-remote"
         '';
         genericName = "Ghostty (nemo)";
         icon = "com.mitchellh.ghostty";
         name = "Ghostty (nemo)";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-nemo";
+          TryExec = "ghostty";
+        };
+        terminal = false;
+        type = "Application";
+      };
+
+      ghostty-nemo-secondary = {
+        categories = [
+          "System"
+          "TerminalEmulator"
+        ];
+        exec = ''
+          ghostty --class=com.mitchellh.ghostty-nemo-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t nemo" --initial-command="ssh -t nemo nvim-remote"
+        '';
+        genericName = "Ghostty Secondary (nemo)";
+        icon = "com.mitchellh.ghostty";
+        name = "Ghostty (nemo)";
+        settings = {
+          StartupWMClass = "com.mitchellh.ghostty-nemo-secondary";
           TryExec = "ghostty";
         };
         terminal = false;
