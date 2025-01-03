@@ -21,7 +21,7 @@
         font-synthetic-style = false;
 
         adjust-cursor-thickness = 4;
-        adjust-underline-position = 2;
+        adjust-underline-position = 5;
         adjust-underline-thickness = -2;
 
         mouse-hide-while-typing = true;
