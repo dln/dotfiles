@@ -164,12 +164,12 @@ in
   '';
 
   programs.ssh.matchBlocks = {
-    dev = {
+    dev-old = {
       hostname = "10.1.100.16";
       forwardAgent = true;
     };
 
-    nemo = {
+    devel = {
       hostname = "10.1.100.20";
       forwardAgent = true;
       localForwards = [

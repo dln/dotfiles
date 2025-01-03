@@ -114,7 +114,7 @@
         '';
         genericName = "Ghostty Secondary";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty (nemo)";
+        name = "Ghostty (devel)";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-secondary";
           TryExec = "ghostty";
@@ -123,38 +123,38 @@
         type = "Application";
       };
 
-      ghostty-nemo = {
+      ghostty-devel = {
         categories = [
           "System"
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-nemo --command="ssh -t nemo" --initial-command="ssh -t nemo nvim-remote"
+          ghostty --class=com.mitchellh.ghostty-devel --command="ssh -t devel" --initial-command="ssh -t devel nvim-remote"
         '';
-        genericName = "Ghostty (nemo)";
+        genericName = "Ghostty (devel)";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty (nemo)";
+        name = "Ghostty (devel)";
         settings = {
-          StartupWMClass = "com.mitchellh.ghostty-nemo";
+          StartupWMClass = "com.mitchellh.ghostty-devel";
           TryExec = "ghostty";
         };
         terminal = false;
         type = "Application";
       };
 
-      ghostty-nemo-secondary = {
+      ghostty-devel-secondary = {
         categories = [
           "System"
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-nemo-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t nemo" --initial-command="ssh -t nemo nvim-remote"
+          ghostty --class=com.mitchellh.ghostty-devel-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel nvim-remote"
         '';
-        genericName = "Ghostty Secondary (nemo)";
+        genericName = "Ghostty Secondary (devel)";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty (nemo)";
+        name = "Ghostty (devel)";
         settings = {
-          StartupWMClass = "com.mitchellh.ghostty-nemo-secondary";
+          StartupWMClass = "com.mitchellh.ghostty-devel-secondary";
           TryExec = "ghostty";
         };
         terminal = false;
