@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
 
   home.packages = with pkgs; [
@@ -169,6 +169,6 @@
 
   programs.jujutsu = {
     enable = true;
-    package = pkgs.jujutsu-openssh;
+    package = inputs.jujutsu.packages.${pkgs.system}.default;
   };
 }
