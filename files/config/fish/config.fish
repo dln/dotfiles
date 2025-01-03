@@ -12,7 +12,7 @@ set fish_emoji_width 2
 # Colors
 set fish_color_command --bold
 set fish_color_comment --italics --dim
-set fish_color_autosuggestion --italics --bold red
+set fish_color_autosuggestion --italics --bold --dim
 set fish_color_cancel
 set fish_color_command --bold
 set fish_color_comment --italics --dim
