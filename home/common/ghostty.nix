@@ -110,11 +110,11 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique"
+          ghostty --class=com.mitchellh.ghostty-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" -e bash
         '';
         genericName = "Ghostty Secondary";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty (devel)";
+        name = "Ghostty Secondary";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-secondary";
           TryExec = "ghostty";
@@ -148,11 +148,11 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-devel-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel nvim-remote"
+          ghostty --class=com.mitchellh.ghostty-devel-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
         '';
         genericName = "Ghostty Secondary (devel)";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty (devel)";
+        name = "Ghostty Secondary (devel)";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-devel-secondary";
           TryExec = "ghostty";
