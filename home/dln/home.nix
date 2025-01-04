@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   realName = "Daniel Lundin";
   email = "dln@arity.se";
@@ -136,26 +141,134 @@ in
         "ready" = "open() ~ (wip::)";
       };
 
-      colors = {
-        "commit_id prefix" = {
-          bold = true;
-        };
+      colors =
+        let
+          bold = {
+            bold = true;
+          };
+          dim = {
+            fg = "bright black";
+          };
+          underline = {
+            fg = "default";
+            underline = true;
+          };
+        in
+        {
+          "error" = bold;
+          "warning" = bold;
+          "error heading" = bold;
+          "error_source heading" = bold;
+          "warning heading" = bold;
+          "hint heading" = bold;
+          "prefix" = bold;
+          "rest" = "bright black";
+          "divergent prefix" = underline;
+          "bookmark" = "magenta";
+          "bookmarks" = "magenta";
+          "change_id" = "magenta";
+          "local_bookmarks" = "magenta";
 
-        "rest" = {
-          fg = "bright black";
-          bold = false;
-        };
+          "diff file_header" = bold;
+          "diff hunk_header" = "cyan";
+          "diff removed" = "red";
+          "diff removed token" = "red";
+          "diff added" = "green";
+          "diff added token" = "green";
+          "diff modified" = "cyan";
+          "diff untracked" = "magenta";
+          "diff renamed" = "cyan";
+          "diff copied" = "green";
+          "diff access-denied" = {
+            bg = "red";
+          };
 
-        "diff added token" = {
-          bg = "#002200";
-          fg = "#66ffcc";
-          underline = false;
-        };
-        "diff removed token" = {
-          bg = "#220011";
-          underline = true;
-        };
-      };
+          "elided" = "blue";
+          "node elided" = dim;
+          "node working_copy" = {
+            fg = "green";
+            bold = true;
+          };
+          "node current_operation" = bold;
+          "node immutable" = bold;
+          "node conflict" = {
+            fg = "red";
+            bold = true;
+          };
+          "operation id" = "blue";
+          "operation current_operation" = bold;
+          "remote_bookmarks" = "magenta";
+          "working_copy" = {
+            fg = "green";
+            bold = true;
+          };
+          "working_copy change_id" = "magenta";
+          "working_copy description placeholder" = "green";
+          "working_copy empty description placeholder" = "green";
+          "working_copy bookmark" = "bright magenta";
+          "working_copy bookmarks" = "bright magenta";
+          "working_copy local_bookmarks" = "bright magenta";
+          "working_copy remote_bookmarks" = "bright magenta";
+        }
+        // lib.genAttrs [
+          "author"
+          "branch"
+          "branches"
+          "commit_id"
+          "committer"
+          "config_list name"
+          "config_list overridden"
+          "config_list overridden name"
+          "config_list overridden value"
+          "config_list value"
+          "conflict"
+          "conflict_description"
+          "conflict_description difficult"
+          "description placeholder"
+          "diff token"
+          "divergent"
+          "divergent change_id"
+          "divergent rest"
+          "empty"
+          "empty description placeholder"
+          "error_source"
+          "git_head"
+          "git_refs"
+          "hidden prefix"
+          "hint"
+          "local_branches"
+          "operation current_operation id"
+          "operation current_operation time"
+          "operation current_operation user"
+          "operation time"
+          "operation user"
+          "placeholder"
+          "remote_branches"
+          "root"
+          "separator"
+          "tag"
+          "tags"
+          "timestamp"
+          "working_copies"
+          "working_copy author"
+          "working_copy branch"
+          "working_copy branches"
+          "working_copy commit_id"
+          "working_copy committer"
+          "working_copy conflict"
+          "working_copy divergent"
+          "working_copy divergent change_id"
+          "working_copy empty"
+          "working_copy git_refs"
+          "working_copy local_branches"
+          "working_copy placeholder"
+          "working_copy remote_branches"
+          "working_copy tag"
+          "working_copy tags"
+          "working_copy timestamp"
+          "working_copy working_copies"
+        ] (_: "default");
+
     };
   };
 
