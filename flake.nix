@@ -71,6 +71,7 @@
           just
           nh
           nixd
+          nixfmt-rfc-style
         ];
       };
 
