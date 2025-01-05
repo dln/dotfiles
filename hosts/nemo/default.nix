@@ -124,21 +124,20 @@
   };
 
   # FIXME: pam_rssh is broken from rust 1.80 upgrade
-  # environment.systemPackages = [ pkgs.pam_rssh ];
-  # security = {
-  #   pam.services.doas =
-  #     { config, ... }:
-  #     {
-  #       rules.auth.rssh = {
-  #         order = config.rules.auth.ssh_agent_auth.order - 1;
-  #         control = "sufficient";
-  #         modulePath = "${pkgs.pam_rssh}/lib/libpam_rssh.so";
-  #         settings.authorized_keys_command = pkgs.writeShellScript "get-authorized-keys" ''
-  #           cat "/etc/ssh/authorized_keys.d/$1"
-  #         '';
-  #       };
-  #     };
-  # };
+  security = {
+    pam.services.doas =
+      { config, ... }:
+      {
+        rules.auth.rssh = {
+          order = config.rules.auth.ssh_agent_auth.order - 1;
+          control = "sufficient";
+          modulePath = "${pkgs.pam_rssh}/lib/libpam_rssh.so";
+          settings.authorized_keys_command = pkgs.writeShellScript "get-authorized-keys" ''
+            cat "/etc/ssh/authorized_keys.d/$1"
+          '';
+        };
+      };
+  };
 
   services.resolved = {
     enable = true;
@@ -175,7 +174,7 @@
     ffado
     libcamera
     lm_sensors
-    # pkgs.pam_rssh
+    pam_rssh
     openconnect
     v4l-utils
   ];
@@ -212,6 +211,14 @@
     ];
   };
   users.groups.nixremote = { };
+
+  nix.sshServe.enable = true;
+  nix.sshServe.keys = [
+    "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIIHMAEZx02kbHrEygyPQYStiXlrIe6EIqBCv7anIkL0pAAAABHNzaDo= dln@dinky"
+    "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIJNOBFoU7Cdsgi4KpYRcv7EhR/8kD4DYjEZnwk6urRx7AAAABHNzaDo= dln@nemo"
+    "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBJ10mLOpInoqDaySyrxbzvcOrJfLw48Y6eWHa9501lw+hEEBXya3ib7nlvpCqEQJ8aPU5fVRqpkOW5zSimCiRbwAAAAEc3NoOg=="
+    "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBLpoKvsZDIQQLfgzJhe1jAQubBNxjydkj8UfdUPaSXqgfB02OypMOC1m5ZuJYcQIxox0I+4Z8xstFhYP6s8zKZwAAAAEc3NoOg=="
+  ];
 
   nix.settings.trusted-users = [
     "dln"
