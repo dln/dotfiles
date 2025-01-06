@@ -108,7 +108,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" -e bash
+          ghostty --class=com.mitchellh.ghostty-secondary --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
         '';
         genericName = "Ghostty Secondary";
         icon = "com.mitchellh.ghostty";
