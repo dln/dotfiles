@@ -12,7 +12,7 @@
       enableFishIntegration = true;
       package = inputs.ghostty.packages.${pkgs.system}.default;
       settings = {
-        font-size = 14;
+        font-size = 12.5;
         font-family = "TX-02";
         font-family-bold-italic = "Monaspace Xenon";
         font-style-bold = "Bold";
@@ -34,7 +34,7 @@
         gtk-single-instance = true;
         gtk-tabs-location = "hidden";
         gtk-titlebar = false;
-        window-padding-x = 12;
+        window-padding-x = 0;
         window-padding-y = 0;
         window-padding-balance = true;
         window-padding-color = "extend";
