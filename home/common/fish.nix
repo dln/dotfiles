@@ -6,10 +6,6 @@
 
     plugins = [
       {
-        name = "grc";
-        src = pkgs.fishPlugins.grc.src;
-      }
-      {
         name = "transient";
         src = pkgs.fishPlugins.transient-fish.src;
       }
@@ -41,12 +37,6 @@
         description = "Wraps shutdown to first prompt for confirmation";
         wraps = "shutdown";
         body = ''confirm "⚠ Really shutdown $(hostname)?" && command shutdown $argv'';
-      };
-
-      kubectl = {
-        description = "Wraps kubectl in grc";
-        wraps = "kubectl";
-        body = "grc.wrap kubectl $argv";
       };
 
       e = {
