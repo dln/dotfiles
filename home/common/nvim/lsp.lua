@@ -3,6 +3,7 @@ local servers = {
   cssls = {},
   html = {},
   jsonls = {},
+  sqls = {},
   superhtml = {},
   ts_ls = {},
 
