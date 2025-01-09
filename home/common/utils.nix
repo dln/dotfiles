@@ -70,6 +70,6 @@
     enableFishIntegration = true;
     options = [ "--cmd=cd" ];
   };
-  home.sessionVariables._ZO_FZF_OPTS="--reverse --height=10 --border=none --no-info --no-separator --no-scrollbar --no-color";
+  home.sessionVariables._ZO_FZF_OPTS="--reverse --height=10 --border=rounded --no-info --no-separator --no-scrollbar --no-color --no-sort";
 
 }
