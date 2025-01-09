@@ -70,6 +70,7 @@
         packages = with pkgs; [
           just
           nh
+          nil
           nixd
           nixfmt-rfc-style
         ];

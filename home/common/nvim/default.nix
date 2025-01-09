@@ -126,6 +126,27 @@ in
 
       {
         plugin = pkgs.vimUtils.buildVimPlugin {
+          name = "neocodeium";
+          src = pkgs.fetchFromGitHub {
+            owner = "monkoose";
+            repo = "neocodeium";
+            rev = "4da81528468b33585c411f31eb390dce573ccb14"; # v1.8.0
+            hash = "sha256-1n9nNqBNwNDSzbAkm8eB4HZLNy5HmMg25jPwQAnW5OU=";
+          };
+          doCheck = false;
+        };
+        type = "lua";
+        config = ''
+          local neocodeium =require('neocodeium')
+          neocodeium.setup()
+          vim.keymap.set("i", "<C-j>", neocodeium.accept, { remap = true })
+          vim.keymap.set("i", "<A-f>", neocodeium.accept, { remap = true })
+          vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete, { remap = true })
+        '';
+      }
+
+      {
+        plugin = pkgs.vimUtils.buildVimPlugin {
           name = "diagflow";
           src = pkgs.fetchFromGitHub {
             owner = "dgagn";

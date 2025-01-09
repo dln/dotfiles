@@ -65,7 +65,7 @@ vim.o.showcmd = false
 vim.o.showmode = false
 vim.o.smoothscroll = true
 vim.o.splitkeep = "screen"
-vim.o.timeoutlen = 10
+vim.o.timeoutlen = 1
 vim.o.timeout = true
 vim.o.updatetime = 50
 

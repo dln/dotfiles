@@ -1,9 +1,10 @@
 require 'blink-cmp'.setup({
   keymap = {
     preset = 'enter',
-    -- preset = 'super-tab',
-    ["<PageDown>"] = { "scroll_documentation_down" },
-    ["<PageUp>"] = { "scroll_documentation_up" },
+    ['<Tab>'] = { 'select_next', 'fallback' },
+    ['<S-Tab>'] = { 'select_prev', 'fallback' },
+    ['<PageDown>'] = { 'scroll_documentation_down', 'fallback' },
+    ['<PageUp>'] = { 'scroll_documentation_up', 'fallback' },
   },
   completion = {
     accept = {
@@ -16,15 +17,35 @@ require 'blink-cmp'.setup({
       window = { border = 'rounded', },
     },
 
-    ghost_text = { enabled = true },
+    ghost_text = { enabled = false },
 
     list = {
-      selection = { preselect = false, auto_insert = false },
+      selection = {
+        preselect = false,
+        auto_insert = false
+      },
     },
 
     menu = {
-      auto_show = false,
-    },
+      auto_show = true,
+      direction_priority = { 'n' },
+      draw = {
+        components = {
+          kind_icon = {
+            ellipsis = false,
+            text = function(ctx)
+              local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+              return kind_icon
+            end,
+            -- Optionally, you may also use the highlights from mini.icons
+            highlight = function(ctx)
+              local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+              return hl
+            end,
+          }
+        }
+      }
+    }
   },
 
   fuzzy = {
@@ -39,7 +60,7 @@ require 'blink-cmp'.setup({
   },
 
   sources = {
-    default = { 'lsp', 'codeium', 'buffer' },
+    default = { 'lsp', 'codeium' },
     cmdline = {},
     providers = {
       codeium = {
