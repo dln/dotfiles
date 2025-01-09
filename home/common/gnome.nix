@@ -13,7 +13,6 @@ with lib.hm.gvariant;
       gnomeExtensions.desktop-clock
       gnomeExtensions.emoji-copy
       gnomeExtensions.just-perfection
-      gnomeExtensions.vitals
     ];
 
     dconf.settings = {
@@ -168,7 +167,6 @@ with lib.hm.gvariant;
         enabled-extensions = [
           "emoji-copy@felipeftn"
           "just-perfection-desktop@just-perfection"
-          "Vitals@CoreCoding.com"
         ];
       };
 
@@ -185,10 +183,6 @@ with lib.hm.gvariant;
         startup-status = 0;
         switcher-popup-delay = false;
         top-panel-position = 0;
-      };
-
-      "org/gnome/shell/extensions/vitals" = {
-        update-time = 15;
       };
 
       "org/gnome/tweaks" = {

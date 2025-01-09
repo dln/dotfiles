@@ -177,8 +177,6 @@
     OTEL_EXPORTER_OTLP_ENDPOINT = "https://otel.aarn.patagia.net";
   };
 
-  programs.coolercontrol.enable = true;
-
   users.users.dln = {
     isNormalUser = true;
     description = "Daniel Lundin";
