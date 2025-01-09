@@ -1,6 +1,7 @@
 require 'blink-cmp'.setup({
   keymap = {
     preset = 'enter',
+    -- preset = 'super-tab',
     ["<PageDown>"] = { "scroll_documentation_down" },
     ["<PageUp>"] = { "scroll_documentation_up" },
   },
@@ -18,11 +19,11 @@ require 'blink-cmp'.setup({
     ghost_text = { enabled = true },
 
     list = {
-      selection = "manual",
+      selection = { preselect = false, auto_insert = false },
     },
 
     menu = {
-      auto_show = true,
+      auto_show = false,
     },
   },
 
@@ -30,10 +31,6 @@ require 'blink-cmp'.setup({
     prebuilt_binaries = {
       download = false
     },
-  },
-
-  keymap = {
-    preset = 'super-tab',
   },
 
   signature = {
