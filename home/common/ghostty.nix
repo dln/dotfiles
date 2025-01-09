@@ -29,7 +29,6 @@
         unfocused-split-opacity = 1.0;
 
         shell-integration = "fish";
-        initial-command = "nvim-remote";
 
         window-decoration = true;
         gtk-single-instance = true;
@@ -129,7 +128,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-devel --command="ssh -t devel" --initial-command="ssh -t devel nvim-remote"
+          ghostty --class=com.mitchellh.ghostty-devel --command="ssh -t devel" --initial-command="ssh -t devel"
         '';
         genericName = "Ghostty (devel)";
         icon = "com.mitchellh.ghostty";
