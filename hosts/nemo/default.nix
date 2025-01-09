@@ -158,12 +158,6 @@
     };
   };
 
-  services.sunshine = {
-    enable = true;
-    openFirewall = true;
-    settings = { };
-  };
-
   patagia = {
     desktop.enable = true;
     plymouth.enable = true;
