@@ -7,7 +7,7 @@ vim.g.maplocalleader = ","
 
 vim.opt.cursorline = true
 vim.opt.laststatus = 0
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.ruler = true
 vim.opt.syntax = "on"
@@ -26,7 +26,6 @@ end
 
 function CondensedPath()
   local path = vim.fn.expand("%:p")
-  -- path = vim.fn.fnamemodify(path, ':p')
   local home = os.getenv("HOME")
   if home then
     path = vim.fn.substitute(path, '^' .. home, '~', '')
@@ -43,7 +42,7 @@ function CondensedPath()
   return vim.fn.pathshorten(early_path) .. '/' .. late_path
 end
 
-vim.opt.rulerformat = "%50(%=%{%v:lua.GetIndicators()%}%#Label#%#MsgArea#| %{%v:lua.CondensedPath()%}%)"
+vim.opt.rulerformat = "%50(%=%{%v:lua.GetIndicators()%}%#MsgArea#%{%v:lua.CondensedPath()%}%)%7(%l:%c%)"
 
 -- Search
 vim.opt.ignorecase = true
@@ -179,4 +178,5 @@ vim.keymap.set("n", "<Leader>uc", function()
   end
 end, opts("Toggle Dieter colors"))
 vim.keymap.set("n", "<Leader>uh", "<cmd>InlayHintsToggle<cr>", opts("Toggle inlay hints"))
+vim.keymap.set("n", "<Leader>un", "<cmd>set invnumber<cr>", opts("Toggle line numbers"))
 vim.keymap.set("n", "<Leader>uw", "<cmd>set invwrap<cr>", opts("Toggle line wrapping"))

@@ -44,18 +44,17 @@ local colors = {
     accent2 = hsl(40, 57, 57),  -- Yellow
 
     dimmed = hsl(212, 19, 25),
-    -- dimmed_subtle = hsl(212, 19, 70),
     dimmed_subtle = hsl(212, 19, 50),
 
     highlight_subtle = hsl(212, 27, 11),
+    highlight = hsl(212, 27, 18),
     highlight_intense = hsl(58, 100, 60),
 
     dialog_fg = hsl(191, 15, 75),
 
-    -- string = hsl(96, 35, 60),
-    -- string = hsl(80, 79, 83),
-    string = hsl(90, 45, 70),
-    comment = hsl(2, 69, 68),
+    string = hsl(90, 30, 60),
+    -- comment = hsl(2, 69, 68),
+    comment = hsl(216, 30, 55),
     comment_error = hsl(2, 85, 50),
     func = hsl(40, 57, 87),
     member = hsl(213, 45, 75),
@@ -78,7 +77,7 @@ local colors = {
     delete = hsl(350, 100, 40),
     delete_quarter = hsl(350, 100, 15),
 
-    selection = hsl(218, 30, 20),
+    selection = hsl(218, 90, 20),
 
     search_bg = hsl(43, 100, 8),
     search_fg = hsl(43, 100, 85),
@@ -138,13 +137,11 @@ local setupGroups = function(c)
     GitSignsDeleteNr = { link = "DiffDelete" },
 
     -- Treesitter
-    -- ["@function"] = { link = "NormalNC" },
     ["@punctuation.special"] = { fg = c.punc },
     ["@special"] = { link = "NormalNC" },
     ["@variable"] = { link = "NormalNC" },
     ["@variable.member"] = { fg = c.member },
     ["@variable.parameter"] = { fg = c.accent2 },
-    -- ["@lsp.type.variable"] = { fg = c.dimmed_subtle, italic = true },
 
     -- UI Elements
     CursorLine = { bg = c.highlight_subtle },
@@ -166,8 +163,8 @@ local setupGroups = function(c)
     LineNr = { fg = c.dimmed },
     CursorLineNr = { fg = c.dimmed_subtle, bg = c.highlight_subtle },
 
-    IndentLine = { fg = c.dimmed },
-    IndentLineCurrent = { fg = c.dimmed_subtle },
+    IndentLine = { fg = c.highlight },
+    IndentLineCurrent = { fg = c.highlight },
     MiniIndentscopeSymbol = { link = "IndentLine" },
     MiniIndentscopeSymbolOff = { link = "IndentLine" },
 
@@ -239,7 +236,7 @@ local setupGroupsNoColor = function(c)
   g["@variable"] = cl
   g["@variable.member"] = cl
   g["@variable.parameter"] = cl
-  g.Comment = { fg = c.dimmed_subtle, italic = true, bold = true }
+  -- g.Comment = { fg = c.dimmed_subtle, italic = true, bold = true }
   g.CommentError = { link = "Comment" }
   return g
 end
