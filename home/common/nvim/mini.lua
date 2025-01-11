@@ -49,15 +49,16 @@ local picker_win_config = function()
     height = height,
     width = width,
     row = 2,
-    col = math.floor((vim.o.columns - width) / 2),
+    col = 5,
   }
 end
 
 require('mini.pick').setup({
   mappings = {
     move_down      = '<tab>',
+    move_up      = '<S-tab>',
     toggle_info    = '<C-k>',
-    toggle_preview = '<C-p>',
+    toggle_preview = 'p',
   },
   options = { use_cache = true },
   window = {

@@ -28,6 +28,7 @@ require 'blink-cmp'.setup({
 
     menu = {
       auto_show = true,
+      border = 'rounded',
       direction_priority = { 'n' },
       draw = {
         components = {

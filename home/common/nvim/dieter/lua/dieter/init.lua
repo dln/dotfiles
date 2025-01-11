@@ -34,7 +34,6 @@ local colors = {
     selection = hsl(270, 75, 92),
     highlight_subtle = hsl(0, 0, 94),
     highlight_intense = hsl(42, 100, 30),
-
   },
 
   dark = {
@@ -46,7 +45,7 @@ local colors = {
 
     dimmed = hsl(212, 19, 25),
     -- dimmed_subtle = hsl(212, 19, 70),
-    dimmed_subtle = hsl(212, 5, 65),
+    dimmed_subtle = hsl(212, 19, 50),
 
     highlight_subtle = hsl(212, 27, 11),
     highlight_intense = hsl(58, 100, 60),
@@ -112,6 +111,8 @@ local setupGroups = function(c)
     Special = { link = "NormalNC" },
     Type = { link = "NormalNC" },
 
+    MsgArea = { fg = c.dimmed_subtle },
+
     String = { fg = c.string },
 
     Visual = { bg = c.selection },
@@ -176,8 +177,8 @@ local setupGroups = function(c)
     InclineNormalNC = { bg = c.background },
 
     WinSeparator = { bg = c.dialog_bg, fg = c.dialog_fg },
-    NormalFloat = { bg = c.doc_bg, fg = c.doc_fg },
-    FloatBorder = { fg = c.doc_fg },
+    NormalFloat = { bg = c.background, fg = c.foreground },
+    FloatBorder = { fg = c.foreground },
     FloatTitle = { fg = c.doc_fg, bold = true },
 
     Title = { fg = c.foreground, bold = true },
@@ -192,6 +193,7 @@ local setupGroups = function(c)
     MiniClueNextKey = { link = "MiniClueTitle" },
     MiniClueDescGroup = { bg = c.background, fg = c.foreground, italic = true },
     MiniClueDescSingle = { bg = c.background, fg = c.foreground },
+    MiniClueSeparator = { link = "MiniClueBorder" },
     MiniClueSeparator = { link = "MiniClueBorder" },
 
     MiniCursorWord = { underdotted = true, bold = true, sp = c.diagnostic_hint },

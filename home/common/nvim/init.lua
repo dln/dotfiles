@@ -84,9 +84,8 @@ vim.o.showcmd = false
 vim.o.showmode = false
 vim.o.smoothscroll = true
 vim.o.splitkeep = "screen"
-vim.o.timeoutlen = 1
-vim.o.timeout = true
-vim.o.updatetime = 50
+vim.o.timeout = false
+vim.o.updatetime = 250
 
 -- Use rg
 vim.o.grepprg = [[rg --glob "!.jj" --glob "!.git" --no-heading --vimgrep --follow $*]]
