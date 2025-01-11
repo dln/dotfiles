@@ -19,12 +19,31 @@ function GetIndicators()
   local counts = vim.diagnostic.count(bufnr)
   local errors = counts[vim.diagnostic.severity.ERROR] or 0
   local warnings = counts[vim.diagnostic.severity.WARN] or 0
-  local warn_string = warnings > 0 and "%#DiagnosticWarn# " .. warnings .. " " or "  "
-  local error_string = errors > 0 and "%#DiagnosticError# " .. errors .. " " or "  "
+  local warn_string = warnings > 0 and "%#DiagnosticWarn# " .. warnings .. " " or ""
+  local error_string = errors > 0 and "%#DiagnosticError# " .. errors .. " " or ""
   return warn_string .. error_string
 end
 
-vim.opt.rulerformat = "%40(%=%{%v:lua.GetIndicators()%}%#Label#│ %t %)"
+function CondensedPath()
+  local path = vim.fn.expand("%:p")
+  -- path = vim.fn.fnamemodify(path, ':p')
+  local home = os.getenv("HOME")
+  if home then
+    path = vim.fn.substitute(path, '^' .. home, '~', '')
+  end
+
+  local segments = vim.fn.split(path, '/')
+  if #segments <= 3 then
+    return path
+  end
+
+  local early_path = table.concat(vim.list_slice(segments, 1, #segments - 2), '/')
+  local late_path = table.concat(vim.list_slice(segments, #segments - 1), '/')
+
+  return vim.fn.pathshorten(early_path) .. '/' .. late_path
+end
+
+vim.opt.rulerformat = "%50(%=%{%v:lua.GetIndicators()%}%#Label#%#MsgArea#| %{%v:lua.CondensedPath()%}%)"
 
 -- Search
 vim.opt.ignorecase = true
