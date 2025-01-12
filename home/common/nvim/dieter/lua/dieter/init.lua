@@ -191,7 +191,6 @@ local setupGroups = function(c)
     MiniClueDescGroup = { bg = c.background, fg = c.foreground, italic = true },
     MiniClueDescSingle = { bg = c.background, fg = c.foreground },
     MiniClueSeparator = { link = "MiniClueBorder" },
-    MiniClueSeparator = { link = "MiniClueBorder" },
 
     MiniCursorWord = { underdotted = true, bold = true, sp = c.diagnostic_hint },
 
