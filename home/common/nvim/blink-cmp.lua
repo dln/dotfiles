@@ -61,15 +61,9 @@ require 'blink-cmp'.setup({
   },
 
   sources = {
-    default = { 'lsp', 'codeium' },
+    default = { 'lsp' },
     cmdline = {},
-    providers = {
-      codeium = {
-        name = "codeium",
-        module = 'blink.compat.source',
-        score_offset = -100,
-      },
-    },
+    providers = {},
   },
 
 })

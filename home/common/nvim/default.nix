@@ -115,16 +115,6 @@ in
       }
 
       {
-        plugin = codeium-nvim;
-        type = "lua";
-        config = ''
-          require'codeium'.setup {
-            enable_chat = false,
-          }
-        '';
-      }
-
-      {
         plugin = pkgs.vimUtils.buildVimPlugin {
           name = "neocodeium";
           src = pkgs.fetchFromGitHub {
