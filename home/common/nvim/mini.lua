@@ -68,6 +68,7 @@ require('mini.pick').setup({
   },
 })
 
+local MiniPick = require('mini.pick')
 MiniPick.registry.projects = function(local_opts)
   local root = vim.fn.expand("~/src")
 
