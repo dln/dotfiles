@@ -150,6 +150,7 @@ vim.keymap.set('n', '<Leader>s', "<cmd>Pick lsp scope='document_symbol'<cr>", op
 vim.keymap.set('n', '<Leader>S', "<cmd>Pick lsp scope='workspace_symbol'<cr>", opts("Open workspace symbol picker"))
 vim.keymap.set("n", "<Leader>ws", "<C-w>s", opts("Horizontal split"))
 vim.keymap.set("n", "<Leader>wv", "<C-w>v", opts("Vertical split"))
+vim.keymap.set("n", "<m-f>", require('mini.files').open, opts("Open file manager"))
 vim.keymap.set('n', '<tab>', "<cmd>Pick buffers include_current=false<cr>", opts("Buffers"))
 vim.keymap.set("n", "zz", "zt", { remap = true })
 vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', opts("Yank to clipboard"))
