@@ -133,6 +133,7 @@ vim.keymap.set({ "n", "v" }, "<Leader>a", vim.lsp.buf.code_action, { remap = tru
 vim.keymap.set("n", "<Leader>af", function()
   vim.lsp.buf.format({ async = true })
 end, opts("Format Buffer"))
+vim.keymap.set('n', '<Leader><Leader>', "<cmd>Pick visit_paths cwd=''<cr>", opts("Visits"))
 vim.keymap.set('n', '<Leader>b', "<cmd>Pick buffers<cr>", opts("Open buffer picker"))
 vim.keymap.set('n', '<Leader>/', "<cmd>Pick grep_live_root<cr>", opts("Search workspace files"))
 vim.keymap.set('n', '<Leader>d', "<cmd>Pick diagnostic<cr>", opts("Open diagnostics picker"))
