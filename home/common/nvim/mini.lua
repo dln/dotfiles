@@ -58,7 +58,7 @@ require('mini.pick').setup({
     move_down      = '<tab>',
     move_up      = '<S-tab>',
     toggle_info    = '<C-k>',
-    toggle_preview = 'p',
+    toggle_preview = '<C-p>',
   },
   options = { use_cache = true },
   window = {
