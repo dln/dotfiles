@@ -118,6 +118,29 @@ vim.keymap.set({ "i", "s" }, "<Tab>", function()
 end, { expr = true })
 
 
+-- Autoformat
+
+vim.g.autoformat_enabled = true -- set to true by default
+
+vim.api.nvim_create_user_command('ToggleAutoFormat', function()
+  vim.g.autoformat_enabled = not vim.g.autoformat_enabled
+  print('Autoformatting ' .. (vim.g.autoformat_enabled and 'enabled' or 'disabled'))
+end, {})
+
+vim.api.nvim_create_augroup("AutoFormat", {})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = "AutoFormat",
+  callback = function()
+    if vim.g.autoformat_enabled then
+      vim.lsp.buf.format({
+        async = false,
+        timeout_ms = 2000 -- Adjust timeout as needed
+      })
+    end
+  end,
+})
+
 -- Keymap
 local opts = function(label)
   return { noremap = true, silent = true, desc = label }
@@ -179,6 +202,7 @@ vim.keymap.set("n", "<Leader>uc", function()
     vim.cmd [[colorscheme dieter-nocolor]]
   end
 end, opts("Toggle Dieter colors"))
+vim.keymap.set("n", "<Leader>uf", "<cmd>ToggleAutoFormat<cr>", opts("Toggle autoformat on save"))
 vim.keymap.set("n", "<Leader>uh", "<cmd>InlayHintsToggle<cr>", opts("Toggle inlay hints"))
 vim.keymap.set("n", "<Leader>un", "<cmd>set invnumber<cr>", opts("Toggle line numbers"))
 vim.keymap.set("n", "<Leader>uw", "<cmd>set invwrap<cr>", opts("Toggle line wrapping"))
