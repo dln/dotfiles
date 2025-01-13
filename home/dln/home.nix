@@ -65,12 +65,7 @@ in
       };
 
       ui = {
-        "default-command" = [
-          "log"
-          "--limit=10"
-          "-T"
-          "builtin_log_comfortable"
-        ];
+        "default-command" = [ "s" ];
         pager = "delta";
       };
 
@@ -112,23 +107,28 @@ in
         ];
         d = [
           "diff"
-          "--tool=difftu"
+          "--tool=difft"
         ];
         dd = [
           "diff"
           "--git"
         ];
-        ds = [
+        du = [
           "diff"
-          "--tool=difft"
-        ];
-        s = [
-          "show"
           "--tool=difftu"
         ];
-        ss = [
-          "show"
-          "--tool=difft"
+        s = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          ''
+            printf '\e[38;5;240m\u2504%.0s\e[0m' $(seq 1 $(tput cols)) '\n'
+            jj show --stat
+            printf '\e[38;5;240m\u2504%.0s\e[0m' $(seq 1 $(tput cols)) '\n'
+            jj log --limit=15 -T builtin_log_comfortable
+          ''
         ];
       };
 
