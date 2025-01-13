@@ -3,7 +3,6 @@
   programs.fish = {
     enable = true;
 
-
     plugins = [
       {
         name = "transient";
@@ -57,42 +56,42 @@
       '';
 
       fish_jj_prompt.body = ''
-        if not command -sq jj || not jj root --quiet &>/dev/null
-          return 1
-        end
+          if not command -sq jj || not jj root --quiet &>/dev/null
+            return 1
+          end
 
-      jj log --ignore-working-copy --no-graph --color never -r @ -T '
-        surround(
-          " \e[2;3m",
-          "\e[0m",
-          separate(
-            " ",
-            surround(
-              "\e[0;2;3m",
-              "\e[0m",
-              coalesce(
-                surround(
-                  "\e[1;2;3m❝",
-                  "❞\e[0m",
-                  if(
-                    description.first_line().substr(0, 80).starts_with(description.first_line()),
-                    description.first_line().substr(0, 80),
-                    description.first_line().substr(0, 79) ++ "…"
-                  )
+        jj log --ignore-working-copy --no-graph --color never -r @ -T '
+          surround(
+            " \e[2;3m",
+            "\e[0m",
+            separate(
+              " ",
+              surround(
+                "\e[0;2;3m",
+                "\e[0m",
+                coalesce(
+                  surround(
+                    "\e[1;2;3m❝",
+                    "❞\e[0m",
+                    if(
+                      description.first_line().substr(0, 80).starts_with(description.first_line()),
+                      description.first_line().substr(0, 80),
+                      description.first_line().substr(0, 79) ++ "…"
+                    )
+                  ),
+                  "…"
                 ),
-                "…"
               ),
-            ),
-            surround("\e[0;1;95m ", "\e[0;2;3m", change_id.shortest()),
-            surround("\e[0;35m󰸕 ", "\e[0m", bookmarks.join("╱")),
-            surround("\e[0;34m ",   "\e[0;2;3m", commit_id.shortest()),
-            if(conflict,  "󰂭"),
-            if(empty,     ""),
-            if(divergent, ""),
-            if(hidden,    "󰘓"),
+              surround("\e[0;1;95m ", "\e[0;2;3m", change_id.shortest()),
+              surround("\e[0;35m󰸕 ", "\e[0m", bookmarks.join("╱")),
+              surround("\e[0;34m ",   "\e[0;2;3m", commit_id.shortest()),
+              if(conflict,  "󰂭"),
+              if(empty,     ""),
+              if(divergent, ""),
+              if(hidden,    "󰘓"),
+            )
           )
-        )
-      '
+        '
       '';
 
       fish_prompt.body = ''
@@ -117,8 +116,6 @@
     interactiveShellInit = lib.concatStringsSep "\n" [
       (builtins.readFile ../../files/config/fish/config.fish)
       (builtins.readFile ../../files/config/fish/semantic-prompt.fish)
-      (builtins.readFile ../../files/config/fish/go-task.fish)
-      (builtins.readFile ../../files/config/fish/jj.fish)
       (builtins.readFile ../../files/config/fish/vcs.fish)
     ];
 
