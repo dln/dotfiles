@@ -170,6 +170,7 @@
     lm_sensors
     pam_rssh
     openconnect
+    tpm2-tools
     v4l-utils
   ];
 
@@ -177,10 +178,19 @@
     OTEL_EXPORTER_OTLP_ENDPOINT = "https://otel.aarn.patagia.net";
   };
 
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
+
   users.users.dln = {
     isNormalUser = true;
     description = "Daniel Lundin";
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "tss"
+      "wheel"
+    ];
     openssh.authorizedKeys.keys = [
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIIHMAEZx02kbHrEygyPQYStiXlrIe6EIqBCv7anIkL0pAAAABHNzaDo= dln@dinky"
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIJNOBFoU7Cdsgi4KpYRcv7EhR/8kD4DYjEZnwk6urRx7AAAABHNzaDo= dln@nemo"
@@ -190,7 +200,10 @@
   users.users.lsjostro = {
     isNormalUser = true;
     description = "Lars Sjöström";
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "tss"
+      "wheel"
+    ];
     openssh.authorizedKeys.keys = [
       "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBJ10mLOpInoqDaySyrxbzvcOrJfLw48Y6eWHa9501lw+hEEBXya3ib7nlvpCqEQJ8aPU5fVRqpkOW5zSimCiRbwAAAAEc3NoOg=="
       "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBLpoKvsZDIQQLfgzJhe1jAQubBNxjydkj8UfdUPaSXqgfB02OypMOC1m5ZuJYcQIxox0I+4Z8xstFhYP6s8zKZwAAAAEc3NoOg=="
