@@ -124,11 +124,17 @@ in
           "bash"
           "-c"
           ''
+            #!/usr/bin/env bash
+            set -eo pipefail
+            if [ -n "$1" ]; then
+              exec jj show --stat --tool=difft "$@"
+            fi
             printf '\e[38;5;240m\u2504%.0s\e[0m' $(seq 1 $(tput cols)) '\n'
             jj show --stat
             printf '\e[38;5;240m\u2504%.0s\e[0m' $(seq 1 $(tput cols)) '\n'
             jj log --limit=15 -T builtin_log_comfortable
           ''
+          ""
         ];
       };
 
