@@ -14,6 +14,7 @@
     pavucontrol
     plexamp
     signal-desktop
+    supersonic-wayland
   ];
 
   xdg.desktopEntries = {
