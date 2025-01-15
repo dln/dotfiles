@@ -25,17 +25,13 @@
         adjust-underline-thickness = -2;
 
         mouse-hide-while-typing = true;
-        cursor-style = "block";
         unfocused-split-opacity = 1.0;
 
         shell-integration = "fish";
 
-        window-decoration = true;
-        gtk-single-instance = true;
         gtk-tabs-location = "hidden";
-        gtk-titlebar = false;
-        window-padding-x = 0;
-        window-padding-y = 0;
+        gtk-titlebar = true;
+        gtk-titlebar-hide-when-maximized = true;
         window-padding-balance = true;
         window-padding-color = "extend";
         window-theme = "system";
