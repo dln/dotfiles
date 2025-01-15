@@ -58,28 +58,28 @@
         background = if config.patagia.oled.enable then "#000000" else "#14151a";
       in
       ''
-      background = "${background}"
-      foreground = #b7bec7
-      cursor-color = #e7e7b7
-      selection-background = #84979f
-      selection-foreground = #000000
-      palette = 0=#000000
-      palette = 1=#ff0035
-      palette = 2=#85ff00
-      palette = 3=#ffc900
-      palette = 4=#00a7ff
-      palette = 5=#cb01ff
-      palette = 6=#00e0ff
-      palette = 7=#b7bec7
-      palette = 8=#444444
-      palette = 9=#ff8c88
-      palette = 10=#baff94
-      palette = 11=#ffe090
-      palette = 12=#88ccff
-      palette = 13=#e38dff
-      palette = 14=#97eeff
-      palette = 15=#ffffff
-    '';
+        background = "${background}"
+        foreground = #b7bec7
+        cursor-color = #e7e7b7
+        selection-background = #84979f
+        selection-foreground = #000000
+        palette = 0=#000000
+        palette = 1=#ff0035
+        palette = 2=#85ff00
+        palette = 3=#ffc900
+        palette = 4=#00a7ff
+        palette = 5=#cb01ff
+        palette = 6=#00e0ff
+        palette = 7=#b7bec7
+        palette = 8=#444444
+        palette = 9=#ff8c88
+        palette = 10=#baff94
+        palette = 11=#ffe090
+        palette = 12=#88ccff
+        palette = 13=#e38dff
+        palette = 14=#97eeff
+        palette = 15=#ffffff
+      '';
 
     xdg.configFile."ghostty/themes/PatagiaLight".text = ''
       background = #fefeff
