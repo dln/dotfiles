@@ -44,7 +44,10 @@
         keybind = [
           "alt+shift+c=copy_to_clipboard"
           "alt+shift+v=paste_from_clipboard"
+          "ctrl+i=text:\\x09"
+          "ctrl+m=text:\\x0D"
           "ctrl+tab=goto_split:previous"
+          "ctrl+[=text:\\x1B"
           "super+enter=toggle_fullscreen"
         ];
       };
