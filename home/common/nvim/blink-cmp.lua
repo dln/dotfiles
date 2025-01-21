@@ -61,9 +61,18 @@ require 'blink-cmp'.setup({
   },
 
   sources = {
-    default = { 'lsp' },
+    default = {
+      'lsp',
+      'emoji',
+    },
     cmdline = {},
-    providers = {},
+    providers = {
+      emoji = {
+        module = "blink-emoji",
+        name = "Emoji",
+        score_offset = 1,
+        opts = { insert = true },
+      }
+    },
   },
-
 })

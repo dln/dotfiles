@@ -47,6 +47,7 @@ in
 
     plugins = with pkgs.vimPlugins; [
       blink-compat
+      blink-emoji-nvim
       friendly-snippets
       go-nvim
       targets-vim
