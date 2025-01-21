@@ -29,7 +29,7 @@ require 'blink-cmp'.setup({
     menu = {
       auto_show = true,
       border = 'rounded',
-      direction_priority = { 'n' },
+      direction_priority = { 'n', 's' },
       draw = {
         components = {
           kind_icon = {
