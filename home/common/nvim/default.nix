@@ -46,6 +46,7 @@ in
     ];
 
     plugins = with pkgs.vimPlugins; [
+      blink-compat
       friendly-snippets
       go-nvim
       targets-vim
@@ -78,22 +79,6 @@ in
         plugin = blink-cmp;
         type = "lua";
         config = lib.fileContents ./blink-cmp.lua;
-      }
-
-      {
-        plugin = pkgs.vimUtils.buildVimPlugin {
-          name = "blink.compat";
-          src = pkgs.fetchFromGitHub {
-            owner = "saghen";
-            repo = "blink.compat";
-            rev = "5ca8848c8cc32abdc980e5db4f0eb7bb8fbf84dc"; # Dec 25, 2024
-            hash = "sha256-tFQeKyqdo3mvptYnWxKhTpI4ROFNQ6u3P8cLqtlsozw=";
-          };
-        };
-        type = "lua";
-        config = ''
-          require('blink.compat').setup()
-        '';
       }
 
       {
