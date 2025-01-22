@@ -30,7 +30,7 @@
         shell-integration = "fish";
 
         gtk-tabs-location = "hidden";
-        gtk-titlebar = true;
+        gtk-titlebar = false;
         gtk-titlebar-hide-when-maximized = true;
         window-padding-balance = true;
         window-padding-color = "extend";
