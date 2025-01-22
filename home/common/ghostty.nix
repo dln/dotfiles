@@ -74,9 +74,9 @@
         exec = ''
           ghostty --class=com.mitchellh.ghostty-secondary --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
         '';
-        genericName = "Ghostty Secondary";
+        genericName = "Secondary Ghostty";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty Secondary";
+        name = "Secondary Ghostty";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-secondary";
           TryExec = "ghostty";
@@ -112,9 +112,9 @@
         exec = ''
           ghostty --class=com.mitchellh.ghostty-devel-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
         '';
-        genericName = "Ghostty Secondary (devel)";
+        genericName = "Secondary Ghostty (devel)";
         icon = "com.mitchellh.ghostty";
-        name = "Ghostty Secondary (devel)";
+        name = "Secondary Ghostty (devel)";
         settings = {
           StartupWMClass = "com.mitchellh.ghostty-devel-secondary";
           TryExec = "ghostty";
