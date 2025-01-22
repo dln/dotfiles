@@ -18,7 +18,8 @@
     jujutsu.url = "github:dln/jj/openssh";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +33,7 @@
       self,
       nix-index-database,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       ...
     }:
@@ -52,7 +54,7 @@
       mkHome =
         modules:
         home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = nixpkgs-unstable.legacyPackages.${system};
           extraSpecialArgs = {
             inherit inputs outputs;
           };
