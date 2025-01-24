@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   patagia = {
     desktop.enable = true;
@@ -14,7 +14,6 @@
     pavucontrol
     plexamp
     signal-desktop
-    supersonic-wayland
   ];
 
   xdg.desktopEntries = {
