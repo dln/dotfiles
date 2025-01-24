@@ -16,23 +16,6 @@ with lib.hm.gvariant;
     ];
 
     dconf.settings = {
-      "org/gnome/desktop/background" = {
-        color-shading-type = "solid";
-        picture-options = "zoom";
-        picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
-        picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
-        primary-color = "#77767B";
-        secondary-color = "#000000";
-      };
-
-      "org/gnome/desktop/screensaver" = {
-        color-shading-type = "solid";
-        picture-options = "zoom";
-        picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
-        primary-color = "#77767B";
-        secondary-color = "#000000";
-      };
-
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
         toggle-on-all-workspaces = [ "<Super>s" ];
