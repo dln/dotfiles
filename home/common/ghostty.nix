@@ -12,12 +12,13 @@
       enableFishIntegration = true;
       package = inputs.ghostty.packages.${pkgs.system}.default;
       settings = {
-        font-size = 12.5;
-        font-family = "TX-02";
-        font-family-bold-italic = "Monaspace Xenon";
+        font-size = 11;
+        font-family = "Berkeley Mono";
+        font-family-bold-italic = "Monaspace Radon Var";
+        font-style = "Regular";
         font-style-bold = "Bold";
-        font-style-italic = "Light Oblique";
-        font-style-bold-italic = "ExtraLight Italic";
+        font-style-italic = "SemiLight Oblique";
+        font-style-bold-italic = "Italic";
         font-synthetic-style = false;
 
         adjust-cursor-thickness = 4;
@@ -25,7 +26,9 @@
         adjust-underline-thickness = -2;
 
         mouse-hide-while-typing = true;
-        unfocused-split-opacity = 1.0;
+        unfocused-split-opacity = 0.85;
+        unfocused-split-fill = "#14151a";
+
 
         shell-integration = "fish";
 
@@ -49,7 +52,7 @@
       };
       themes = {
         PatagiaDark = {
-          background = if config.patagia.oled.enable then "#000000" else "#14151a";
+          background = "#14151a";
           foreground = "#b7bec7";
           cursor-color = "#e7e7b7";
           selection-background = "#84979f";
