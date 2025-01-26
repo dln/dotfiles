@@ -58,7 +58,7 @@ end
 require('mini.pick').setup({
   mappings = {
     move_down      = '<tab>',
-    move_up      = '<S-tab>',
+    move_up        = '<S-tab>',
     toggle_info    = '<C-k>',
     toggle_preview = '<C-p>',
   },
@@ -84,14 +84,18 @@ MiniPick.registry.projects = function(local_opts)
 
   local postprocess = function(paths)
     local result = {}
+    local seen = {}
     for _, path in ipairs(paths) do
       path = path:gsub("%/.jj/repo/store/type$", "")
       path = path:gsub("%/.git/HEAD$", "")
-      local item = {
-        path = path,
-        text = path:gsub("%" .. root .. "/", " "),
-      }
-      table.insert(result, item)
+      if not seen[path] then
+        local item = {
+          path = path,
+          text = path:gsub("%" .. root .. "/", " "),
+        }
+        table.insert(result, item)
+        seen[path] = true
+      end
     end
     return result
   end
