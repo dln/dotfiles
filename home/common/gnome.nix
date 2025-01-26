@@ -135,7 +135,7 @@ with lib.hm.gvariant;
       };
 
       "org/gnome/mutter" = {
-        center-new-windows = true;
+        center-new-windows = false;
         edge-tiling = true;
       };
 
