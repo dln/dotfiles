@@ -11,7 +11,7 @@ local colors = {
     dimmed_subtle = hsl(0, 0, 20),
 
     string = hsl(96, 50, 33),
-    comment = hsl(230, 66, 40),
+    comment = hsl(360, 66, 40),
     comment_error = hsl(2, 85, 40),
 
     diagnostic_error = hsl(347, 80, 45),
@@ -53,7 +53,6 @@ local colors = {
     dialog_fg = hsl(191, 15, 75),
 
     string = hsl(90, 30, 60),
-    -- comment = hsl(2, 69, 68),
     comment = hsl(216, 30, 55),
     comment_error = hsl(2, 85, 50),
     func = hsl(40, 57, 87),
