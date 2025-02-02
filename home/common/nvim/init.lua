@@ -209,3 +209,7 @@ vim.keymap.set("n", "<Leader>uh", "<cmd>InlayHintsToggle<cr>", opts("Toggle inla
 vim.keymap.set("n", "<Leader>ul", "<cmd>set invcursorline<cr>", opts("Toggle cursor line"))
 vim.keymap.set("n", "<Leader>un", "<cmd>set invnumber<cr>", opts("Toggle line numbers"))
 vim.keymap.set("n", "<Leader>uw", "<cmd>set invwrap<cr>", opts("Toggle line wrapping"))
+
+vim.keymap.set("n", "<Leader>ui", function()
+  vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
+end, opts("Toggle indent scope"))

@@ -35,8 +35,9 @@ indentscope.setup({
     delay = 10,
     animation = indentscope.gen_animation.none(),
   },
-  symbol = '┆',
+  symbol = '│',
 })
+vim.g.miniindentscope_disable = true
 
 require('mini.jump2d').setup({
   mappings = { start_jumping = 'gw' }
