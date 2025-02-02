@@ -35,7 +35,7 @@ indentscope.setup({
     delay = 10,
     animation = indentscope.gen_animation.none(),
   },
-  symbol = '│',
+  symbol = '┆',
 })
 
 require('mini.jump2d').setup({

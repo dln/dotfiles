@@ -76,7 +76,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.o.autochdir = true
 vim.o.cia = 'kind,abbr,menu'
-vim.o.fillchars = "stl: ,stlnc: ,eob:░,vert:│"
+vim.o.fillchars = "stl: ,stlnc: ,eob:🮘,vert:│"
 vim.o.icm = "split"
 vim.o.list = false
 vim.o.scrolloff = 7

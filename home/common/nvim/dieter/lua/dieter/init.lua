@@ -14,12 +14,12 @@ local colors = {
     comment = hsl(360, 66, 40),
     comment_error = hsl(2, 85, 40),
 
-    suggestion = hsl(220, 95, 60),
+    suggestion = hsl(220, 95, 55),
 
-    -- diagnostic_error = hsl(347, 80, 45),
-    -- diagnostic_warning = hsl(30, 100, 50),
-    -- diagnostic_info = hsl(145, 80, 30),
-    -- diagnostic_hint = hsl(145, 80, 30),
+    diagnostic_error = hsl(347, 80, 45),
+    diagnostic_warning = hsl(30, 100, 50),
+    diagnostic_info = hsl(145, 80, 30),
+    diagnostic_hint = hsl(145, 80, 30),
 
     popup_error_bg = hsl(0, 90, 99),
     popup_warning_bg = hsl(27, 90, 99),
@@ -35,6 +35,7 @@ local colors = {
     dialog_bg = hsl(224, 5, 92),
     selection = hsl(270, 75, 92),
     highlight_subtle = hsl(0, 0, 94),
+    highlight = hsl(0, 0, 90),
     highlight_intense = hsl(42, 100, 30),
   },
 
@@ -174,6 +175,7 @@ local setupGroups = function(c)
     InclineNormal = { bg = c.background },
     InclineNormalNC = { bg = c.background },
 
+    EndOfBuffer = { fg = c.dimmed },
     WinSeparator = { bg = c.dialog_bg, fg = c.dialog_fg },
     NormalFloat = { bg = c.background, fg = c.foreground },
     FloatBorder = { fg = c.foreground },
