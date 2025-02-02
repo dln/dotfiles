@@ -14,10 +14,12 @@ local colors = {
     comment = hsl(360, 66, 40),
     comment_error = hsl(2, 85, 40),
 
-    diagnostic_error = hsl(347, 80, 45),
-    diagnostic_warning = hsl(30, 100, 50),
-    diagnostic_info = hsl(145, 80, 30),
-    diagnostic_hint = hsl(145, 80, 30),
+    suggestion = hsl(220, 95, 60),
+
+    -- diagnostic_error = hsl(347, 80, 45),
+    -- diagnostic_warning = hsl(30, 100, 50),
+    -- diagnostic_info = hsl(145, 80, 30),
+    -- diagnostic_hint = hsl(145, 80, 30),
 
     popup_error_bg = hsl(0, 90, 99),
     popup_warning_bg = hsl(27, 90, 99),
@@ -59,6 +61,8 @@ local colors = {
     member = hsl(213, 45, 75),
     punc = hsl(213, 45, 50),
 
+    suggestion = hsl(158, 66, 40),
+
     diagnostic_error = hsl(353, 100, 45),
     diagnostic_warning = hsl(30, 100, 50),
     diagnostic_info = hsl(176, 80, 60),
@@ -88,8 +92,6 @@ local colors = {
 
     doc_bg = hsl(220, 80, 10),
     doc_fg = hsl(200, 30, 60),
-
-    suggestion = hsl(180, 55, 40),
   },
 
 }
@@ -118,8 +120,8 @@ local setupGroups = function(c)
     Search = { bg = c.search_bg, fg = c.search_fg },
     CurSearch = { link = "Search" },
 
-    Comment = { fg = c.comment, italic = true, bold = true },
-    CommentError = { fg = c.comment_error, italic = true, bold = true },
+    Comment = { fg = c.comment, italic = true },
+    CommentError = { fg = c.comment_error, italic = true },
     ["@comment.note"] = { link = "Comment" },
     ["@comment.todo"] = { link = "CommentError" },
     ["@comment.error"] = { link = "CommentError" },
@@ -207,7 +209,9 @@ local setupGroups = function(c)
     BlinkCmpSignatureHelp = { link = 'BlinkCmpDoc' },
     BlinkCmpSignatureHelpBorder = { link = 'BlinkCmpDocBorder' },
 
-    NeoCodeiumSuggestion = { fg = c.suggestion, bold = true, italic = true },
+    BlinkCmpGhostText = { fg = c.suggestion, italic = true, bold = true },
+    NeoCodeiumSuggestion = { link = 'BlinkCmpGhostText' },
+
     LspReferenceText = { fg = c.highlight_intense, undercurl = true },
     LspInlayHint = { fg = c.accent1, italic = true, bold = true },
   }
