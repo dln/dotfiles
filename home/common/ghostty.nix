@@ -14,16 +14,17 @@
       settings = {
         font-size = 11;
         font-family = "Berkeley Mono";
-        font-family-bold-italic = "Monaspace Radon Var";
+        font-family-italic = "Monaspace Radon Var";
+        font-family-bold-italic = "Monaspace Krypton Var";
         font-style = "Regular";
         font-style-bold = "Bold";
-        font-style-italic = "SemiLight Oblique";
-        font-style-bold-italic = "Italic";
+        font-style-italic = "Italic";
+        font-style-bold-italic = "ExtraLight";
         font-synthetic-style = false;
 
         adjust-cursor-thickness = 4;
-        adjust-underline-position = 5;
-        adjust-underline-thickness = -2;
+        adjust-underline-position = 3;
+        adjust-underline-thickness = -1;
 
         mouse-hide-while-typing = true;
         unfocused-split-opacity = 0.85;
@@ -75,7 +76,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-secondary --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
+          ghostty --class=com.mitchellh.ghostty-secondary --background-opacity=0.7 --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
         '';
         genericName = "Secondary Ghostty";
         icon = "com.mitchellh.ghostty";
@@ -113,7 +114,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-devel-secondary --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
+          ghostty --class=com.mitchellh.ghostty-devel-secondary --background-opacity=0.7 --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
         '';
         genericName = "Secondary Ghostty (devel)";
         icon = "com.mitchellh.ghostty";
