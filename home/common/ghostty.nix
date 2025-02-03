@@ -30,7 +30,6 @@
         unfocused-split-opacity = 0.85;
         unfocused-split-fill = "#14151a";
 
-
         shell-integration = "fish";
 
         gtk-tabs-location = "hidden";
