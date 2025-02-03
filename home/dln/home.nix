@@ -43,7 +43,6 @@ in
 
   programs.helix = {
     enable = true;
-    # extraPackages = [];
   };
 
   programs.jujutsu = {
@@ -62,6 +61,7 @@ in
 
       git = {
         push-bookmark-prefix = "dln/push-";
+        subprocess = true;
       };
 
       ui = {
