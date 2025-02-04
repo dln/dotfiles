@@ -75,7 +75,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-secondary --background-opacity=0.7 --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
+          ghostty --class=com.mitchellh.ghostty-secondary --background-opacity=0.8 --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
         '';
         genericName = "Secondary Ghostty";
         icon = "com.mitchellh.ghostty";
@@ -113,7 +113,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-devel-secondary --background-opacity=0.7 --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
+          ghostty --class=com.mitchellh.ghostty-devel-secondary --background-opacity=0.8 --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
         '';
         genericName = "Secondary Ghostty (devel)";
         icon = "com.mitchellh.ghostty";
