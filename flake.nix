@@ -15,7 +15,7 @@
 
   inputs = {
     ghostty.url = "github:ghostty-org/ghostty";
-    jujutsu.url = "github:jj-vcs/jj/main";
+    jujutsu.url = "github:jj-vcs/jj/v0.26.0";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
