@@ -106,15 +106,19 @@ in
           src = pkgs.fetchFromGitHub {
             owner = "monkoose";
             repo = "neocodeium";
-            rev = "4da81528468b33585c411f31eb390dce573ccb14"; # v1.8.0
-            hash = "sha256-1n9nNqBNwNDSzbAkm8eB4HZLNy5HmMg25jPwQAnW5OU=";
+            rev = "a2b5257c736886ec3ccbd961766f8ab9c82b2a72"; # 2025-02-04
+            hash = "sha256-mR2fzsdCVbh7nLcsSgQnhRivoKW6oFqJwuIYfz8OV0k=";
           };
           doCheck = false;
         };
         type = "lua";
         config = ''
           local neocodeium =require('neocodeium')
-          neocodeium.setup()
+          neocodeium.setup({
+            show_label = false,
+            debounce = true,
+            silent = false,
+          })
           vim.keymap.set("i", "<C-j>", neocodeium.accept, { remap = true })
           vim.keymap.set("i", "<A-f>", neocodeium.accept, { remap = true })
           vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete, { remap = true })
