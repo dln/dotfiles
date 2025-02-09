@@ -136,6 +136,5 @@
 
   programs.jujutsu = {
     enable = true;
-    package = inputs.jujutsu.packages.${pkgs.system}.default;
   };
 }
