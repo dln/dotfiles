@@ -48,12 +48,12 @@ in
         allowBitmaps = false;
         antialias = true;
         defaultFonts = {
+          monospace = [ "Berkeley Mono" ];
           serif = [ "Liberation Serif" ];
           sansSerif = [ "Inter" ];
         };
         hinting.enable = true;
         hinting.style = "slight";
-        subpixel.rgba = "rgb";
       };
       packages = with pkgs; [
         inter
@@ -63,7 +63,6 @@ in
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-color-emoji
-        roboto
         ubuntu_font_family
       ];
     };

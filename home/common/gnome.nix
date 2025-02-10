@@ -66,11 +66,9 @@ with lib.hm.gvariant;
         enable-animations = false;
         enable-hot-corners = false;
         show-battery-percentage = true;
-        font-antialiasing = "grayscale";
-        font-hinting = "slight";
         font-name = "Inter Variable 11";
         document-font-name = "Inter Variable 11";
-        monospace-font-name = "BerkeleyMono Nerd Font 11";
+        monospace-font-name = "Berkeley Mono 11";
         toolkit-accessibility = false;
       };
 

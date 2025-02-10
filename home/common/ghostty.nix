@@ -22,6 +22,8 @@
         font-style-bold-italic = "ExtraLight";
         font-synthetic-style = false;
 
+        freetype-load-flags = "no-force-autohint";
+
         adjust-cursor-thickness = 4;
         adjust-underline-position = 3;
         adjust-underline-thickness = -1;
