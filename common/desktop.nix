@@ -16,31 +16,30 @@ in
     environment.systemPackages = with pkgs; [ gnome-ssh-askpass4 ];
 
     # Excluding some GNOME applications from the default install
-    environment.gnome.excludePackages =
-      (with pkgs; [
-        gnome-connections
-        gnome-photos
-        gnome-tour
-        snapshot
-      ])
-      ++ (with pkgs; [
+    environment.gnome.excludePackages = (
+      with pkgs;
+      [
         atomix # puzzle game
         baobab # disk usage analyzer
         cheese # webcam tool
         epiphany # web browser
         geary # email reader
         gnome-clocks
-        gnome-contacts
+        gnome-connections
         gnome-disk-utility
         gnome-logs
         gnome-music
+        gnome-photos
         gnome-terminal
+        gnome-tour
+        snapshot
         hitori # sudoku game
         iagno # go game
         simple-scan
         tali # poker game
         yelp # help viewer
-      ]);
+      ]
+    );
 
     fonts = {
       fontDir.enable = true;

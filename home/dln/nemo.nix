@@ -24,7 +24,11 @@
     };
   };
 
-  home.packages = with pkgs; [ stable.calibre ];
+  home.packages = with pkgs; [
+    endeavour
+    picard
+    stable.calibre
+  ];
 
   programs.gpg.enable = true;
 
