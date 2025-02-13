@@ -37,7 +37,6 @@ in
 
     extraPackages = with pkgs; [
       codeium
-      harper
       lua-language-server
       nixd
       shellcheck

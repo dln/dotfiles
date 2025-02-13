@@ -221,14 +221,3 @@ vim.keymap.set("n", "<Leader>uw", "<cmd>set invwrap<cr>", opts("Toggle line wrap
 vim.keymap.set("n", "<Leader>ui", function()
   vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
 end, opts("Toggle indent scope"))
-
-vim.keymap.set("n", "<Leader>us", function()
-  local filter = { name = "harper_ls" } --- @type vim.lsp.get_clients.Filter
-  local client = vim.lsp.get_clients(filter)[1]
-  local current_buffer = vim.api.nvim_get_current_buf()
-  if client.attached_buffers[current_buffer] then
-    vim.lsp.buf_detach_client(current_buffer, client.id)
-  else
-    vim.lsp.buf_attach_client(current_buffer, client.id)
-  end
-end, opts("Toggle Harper spellcheck"))
