@@ -8,6 +8,7 @@ with lib.hm.gvariant;
 {
   config = lib.mkIf config.patagia.desktop.enable {
     home.packages = with pkgs; [
+      gnome-contacts
       gnome-shell-extensions
       gnome-tweaks
       gnome-pomodoro
