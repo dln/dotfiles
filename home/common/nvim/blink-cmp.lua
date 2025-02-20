@@ -60,12 +60,15 @@ require 'blink-cmp'.setup({
     window = { border = 'rounded', },
   },
 
+  cmdline = {
+    sources = {},
+  },
+
   sources = {
     default = {
       'lsp',
       'emoji',
     },
-    cmdline = {},
     providers = {
       emoji = {
         module = "blink-emoji",

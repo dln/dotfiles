@@ -8,6 +8,7 @@
     cameractrls-gtk4
     dynamic-wallpaper
     gimp
+    gimpPlugins.bimp
     inkscape
     moonlight-qt
     obsidian
