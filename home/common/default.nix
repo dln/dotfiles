@@ -6,8 +6,8 @@
     ./devel.nix
     ./fish.nix
     ./ghostty.nix
-    ./gnome.nix
     ./k8s.nix
+    ./niri.nix
     ./nix.nix
     ./nvim
     ./scripts.nix
