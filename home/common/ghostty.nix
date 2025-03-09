@@ -1,8 +1,6 @@
 {
   config,
-  inputs,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -10,7 +8,7 @@
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true;
-      package = inputs.ghostty.packages.${pkgs.system}.default;
+      # package = inputs.ghostty.packages.${pkgs.system}.default;
       settings = {
         font-size = 11;
         font-family = "Berkeley Mono";
