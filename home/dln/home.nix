@@ -53,7 +53,7 @@ in
       };
 
       signing = {
-        sign-all = true;
+        behavior = "own";
         backend = "ssh";
         backends.ssh.allowed-signers = "/home/dln/.ssh/authorized_keys";
         key = "/home/dln/.ssh/git_signing_key.pub";
