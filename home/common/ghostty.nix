@@ -8,7 +8,6 @@
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true;
-      # package = inputs.ghostty.packages.${pkgs.system}.default;
       settings = {
         font-size = 11;
         font-family = "Berkeley Mono";
@@ -35,6 +34,8 @@
         gtk-tabs-location = "hidden";
         gtk-titlebar = false;
         gtk-titlebar-hide-when-maximized = true;
+        window-height = 60;
+        window-width = 160;
         window-padding-balance = true;
         window-padding-color = "extend";
         window-theme = "system";
@@ -46,6 +47,7 @@
           "ctrl+i=text:\\x09"
           "ctrl+m=text:\\x0D"
           "ctrl+tab=goto_split:previous"
+          "alt+`=goto_split:previous"
           "ctrl+[=text:\\x1B"
           "super+enter=toggle_fullscreen"
         ];

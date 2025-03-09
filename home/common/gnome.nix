@@ -26,6 +26,7 @@ with lib.hm.gvariant;
         minimize = [ "<Super>comma" ];
         move-to-center = [ "<Super>c" ];
         switch-applications = [ "<Super>Tab" ];
+        switch-group = [ "<Super>Above_Tab" ];
         switch-windows = [ "<Alt>Tab" ];
         move-to-workspace-1 = [ "<Shift>F1" ];
         move-to-workspace-2 = [ "<Shift>F2" ];
