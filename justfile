@@ -4,9 +4,6 @@ set shell := ["/usr/bin/env", "bash", "-euo", "pipefail", "-c"]
 default:
 	@just --list
 
-boot:
-  nh os boot .
-
 build:
   nh os build .
 
