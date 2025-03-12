@@ -126,6 +126,7 @@ local setupGroups = function(c)
     Type = { link = "NormalNC" },
 
     MsgArea = { fg = c.dimmed_subtle },
+    StatusLine = { fg = c.dimmed, bg = c.dimmed_subtle },
 
     String = { fg = c.string },
 
