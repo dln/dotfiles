@@ -10,6 +10,7 @@
     gimp
     gimpPlugins.bimp
     inkscape
+    libreoffice
     moonlight-qt
     obsidian
     pavucontrol
