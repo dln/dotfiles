@@ -26,8 +26,8 @@
         adjust-underline-thickness = -1;
 
         mouse-hide-while-typing = true;
-        unfocused-split-opacity = 0.85;
-        unfocused-split-fill = "#14151a";
+        unfocused-split-opacity = 0.8;
+        unfocused-split-fill = "#056157";
 
         shell-integration = "fish";
 
