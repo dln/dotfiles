@@ -235,5 +235,8 @@
     "nixremote"
   ];
 
+  services.printing.enable = lib.mkForce true;
+  services.printing.drivers = [ pkgs.brlaser ];
+
   system.stateVersion = "24.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }
