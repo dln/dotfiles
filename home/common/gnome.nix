@@ -15,6 +15,7 @@ with lib.hm.gvariant;
       gnomeExtensions.desktop-clock
       gnomeExtensions.emoji-copy
       gnomeExtensions.just-perfection
+      gnomeExtensions.night-light-slider
     ];
 
     dconf.settings = {
