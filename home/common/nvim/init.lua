@@ -114,8 +114,16 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = "",
     },
   },
-  virtual_lines = true,
+  virtual_lines = { current_line = true },
 }
+vim.keymap.set('n', '<Space>ud', function()
+  if vim.diagnostic.config().virtual_lines == true then
+    vim.diagnostic.config({ virtual_lines = { current_line = true } })
+  else
+    vim.diagnostic.config({ virtual_lines = true })
+  end
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
 
 -- Make <Tab> work for snippets
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
