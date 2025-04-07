@@ -16,6 +16,7 @@
     pavucontrol
     plexamp
     signal-desktop
+    spotify
   ];
 
   xdg.desktopEntries = {

@@ -93,6 +93,7 @@ vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 
 -- Diagnostics
 vim.diagnostic.config {
+  float = { border = "rounded" },
   severity_sort = true,
   signs = {
     linehl = {
@@ -114,11 +115,12 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = "",
     },
   },
-  virtual_lines = { current_line = true },
+  virtual_lines = false,
 }
 vim.keymap.set('n', '<Space>ud', function()
   if vim.diagnostic.config().virtual_lines == true then
-    vim.diagnostic.config({ virtual_lines = { current_line = true } })
+    -- vim.diagnostic.config({ virtual_lines = { current_line = true } })
+    vim.diagnostic.config({ virtual_lines = false })
   else
     vim.diagnostic.config({ virtual_lines = true })
   end
@@ -176,8 +178,13 @@ end, opts("Format Buffer"))
 vim.keymap.set('n', '<Leader><Leader>', "<cmd>Pick visit_paths cwd=''<cr>", opts("Visits"))
 vim.keymap.set('n', '<Leader>b', "<cmd>Pick buffers<cr>", opts("Open buffer picker"))
 vim.keymap.set('n', '<Leader>/', "<cmd>Pick grep_live_root<cr>", opts("Search workspace files"))
-vim.keymap.set('n', '<Leader>d', "<cmd>Pick diagnostic<cr>", opts("Open diagnostics picker"))
-vim.keymap.set("n", "<Leader>D", vim.diagnostic.setloclist, { desc = "Diagnostics to location list" })
+vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float, opts("Show diagnostics for line"))
+vim.keymap.set('n', '<m-d>', vim.diagnostic.open_float, opts("Show diagnostics for line"))
+vim.keymap.set('n', '<Leader>D', function()
+  local width = vim.o.columns - 8
+  MiniExtra.pickers.diagnostic({ scope = "current" }, { window = { config = { width = width } } })
+end, opts("Open diagnostics picker"))
+
 vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts("Rename Symbol"))
 vim.keymap.set('n', '<Leader>F', "<cmd>Pick files<cr>", opts("Open file picker CWD"))
 vim.keymap.set('n', '<Leader>f', "<cmd>Pick files_root<cr>", opts("Open file picker"))
