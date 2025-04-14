@@ -7,6 +7,8 @@
     viddy
   ];
 
+  home.sessionVariables.DIRENV_LOG_FORMAT = ''$(printf "\033[2mdirenv: %%s\033[0m")'';
+
   programs = {
     bat = {
       enable = true;
