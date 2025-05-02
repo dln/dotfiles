@@ -93,7 +93,11 @@ vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 
 -- Diagnostics
 vim.diagnostic.config {
-  float = { border = "rounded" },
+  float = {
+    border = "rounded",
+    header = "",
+    source = "if_many",
+  },
   severity_sort = true,
   signs = {
     linehl = {
