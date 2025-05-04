@@ -105,8 +105,8 @@ in
           src = pkgs.fetchFromGitHub {
             owner = "monkoose";
             repo = "neocodeium";
-            rev = "a2b5257c736886ec3ccbd961766f8ab9c82b2a72"; # 2025-02-04
-            hash = "sha256-mR2fzsdCVbh7nLcsSgQnhRivoKW6oFqJwuIYfz8OV0k=";
+            rev = "511ae8a76561a6352f845169bcb6c906fd1892bb"; # 2025-04-19
+            hash = "sha256-7y4iCfCP1Ht9+Q4b11+PTRsjNaJEIGaeBzJnzYwFIqw=";
           };
           doCheck = false;
         };
