@@ -17,6 +17,7 @@
     plexamp
     signal-desktop
     spotify
+    thunderbird
   ];
 
   xdg.desktopEntries = {
