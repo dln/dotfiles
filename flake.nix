@@ -68,6 +68,7 @@
       devShell.${system} = pkgs.mkShell {
         packages = with pkgs; [
           just
+          lua-language-server
           nh
           nil
           nixd

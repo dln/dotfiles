@@ -7,6 +7,7 @@
     file
     just
     nix-output-monitor
+    openssl
     passage
     rage
   ];
