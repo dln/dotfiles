@@ -141,5 +141,5 @@
     "ssh-ng://nemo.aarn.patagia.net"
   ];
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

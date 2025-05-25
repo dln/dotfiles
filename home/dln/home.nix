@@ -14,8 +14,8 @@ in
     homeDirectory = "/home/dln";
     packages = with pkgs; [
       asciinema
-      openconnect
       ouch
+      toolbox
     ];
   };
 
@@ -61,7 +61,6 @@ in
 
       git = {
         push-bookmark-prefix = "dln/push-";
-        subprocess = true;
       };
 
       ui = {

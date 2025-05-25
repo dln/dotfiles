@@ -66,6 +66,7 @@ in
       ];
     };
 
+    programs.ssh.enableAskPassword = true;
     programs.ssh.askPassword = "${pkgs.gnome-ssh-askpass4}/bin/gnome-ssh-askpass4";
     programs.ssh.startAgent = true;
 

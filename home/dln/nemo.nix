@@ -35,6 +35,6 @@
   services.gpg-agent = {
     enable = true;
     enableScDaemon = false;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentry.package = pkgs.pinentry-curses;
   };
 }
