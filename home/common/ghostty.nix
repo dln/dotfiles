@@ -14,7 +14,7 @@
         font-family-italic = "Monaspace Radon Var";
         font-family-bold-italic = "Monaspace Krypton Var";
         font-style = "SemiCondensed";
-        font-style-bold = "Bold SemiCondensed";
+        font-style-bold = "ExtraBold SemiCondensed";
         font-style-italic = "ExtraLight Italic";
         font-style-bold-italic = "ExtraLight";
         font-synthetic-style = false;
