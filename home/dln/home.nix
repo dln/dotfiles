@@ -305,6 +305,12 @@ in
           host.address = "localhost";
           host.port = 8080;
         }
+        {
+          bind.address = "localhost";
+          bind.port = 8484;
+          host.address = "localhost";
+          host.port = 8484;
+        }
       ];
     };
   };

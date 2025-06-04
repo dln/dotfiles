@@ -10,6 +10,7 @@
     ./k8s.nix
     ./nix.nix
     ./nvim
+    ./proton.nix
     ./scripts.nix
     ./ssh.nix
     ./tmux.nix
