@@ -66,9 +66,11 @@ in
       ];
     };
 
+    services.gnome.gnome-keyring.enable = true;
+    systemd.user.services.gcr-ssh-agent.environment.SSH_ASKPASS = config.programs.ssh.askPassword;
+
     programs.ssh.enableAskPassword = true;
     programs.ssh.askPassword = "${pkgs.gnome-ssh-askpass4}/bin/gnome-ssh-askpass4";
-    programs.ssh.startAgent = true;
 
     programs.steam = {
       enable = true;
@@ -76,8 +78,6 @@ in
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-
-    services.gnome.gnome-keyring.enable = true;
 
     services.printing.enable = true;
 

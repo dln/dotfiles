@@ -16,11 +16,6 @@
     environment.TMPDIR = "/var/tmp";
   };
 
-  system.switch = {
-    enable = false;
-    enableNg = true;
-  };
-
   services.fstrim.enable = true;
   services.fwupd.enable = true;
 
