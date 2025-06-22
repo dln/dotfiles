@@ -48,6 +48,7 @@ in
       blink-emoji-nvim
       friendly-snippets
       go-nvim
+      plenary-nvim
       targets-vim
       ts-comments-nvim
 
@@ -113,6 +114,37 @@ in
         plugin = mini-nvim;
         type = "lua";
         config = lib.fileContents ./mini.lua;
+      }
+
+      {
+        plugin = minuet-ai-nvim;
+        type = "lua";
+        config = ''
+            require('minuet').setup {
+            provider_options = {
+              codestral = {
+                optional = {
+                  max_tokens = 256,
+                  stop = { '\n\n' },
+                },
+              },
+            },
+            virtualtext = {
+              auto_trigger_ft = {
+                'go',
+                'rust',
+              },
+              keymap = {
+                accept = '<A-a>',
+                accept_line = '<A-A>',
+                accept_n_lines = '<A-z>',
+                prev = '<A-[>',
+                next = '<A-]>',
+                dismiss = '<A-e>',
+              },
+            },
+          }
+        '';
       }
 
       {

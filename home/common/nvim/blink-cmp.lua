@@ -5,6 +5,7 @@ require 'blink-cmp'.setup({
     ['<S-Tab>'] = { 'select_prev', 'fallback' },
     ['<PageDown>'] = { 'scroll_documentation_down', 'fallback' },
     ['<PageUp>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<A-y>'] = require('minuet').make_blink_map(),
   },
   completion = {
     accept = {
@@ -46,7 +47,11 @@ require 'blink-cmp'.setup({
           }
         }
       }
-    }
+    },
+
+    trigger = {
+      prefetch_on_insert = false
+    },
   },
 
   fuzzy = {
@@ -61,21 +66,30 @@ require 'blink-cmp'.setup({
   },
 
   cmdline = {
-    sources = {},
+    keymap = { preset = 'inherit' },
+    completion = { menu = { auto_show = true } },
   },
 
   sources = {
     default = {
       'lsp',
       'emoji',
+      'minuet',
     },
     providers = {
       emoji = {
         module = "blink-emoji",
         name = "Emoji",
-        score_offset = 1,
+        score_offset = -40,
         opts = { insert = true },
-      }
+      },
+      minuet = {
+        name = 'minuet',
+        module = 'minuet.blink',
+        async = true,
+        timeout_ms = 3000, -- Should match minuet.config.request_timeout * 1000
+        score_offset = -50,
+      },
     },
   },
 })

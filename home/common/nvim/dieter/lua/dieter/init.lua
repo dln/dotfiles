@@ -114,7 +114,6 @@ local colors = {
 }
 
 local setupGroups = function(c)
-
   return {
     Normal = { fg = c.foreground, bg = c.background },
 
@@ -231,7 +230,7 @@ local setupGroups = function(c)
     BlinkCmpSignatureHelpBorder = { link = 'BlinkCmpDocBorder' },
 
     BlinkCmpGhostText = { fg = c.suggestion, italic = true, bold = true },
-    NeoCodeiumSuggestion = { link = 'BlinkCmpGhostText' },
+    MinuetVirtualText = { link = 'BlinkCmpGhostText' },
 
     LspReferenceText = { fg = c.highlight_intense, undercurl = true },
     LspInlayHint = { fg = c.accent1, italic = true, bold = true },
