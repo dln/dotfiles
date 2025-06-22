@@ -36,7 +36,6 @@ in
     extraLuaConfig = lib.fileContents ./init.lua;
 
     extraPackages = with pkgs; [
-      codeium
       lua-language-server
       nixd
       shellcheck
@@ -96,31 +95,6 @@ in
           require('inlay-hints').setup {
             autocmd = { enable = false },
           }
-        '';
-      }
-
-      {
-        plugin = pkgs.vimUtils.buildVimPlugin {
-          name = "neocodeium";
-          src = pkgs.fetchFromGitHub {
-            owner = "monkoose";
-            repo = "neocodeium";
-            rev = "a2b5257c736886ec3ccbd961766f8ab9c82b2a72"; # 2025-02-04
-            hash = "sha256-mR2fzsdCVbh7nLcsSgQnhRivoKW6oFqJwuIYfz8OV0k=";
-          };
-          doCheck = false;
-        };
-        type = "lua";
-        config = ''
-          local neocodeium =require('neocodeium')
-          neocodeium.setup({
-            show_label = false,
-            debounce = true,
-            silent = false,
-          })
-          vim.keymap.set("i", "<C-j>", neocodeium.accept, { remap = true })
-          vim.keymap.set("i", "<A-f>", neocodeium.accept, { remap = true })
-          vim.keymap.set("i", "<C-h>", neocodeium.cycle_or_complete, { remap = true })
         '';
       }
 
