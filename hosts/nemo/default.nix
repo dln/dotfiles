@@ -170,7 +170,7 @@
     lm_sensors
     pam_rssh
     openconnect
-    # tpm2-tools
+    tpm2-tools
     v4l-utils
   ];
 
@@ -178,12 +178,11 @@
     OTEL_EXPORTER_OTLP_ENDPOINT = "https://otel.aarn.patagia.net";
   };
 
-  # FIXME: Uncomment when pytss2 patch is merged
-  # security.tpm2 = {
-  #   enable = true;
-  #   pkcs11.enable = true;
-  #   tctiEnvironment.enable = true;
-  # };
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
 
   users.users.dln = {
     isNormalUser = true;
