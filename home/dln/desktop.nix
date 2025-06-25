@@ -7,8 +7,7 @@
   home.packages = with pkgs; [
     cameractrls-gtk4
     dynamic-wallpaper
-    gimp
-    gimpPlugins.bimp
+    gimp3-with-plugins
     inkscape
     libreoffice
     moonlight-qt
