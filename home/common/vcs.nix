@@ -12,6 +12,8 @@
     difftastic
     git-get
     git-graph
+    meld
+    mergiraf
     tea
   ];
 
