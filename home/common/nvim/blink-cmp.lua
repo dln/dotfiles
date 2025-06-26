@@ -67,7 +67,7 @@ require 'blink-cmp'.setup({
 
   cmdline = {
     keymap = { preset = 'inherit' },
-    completion = { menu = { auto_show = true } },
+    completion = { menu = { auto_show = false } },
   },
 
   sources = {
