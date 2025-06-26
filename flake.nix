@@ -79,13 +79,11 @@
       nixosConfigurations = {
         dinky = mkHost [ ./hosts/dinky ];
         nemo = mkHost [ ./hosts/nemo ];
-        pearl = mkHost [ ./hosts/pearl ];
       };
 
       homeConfigurations = {
         "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
         "dln@nemo" = mkHome [ ./home/dln/nemo.nix ];
-        "dln@pearl" = mkHome [ ./home/dln/pearl.nix ];
       };
     };
 }
