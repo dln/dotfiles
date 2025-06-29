@@ -11,6 +11,7 @@
     ./nix.nix
     ./nvim
     ./proton.nix
+    ./ragenix.nix
     ./scripts.nix
     ./ssh.nix
     ./tmux.nix

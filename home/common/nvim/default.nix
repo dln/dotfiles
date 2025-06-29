@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -10,6 +11,8 @@ let
     text = ''
       _sess=$(echo -n "$USER@''${SSH_CONNECTION:-$HOSTNAME}" | tr -c '[:alnum:]@.' '_')
       _nvim_sock="''${XDG_RUNTIME_DIR:-/tmp}/nvim.$_sess.sock"
+      CODESTRAL_API_KEY="$(cat "${config.age.secrets.codestral_api_key.path}")"
+      export CODESTRAL_API_KEY
       exec nvim --listen "$_nvim_sock" --server "$_nvim_sock" "$@"
     '';
   };
@@ -23,9 +26,14 @@ in
 
   programs.man.generateCaches = false;
 
+  age.secrets = {
+    codestral_api_key.file = ../../../secrets/codestral_api_key.age;
+  };
+
   programs.neovim = {
     enable = true;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;

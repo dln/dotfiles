@@ -24,6 +24,7 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    ragenix.url = "github:yaxitech/ragenix";
   };
 
   outputs =
@@ -33,6 +34,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      ragenix,
       ...
     }:
     let
@@ -57,6 +59,7 @@
             inherit inputs outputs;
           };
           modules = [
+            ragenix.homeManagerModules.default
             ./home/common
             nix-index-database.hmModules.nix-index
           ] ++ modules;
@@ -73,6 +76,7 @@
           nil
           nixd
           nixfmt-rfc-style
+          (inputs.ragenix.packages.${system}.default.override { plugins = [ age-plugin-tpm ]; })
         ];
       };
 
