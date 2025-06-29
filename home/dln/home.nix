@@ -59,9 +59,7 @@ in
         key = "/home/dln/.ssh/git_signing_key.pub";
       };
 
-      git = {
-        push-bookmark-prefix = "dln/push-";
-      };
+      templates.git_push_bookmark = ''"dln/push-\" ++ change_id.short()'';
 
       ui = {
         "default-command" = [ "s" ];
