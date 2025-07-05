@@ -67,6 +67,7 @@
 
   environment.systemPackages = with pkgs; [
     mullvad-vpn
+    tpm2-tools
   ];
 
   services.printing.enable = lib.mkForce false;
@@ -90,6 +91,12 @@
 
   services.mullvad-vpn.enable = true;
 
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
+
   users.users.dln = {
     isNormalUser = true;
     description = "Daniel Lundin";
@@ -97,6 +104,7 @@
       "adbusers"
       "lp"
       "nitrokey"
+      "tss"
       "wheel"
     ];
     openssh.authorizedKeys.keys = [
