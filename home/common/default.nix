@@ -14,11 +14,9 @@
     ./ragenix.nix
     ./scripts.nix
     ./ssh.nix
-    ./tmux.nix
     ./utils.nix
     ./vcs.nix
     ./web.nix
-    ./wezterm.nix
   ];
 
   options.patagia.desktop.enable = lib.mkEnableOption "Desktop environment";

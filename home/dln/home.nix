@@ -41,10 +41,6 @@ in
     userEmail = email;
   };
 
-  programs.helix = {
-    enable = true;
-  };
-
   programs.jujutsu = {
     settings = {
       user = {

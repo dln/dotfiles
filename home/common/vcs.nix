@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
@@ -12,14 +11,9 @@
     difftastic
     git-get
     git-graph
-    meld
     mergiraf
     tea
   ];
-
-  programs.gh = {
-    enable = true;
-  };
 
   programs.git = {
     enable = true;

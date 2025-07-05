@@ -44,7 +44,6 @@
     jq.enable = true;
     less.enable = true;
     lesspipe.enable = true;
-    tmux.enable = true;
 
     ripgrep = {
       enable = true;
