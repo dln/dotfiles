@@ -34,8 +34,8 @@
         gtk-tabs-location = "hidden";
         gtk-titlebar = false;
         gtk-titlebar-hide-when-maximized = true;
-        window-height = 60;
-        window-width = 160;
+        window-height = 45;
+        window-width = 120;
         window-padding-balance = true;
         window-padding-color = "extend";
         window-theme = "system";
