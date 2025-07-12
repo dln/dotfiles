@@ -12,6 +12,7 @@ with lib.hm.gvariant;
       gnome-shell-extensions
       gnome-tweaks
       gnome-pomodoro
+      gnomeExtensions.blur-my-shell
       gnomeExtensions.desktop-clock
       gnomeExtensions.emoji-copy
       gnomeExtensions.highlight-focus
@@ -151,8 +152,23 @@ with lib.hm.gvariant;
 
       "org/gnome/shell" = {
         enabled-extensions = [
+          "blur-my-shell@aunetx"
           "emoji-copy@felipeftn"
+          "highlight-focus@pimsnel.com"
           "just-perfection-desktop@just-perfection"
+        ];
+      };
+
+      "org/gnome/shell/extensions/blur-my-shell/applications" = {
+        blur = true;
+        brightness = 1.0;
+        dynamic-opacity = false;
+        enable-all = false;
+        opacity = 210;
+        sigma = 25;
+        whitelist = [
+          "com.mitchellh.ghostty"
+          "com.mitchellh.ghostty-devel"
         ];
       };
 
