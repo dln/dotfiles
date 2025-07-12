@@ -14,6 +14,7 @@ with lib.hm.gvariant;
       gnome-pomodoro
       gnomeExtensions.desktop-clock
       gnomeExtensions.emoji-copy
+      gnomeExtensions.highlight-focus
       gnomeExtensions.just-perfection
       gnomeExtensions.night-light-slider
     ];
@@ -157,6 +158,14 @@ with lib.hm.gvariant;
 
       "org/gnome/shell/extensions/emoji-copy" = {
         emoji-keybind = [ "<Super>e" ];
+      };
+
+      "org/gnome/shell/extensions/highlight-focus" = {
+        border-color = "#3d3846";
+        border-radius = 12;
+        border-width = 2;
+        disable-hiding = true;
+        keybinding-highlight-now = [ "<Super>h" ];
       };
 
       "org/gnome/shell/extensions/just-perfection" = {
