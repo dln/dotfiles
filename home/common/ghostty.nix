@@ -38,6 +38,8 @@
         window-width = 120;
         window-padding-balance = true;
         window-padding-color = "extend";
+        window-padding-x = 10;
+        window-padding-y = 10;
         window-theme = "system";
         theme = "light:PatagiaLight,dark:PatagiaDark";
 
