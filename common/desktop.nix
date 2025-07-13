@@ -85,11 +85,15 @@ in
 
     services.xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
-      displayManager.gdm.autoSuspend = false;
-      desktopManager.gnome.enable = true;
       xkb.layout = "se";
       xkb.variant = "us";
+    };
+
+    services.desktopManager.gnome.enable = true;
+
+    services.displayManager = {
+      gdm.enable = true;
+      gdm.autoSuspend = false;
     };
 
     services.pulseaudio.enable = false;
