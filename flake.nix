@@ -4,6 +4,7 @@
   nixConfig = {
     substituters = [
       "https://cache-nixos-org.aarn.patagia.net/"
+      "https://cache.nixos.org"
     ];
     extra-substituters = [
       "https://nix-community.cachix.org"
@@ -32,6 +33,7 @@
       self,
       nix-index-database,
       nixpkgs,
+      nixpkgs-stable,
       nixpkgs-unstable,
       home-manager,
       ragenix,
