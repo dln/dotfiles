@@ -10,7 +10,9 @@
     oled.enable = true;
   };
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [
+    stable.calibre
+  ];
 
   programs.gpg.enable = true;
   services.gpg-agent = {
