@@ -6,23 +6,43 @@
   ...
 }:
 let
+
+  nvimWrapper =
+    let
+      nvimPackage = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    in
+    pkgs.symlinkJoin {
+      name = "nvim-wrapper";
+      meta = nvimPackage.meta // {
+        description = "Neovim with environment variables";
+      };
+      lua = nvimPackage.lua;
+      paths = [ nvimPackage ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/nvim \
+          --run 'export CODESTRAL_API_KEY="$(cat ${config.age.secrets.codestral_api_key.path})"'
+      '';
+    };
+
   nvim-remote = pkgs.writeShellApplication {
     name = "nvim-remote";
     text = ''
       _sess=$(echo -n "$USER@''${SSH_CONNECTION:-$HOSTNAME}" | tr -c '[:alnum:]@.' '_')
       _nvim_sock="''${XDG_RUNTIME_DIR:-/tmp}/nvim.$_sess.sock"
-      CODESTRAL_API_KEY="$(cat "${config.age.secrets.codestral_api_key.path}")"
-      export CODESTRAL_API_KEY
-      exec nvim --listen "$_nvim_sock" --server "$_nvim_sock" "$@"
+      exec ${config.programs.neovim.finalPackage}/bin/nvim --listen "$_nvim_sock" --server "$_nvim_sock" "$@"
     '';
   };
+
 in
 {
   imports = [
     ./treesitter.nix
   ];
 
-  home.packages = [ nvim-remote ];
+  home.packages = [
+    nvim-remote
+  ];
 
   programs.man.generateCaches = false;
 
@@ -32,7 +52,7 @@ in
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = nvimWrapper;
 
     defaultEditor = true;
     viAlias = true;
