@@ -50,7 +50,10 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./common ] ++ modules;
+          modules = [
+            ragenix.nixosModules.default
+            ./common
+          ] ++ modules;
         };
 
       mkHome =
@@ -72,6 +75,7 @@
 
       devShell.${system} = pkgs.mkShell {
         packages = with pkgs; [
+          age-plugin-tpm
           just
           lua-language-server
           nh
@@ -79,6 +83,7 @@
           nixd
           nixfmt-rfc-style
           (inputs.ragenix.packages.${system}.default.override { plugins = [ age-plugin-tpm ]; })
+          rage
         ];
       };
 
