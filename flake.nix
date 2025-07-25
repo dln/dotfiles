@@ -53,7 +53,8 @@
           modules = [
             ragenix.nixosModules.default
             ./common
-          ] ++ modules;
+          ]
+          ++ modules;
         };
 
       mkHome =
@@ -66,8 +67,9 @@
           modules = [
             ragenix.homeManagerModules.default
             ./home/common
-            nix-index-database.hmModules.nix-index
-          ] ++ modules;
+            nix-index-database.homeModules.nix-index
+          ]
+          ++ modules;
         };
     in
     {
