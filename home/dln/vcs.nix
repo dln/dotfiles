@@ -115,6 +115,13 @@
           "diff"
           "--tool=difftu"
         ];
+        evolve = [
+          "rebase"
+          "--skip-emptied"
+          "--destination"
+          "trunk()"
+
+        ];
         s = [
           "util"
           "exec"
@@ -134,6 +141,23 @@
             fi
           ''
           ""
+        ];
+        sync = [
+          "git"
+          "fetch"
+          "--all-remotes"
+        ];
+        tug = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          ''
+            #!/usr/bin/env bash
+            set -eu pipefail
+            jj sync && jj evolve && jj
+          ''
         ];
       };
 
