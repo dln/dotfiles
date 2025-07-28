@@ -253,5 +253,51 @@
   services.printing.enable = lib.mkForce true;
   services.printing.drivers = [ pkgs.brlaser ];
 
+  services.pipewire = {
+    extraConfig = {
+      pipewire."92-low-latency" = {
+        "context.properties" = {
+          "default.clock.rate" = 96000;
+          "default.clock.quantum" = 128;
+          "default.clock.min-quantum" = 64;
+          "default.clock.max-quantum" = 8192;
+        };
+      };
+
+      pipewire-pulse."92-low-latency" = {
+        context.modules = [
+          {
+            name = "libpipewire-module-protocol-pulse";
+            args = {
+              pulse.min.req = "128/96000";
+              pulse.default.req = "128/96000";
+              pulse.max.req = "128/96000";
+              pulse.min.quantum = "128/96000";
+              pulse.max.quantum = "128/96000";
+            };
+          }
+        ];
+        stream.properties = {
+          node.latency = "128/96000";
+          resample.quality = 1;
+        };
+      };
+    };
+
+    wireplumber.extraConfig.main."99-alsa-lowlatency" = ''
+      alsa_monitor.rules = {
+        {
+          matches = {{{ "node.name", "matches", "alsa_output.*" }}};
+          apply_properties = {
+            ["audio.format"] = "S32LE",
+            ["audio.rate"] = "96000", -- for USB soundcards it should be twice your desired rate
+            ["api.alsa.period-size"] = 2, -- defaults to 1024, tweak by trial-and-error
+            -- ["api.alsa.disable-batch"] = true, -- generally, USB soundcards use the batch mode
+          },
+        },
+      }
+    '';
+  };
+
   system.stateVersion = "24.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }
