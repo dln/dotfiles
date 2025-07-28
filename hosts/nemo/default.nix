@@ -28,7 +28,10 @@
       "usb_storage"
       "sd_mod"
     ];
-    initrd.kernelModules = [ "nct6687" ];
+    initrd.kernelModules = [
+      "amdgpu"
+      "nct6687"
+    ];
     kernelModules = [
       "nct6687"
       "kvm-intel"
@@ -72,13 +75,21 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
+      amdvlk
       vpl-gpu-rt
       intel-media-driver
       vaapiVdpau
       libvdpau-va-gl
     ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
   };
+
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   hardware.enableAllFirmware = true;
 
@@ -170,6 +181,7 @@
   environment.systemPackages = with pkgs; [
     ffado
     libcamera
+    lact
     lm_sensors
     pam_rssh
     openconnect
