@@ -21,6 +21,17 @@
 
   time.timeZone = "Europe/Stockholm";
 
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ALL = "en_US.UTF-8";
+      LANG = "en_US.UTF-8";
+    };
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     btrfs-progs
     btrfs-snap
