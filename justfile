@@ -7,6 +7,9 @@ default:
 build:
   nh os build .
 
+boot:
+  nh os boot .
+
 switch:
   nh os switch .
 
