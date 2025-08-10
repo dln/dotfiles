@@ -10,6 +10,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./harmonia.nix
+    ./steam.nix
     ./woodpecker.nix
   ];
 
@@ -29,7 +30,6 @@
       "sd_mod"
     ];
     initrd.kernelModules = [
-      "amdgpu"
       "nct6687"
     ];
     kernelModules = [
@@ -40,7 +40,10 @@
       options nct6687 force=1
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
-    kernelParams = [ "mitigations=off" ];
+    kernelParams = [
+      "mitigations=off"
+      # "amdgpu.abmlevel=0"
+    ];
   };
 
   fileSystems."/" = {
@@ -77,14 +80,17 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      amdvlk
-      vpl-gpu-rt
       intel-media-driver
-      vaapiVdpau
       libvdpau-va-gl
+      vaapiVdpau
+      vpl-gpu-rt
+      vulkan-extension-layer
+      vulkan-headers
+      vulkan-loader
+      vulkan-tools
+      vulkan-validation-layers
     ];
     extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
     ];
   };
 
@@ -112,6 +118,9 @@
     firewall.enable = false;
 
     networkmanager.enable = false;
+    #networkmanager.enable = true;
+    #networkmanager.wifi.backend = "iwd";
+
     useDHCP = false;
 
     wireless.iwd = {
@@ -133,7 +142,7 @@
 
   systemd.network.enable = true;
   systemd.network.networks."10-wifi" = {
-    matchConfig.Name = "wlan0";
+    matchConfig.Name = "enp9s0";
     address = [ "10.1.100.20/22" ];
     gateway = [ "10.1.100.1" ];
     linkConfig.RequiredForOnline = "routable";
@@ -176,7 +185,7 @@
 
   patagia = {
     desktop.enable = true;
-    plymouth.enable = true;
+    plymouth.enable = false;
     podman.enable = true;
   };
 
@@ -205,7 +214,12 @@
     isNormalUser = true;
     description = "Daniel Lundin";
     extraGroups = [
+      "audio"
+      "input"
+      "render"
+      "seat"
       "tss"
+      "video"
       "wheel"
     ];
     openssh.authorizedKeys.keys = [
@@ -260,7 +274,7 @@
       pipewire."92-low-latency" = {
         "context.properties" = {
           "default.clock.rate" = 96000;
-          "default.clock.quantum" = 128;
+          "default.clock.quantum" = 1024;
           "default.clock.min-quantum" = 64;
           "default.clock.max-quantum" = 8192;
         };
@@ -271,16 +285,16 @@
           {
             name = "libpipewire-module-protocol-pulse";
             args = {
-              pulse.min.req = "128/96000";
-              pulse.default.req = "128/96000";
-              pulse.max.req = "128/96000";
-              pulse.min.quantum = "128/96000";
-              pulse.max.quantum = "128/96000";
+              pulse.min.req = "1024/96000";
+              pulse.default.req = "1024/96000";
+              pulse.max.req = "1024/96000";
+              pulse.min.quantum = "1024/96000";
+              pulse.max.quantum = "1024/96000";
             };
           }
         ];
         stream.properties = {
-          node.latency = "128/96000";
+          node.latency = "1024/96000";
           resample.quality = 1;
         };
       };
