@@ -9,17 +9,11 @@
       enable = true;
       enableFishIntegration = true;
       settings = {
-        font-size = 11;
-        font-family = "Berkeley Mono";
-        font-family-italic = "Monaspace Radon Var";
-        font-family-bold-italic = "Monaspace Krypton Var";
-        font-style = "SemiCondensed";
-        font-style-bold = "ExtraBold SemiCondensed";
-        font-style-italic = "ExtraLight Italic";
-        font-style-bold-italic = "ExtraLight";
+        font-size = 10;
+        font-family = "Go Mono";
         font-synthetic-style = false;
 
-        adjust-cell-height = 2;
+        adjust-cell-height = 6;
         adjust-font-baseline = 1;
         adjust-cursor-thickness = 4;
         adjust-underline-position = 3;

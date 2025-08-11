@@ -55,6 +55,7 @@ in
         hinting.style = "slight";
       };
       packages = with pkgs; [
+        go-font
         inter
         liberation_ttf
         monaspace
