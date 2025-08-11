@@ -22,7 +22,9 @@
         substituters = [
           "https://cache-nixos-org.aarn.patagia.net/"
         ];
-        trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+        trusted-public-keys = [
+          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        ];
         extra-substituters = [
           "https://nix-community.cachix.org"
         ];
