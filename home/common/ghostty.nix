@@ -55,6 +55,24 @@
           cursor-color = "#e7e7b7";
           selection-background = "#84979f";
           selection-foreground = "#000000";
+          palette = [
+            "0=#43454b"
+            "1=#ff8a7a"
+            "2=#83c9bc"
+            "3=#d9c668"
+            "4=#4ec4e6"
+            "5=#ff85b8"
+            "6=#cda1ff"
+            "7=#ffffff"
+            "8=#838991"
+            "9=#ff8a7a"
+            "10=#b1faeb"
+            "11=#ffa14f"
+            "12=#6bdfff"
+            "13=#ff85b8"
+            "14=#e5cfff"
+            "15=#ffffff"
+          ];
         };
         PatagiaLight = {
           background = "#fefeff";
@@ -62,6 +80,24 @@
           cursor-color = "#aa0000";
           selection-background = "#ffe6a4";
           selection-foreground = "#483600";
+          palette = [
+            "0=#b4d8fd"
+            "1=#ad1805"
+            "2=#355d61"
+            "3=#78492a"
+            "4=#0058a1"
+            "5=#9c2191"
+            "6=#703daa"
+            "7=#000000"
+            "8=#8a99a6"
+            "9=#ad1805"
+            "10=#174145"
+            "11=#78492a"
+            "12=#003f73"
+            "13=#9c2191"
+            "14=#441ea1"
+            "15=#000000"
+          ];
         };
       };
     };
