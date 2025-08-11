@@ -67,8 +67,10 @@ in
       ];
     };
 
+    security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
     systemd.user.services.gcr-ssh-agent.environment.SSH_ASKPASS = config.programs.ssh.askPassword;
+    security.pam.services.swaylock = { };
 
     programs.ssh.enableAskPassword = true;
     programs.ssh.askPassword = "${pkgs.gnome-ssh-askpass4}/bin/gnome-ssh-askpass4";

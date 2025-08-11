@@ -8,6 +8,7 @@
     ./ghostty.nix
     ./gnome.nix
     ./k8s.nix
+    ./niri.nix
     ./nix.nix
     ./nvim
     ./ragenix.nix
