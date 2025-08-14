@@ -20,11 +20,11 @@ with lib;
     xwayland-satellite-unstable
   ];
 
-  gtk = {
-    cursorTheme = {
-      package = pkgs.volantes-cursors;
-      name = "volantes_light_cursors";
-    };
+  home.pointerCursor = {
+    gtk.enable = true;
+    name = "phinger-cursors-light";
+    package = pkgs.phinger-cursors;
+    size = 32;
   };
 
   programs.fuzzel.enable = true;
@@ -48,8 +48,10 @@ with lib;
     prefer-no-csd = true;
 
     cursor = {
-      size = 64;
-      theme = "volantes_light_cursors";
+      size = config.home.pointerCursor.size;
+      theme = config.home.pointerCursor.name;
+      hide-when-typing = true;
+      hide-after-inactive-ms = 3000;
     };
 
     input = {
