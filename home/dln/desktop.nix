@@ -15,7 +15,6 @@
     pavucontrol
     plexamp
     signal-desktop
-    spotify
     thunderbird
   ];
 
