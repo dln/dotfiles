@@ -16,19 +16,13 @@ with lib;
   programs.niri.package = pkgs.niri-unstable;
   programs.niri.enable = true;
 
-  environment.variables.NIXOS_OZONE_WL = "1";
-
-  # environment.systemPackages = with pkgs; [
-  #   libsecret
-  #   wayland-utils
-  # ];
+  security.polkit.enable = true;
+  systemd.user.services.niri-flake-polkit.enable = false;
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services = {
     login.enableGnomeKeyring = true;
   };
-  security.polkit.enable = true;
-
   programs.seahorse.enable = true;
   programs.ssh.enableAskPassword = true;
 
@@ -36,4 +30,6 @@ with lib;
     pkgs.gnome-keyring
     pkgs.gcr
   ];
+
+  environment.variables.NIXOS_OZONE_WL = "1";
 }
