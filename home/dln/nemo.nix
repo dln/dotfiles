@@ -6,7 +6,8 @@
   ];
 
   programs.ghostty.settings = {
-    font-size = lib.mkForce 15;
+    font-size = lib.mkForce 12;
+    adjust-cell-height = 4;
   };
 
   programs.obs-studio = {
