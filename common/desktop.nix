@@ -15,32 +15,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ gnome-ssh-askpass4 ];
 
-    # Excluding some GNOME applications from the default install
-    environment.gnome.excludePackages = (
-      with pkgs;
-      [
-        atomix # puzzle game
-        baobab # disk usage analyzer
-        cheese # webcam tool
-        epiphany # web browser
-        geary # email reader
-        gnome-clocks
-        gnome-connections
-        gnome-disk-utility
-        gnome-logs
-        gnome-music
-        gnome-photos
-        gnome-terminal
-        gnome-tour
-        snapshot
-        hitori # sudoku game
-        iagno # go game
-        simple-scan
-        tali # poker game
-        yelp # help viewer
-      ]
-    );
-
     fonts = {
       fontDir.enable = true;
       fontconfig = {
@@ -70,6 +44,7 @@ in
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
     systemd.user.services.gcr-ssh-agent.environment.SSH_ASKPASS = config.programs.ssh.askPassword;
+    security.pam.services.greetd.enableGnomeKeyring = true;
     security.pam.services.swaylock = { };
 
     programs.ssh.enableAskPassword = true;
@@ -84,19 +59,30 @@ in
 
     services.printing.enable = true;
 
-    services.displayManager.defaultSession = "gnome";
-
     services.xserver = {
       enable = true;
       xkb.layout = "se";
       xkb.variant = "us";
     };
 
-    services.desktopManager.gnome.enable = true;
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
+          user = "greeter";
+        };
+      };
+    };
 
-    services.displayManager = {
-      gdm.enable = true;
-      gdm.autoSuspend = false;
+    systemd.services.greetd.serviceConfig = {
+      Type = "idle";
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "journal";
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
     };
 
     services.pulseaudio.enable = false;
