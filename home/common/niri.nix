@@ -28,6 +28,7 @@ with lib;
   };
 
   programs.fuzzel.enable = true;
+
   programs.swaylock = {
     enable = true;
   };
@@ -46,7 +47,7 @@ with lib;
     enable = true;
   };
 
-  # services.polkit-gnome.enable = true;
+  services.polkit-gnome.enable = true;
 
   programs.niri.settings =
     let
@@ -277,13 +278,6 @@ with lib;
           matches = [
             { app-id = "^xdg-desktop-portal-gtk$"; }
             { title = "^Open"; }
-          ];
-          open-floating = true;
-        }
-        {
-          matches = [
-            { app-id = "firefox$"; }
-            { title = "^Picture-in-Picture$"; }
           ];
           open-floating = true;
         }

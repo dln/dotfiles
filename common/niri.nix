@@ -16,13 +16,8 @@ with lib;
   programs.niri.package = pkgs.niri-unstable;
   programs.niri.enable = true;
 
-  security.polkit.enable = true;
   systemd.user.services.niri-flake-polkit.enable = false;
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services = {
-    login.enableGnomeKeyring = true;
-  };
   programs.seahorse.enable = true;
   programs.ssh.enableAskPassword = true;
 
