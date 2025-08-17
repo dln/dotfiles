@@ -30,6 +30,7 @@
       "sd_mod"
     ];
     initrd.kernelModules = [
+      "amdgpu"
       "nct6687"
     ];
     kernelModules = [
@@ -82,6 +83,7 @@
     extraPackages = with pkgs; [
       intel-media-driver
       libvdpau-va-gl
+      rocmPackages.clr.icd
       vaapiVdpau
       vpl-gpu-rt
       vulkan-extension-layer
@@ -90,8 +92,18 @@
       vulkan-tools
       vulkan-validation-layers
     ];
-    extraPackages32 = with pkgs; [
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      vulkan-extension-layer
+      vulkan-headers
+      vulkan-loader
+      vulkan-tools
+      vulkan-validation-layers
     ];
+  };
+
+  hardware.amdgpu = {
+    initrd.enable = true;
+    overdrive.enable = true;
   };
 
   systemd.packages = with pkgs; [ lact ];
@@ -116,32 +128,14 @@
       "10.1.100.13"
     ];
     firewall.enable = false;
-
-    networkmanager.enable = false;
-    #networkmanager.enable = true;
-    #networkmanager.wifi.backend = "iwd";
-
+    networkmanager.enable = true;
     useDHCP = false;
-
-    wireless.iwd = {
-      enable = true;
-      settings = {
-        DriverQuirks.PowerSaveDisable = "*";
-        Network = {
-          EnableIPv6 = false;
-          NameResolvingService = "systemd";
-        };
-        Settings = {
-          AutoConnect = true;
-        };
-      };
-    };
   };
 
   services.nscd.enableNsncd = false;
 
   systemd.network.enable = true;
-  systemd.network.networks."10-wifi" = {
+  systemd.network.networks."10-eth" = {
     matchConfig.Name = "enp9s0";
     address = [ "10.1.100.20/22" ];
     gateway = [ "10.1.100.1" ];
@@ -199,6 +193,7 @@
     description = "Daniel Lundin";
     extraGroups = [
       "audio"
+      "gamemode"
       "input"
       "render"
       "seat"

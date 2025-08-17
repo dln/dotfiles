@@ -22,18 +22,38 @@
     };
   };
 
+  jovian = {
+    steam = {
+      enable = true;
+      autoStart = false; # Don't auto-start on boot
+      user = "gamer";
+      environment = {
+        DXVK_HDR = "1";
+        ENABLE_GAMESCOPE_WSI = "1";
+        ENABLE_HDR_WSI = "0";
+        PROTON_FSR4_UPGRADE = "1";
+        STEAM_MULTIPLE_XWAYLANDS = "1";
+      };
+    };
+    decky-loader.enable = false; # Disable for now
+  };
+
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    # capSysNice = true;
     env = {
       DXVK_HDR = "1";
       ENABLE_GAMESCOPE_WSI = "1";
       ENABLE_HDR_WSI = "0";
+      PROTON_FSR4_UPGRADE = "1";
       STEAM_MULTIPLE_XWAYLANDS = "1";
     };
   };
 
   programs.steam = {
+    enable = true;
+    localNetworkGameTransfers.openFirewall = true;
+    remotePlay.openFirewall = true;
     extraPackages = with pkgs; [
       gamescope
       gamescope-wsi
@@ -94,6 +114,7 @@
         DXVK_HDR = "1";
         ENABLE_GAMESCOPE_WSI = "1";
         ENABLE_HDR_WSI = "0";
+        PROTON_FSR4_UPGRADE = "1";
         STEAM_MULTIPLE_XWAYLANDS = "1";
         STEAM_GAMESCOPE_VRR_SUPPORTED = "1";
 
@@ -112,18 +133,17 @@
         WINEDLLOVERRIDES = "dxgi=n";
       };
     };
-    localNetworkGameTransfers.openFirewall = true;
-    remotePlay.openFirewall = true;
   };
 
   environment.variables = {
     AMD_VULKAN_ICD = "RADV";
+    PROTON_FSR4_UPGRADE = "1";
+    STEAM_ENABLE_CEC = "1";
   };
 
   environment.systemPackages = with pkgs; [
     game-devices-udev-rules
     gamemode
-    mangohud
   ];
 
   services.seatd = {
@@ -145,16 +165,16 @@
     # USB permissions for Xbox Wireless Adapter
     SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02e6", MODE="0666", GROUP="input"
 
-    # # Xbox Wireless Adapter udev rules for xone driver
+    # Xbox Wireless Adapter udev rules for xone driver
     # SUBSYSTEM=="input", ATTRS{name}=="Xbox Wireless Controller", TAG+="seat", ENV{ID_SEAT}="seat1"
     # SUBSYSTEM=="input", ATTRS{name}=="Microsoft X-Box One*", TAG+="seat", ENV{ID_SEAT}="seat1"
-    #
-    # # Seat assignment
+
+    # Seat assignment
     # TAG=="seat", ENV{ID_FOR_SEAT}=="drm-pci-0000_03_00_0", ENV{ID_SEAT}="seat1"
     # TAG=="seat", ENV{ID_FOR_SEAT}=="graphics-pci-0000_03_00_0", ENV{ID_SEAT}="seat1"
     # TAG=="seat", ENV{ID_FOR_SEAT}=="sound-pci-0000_03_00_1", ENV{ID_SEAT}="seat1"
   '';
-  #
+
   # User Configuration
   users.users.gamer = {
     isNormalUser = true;
@@ -191,7 +211,7 @@
       HOME = "/home/gamer";
       USER = "gamer";
       XDG_RUNTIME_DIR = "/run/user/1003";
-      XDG_SEAT = "seat1";
+      # XDG_SEAT = "seat1";
     };
 
     serviceConfig = {
@@ -204,6 +224,7 @@
         "audio"
         "seat"
       ];
+      # ExecStart = "/run/current-system/sw/bin/start-gamescope-session";
       ExecStart = "/run/current-system/sw/bin/steam-gamescope";
       Restart = "always";
       RestartSec = 10;

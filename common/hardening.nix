@@ -16,9 +16,19 @@
 
   boot.kernel.sysctl."kernel.dmesg_restrict" = 1;
 
+  environment.systemPackages = [ pkgs.doas-sudo-shim ];
+
   security = {
-    polkit.persistentAuthentication = true;
-    run0-sudo-shim.enable = true;
+    doas = {
+      enable = true;
+      extraRules = [
+        {
+          groups = [ "wheel" ];
+          keepEnv = true;
+          persist = true;
+        }
+      ];
+    };
     sudo.enable = false;
   };
 
