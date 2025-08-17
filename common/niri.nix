@@ -25,11 +25,6 @@ with lib;
 
   systemd.user.services.niri-flake-polkit.enable = false;
 
-  security = {
-    pam.services.swaylock = { };
-    rtkit.enable = true;
-  };
-
   programs.seahorse.enable = true;
   programs.ssh.enableAskPassword = true;
 
