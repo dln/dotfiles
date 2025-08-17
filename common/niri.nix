@@ -13,7 +13,10 @@ with lib;
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
-  environment.systemPackages = with pkgs; [ alacritty ]; # FIXME: How to change default terminal?
+  environment.systemPackages = with pkgs; [
+    alacritty
+    xwayland-satellite-unstable
+  ];
 
   programs.niri = {
     enable = true;

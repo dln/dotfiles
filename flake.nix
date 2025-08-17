@@ -19,6 +19,7 @@
   };
 
   inputs = {
+    jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?shallow=true";
     niri.url = "github:sodiboo/niri-flake?shallow=true";
     niri.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +45,7 @@
       nixpkgs-stable,
       nixpkgs-unstable,
       home-manager,
+      jovian-nixos,
       ragenix,
       ...
     }:
@@ -59,6 +61,7 @@
             inherit inputs outputs;
           };
           modules = [
+            jovian-nixos.nixosModules.jovian
             ragenix.nixosModules.default
             inputs.run0-sudo-shim.nixosModules.default
             ./common

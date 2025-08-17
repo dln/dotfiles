@@ -94,6 +94,10 @@ with lib;
         scale = 1;
       };
 
+      outputs."DP-2" = {
+        enable = false;
+      };
+
       layout = {
         gaps = 7;
         background-color = "transparent";

@@ -13,7 +13,10 @@ in
   options.patagia.desktop.enable = mkEnableOption "Desktop environment and common applications";
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ gnome-ssh-askpass4 ];
+    environment.systemPackages = with pkgs; [
+      gnome-ssh-askpass4
+
+    ];
 
     fonts = {
       fontDir.enable = true;
@@ -50,30 +53,38 @@ in
     programs.ssh.enableAskPassword = true;
     programs.ssh.askPassword = "${pkgs.gnome-ssh-askpass4}/bin/gnome-ssh-askpass4";
 
-    programs.steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
-
     services.printing.enable = true;
 
     services.xserver = {
       enable = true;
       xkb.layout = "se";
       xkb.variant = "us";
+      # videoDrivers = [ "amdgpu" ];
     };
 
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
-          user = "greeter";
+    services.greetd =
+      let
+        steamSession = {
+          command = "steam-gamescope";
+          # command = "${config.programs.niri.package}/bin/niri-session";
+          # command = "${pkgs.greetd.greetd}/bin/agreety --cmd niri-session";
+          # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
+          user = "gamer";
+        };
+
+        base = config.services.xserver.displayManager.sessionData.desktops;
+        session = {
+          command = "${lib.getExe pkgs.greetd.tuigreet} --sessions ${base}/share/wayland-sessions:${base}/share/xsessions --remember --remember-user-session --issue";
+        };
+
+      in
+      {
+        enable = true;
+        settings = {
+          # initial_session = session;
+          default_session = session;
         };
       };
-    };
 
     systemd.services.greetd.serviceConfig = {
       Type = "idle";
