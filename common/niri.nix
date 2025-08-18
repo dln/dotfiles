@@ -13,8 +13,12 @@ with lib;
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
-  programs.niri.package = pkgs.niri-unstable;
-  programs.niri.enable = true;
+  environment.systemPackages = with pkgs; [ alacritty ]; # FIXME: How to change default terminal?
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 
   systemd.user.services.niri-flake-polkit.enable = false;
 
