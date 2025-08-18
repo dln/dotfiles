@@ -22,6 +22,8 @@ with lib;
     enable = true;
     package = pkgs.niri-unstable;
   };
+  programs.niri.package = pkgs.niri-unstable;
+  programs.niri.enable = true;
 
   systemd.user.services.niri-flake-polkit.enable = false;
 
