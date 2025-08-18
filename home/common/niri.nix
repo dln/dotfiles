@@ -37,8 +37,22 @@ with lib;
     enable = true;
     timeouts = [
       {
+        timeout = 300;
+        command = "/run/current-system/systemd/bin/loginctl lock-session";
+      }
+      {
         timeout = 180;
         command = "${config.programs.niri.package}/bin/niri msg action power-off-monitors";
+      }
+    ];
+    events = [
+      {
+        event = "lock";
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
+      {
+        event = "before-sleep";
+        command = "/run/current-system/systemd/bin/loginctl lock-session";
       }
     ];
   };
