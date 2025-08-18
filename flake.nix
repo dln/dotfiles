@@ -32,6 +32,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     ragenix.url = "github:yaxitech/ragenix";
+    run0-sudo-shim.url = "github:lordgrimmauld/run0-sudo-shim";
+    run0-sudo-shim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -58,6 +60,7 @@
           };
           modules = [
             ragenix.nixosModules.default
+            inputs.run0-sudo-shim.nixosModules.default
             ./common
           ]
           ++ modules;
