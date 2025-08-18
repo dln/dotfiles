@@ -39,6 +39,7 @@
 
       stats.common_prefix = [
         "doas"
+        "run0"
         "sudo"
       ];
     };
