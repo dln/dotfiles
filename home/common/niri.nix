@@ -57,6 +57,8 @@ with lib;
         leaf
         flag
         ;
+
+      ws = config.programs.niri.settings.workspaces;
     in
     {
       environment = {
@@ -144,6 +146,17 @@ with lib;
         workspace-auto-back-and-forth = true;
       };
 
+      workspaces = {
+        devel = { };
+        www = { };
+        local = { };
+        chat = { };
+        docs = { };
+        media = { };
+        extra = { };
+        share = { };
+      };
+
       binds = with config.lib.niri.actions; {
         "Mod+T".action = spawn "ghostty";
         "Mod+D".action = spawn "fuzzel";
@@ -193,46 +206,44 @@ with lib;
         "Mod+Shift+Tab".action = focus-window-up-or-column-left;
 
         # Workspaces
-        "Mod+Z".action = move-workspace-down;
-        "Mod+X".action = move-workspace-up;
-        "Mod+Shift+Z".action = move-workspace-to-monitor-previous;
-        "Mod+Shift+X".action = move-workspace-to-monitor-next;
-        "F1".action = focus-workspace 1;
-        "F2".action = focus-workspace 2;
-        "F3".action = focus-workspace 3;
-        "F4".action = focus-workspace 4;
-        "F5".action = focus-workspace 5;
-        "F6".action = focus-workspace 6;
-        "F7".action = focus-workspace 7;
-        "F8".action = focus-workspace 8;
-        "F9".action = focus-workspace 9;
-        "Shift+F1".action.move-window-to-workspace = 1;
-        "Shift+F2".action.move-window-to-workspace = 2;
-        "Shift+F3".action.move-window-to-workspace = 3;
-        "Shift+F4".action.move-window-to-workspace = 4;
-        "Shift+F5".action.move-window-to-workspace = 5;
-        "Shift+F6".action.move-window-to-workspace = 6;
-        "Shift+F7".action.move-window-to-workspace = 7;
-        "Shift+F8".action.move-window-to-workspace = 8;
-        "Shift+F9".action.move-window-to-workspace = 9;
-        "Mod+1".action = focus-workspace 1;
-        "Mod+2".action = focus-workspace 2;
-        "Mod+3".action = focus-workspace 3;
-        "Mod+4".action = focus-workspace 4;
-        "Mod+5".action = focus-workspace 5;
-        "Mod+6".action = focus-workspace 6;
-        "Mod+7".action = focus-workspace 7;
-        "Mod+8".action = focus-workspace 8;
-        "Mod+9".action = focus-workspace 9;
-        "Mod+Shift+1".action.move-window-to-workspace = 1;
-        "Mod+Shift+2".action.move-window-to-workspace = 2;
-        "Mod+Shift+3".action.move-window-to-workspace = 3;
-        "Mod+Shift+4".action.move-window-to-workspace = 4;
-        "Mod+Shift+5".action.move-window-to-workspace = 5;
-        "Mod+Shift+6".action.move-window-to-workspace = 6;
-        "Mod+Shift+7".action.move-window-to-workspace = 7;
-        "Mod+Shift+8".action.move-window-to-workspace = 8;
-        "Mod+Shift+9".action.move-window-to-workspace = 9;
+        "Mod+Z".action = focus-workspace-down;
+        "Mod+X".action = focus-workspace-up;
+        "Mod+Shift+Z".action = move-workspace-down;
+        "Mod+Shift+X".action = move-workspace-up;
+        "Mod+Control+Z".action = move-workspace-to-monitor-previous;
+        "Mod+Control+X".action = move-workspace-to-monitor-next;
+        "F1".action = focus-workspace "devel";
+        "F2".action = focus-workspace "www";
+        "F3".action = focus-workspace "local";
+        "F4".action = focus-workspace "chat";
+        "F5".action = focus-workspace "docs";
+        "F6".action = focus-workspace "media";
+        "F7".action = focus-workspace "extra";
+        "F8".action = focus-workspace "share";
+        "Shift+F1".action.move-window-to-workspace = "devel";
+        "Shift+F2".action.move-window-to-workspace = "www";
+        "Shift+F3".action.move-window-to-workspace = "local";
+        "Shift+F4".action.move-window-to-workspace = "chat";
+        "Shift+F5".action.move-window-to-workspace = "docs";
+        "Shift+F6".action.move-window-to-workspace = "media";
+        "Shift+F7".action.move-window-to-workspace = "extra";
+        "Shift+F8".action.move-window-to-workspace = "share";
+        "Mod+1".action = focus-workspace "devel";
+        "Mod+2".action = focus-workspace "www";
+        "Mod+3".action = focus-workspace "local";
+        "Mod+4".action = focus-workspace "chat";
+        "Mod+5".action = focus-workspace "docs";
+        "Mod+6".action = focus-workspace "media";
+        "Mod+7".action = focus-workspace "extra";
+        "Mod+8".action = focus-workspace "share";
+        "Mod+Shift+1".action.move-window-to-workspace = "devel";
+        "Mod+Shift+2".action.move-window-to-workspace = "www";
+        "Mod+Shift+3".action.move-window-to-workspace = "local";
+        "Mod+Shift+4".action.move-window-to-workspace = "chat";
+        "Mod+Shift+5".action.move-window-to-workspace = "docs";
+        "Mod+Shift+6".action.move-window-to-workspace = "media";
+        "Mod+Shift+7".action.move-window-to-workspace = "extra";
+        "Mod+Shift+8".action.move-window-to-workspace = "share";
 
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
@@ -350,6 +361,10 @@ with lib;
             today = "<span background='#00ffbb'><b><u>{}</u></b></span>";
           };
         };
+      };
+
+      "niri/workspaces" = {
+        current-only = true;
       };
 
       "wlr/taskbar" = {
