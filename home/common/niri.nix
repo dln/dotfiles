@@ -27,7 +27,36 @@ with lib;
     size = 32;
   };
 
-  programs.fuzzel.enable = true;
+  programs.anyrun = {
+    enable = true;
+    config = {
+      closeOnClick = true;
+      x.fraction = 0.5;
+      y.fraction = 0.3;
+      width.fraction = 0.5;
+      layer = "overlay";
+      margin = 10;
+      plugins = [
+        "${pkgs.anyrun}/lib/libapplications.so"
+        "${pkgs.anyrun}/lib/libniri_focus.so"
+        "${pkgs.anyrun}/lib/librink.so"
+        "${pkgs.anyrun}/lib/libsymbols.so"
+      ];
+    };
+    extraConfigFiles = {
+      "symbols.ron".text = ''
+        Config(
+          symbols: {},
+          max_entries: 5,
+        )
+      '';
+      "niri-focus.ron".text = ''
+        Config(
+          max_entries: 3,
+        )
+      '';
+    };
+  };
 
   programs.swaylock = {
     enable = true;
@@ -176,7 +205,7 @@ with lib;
 
       binds = with config.lib.niri.actions; {
         "Mod+T".action = spawn "ghostty";
-        "Mod+D".action = spawn "fuzzel";
+        "Mod+D".action = spawn "anyrun";
         "Mod+N".action = spawn "swaync-client" "-op";
         "Mod+Q".action = close-window;
 
