@@ -148,6 +148,10 @@
     podman.enable = true;
   };
 
+  programs.steam = {
+    enable = true;
+  };
+
   services.power-profiles-daemon.enable = true;
 
   systemd.services."getty@tty1".enable = false;
