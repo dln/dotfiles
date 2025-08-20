@@ -19,6 +19,8 @@
   };
 
   inputs = {
+    anyrun.url = "github:anyrun-org/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?shallow=true";
     niri.url = "github:sodiboo/niri-flake?shallow=true";
