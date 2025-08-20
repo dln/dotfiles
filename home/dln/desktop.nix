@@ -26,6 +26,12 @@
     thunderbird
   ];
 
+  gtk.font = {
+    name = "Inter";
+    size = 12;
+    package = pkgs.inter;
+  };
+
   xdg.desktopEntries = {
     firefox-work = {
       categories = [

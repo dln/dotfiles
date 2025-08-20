@@ -24,9 +24,19 @@ in
         allowBitmaps = false;
         antialias = true;
         defaultFonts = {
-          monospace = [ "Berkeley Mono" ];
-          serif = [ "Liberation Serif" ];
-          sansSerif = [ "Inter" ];
+          monospace = [
+            "Berkeley Mono"
+            "Noto Color Emoji"
+          ];
+          serif = [
+            "Inter"
+            "Nerd Fonts Symbols Only"
+            "Noto Color Emoji"
+          ];
+          sansSerif = [
+            "Inter"
+            "Noto Color Emoji"
+          ];
         };
         hinting.enable = true;
         hinting.style = "slight";
@@ -38,7 +48,6 @@ in
         monaspace
         nerd-fonts.symbols-only
         noto-fonts
-        noto-fonts-cjk-sans
         noto-fonts-color-emoji
         ubuntu_font_family
       ];
