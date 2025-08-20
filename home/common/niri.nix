@@ -27,34 +27,56 @@ with lib;
     size = 32;
   };
 
-  programs.anyrun = {
+  services.walker = {
     enable = true;
-    config = {
-      closeOnClick = true;
-      x.fraction = 0.5;
-      y.fraction = 0.3;
-      width.fraction = 0.5;
-      layer = "overlay";
-      margin = 10;
-      plugins = [
-        "${pkgs.anyrun}/lib/libapplications.so"
-        "${pkgs.anyrun}/lib/libniri_focus.so"
-        "${pkgs.anyrun}/lib/librink.so"
-        "${pkgs.anyrun}/lib/libsymbols.so"
-      ];
-    };
-    extraConfigFiles = {
-      "symbols.ron".text = ''
-        Config(
-          symbols: {},
-          max_entries: 5,
-        )
-      '';
-      "niri-focus.ron".text = ''
-        Config(
-          max_entries: 3,
-        )
-      '';
+    systemd.enable = true;
+    settings = {
+      disable_click_to_close = false;
+
+      builtins = {
+
+        calc = {
+          require_number = true;
+          weight = 5;
+          name = "calc";
+          icon = "accessories-calculator";
+          placeholder = "Calculator";
+          min_chars = 4;
+        };
+
+        emojis = {
+          placeholder = "";
+          prefix = "e";
+          switcher_only = false;
+        };
+
+        switcher = {
+          weight = 5;
+          name = "switcher";
+          placeholder = "Switcher";
+          prefix = "/";
+        };
+
+        symbols = {
+          after_copy = "";
+          weight = 5;
+          name = "symbols";
+          placeholder = "Symbols";
+          switcher_only = true;
+          history = true;
+          typeahead = true;
+        };
+
+        windows = {
+          weight = 5;
+          icon = "view-restore";
+          name = "windows";
+          placeholder = "Windows";
+          show_icon_when_single = true;
+        };
+
+      };
+
     };
   };
 
@@ -205,7 +227,7 @@ with lib;
 
       binds = with config.lib.niri.actions; {
         "Mod+T".action = spawn "ghostty";
-        "Mod+D".action = spawn "anyrun";
+        "Mod+D".action = spawn "walker";
         "Mod+N".action = spawn "swaync-client" "-op";
         "Mod+Q".action = close-window;
 
