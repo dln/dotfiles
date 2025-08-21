@@ -15,6 +15,7 @@
     ./ssh.nix
     ./utils.nix
     ./vcs.nix
+    ./waybar.nix
     ./web.nix
   ];
 
