@@ -94,13 +94,13 @@ with lib;
       }
       {
         timeout = 180;
-        command = "${config.programs.niri.package}/bin/niri msg action power-off-monitors";
+        command = "${getExe config.programs.niri.package} msg action power-off-monitors";
       }
     ];
     events = [
       {
         event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock";
+        command = getExe pkgs.swaylock;
       }
       {
         event = "before-sleep";
@@ -305,9 +305,9 @@ with lib;
         "Shift+XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "1.0";
 
         ## Screen brightness + temperature
-        "XF86MonBrightnessUp".action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%+";
-        "XF86MonBrightnessDown".action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%-";
-        "Shift+XF86MonBrightnessUp".action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "100%";
+        "XF86MonBrightnessUp".action = spawn "${getExe pkgs.brightnessctl}" "set" "5%+";
+        "XF86MonBrightnessDown".action = spawn "${getExe pkgs.brightnessctl}" "set" "5%-";
+        "Shift+XF86MonBrightnessUp".action = spawn "${getExe pkgs.brightnessctl}" "set" "100%";
         "Control+XF86MonBrightnessUp".action =
           spawn "busctl" "--user" "--" "call" "rs.wl-gammarelay" "/" "rs.wl.gammarelay" "UpdateTemperature"
             "n"
@@ -353,96 +353,6 @@ with lib;
       ];
     };
 
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    settings.mainBar = {
-      layer = "top";
-      position = "bottom";
-      height = 28;
-      spacing = 3;
-      modules-left = [
-        "niri/workspaces"
-        "wlr/taskbar"
-      ];
-      modules-center = [
-        "niri/window"
-      ];
-      modules-right = [
-        "network"
-        "wireplumber"
-        "custom/wl-gammarelay-temperature"
-        "battery"
-        "power-profiles-daemon"
-        "tray"
-        "clock"
-      ];
-
-      battery = {
-        states = {
-          warning = 30;
-          critical = 15;
-        };
-        format = "<span>{icon}</span> {capacity}%";
-        format-charging = "<span></span> {capacity}%";
-        format-icons = [
-          " "
-          " "
-          " "
-          " "
-          " "
-        ];
-      };
-
-      clock = {
-        format = "{:%m-%d %H:%M}";
-        tooltip-format = "<tt><small>{calendar}</small></tt>";
-        calendar = {
-          mode = "year";
-          mode-mon-col = 3;
-          weeks-pos = "right";
-          format = {
-            weeks = "<span color='#999999'><b>W{:%W}</b></span>";
-            today = "<span background='#00ffbb'><b><u>{}</u></b></span>";
-          };
-        };
-      };
-
-      "niri/workspaces" = {
-        current-only = true;
-      };
-
-      "wlr/taskbar" = {
-        format = "{icon}";
-        icon-size = 16;
-        on-click = "minimize-raise";
-        on-click-middle = "close";
-      };
-
-      "custom/wl-gammarelay-temperature" = {
-        format = "{} ";
-        exec = "wl-gammarelay-rs watch {t}";
-        on-scroll-up = "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -50";
-        on-scroll-down = "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +50";
-      };
-
-      network = {
-        interval = 2;
-        format-wifi = " {essid}";
-        format-ethernet = "󰈀 {ifname}";
-        format-linked = "󰈁 {ifname}";
-        format-disconnected = "  ";
-        tooltip-format = "{ifname}: {ipaddr}/{cidr}\n {bandwidthDownBits}\n {bandwidthUpBits}";
-      };
-
-      wireplumber = {
-        on-click = "${pkgs.pwvucontrol}/bin/pwvucontrol";
-        on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-";
-        on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+";
-      };
-    };
-  };
-
   systemd.user.services.wl-gammarelay-rs = {
     Unit = {
       Description = "A simple program that provides DBus interface to control display temperature and brightness under wayland without flickering.";
@@ -451,7 +361,7 @@ with lib;
     };
 
     Service = {
-      ExecStart = "${pkgs.wl-gammarelay-rs}/bin/wl-gammarelay-rs run";
+      ExecStart = "${getExe pkgs.wl-gammarelay-rs} run";
       Restart = "on-failure";
     };
 
@@ -467,7 +377,7 @@ with lib;
       Requisite = "graphical-session.target";
     };
     Service = {
-      ExecStart = "${pkgs.swaybg}/bin/swaybg -c 9abcde";
+      ExecStart = "${getExe pkgs.swaybg} -c 9abcde";
       Restart = "on-failure";
     };
     Install = {
