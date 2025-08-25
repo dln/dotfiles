@@ -18,6 +18,7 @@ with lib;
     wl-gammarelay-rs
     wlprop
     xwayland-satellite-unstable
+    nirius
   ];
 
   home.pointerCursor = {
@@ -142,7 +143,7 @@ with lib;
       };
 
       outputs."DP-1" = {
-        scale = 1;
+        scale = 1.5;
       };
 
       outputs."DP-2" = {
@@ -152,7 +153,7 @@ with lib;
       layout = {
         gaps = 7;
         background-color = "transparent";
-        # center-focused-column = "always";
+        center-focused-column = "always";
 
         preset-column-widths = [
           { proportion = 0.33333; }
@@ -215,14 +216,7 @@ with lib;
       };
 
       workspaces = {
-        devel = { };
-        www = { };
-        local = { };
-        chat = { };
-        docs = { };
-        media = { };
-        extra = { };
-        share = { };
+        scratch = { };
       };
 
       binds = with config.lib.niri.actions; {
@@ -273,45 +267,28 @@ with lib;
         "Mod+Tab".action = focus-window-down-or-column-right;
         "Mod+Shift+Tab".action = focus-window-up-or-column-left;
 
-        # Workspaces
         "Mod+Z".action = focus-workspace-down;
         "Mod+X".action = focus-workspace-up;
         "Mod+Shift+Z".action = move-workspace-down;
         "Mod+Shift+X".action = move-workspace-up;
         "Mod+Control+Z".action = move-workspace-to-monitor-previous;
         "Mod+Control+X".action = move-workspace-to-monitor-next;
-        "F1".action = focus-workspace "devel";
-        "F2".action = focus-workspace "www";
-        "F3".action = focus-workspace "local";
-        "F4".action = focus-workspace "docs";
-        "F5".action = focus-workspace "chat";
-        "F6".action = focus-workspace "media";
-        "F7".action = focus-workspace "extra";
-        "F8".action = focus-workspace "share";
-        "Shift+F1".action.move-window-to-workspace = "devel";
-        "Shift+F2".action.move-window-to-workspace = "www";
-        "Shift+F3".action.move-window-to-workspace = "local";
-        "Shift+F4".action.move-window-to-workspace = "docs";
-        "Shift+F5".action.move-window-to-workspace = "chat";
-        "Shift+F6".action.move-window-to-workspace = "media";
-        "Shift+F7".action.move-window-to-workspace = "extra";
-        "Shift+F8".action.move-window-to-workspace = "share";
-        "Mod+1".action = focus-workspace "devel";
-        "Mod+2".action = focus-workspace "www";
-        "Mod+3".action = focus-workspace "local";
-        "Mod+4".action = focus-workspace "docs";
-        "Mod+5".action = focus-workspace "chat";
-        "Mod+6".action = focus-workspace "media";
-        "Mod+7".action = focus-workspace "extra";
-        "Mod+8".action = focus-workspace "share";
-        "Mod+Shift+1".action.move-window-to-workspace = "devel";
-        "Mod+Shift+2".action.move-window-to-workspace = "www";
-        "Mod+Shift+3".action.move-window-to-workspace = "local";
-        "Mod+Shift+4".action.move-window-to-workspace = "docs";
-        "Mod+Shift+5".action.move-window-to-workspace = "chat";
-        "Mod+Shift+6".action.move-window-to-workspace = "media";
-        "Mod+Shift+7".action.move-window-to-workspace = "extra";
-        "Mod+Shift+8".action.move-window-to-workspace = "share";
+        "F1".action = focus-column 1;
+        "F2".action = focus-column 2;
+        "F3".action = focus-column 3;
+        "F4".action = focus-column 4;
+        "F5".action = focus-column 5;
+        "F6".action = focus-column 6;
+        "F7".action = focus-column 7;
+        "F8".action = focus-column 8;
+        "Mod+1".action = focus-column 1;
+        "Mod+2".action = focus-column 2;
+        "Mod+3".action = focus-column 3;
+        "Mod+4".action = focus-column 4;
+        "Mod+5".action = focus-column 5;
+        "Mod+6".action = focus-column 6;
+        "Mod+7".action = focus-column 7;
+        "Mod+8".action = focus-column 8;
 
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
