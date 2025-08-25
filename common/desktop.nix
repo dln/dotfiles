@@ -40,6 +40,7 @@ in
         };
         hinting.enable = true;
         hinting.style = "slight";
+        hinting.autohint = false;
       };
       packages = with pkgs; [
         go-font

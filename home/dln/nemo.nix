@@ -5,11 +5,6 @@
     ./desktop.nix
   ];
 
-  programs.ghostty.settings = {
-    font-size = lib.mkForce 12;
-    adjust-cell-height = 4;
-  };
-
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs; [
