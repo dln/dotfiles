@@ -178,6 +178,8 @@
     v4l-utils
   ];
 
+  programs.coolercontrol.enable = true;
+
   environment.variables = {
     OTEL_EXPORTER_OTLP_ENDPOINT = "https://otel.aarn.patagia.net";
   };

@@ -142,18 +142,20 @@ with lib;
         hide-after-inactive-ms = 3000;
       };
 
-      outputs."DP-1" = {
-        scale = 1.5;
-      };
-
       outputs."DP-2" = {
         enable = false;
       };
 
       layout = {
-        gaps = 7;
+        gaps = 8;
+        struts = {
+          left = -10;
+          right = -10;
+          top = -10;
+          bottom = -10;
+        };
         background-color = "transparent";
-        center-focused-column = "always";
+        # center-focused-column = "always";
 
         preset-column-widths = [
           { proportion = 0.33333; }
