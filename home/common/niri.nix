@@ -133,6 +133,7 @@ with lib;
         NIXOS_OZONE_WL = "1"; # fixes electron wayland
       };
 
+      hotkey-overlay.skip-at-startup = true;
       prefer-no-csd = true;
 
       cursor = {
@@ -144,6 +145,11 @@ with lib;
 
       outputs."DP-2" = {
         enable = false;
+        variable-refresh-rate = true;
+      };
+
+      outputs."eDP-1" = {
+        scale = 2;
       };
 
       layout = {
@@ -155,7 +161,7 @@ with lib;
           bottom = -10;
         };
         background-color = "transparent";
-        # center-focused-column = "always";
+        center-focused-column = "always";
 
         preset-column-widths = [
           { proportion = 0.33333; }
@@ -163,7 +169,11 @@ with lib;
           { proportion = 0.66667; }
         ];
 
-        # preset-window-heights { }
+        preset-window-heights = [
+          { proportion = 0.5; }
+          { proportion = 1.0; }
+        ];
+
         default-column-width.proportion = 0.5;
 
         border = {
@@ -237,6 +247,7 @@ with lib;
           repeat = false;
         };
         "Mod+Shift+O".action = show-hotkey-overlay;
+        "Mod+W".action = spawn "pkill" "-SIGUSR1" "waybar"; # Toggle waybar
 
         # Layout
         "Mod+Space".action = toggle-column-tabbed-display;
@@ -247,7 +258,8 @@ with lib;
         "Mod+C".action = center-column;
 
         "Mod+0".action = switch-preset-column-width;
-        "Mod+Shift+0".action = reset-window-height;
+        # "Mod+Shift+0".action = reset-window-height;
+        "Mod+Shift+0".action = switch-preset-window-height;
         "Mod+Minus".action = set-column-width "-10%";
         "Mod+Equal".action = set-column-width "+10%";
         "Mod+Shift+Minus".action = set-window-height "-10%";
@@ -333,13 +345,6 @@ with lib;
 
       window-rules = [
         {
-          matches = [
-            { app-id = "^xdg-desktop-portal-gtk$"; }
-            { title = "^Open"; }
-          ];
-          open-floating = true;
-        }
-        {
           geometry-corner-radius =
             let
               r = 6.0;
@@ -351,6 +356,52 @@ with lib;
               bottom-right = r;
             };
           clip-to-geometry = true;
+        }
+        {
+          matches = [
+            {
+              app-id = "^firefox";
+              title = "^Picture-in-Picture$";
+            }
+          ];
+          open-floating = true;
+        }
+        {
+          matches = [ { app-id = "^signal$"; } ];
+          block-out-from = "screencast";
+        }
+        {
+          matches = [
+            { app-id = "^xdg-desktop-portal-gtk$"; }
+            { title = "^Open"; }
+          ];
+          open-floating = true;
+        }
+        {
+          matches = [ { app-id = "^xwaylandvideobridge$"; } ];
+          open-floating = true;
+          focus-ring.enable = false;
+          opacity = 0.0;
+          default-floating-position = {
+            x = 0;
+            y = 0;
+            relative-to = "bottom-right";
+          };
+          min-width = 1;
+          max-width = 1;
+          min-height = 1;
+          max-height = 1;
+        }
+      ];
+
+      layer-rules = [
+        {
+          matches = [ { namespace = "^notification$"; } ];
+          block-out-from = "screencast";
+        }
+        {
+          matches = [ { namespace = "^wallpaper$"; } ];
+          place-within-backdrop = false;
         }
       ];
     };
