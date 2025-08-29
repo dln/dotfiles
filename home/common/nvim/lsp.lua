@@ -33,6 +33,11 @@ local servers = {
         diagnostics = { globals = { "vim", "hs" } },
         hint = { enable = true },
         workspace = {
+          ignoreDir = {
+            '.direnv',
+            '.jj',
+            '.git',
+          },
           library = {
             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
             [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,

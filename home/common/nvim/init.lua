@@ -5,14 +5,50 @@ vim.g.maplocalleader = ","
 
 -- UI
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.guicursor =
 "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.ruler = true
 vim.opt.syntax = "on"
 vim.opt.termguicolors = true
+
+-- Neovide
+vim.opt.linespace = 7
+vim.g.neovide_padding_top = 32
+vim.g.neovide_padding_bottom = 10
+vim.g.neovide_padding_right = 10
+vim.g.neovide_padding_left = 32
+vim.g.neovide_text_gamma = 1.0
+vim.g.neovide_text_contrast = 0.9
+vim.g.neovide_floating_blur_amount_x = 17
+vim.g.neovide_floating_blur_amount_y = 17
+vim.g.neovide_floating_corner_radius = 0.3
+vim.g.neovide_floating_z_height = 5
+vim.g.neovide_light_angle_degrees = 45
+vim.g.neovide_light_radius = 5
+vim.g.neovie_opacity = 1.0
+vim.g.neovide_normal_opacity = 1.0
+vim.g.neovide_theme = 'light'
+vim.g.neovide_cursor_short_animation_length = 0
+vim.g.neovide_cursor_animation_length = 0.05
+
+if vim.g.neovide then
+  vim.keymap.set('v', '<M-S-c>', '"+y')         -- Copy
+  vim.keymap.set('n', '<M-S-v>', '"+P')         -- Paste normal mode
+  vim.keymap.set('v', '<M-S-v>', '"+P')         -- Paste visual mode
+  vim.keymap.set('c', '<M-S-v>', '<C-R>+')      -- Paste command mode
+  vim.keymap.set('i', '<M-S-v>', '<ESC>l"+Pli') -- Paste insert mode
+end
+
+-- Allow clipboard copy paste in neovim
+vim.api.nvim_set_keymap('', '<M-S-v>', '+p<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('!', '<M-S-v>', '<C-R>+', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<M-S-v>', '<C-R>+', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<M-S-v>', '<C-R>+', { noremap = true, silent = true })
+
+
 
 -- Ruler
 function GetIndicators()

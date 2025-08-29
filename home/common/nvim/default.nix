@@ -50,6 +50,43 @@ in
     codestral_api_key.file = ../../../secrets/codestral_api_key.age;
   };
 
+  programs.neovide = {
+    enable = true;
+    settings = {
+      neovim-bin = lib.getExe config.programs.neovim.finalPackage;
+      font = {
+        normal = {
+          family = "Go Mono";
+          style = "Regular";
+        };
+        bold = {
+          family = "Go Mono";
+          style = "Bold";
+        };
+        italic = {
+          family = "Go Mono";
+          style = "Italic";
+        };
+        bold_italic = {
+          family = "Go Mono";
+          style = "Bold Italic";
+        };
+        size = 10;
+        hinting = "slight";
+        edging = "subpixelantialias";
+      };
+      box-drawing = {
+        mode = "native"; # "font-glyph", "native" or "selected-native"
+        # selected = "🮐🮑🮒";
+        sizes.default = [
+          2
+          4
+        ]; # Thin and thick values respectively, for all sizes
+      };
+      theme = "light";
+    };
+  };
+
   programs.neovim = {
     enable = true;
     package = nvimWrapper;
