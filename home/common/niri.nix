@@ -18,7 +18,6 @@ with lib;
     wl-gammarelay-rs
     wlprop
     xwayland-satellite-unstable
-    nirius
   ];
 
   home.pointerCursor = {
@@ -155,18 +154,31 @@ with lib;
       layout = {
         gaps = 8;
         struts = {
-          left = -10;
+          left = 0;
           right = -10;
           top = -10;
           bottom = -10;
         };
+
+        tab-indicator = {
+          position = "left";
+          place-within-column = false;
+          length.total-proportion = 0.5;
+          width = 4;
+          gap = 2;
+          gaps-between-tabs = 2;
+          corner-radius = 2;
+          inactive.color = "#00000044";
+          active.color = "#000000";
+        };
+
         background-color = "transparent";
-        center-focused-column = "always";
+        center-focused-column = "never";
 
         preset-column-widths = [
-          { proportion = 0.33333; }
-          { proportion = 0.5; }
-          { proportion = 0.66667; }
+          { proportion = 0.375; }
+          { proportion = 0.625; }
+          { proportion = 0.25; }
         ];
 
         preset-window-heights = [
@@ -258,7 +270,6 @@ with lib;
         "Mod+C".action = center-column;
 
         "Mod+0".action = switch-preset-column-width;
-        # "Mod+Shift+0".action = reset-window-height;
         "Mod+Shift+0".action = switch-preset-window-height;
         "Mod+Minus".action = set-column-width "-10%";
         "Mod+Equal".action = set-column-width "+10%";
@@ -269,17 +280,17 @@ with lib;
         "Mod+Right".action = focus-column-right;
         "Mod+H".action = focus-column-left;
         "Mod+Left".action = focus-column-left;
-        "Mod+K".action = focus-window-up;
-        "Mod+Up".action = focus-window-up;
-        "Mod+J".action = focus-window-down;
-        "Mod+Down".action = focus-window-down;
-        "Mod+Shift+H".action = consume-or-expel-window-left;
-        "Mod+Shift+L".action = consume-or-expel-window-right;
-        "Mod+Control+H".action = swap-window-left;
-        "Mod+Control+L".action = swap-window-right;
+        "Mod+K".action = focus-window-up-or-bottom;
+        "Mod+Up".action = focus-window-up-or-bottom;
+        "Mod+J".action = focus-window-down-or-top;
+        "Mod+Down".action = focus-window-down-or-top;
+        "Mod+Shift+H".action = move-column-left;
+        "Mod+Shift+L".action = move-column-right;
+        "Mod+Control+H".action = consume-or-expel-window-left;
+        "Mod+Control+L".action = consume-or-expel-window-right;
 
-        "Mod+Tab".action = focus-window-down-or-column-right;
-        "Mod+Shift+Tab".action = focus-window-up-or-column-left;
+        "Mod+Tab".action = focus-window-down-or-top;
+        "Mod+Shift+Tab".action = focus-window-up-or-bottom;
 
         "Mod+Z".action = focus-workspace-up;
         "Mod+X".action = focus-workspace-down;
@@ -385,6 +396,8 @@ with lib;
         {
           matches = [ { app-id = "^signal$"; } ];
           block-out-from = "screencast";
+          default-column-width.proportion = 0.25;
+          default-window-height.proportion = 0.5;
         }
         {
           matches = [
