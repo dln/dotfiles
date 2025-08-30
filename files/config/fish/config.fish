@@ -1,4 +1,5 @@
 # Bindings
+bind \cd delete-char # No exit on C-d
 bind \cg __zoxide_zi_repaint
 bind \cJ forward-char
 bind \cn history-prefix-search-forward
