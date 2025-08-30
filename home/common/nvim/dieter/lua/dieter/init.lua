@@ -161,6 +161,7 @@ local setupGroups = function(c)
     ["@variable.parameter"] = { fg = c.accent2 },
 
     -- UI Elements
+    Cursor = { fg = "#ad1805" },
     CursorLine = { bg = c.highlight_subtle },
 
     DiagnosticError = { fg = c.diagnostic_error, italic = true },
