@@ -72,9 +72,6 @@ in
       # videoDrivers = [ "amdgpu" ];
     };
 
-    services.desktopManager.plasma6.enable = true;
-    services.displayManager.sddm.enable = false;
-
     services.greetd =
       let
         steamSession = {
