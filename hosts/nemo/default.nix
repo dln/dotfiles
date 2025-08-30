@@ -294,6 +294,16 @@
         },
       }
     '';
+
+  };
+
+  systemd.services.snapclient-kontoret = {
+    enable = true;
+    wantedBy = [ "pipewire.service" ];
+    after = [ "pipewire.service" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.snapcast}/bin/snapclient --host 192.168.42.7 --hostID kontoret --soundcard sysdefault:CARD=AG06AG03";
+    };
   };
 
   system.stateVersion = "24.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
