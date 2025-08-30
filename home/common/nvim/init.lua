@@ -16,6 +16,7 @@ vim.opt.termguicolors = true
 
 -- Neovide
 vim.opt.linespace = 7
+vim.g.neovide_confirm_quit = true
 vim.g.neovide_padding_top = 32
 vim.g.neovide_padding_bottom = 10
 vim.g.neovide_padding_right = 10
