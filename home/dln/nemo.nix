@@ -33,4 +33,5 @@
     enableScDaemon = false;
     pinentry.package = pkgs.pinentry-curses;
   };
+
 }
