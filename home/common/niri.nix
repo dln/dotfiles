@@ -6,6 +6,20 @@
   ...
 }:
 with lib;
+let
+  focusOrSpawn = pkgs.writeShellApplication {
+    name = "niri-focus-or-spawn";
+    text = ''
+      window_id=$(${getExe pkgs.niri} msg --json windows | ${getExe pkgs.jq} "first(.[] | select(.app_id == \"$1\")) | .id")
+      if [ -n "$window_id" ]; then
+        exec ${getExe pkgs.niri} msg action focus-window --id "$window_id"
+      else
+        shift
+        exec ${getExe pkgs.niri} msg action spawn -- "$@"
+      fi
+    '';
+  };
+in
 {
   imports = [
     inputs.niri.homeModules.niri
@@ -213,7 +227,7 @@ with lib;
       };
 
       animations = {
-        slowdown = 0.8;
+        slowdown = 0.2;
         workspace-switch.enable = false;
       };
 
@@ -299,14 +313,12 @@ with lib;
         "Mod+Shift+X".action = move-column-to-workspace-down;
         "Mod+Control+Z".action = move-workspace-to-monitor-previous;
         "Mod+Control+X".action = move-workspace-to-monitor-next;
-        "F1".action =
-          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "neovide")) | .id' | xargs niri msg action focus-window --id'';
-        "F2".action =
-          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "firefox")) | .id' | xargs niri msg action focus-window --id'';
+        "F1".action = spawn "${getExe focusOrSpawn}" "neovide" "neovide";
+        "F2".action = spawn "${getExe focusOrSpawn}" "firefox" "firefox";
         "F3".action =
-          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "com.mitchellh.ghostty")) | .id' | xargs niri msg action focus-window --id'';
-        "F4".action =
-          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "signal")) | .id' | xargs niri msg action focus-window --id'';
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-2" "ghostty"
+            "--class=com.mitchellh.ghostty-2";
+        "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal";
         "F5".action = focus-workspace 1;
         "F6".action = focus-workspace 2;
         "F7".action = focus-workspace 3;
@@ -331,14 +343,22 @@ with lib;
         "Mod+Shift+6".action = move-column-to-index 6;
         "Mod+Shift+7".action = move-column-to-index 7;
         "Mod+Shift+8".action = move-column-to-index 8;
-        "Alt+1".action = focus-window-in-column 1;
-        "Alt+2".action = focus-window-in-column 2;
-        "Alt+3".action = focus-window-in-column 3;
-        "Alt+4".action = focus-window-in-column 4;
-        "Alt+5".action = focus-window-in-column 5;
-        "Alt+6".action = focus-window-in-column 6;
-        "Alt+7".action = focus-window-in-column 7;
-        "Alt+8".action = focus-window-in-column 8;
+        "Alt+1".action = spawn "${getExe focusOrSpawn}" "neovide" "neovide";
+        "Alt+2".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-2" "ghostty"
+            "--class=com.mitchellh.ghostty-2";
+        "Alt+3".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-3" "ghostty"
+            "--class=com.mitchellh.ghostty-3";
+        "Alt+4".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-4" "ghostty"
+            "--class=com.mitchellh.ghostty-4";
+        "Alt+5".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-5" "ghostty"
+            "--class=com.mitchellh.ghostty-5";
+        "Alt+6".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-6" "ghostty"
+            "--class=com.mitchellh.ghostty-6";
 
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
