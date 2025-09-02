@@ -15,7 +15,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       gnome-ssh-askpass4
-
+      wl-clipboard-rs
     ];
 
     fonts = {
