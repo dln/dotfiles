@@ -290,6 +290,7 @@ with lib;
         "Mod+Control+L".action = consume-or-expel-window-right;
 
         "Mod+Tab".action = focus-window-down-or-top;
+        "Mod+Control+Tab".action = move-window-up;
         "Mod+Shift+Tab".action = focus-window-up-or-bottom;
 
         "Mod+Z".action = focus-workspace-up;
@@ -298,22 +299,22 @@ with lib;
         "Mod+Shift+X".action = move-column-to-workspace-down;
         "Mod+Control+Z".action = move-workspace-to-monitor-previous;
         "Mod+Control+X".action = move-workspace-to-monitor-next;
-        "F1".action = focus-workspace 1;
-        "F2".action = focus-workspace 2;
-        "F3".action = focus-workspace 3;
-        "F4".action = focus-workspace 4;
-        "F5".action = focus-workspace 5;
-        "F6".action = focus-workspace 6;
-        "F7".action = focus-workspace 7;
-        "F8".action = focus-workspace 8;
-        "Shift+F1".action = spawn "niri" "msg" "action" "move-window-to-workspace" "1";
-        "Shift+F2".action = spawn "niri" "msg" "action" "move-window-to-workspace" "2";
-        "Shift+F3".action = spawn "niri" "msg" "action" "move-window-to-workspace" "3";
-        "Shift+F4".action = spawn "niri" "msg" "action" "move-window-to-workspace" "4";
-        "Shift+F5".action = spawn "niri" "msg" "action" "move-window-to-workspace" "5";
-        "Shift+F6".action = spawn "niri" "msg" "action" "move-window-to-workspace" "6";
-        "Shift+F7".action = spawn "niri" "msg" "action" "move-window-to-workspace" "7";
-        "Shift+F8".action = spawn "niri" "msg" "action" "move-window-to-workspace" "8";
+        "F1".action =
+          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "neovide")) | .id' | xargs niri msg action focus-window --id'';
+        "F2".action =
+          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "firefox")) | .id' | xargs niri msg action focus-window --id'';
+        "F3".action =
+          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "com.mitchellh.ghostty")) | .id' | xargs niri msg action focus-window --id'';
+        "F4".action =
+          spawn-sh ''niri msg --json windows | jq 'first(.[] | select(.app_id == "signal")) | .id' | xargs niri msg action focus-window --id'';
+        "F5".action = focus-workspace 1;
+        "F6".action = focus-workspace 2;
+        "F7".action = focus-workspace 3;
+        "F8".action = focus-workspace 4;
+        "Shift+F5".action = spawn "niri" "msg" "action" "move-window-to-workspace" "1";
+        "Shift+F6".action = spawn "niri" "msg" "action" "move-window-to-workspace" "2";
+        "Shift+F7".action = spawn "niri" "msg" "action" "move-window-to-workspace" "3";
+        "Shift+F8".action = spawn "niri" "msg" "action" "move-window-to-workspace" "4";
         "Mod+1".action = focus-column 1;
         "Mod+2".action = focus-column 2;
         "Mod+3".action = focus-column 3;
@@ -330,6 +331,14 @@ with lib;
         "Mod+Shift+6".action = move-column-to-index 6;
         "Mod+Shift+7".action = move-column-to-index 7;
         "Mod+Shift+8".action = move-column-to-index 8;
+        "Alt+1".action = focus-window-in-column 1;
+        "Alt+2".action = focus-window-in-column 2;
+        "Alt+3".action = focus-window-in-column 3;
+        "Alt+4".action = focus-window-in-column 4;
+        "Alt+5".action = focus-window-in-column 5;
+        "Alt+6".action = focus-window-in-column 6;
+        "Alt+7".action = focus-window-in-column 7;
+        "Alt+8".action = focus-window-in-column 8;
 
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
