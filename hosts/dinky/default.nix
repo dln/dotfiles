@@ -130,6 +130,7 @@
     description = "Daniel Lundin";
     extraGroups = [
       "adbusers"
+      "dialout"
       "lp"
       "nitrokey"
       "tss"
