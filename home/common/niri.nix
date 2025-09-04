@@ -95,41 +95,6 @@ in
     };
   };
 
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "#223344";
-      font-size = 32;
-      font = "Inter";
-      indicator-radius = 100;
-      indicator-thickness = 20;
-    };
-  };
-
-  services.swayidle = {
-    enable = true;
-    timeouts = [
-      {
-        timeout = 600;
-        command = "/run/current-system/systemd/bin/loginctl lock-session";
-      }
-      {
-        timeout = 600;
-        command = "${niri} msg action power-off-monitors";
-      }
-    ];
-    events = [
-      {
-        event = "lock";
-        command = getExe pkgs.swaylock;
-      }
-      {
-        event = "before-sleep";
-        command = "/run/current-system/systemd/bin/loginctl lock-session";
-      }
-    ];
-  };
-
   services.swaync = {
     enable = true;
   };
@@ -326,7 +291,7 @@ in
         "F3".action =
           spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-1" "ghostty"
             "--class=com.mitchellh.ghostty-1";
-        "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal-desktop";
+        "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal-desktop" "--use-tray-icon";
         "F5".action = focus-workspace 1;
         "F6".action = focus-workspace 2;
         "F7".action = focus-workspace 3;
