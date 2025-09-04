@@ -7,15 +7,16 @@
 }:
 with lib;
 let
+  niri = getExe config.programs.niri.package;
   focusOrSpawn = pkgs.writeShellApplication {
     name = "niri-focus-or-spawn";
     text = ''
-      window_id=$(${getExe pkgs.niri} msg --json windows | ${getExe pkgs.jq} "first(.[] | select(.app_id == \"$1\")) | .id")
+      window_id=$(${niri} msg --json windows | ${getExe pkgs.jq} "first(.[] | select(.app_id == \"$1\")) | .id")
       if [ -n "$window_id" ]; then
-        exec ${getExe pkgs.niri} msg action focus-window --id "$window_id"
+        exec ${niri} msg action focus-window --id "$window_id"
       else
         shift
-        exec ${getExe pkgs.niri} msg action spawn -- "$@"
+        exec ${niri} msg action spawn -- "$@"
       fi
     '';
   };
@@ -107,7 +108,7 @@ in
       }
       {
         timeout = 180;
-        command = "${getExe config.programs.niri.package} msg action power-off-monitors";
+        command = "${niri} msg action power-off-monitors";
       }
     ];
     events = [
@@ -316,9 +317,9 @@ in
         "F1".action = spawn "${getExe focusOrSpawn}" "neovide" "neovide";
         "F2".action = spawn "${getExe focusOrSpawn}" "firefox" "firefox";
         "F3".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-2" "ghostty"
-            "--class=com.mitchellh.ghostty-2";
-        "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal";
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-1" "ghostty"
+            "--class=com.mitchellh.ghostty-1";
+        "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal-desktop";
         "F5".action = focus-workspace 1;
         "F6".action = focus-workspace 2;
         "F7".action = focus-workspace 3;
@@ -345,20 +346,20 @@ in
         "Mod+Shift+8".action = move-column-to-index 8;
         "Alt+1".action = spawn "${getExe focusOrSpawn}" "neovide" "neovide";
         "Alt+2".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-1" "ghostty"
+            "--class=com.mitchellh.ghostty-1";
+        "Alt+3".action =
           spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-2" "ghostty"
             "--class=com.mitchellh.ghostty-2";
-        "Alt+3".action =
+        "Alt+4".action =
           spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-3" "ghostty"
             "--class=com.mitchellh.ghostty-3";
-        "Alt+4".action =
+        "Alt+5".action =
           spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-4" "ghostty"
             "--class=com.mitchellh.ghostty-4";
-        "Alt+5".action =
+        "Alt+6".action =
           spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-5" "ghostty"
             "--class=com.mitchellh.ghostty-5";
-        "Alt+6".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-6" "ghostty"
-            "--class=com.mitchellh.ghostty-6";
 
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
@@ -421,6 +422,14 @@ in
             }
           ];
           open-floating = true;
+        }
+        {
+          matches = [
+            { app-id = "^com.mitchellh.ghostty"; }
+            { app-id = "^neovide"; }
+          ];
+          default-column-width.proportion = 0.625;
+          default-column-display = "tabbed";
         }
         {
           matches = [ { app-id = "^signal$"; } ];
