@@ -195,6 +195,7 @@
     description = "Daniel Lundin";
     extraGroups = [
       "audio"
+      "dialout"
       "gamemode"
       "input"
       "render"
