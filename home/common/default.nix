@@ -13,6 +13,7 @@
     ./ragenix.nix
     ./scripts.nix
     ./ssh.nix
+    ./swaylock.nix
     ./utils.nix
     ./vcs.nix
     ./waybar.nix
