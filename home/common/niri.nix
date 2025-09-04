@@ -97,17 +97,24 @@ in
 
   programs.swaylock = {
     enable = true;
+    settings = {
+      color = "#223344";
+      font-size = 32;
+      font = "Inter";
+      indicator-radius = 100;
+      indicator-thickness = 20;
+    };
   };
 
   services.swayidle = {
     enable = true;
     timeouts = [
       {
-        timeout = 300;
+        timeout = 600;
         command = "/run/current-system/systemd/bin/loginctl lock-session";
       }
       {
-        timeout = 180;
+        timeout = 600;
         command = "${niri} msg action power-off-monitors";
       }
     ];
