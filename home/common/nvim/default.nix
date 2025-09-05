@@ -87,6 +87,22 @@ in
     };
   };
 
+  systemd.user.services."nvim-server" = {
+    Unit = {
+      Description = "Neovim server";
+      After = [ "default.target" ];
+      PartOf = [ "default.target" ];
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${lib.getExe config.programs.neovim.finalPackage} --headless --listen %t/neovim-server.sock --cmd 'let g:neovide = v:true'";
+      Restart = "always";
+    };
+  };
+
   programs.neovim = {
     enable = true;
     package = nvimWrapper;
