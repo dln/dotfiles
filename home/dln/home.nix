@@ -40,6 +40,10 @@
       forwardAgent = true;
       localForwards = [
         {
+          bind.address = "/run/user/1000/nvim.devel.sock";
+          host.address = "/run/user/1000/nvim.sock";
+        }
+        {
           bind.address = "localhost";
           bind.port = 8000;
           host.address = "localhost";
