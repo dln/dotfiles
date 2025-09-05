@@ -1,7 +1,7 @@
 {
   config,
-lib,
-   pkgs,
+  lib,
+  pkgs,
   ...
 }:
 {
@@ -38,14 +38,14 @@ lib,
   services.swayidle = {
     enable = true;
     timeouts = [
-      {
-        timeout = 600;
-        command = "/run/current-system/systemd/bin/loginctl lock-session";
-      }
-      {
-        timeout = 600;
-        command = "${lib.getExe config.programs.niri.package} msg action power-off-monitors";
-      }
+      # {
+      #   timeout = 600;
+      #   command = "/run/current-system/systemd/bin/loginctl lock-session";
+      # }
+      # {
+      #   timeout = 600;
+      #   command = "${lib.getExe config.programs.niri.package} msg action power-off-monitors";
+      # }
     ];
     events = [
       {
@@ -58,5 +58,4 @@ lib,
       }
     ];
   };
-  }
-
+}
