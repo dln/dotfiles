@@ -20,7 +20,7 @@
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [ "wireguard" ];
       luks.devices."enc".device = "/dev/disk/by-uuid/e7c7a230-b321-4e6d-869c-6c2d858455d2";
       systemd.enable = true;
     };
@@ -105,7 +105,51 @@
 
   services.nscd.enableNsncd = false;
 
-  systemd.network.enable = true;
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "10-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg0";
+          MTUBytes = "1300";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = "/etc/wireguard/aarn.key";
+          # ListenPort = 9918;
+        };
+        wireguardPeers = [
+          {
+            PublicKey = "7LNk2PjvSQUPq3PxeUGzK2N/rQlggHs5sq+7KffTCgI=";
+            PresharedKeyFile = "/etc/wireguard/aarn.psk";
+            PersistentKeepalive = 25;
+            AllowedIPs = [
+              "::/0"
+              "0.0.0.0/0"
+            ];
+            Endpoint = "158.174.115.186:51820";
+          }
+        ];
+      };
+    };
+    networks.wg0 = {
+      matchConfig.Name = "wg0";
+      linkConfig = {
+        ActivationPolicy = "manual";
+      };
+      address = [
+        "172.16.16.43/32"
+      ];
+      DHCP = "no";
+      dns = [ "172.16.16.1" ];
+      gateway = [
+        "172.16.16.1"
+      ];
+      networkConfig = {
+        IPv6AcceptRA = false;
+      };
+    };
+  };
 
   services.resolved = {
     enable = true;
