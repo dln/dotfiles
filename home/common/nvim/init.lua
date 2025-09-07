@@ -15,12 +15,12 @@ vim.opt.syntax = "on"
 vim.opt.termguicolors = true
 
 -- Neovide
-vim.opt.linespace = 7
+vim.opt.linespace = 8
 vim.g.neovide_confirm_quit = true
-vim.g.neovide_padding_top = 32
-vim.g.neovide_padding_bottom = 10
-vim.g.neovide_padding_right = 10
-vim.g.neovide_padding_left = 32
+vim.g.neovide_padding_top = 0
+vim.g.neovide_padding_bottom = 0
+vim.g.neovide_padding_right = 0
+vim.g.neovide_padding_left = 0
 vim.g.neovide_text_gamma = 1.0
 vim.g.neovide_text_contrast = 0.9
 vim.g.neovide_floating_blur_amount_x = 17
