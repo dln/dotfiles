@@ -26,17 +26,17 @@ in
         defaultFonts = {
           monospace = [
             "Berkeley Mono"
-            "Noto Color Emoji"
+            "Symbols Nerd Font Mono"
           ];
           serif = [
             "Inter"
-            "Nerd Fonts Symbols Only"
-            "Noto Color Emoji"
+            "Symbols Nerd Font"
           ];
           sansSerif = [
             "Inter"
-            "Noto Color Emoji"
+            "Symbols Nerd Font"
           ];
+          emoji = ["Symbols Nerd Font Mono"];
         };
         hinting.enable = true;
         hinting.style = "slight";
@@ -44,7 +44,6 @@ in
       };
       packages = with pkgs; [
         go-font
-        inter
         liberation_ttf
         monaspace
         nerd-fonts.symbols-only

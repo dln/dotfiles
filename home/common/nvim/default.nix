@@ -55,22 +55,46 @@ in
     settings = {
       neovim-bin = lib.getExe config.programs.neovim.finalPackage;
       font = {
-        normal = {
-          family = "Go Mono";
-          style = "Regular";
-        };
-        bold = {
-          family = "Go Mono";
-          style = "Bold";
-        };
-        italic = {
-          family = "Go Mono";
-          style = "Italic";
-        };
-        bold_italic = {
-          family = "Go Mono";
-          style = "Bold Italic";
-        };
+        normal = [
+          {
+            family = "Go Mono";
+            style = "Regular";
+          }
+          {
+            family = "Symbols Nerd Font Mono";
+            style = "Regular";
+          }
+        ];
+        bold = [
+          {
+            family = "Go Mono";
+            style = "Bold";
+          }
+          {
+            family = "Symbols Nerd Font Mono";
+            style = "Regular";
+          }
+        ];
+        italic = [
+          {
+            family = "Go Mono";
+            style = "Italic";
+          }
+          {
+            family = "Symbols Nerd Font Mono";
+            style = "Regular";
+          }
+        ];
+        bold_italic = [
+          {
+            family = "Go Mono";
+            style = "Bold Italic";
+          }
+          {
+            family = "Symbols Nerd Font Mono";
+            style = "Regular";
+          }
+        ];
         size = 10;
         hinting = "slight";
         edging = "subpixelantialias";
