@@ -286,11 +286,13 @@ in
         "Mod+Shift+X".action = move-column-to-workspace-down;
         "Mod+Control+Z".action = move-workspace-to-monitor-previous;
         "Mod+Control+X".action = move-workspace-to-monitor-next;
-        "F1".action = spawn "${getExe focusOrSpawn}" "neovide" "neovide";
+        "F1".action =
+          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-devel" "ghostty"
+            "--class=com.mitchellh.ghostty-devel"
+            "--command=ssh -t devel"
+            "--initial-command=ssh -t devel";
         "F2".action = spawn "${getExe focusOrSpawn}" "firefox" "firefox";
-        "F3".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-1" "ghostty"
-            "--class=com.mitchellh.ghostty-1";
+        "F3".action = spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty" "ghostty";
         "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal-desktop" "--use-tray-icon";
         "F5".action = focus-workspace 1;
         "F6".action = focus-workspace 2;
@@ -316,23 +318,6 @@ in
         "Mod+Shift+6".action = move-column-to-index 6;
         "Mod+Shift+7".action = move-column-to-index 7;
         "Mod+Shift+8".action = move-column-to-index 8;
-        "Alt+1".action = spawn "${getExe focusOrSpawn}" "neovide" "neovide";
-        "Alt+2".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-1" "ghostty"
-            "--class=com.mitchellh.ghostty-1";
-        "Alt+3".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-2" "ghostty"
-            "--class=com.mitchellh.ghostty-2";
-        "Alt+4".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-3" "ghostty"
-            "--class=com.mitchellh.ghostty-3";
-        "Alt+5".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-4" "ghostty"
-            "--class=com.mitchellh.ghostty-4";
-        "Alt+6".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-5" "ghostty"
-            "--class=com.mitchellh.ghostty-5";
-
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
           write-to-disk = false;
