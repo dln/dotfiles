@@ -40,6 +40,7 @@
     extraModprobeConfig = ''
       options nct6687 force=1
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+      options xone_dongle override_mac=0x62,0x45,0xb4,0xe7,0xa4,0xef
     '';
     kernelParams = [
       "mitigations=off"
@@ -113,6 +114,7 @@
 
   hardware.keyboard.qmk.enable = true;
 
+  # Enable the xone driver
   hardware.xone.enable = true;
 
   swapDevices = [ ];

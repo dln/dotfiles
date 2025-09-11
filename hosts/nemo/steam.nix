@@ -4,9 +4,6 @@
 }:
 {
 
-  # Enable Xbox controller support
-  hardware.xone.enable = true;
-
   programs.gamemode = {
     enable = true;
     enableRenice = true;
