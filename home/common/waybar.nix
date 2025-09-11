@@ -68,8 +68,8 @@ with lib;
       };
 
       clock = {
-        format = " {:%H:%M}";
-        format-alt = " {:%H:%M 󰃮 %B %d, %Y}";
+        format = " {:%H:%M 󰃮 %a %b %d}";
+        format-alt = " {:%H:%M}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "month";
