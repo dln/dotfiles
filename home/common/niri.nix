@@ -160,6 +160,7 @@ in
         };
 
         background-color = "transparent";
+        always-center-single-column = true;
         center-focused-column = "never";
 
         preset-column-widths = [
@@ -227,7 +228,14 @@ in
       };
 
       workspaces = {
-        scratch = { };
+        "A" = { };
+        "B" = { };
+        "C" = { };
+        "D" = { };
+        "E" = { };
+        "F" = { };
+        "G" = { };
+        "H" = { };
       };
 
       binds = with config.lib.niri.actions; {
@@ -286,22 +294,22 @@ in
         "Mod+Shift+X".action = move-column-to-workspace-down;
         "Mod+Control+Z".action = move-workspace-to-monitor-previous;
         "Mod+Control+X".action = move-workspace-to-monitor-next;
-        "F1".action =
-          spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty-devel" "ghostty"
-            "--class=com.mitchellh.ghostty-devel"
-            "--command=ssh -t devel"
-            "--initial-command=ssh -t devel";
-        "F2".action = spawn "${getExe focusOrSpawn}" "firefox" "firefox";
-        "F3".action = spawn "${getExe focusOrSpawn}" "com.mitchellh.ghostty" "ghostty";
-        "F4".action = spawn "${getExe focusOrSpawn}" "signal" "signal-desktop" "--use-tray-icon";
-        "F5".action = focus-workspace 1;
-        "F6".action = focus-workspace 2;
-        "F7".action = focus-workspace 3;
-        "F8".action = focus-workspace 4;
-        "Shift+F5".action = spawn "niri" "msg" "action" "move-window-to-workspace" "1";
-        "Shift+F6".action = spawn "niri" "msg" "action" "move-window-to-workspace" "2";
-        "Shift+F7".action = spawn "niri" "msg" "action" "move-window-to-workspace" "3";
-        "Shift+F8".action = spawn "niri" "msg" "action" "move-window-to-workspace" "4";
+        "F1".action = focus-workspace "A";
+        "F2".action = focus-workspace "B";
+        "F3".action = focus-workspace "C";
+        "F4".action = focus-workspace "D";
+        "F5".action = focus-workspace "E";
+        "F6".action = focus-workspace "F";
+        "F7".action = focus-workspace "G";
+        "F8".action = focus-workspace "H";
+        "Shift+F1".action = spawn "niri" "msg" "action" "move-window-to-workspace" "A";
+        "Shift+F2".action = spawn "niri" "msg" "action" "move-window-to-workspace" "B";
+        "Shift+F3".action = spawn "niri" "msg" "action" "move-window-to-workspace" "C";
+        "Shift+F4".action = spawn "niri" "msg" "action" "move-window-to-workspace" "D";
+        "Shift+F5".action = spawn "niri" "msg" "action" "move-window-to-workspace" "E";
+        "Shift+F6".action = spawn "niri" "msg" "action" "move-window-to-workspace" "F";
+        "Shift+F7".action = spawn "niri" "msg" "action" "move-window-to-workspace" "G";
+        "Shift+F8".action = spawn "niri" "msg" "action" "move-window-to-workspace" "H";
         "Mod+1".action = focus-column 1;
         "Mod+2".action = focus-column 2;
         "Mod+3".action = focus-column 3;
@@ -361,7 +369,7 @@ in
         {
           geometry-corner-radius =
             let
-              r = 6.0;
+              r = 8.0;
             in
             {
               top-left = r;
@@ -386,7 +394,6 @@ in
             { app-id = "^neovide"; }
           ];
           default-column-width.proportion = 0.625;
-          default-column-display = "tabbed";
         }
         {
           matches = [ { app-id = "^signal$"; } ];

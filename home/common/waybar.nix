@@ -11,6 +11,7 @@ with lib;
     enable = true;
     systemd.enable = true;
     settings.mainBar = {
+      start_hidden = true;
       layer = "top";
       position = "bottom";
       height = 30;
@@ -27,23 +28,18 @@ with lib;
       ];
 
       modules-right = [
+        "custom/swaync"
+        "tray"
         "wireplumber#sink"
         "backlight"
         "custom/wl-gammarelay-temperature"
-        "network"
         "power-profiles-daemon"
         "battery"
-        "custom/swaync"
-        "tray"
         "custom/logout"
       ];
 
       "niri/workspaces" = {
-        format = "{icon}";
-        format-icons = {
-          active = "";
-          default = "";
-        };
+        current-only = true;
         on-click-middle = "${getExe config.programs.niri.package} msg action open-overview";
         on-click-right = "${getExe config.programs.niri.package} msg action open-overview";
       };
@@ -56,11 +52,6 @@ with lib;
         };
       };
 
-      "custom/hardware-wrap" = {
-        format = "";
-        tooltip-format = "Resource Usage";
-      };
-
       "custom/logout" = {
         format = "  ";
         tooltip-format = "Log out";
@@ -68,8 +59,7 @@ with lib;
       };
 
       clock = {
-        format = " {:%H:%M 󰃮 %a %b %d}";
-        format-alt = " {:%H:%M}";
+        format = "{:%a %b %d %H:%M}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "month";
@@ -94,27 +84,6 @@ with lib;
         };
       };
 
-      cpu = {
-        format = "󰘚 {usage}%";
-        tooltip = true;
-        interval = 1;
-        on-click = "${getExe pkgs.ghostty} -e btm";
-      };
-      memory = {
-        format = "󰍛 {}%";
-        interval = 1;
-        on-click = "${getExe pkgs.ghostty} -e btm";
-      };
-      temperature = {
-        critical-threshold = 80;
-        format = "{icon} {temperatureC}°C";
-        format-icons = [
-          "󱃃"
-          "󰔏"
-          "󱃂"
-        ];
-        on-click = "${getExe pkgs.ghostty} -e btm";
-      };
       battery = {
         states = {
           good = 95;
@@ -304,7 +273,6 @@ with lib;
 
       /* Common module styling with border-bottom */
       #mode,
-      #custom-hardware-wrap,
       #custom-logout,
       #custom-swaync,
       #custom-wl-gammarelay-temperature,
@@ -330,7 +298,6 @@ with lib;
       #backlight:hover,
       #clock:hover,
       #cpu:hover,
-      #custom-hardware-wrap:hover,
       #custom-logout:hover,
       #custom-swaync:hover,
       #custom-wl-gammarelay-temperature:hover,
@@ -374,11 +341,6 @@ with lib;
       #mode {
           color: @mode-color;
           border-bottom-color: @mode-color;
-      }
-
-      #custom-hardware-wrap {
-          color: @group-hardware-color;
-          border-bottom-color: @group-hardware-color;
       }
 
       #custom-logout {
