@@ -35,6 +35,7 @@
     ragenix.url = "github:yaxitech/ragenix";
     run0-sudo-shim.url = "github:lordgrimmauld/run0-sudo-shim";
     run0-sudo-shim.inputs.nixpkgs.follows = "nixpkgs";
+    walker.url = "github:abenz1267/walker";
   };
 
   outputs =
@@ -80,6 +81,7 @@
             ragenix.homeManagerModules.default
             ./home/common
             nix-index-database.homeModules.nix-index
+            inputs.walker.homeManagerModules.default
           ]
           ++ modules;
         };

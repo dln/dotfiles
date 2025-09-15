@@ -16,6 +16,7 @@
     ./swaylock.nix
     ./utils.nix
     ./vcs.nix
+    ./walker.nix
     ./waybar.nix
     ./web.nix
   ];

@@ -42,59 +42,6 @@ in
     size = 32;
   };
 
-  services.walker = {
-    enable = true;
-    systemd.enable = true;
-    settings = {
-      disable_click_to_close = false;
-
-      builtins = {
-
-        calc = {
-          require_number = true;
-          weight = 5;
-          name = "calc";
-          icon = "accessories-calculator";
-          placeholder = "Calculator";
-          min_chars = 4;
-        };
-
-        emojis = {
-          placeholder = "";
-          prefix = "e";
-          switcher_only = false;
-        };
-
-        switcher = {
-          weight = 5;
-          name = "switcher";
-          placeholder = "Switcher";
-          prefix = "/";
-        };
-
-        symbols = {
-          after_copy = "";
-          weight = 5;
-          name = "symbols";
-          placeholder = "Symbols";
-          switcher_only = true;
-          history = true;
-          typeahead = true;
-        };
-
-        windows = {
-          weight = 5;
-          icon = "view-restore";
-          name = "windows";
-          placeholder = "Windows";
-          show_icon_when_single = true;
-        };
-
-      };
-
-    };
-  };
-
   services.swaync = {
     enable = true;
   };
