@@ -305,7 +305,7 @@
     wantedBy = [ "pipewire.service" ];
     after = [ "pipewire.service" ];
     serviceConfig = {
-      ExecStart = "${pkgs.snapcast}/bin/snapclient --host 192.168.42.7 --hostID kontoret --soundcard sysdefault:CARD=AG06AG03";
+      ExecStart = "${pkgs.snapcast}/bin/snapclient --host 192.168.42.7 --hostID kontoret --Soundcard sysdefault:CARD=AG06AG03";
     };
   };
 
