@@ -97,7 +97,6 @@
         ];
         la = [
           "log"
-          "--limit=25"
           "-T"
           "builtin_log_oneline"
           "-r"
@@ -137,7 +136,7 @@
             if [ -n "$1" ]; then
               jj diff --tool=difft -r "$@"
             else
-              jj log --limit=5 -T builtin_log_comfortable
+              jj log -T builtin_log_comfortable -r '(main..@) | (main..@)-'
             fi
           ''
           ""
