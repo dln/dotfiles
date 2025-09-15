@@ -36,7 +36,7 @@ in
             "Inter"
             "Symbols Nerd Font"
           ];
-          emoji = ["Symbols Nerd Font Mono"];
+          emoji = [ "Symbols Nerd Font Mono" ];
         };
         hinting.enable = true;
         hinting.style = "slight";
@@ -68,22 +68,18 @@ in
       enable = true;
       xkb.layout = "se";
       xkb.variant = "us";
-      # videoDrivers = [ "amdgpu" ];
     };
 
     services.greetd =
       let
         steamSession = {
           command = "steam-gamescope";
-          # command = "${config.programs.niri.package}/bin/niri-session";
-          # command = "${pkgs.greetd.greetd}/bin/agreety --cmd niri-session";
-          # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
           user = "gamer";
         };
 
-        base = config.services.xserver.displayManager.sessionData.desktops;
+        base = config.services.displayManager.sessionData.desktops;
         session = {
-          command = "${lib.getExe pkgs.greetd.tuigreet} --sessions ${base}/share/wayland-sessions:${base}/share/xsessions --remember --remember-user-session --issue";
+          command = "${lib.getExe pkgs.tuigreet} --sessions ${base}/share/wayland-sessions:${base}/share/xsessions --remember --remember-user-session --issue";
         };
 
       in
