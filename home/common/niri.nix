@@ -30,6 +30,8 @@ in
 
   home.packages = with pkgs; [
     brightnessctl
+    nirius
+    pwvucontrol
     wl-gammarelay-rs
     wlprop
     xwayland-satellite-unstable
@@ -88,7 +90,7 @@ in
       layout = {
         gaps = 8;
         struts = {
-          left = 0;
+          left = -10;
           right = -10;
           top = -10;
           bottom = -10;
@@ -257,22 +259,23 @@ in
         "Shift+F6".action = spawn "niri" "msg" "action" "move-window-to-workspace" "F";
         "Shift+F7".action = spawn "niri" "msg" "action" "move-window-to-workspace" "G";
         "Shift+F8".action = spawn "niri" "msg" "action" "move-window-to-workspace" "H";
-        "Mod+1".action = focus-column 1;
-        "Mod+2".action = focus-column 2;
-        "Mod+3".action = focus-column 3;
-        "Mod+4".action = focus-column 4;
-        "Mod+5".action = focus-column 5;
-        "Mod+6".action = focus-column 6;
-        "Mod+7".action = focus-column 7;
-        "Mod+8".action = focus-column 8;
-        "Mod+Shift+1".action = move-column-to-index 1;
-        "Mod+Shift+2".action = move-column-to-index 2;
-        "Mod+Shift+3".action = move-column-to-index 3;
-        "Mod+Shift+4".action = move-column-to-index 4;
-        "Mod+Shift+5".action = move-column-to-index 5;
-        "Mod+Shift+6".action = move-column-to-index 6;
-        "Mod+Shift+7".action = move-column-to-index 7;
-        "Mod+Shift+8".action = move-column-to-index 8;
+        "Mod+1".action = spawn "nirius" "focus-marked" "1";
+        "Mod+2".action = spawn "nirius" "focus-marked" "2";
+        "Mod+3".action = spawn "nirius" "focus-marked" "3";
+        "Mod+4".action = spawn "nirius" "focus-marked" "4";
+        "Mod+5".action = spawn "nirius" "focus-marked" "5";
+        "Mod+6".action = spawn "nirius" "focus-marked" "6";
+        "Mod+7".action = spawn "nirius" "focus-marked" "7";
+        "Mod+8".action = spawn "nirius" "focus-marked" "8";
+        "Mod+Shift+1".action = spawn "nirius" "toggle-mark" "1";
+        "Mod+Shift+2".action = spawn "nirius" "toggle-mark" "2";
+        "Mod+Shift+3".action = spawn "nirius" "toggle-mark" "3";
+        "Mod+Shift+4".action = spawn "nirius" "toggle-mark" "4";
+        "Mod+Shift+5".action = spawn "nirius" "toggle-mark" "5";
+        "Mod+Shift+6".action = spawn "nirius" "toggle-mark" "6";
+        "Mod+Shift+7".action = spawn "nirius" "toggle-mark" "7";
+        "Mod+Shift+8".action = spawn "nirius" "toggle-mark" "8";
+        "Mod+S".action = spawn "nirius" "toggle-follow-mode";
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
           write-to-disk = false;
@@ -383,6 +386,21 @@ in
         }
       ];
     };
+
+  systemd.user.services.niriusd = {
+    Unit = {
+      PartOf = "graphical-session.target";
+      After = "graphical-session.target";
+      Requisite = "graphical-session.target";
+    };
+    Service = {
+      ExecStart = ''${getExe' pkgs.nirius "niriusd"}'';
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 
   systemd.user.services.wl-gammarelay-rs = {
     Unit = {
