@@ -108,15 +108,14 @@
   systemd.network = {
     enable = true;
     netdevs = {
-      "10-wg0" = {
+      "50-wg-aarn" = {
         netdevConfig = {
           Kind = "wireguard";
-          Name = "wg0";
-          MTUBytes = "1300";
+          Name = "wg-aarn";
         };
         wireguardConfig = {
           PrivateKeyFile = "/etc/wireguard/aarn.key";
-          # ListenPort = 9918;
+          ListenPort = 51820;
         };
         wireguardPeers = [
           {
@@ -132,20 +131,41 @@
         ];
       };
     };
-    networks.wg0 = {
-      matchConfig.Name = "wg0";
+    networks."50-wg-aarn" = {
+      matchConfig.Name = "wg-aarn";
       linkConfig = {
         ActivationPolicy = "manual";
       };
       address = [
         "172.16.16.43/32"
       ];
-      DHCP = "no";
       dns = [ "172.16.16.1" ];
-      gateway = [
-        "172.16.16.1"
+      # domains = [ "~." ];
+      routes = [
+        {
+          Destination = "172.16.16.1/32";
+          Scope = "link";
+        }
+        {
+          Destination = "10.1.0.0/16";
+          Gateway = "172.16.16.1";
+        }
+        {
+          Destination = "192.168.1.0/24";
+          Gateway = "172.16.16.1";
+        }
+        {
+          Destination = "192.168.42.0/24";
+          Gateway = "172.16.16.1";
+        }
+        {
+          Destination = "192.168.99.0/24";
+          Gateway = "172.16.16.1";
+        }
       ];
       networkConfig = {
+        ConfigureWithoutCarrier = true;
+        LinkLocalAddressing = "no";
         IPv6AcceptRA = false;
       };
     };
