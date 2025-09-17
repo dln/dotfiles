@@ -276,6 +276,7 @@ in
         "Mod+Shift+7".action = spawn "nirius" "toggle-mark" "7";
         "Mod+Shift+8".action = spawn "nirius" "toggle-mark" "8";
         "Mod+S".action = spawn "nirius" "toggle-follow-mode";
+        "Mod+I".action = set-dynamic-cast-window;
         "Print".action = screenshot;
         "Control+Print".action.screenshot-screen = {
           write-to-disk = false;
