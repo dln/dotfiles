@@ -6,19 +6,14 @@
     ./devel.nix
     ./fish.nix
     ./ghostty.nix
-    ./gnome.nix
     ./k8s.nix
-    ./niri.nix
     ./nix.nix
     ./nvim
     ./ragenix.nix
     ./scripts.nix
     ./ssh.nix
-    ./swaylock.nix
     ./utils.nix
     ./vcs.nix
-    ./walker.nix
-    ./waybar.nix
     ./web.nix
   ];
 

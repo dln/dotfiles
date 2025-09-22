@@ -14,23 +14,8 @@
     obsidian
     pavucontrol
     plexamp
-    (symlinkJoin {
-      name = "signal-desktop";
-      paths = [ signal-desktop ];
-      nativeBuildInputs = [ makeWrapper ];
-      postBuild = ''
-        wrapProgram "$out/bin/signal-desktop" \
-          --add-flags '--password-store="gnome-libsecret"'
-      '';
-    })
     thunderbird
   ];
-
-  gtk.font = {
-    name = "Inter";
-    size = 12;
-    package = pkgs.inter;
-  };
 
   xdg.desktopEntries = {
     firefox-work = {

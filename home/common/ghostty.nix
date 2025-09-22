@@ -28,14 +28,18 @@
         gtk-tabs-location = "hidden";
         gtk-titlebar = false;
         gtk-titlebar-hide-when-maximized = true;
-        window-height = 45;
+        window-decoration = "client";
+        window-height = 42;
         window-width = 120;
         window-padding-balance = true;
         window-padding-color = "extend";
-        window-padding-x = 10;
-        window-padding-y = 10;
+        window-padding-x = 8;
+        window-padding-y = 8;
         window-theme = "system";
         theme = "light:PatagiaLight,dark:PatagiaDark";
+
+        background-blur = true;
+        background-opacity = 0.9;
 
         keybind = [
           "alt+shift+c=copy_to_clipboard"

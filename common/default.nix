@@ -2,12 +2,12 @@
   imports = [
     ./base.nix
     ./desktop.nix
-    ./gnome.nix
     ./hardening.nix
     ./laptop.nix
     ./nix.nix
-    ./niri.nix
+    ./plasma.nix
     ./plymouth.nix
     ./podman.nix
+    ./steam.nix
   ];
 }

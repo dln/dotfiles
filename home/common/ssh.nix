@@ -19,4 +19,8 @@
       userKnownHostsFile = "~/.ssh/known_hosts";
     };
   };
+
+  services.ssh-agent.enable = true;
+
+  # services.ssh-tpm-agent.enable = true;
 }
