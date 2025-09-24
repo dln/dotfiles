@@ -122,7 +122,6 @@
         STEAM_GAMESCOPE_FANCY_SCALING_SUPPORT = "1";
         STEAM_GAMESCOPE_COLOR_MANAGED = "1";
         STEAM_GAMESCOPE_VIRTUAL_WHITE = "1";
-        STEAM_ENABLE_CEC = "1";
         GAMESCOPE_NV12_COLORSPACE = "k_EStreamColorspace_BT601";
         STEAM_GAMESCOPE_HDR_SUPPORTED = "1";
         VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
@@ -135,7 +134,6 @@
   environment.variables = {
     AMD_VULKAN_ICD = "RADV";
     PROTON_FSR4_UPGRADE = "1";
-    STEAM_ENABLE_CEC = "1";
   };
 
   environment.systemPackages = with pkgs; [
