@@ -25,6 +25,5 @@
     kdiff3
   ];
 
-  programs.ssh.askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-
+  programs.ssh.askPassword = lib.getExe pkgs.kdePackages.ksshaskpass;
 }

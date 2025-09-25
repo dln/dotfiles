@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
   programs.ssh = {
     enable = true;
@@ -21,6 +21,7 @@
   };
 
   services.ssh-agent.enable = true;
+  systemd.user.services.ssh-agent.environment.SSH_ASKPASS = lib.getExe pkgs.kdePackages.ksshaskpass;
 
   # services.ssh-tpm-agent.enable = true;
 }
