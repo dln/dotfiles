@@ -4,6 +4,7 @@ local servers = {
   html = {},
   jsonls = {},
   sqls = {},
+  starlark_rust = {},
   superhtml = {},
   ts_ls = {},
 

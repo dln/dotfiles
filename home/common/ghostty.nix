@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -113,7 +114,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-secondary --background-opacity=0.8 --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
+          ${lib.getExe pkgs.ghostty} --class=com.mitchellh.ghostty-secondary --background-opacity=0.8 --font-style="UltraCondensed" --font-style-bold="Bold UltraCondensed" --font-style-italic="UltraCondensed Oblique" -e bash
         '';
         genericName = "Secondary Ghostty";
         icon = "com.mitchellh.ghostty";
@@ -132,7 +133,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-devel --command="ssh -t devel" --initial-command="ssh -t devel"
+          ${lib.getExe pkgs.ghostty} --class=com.mitchellh.ghostty --class=com.mitchellh.ghostty-devel --command="${lib.getExe pkgs.openssh} -t devel" --initial-command="${lib.getExe pkgs.openssh} -t devel"
         '';
         genericName = "Ghostty (devel)";
         icon = "com.mitchellh.ghostty";
@@ -151,7 +152,7 @@
           "TerminalEmulator"
         ];
         exec = ''
-          ghostty --class=com.mitchellh.ghostty-devel-secondary --background-opacity=0.8 --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="ssh -t devel" --initial-command="ssh -t devel"
+          ${lib.getExe pkgs.ghostty} --class=com.mitchellh.ghostty-devel-secondary --background-opacity=0.8 --font-style="ExtraCondensed" --font-style-bold="Bold ExtraCondensed" --font-style-italic="ExtraCondensed Oblique" --command="${lib.getExe pkgs.openssh} -t devel" --initial-command="${lib.getExe pkgs.openssh} -t devel"
         '';
         genericName = "Secondary Ghostty (devel)";
         icon = "com.mitchellh.ghostty";

@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.ssh = {
     enable = true;
@@ -21,7 +26,19 @@
   };
 
   services.ssh-agent.enable = true;
-  systemd.user.services.ssh-agent.environment.SSH_ASKPASS = lib.getExe pkgs.kdePackages.ksshaskpass;
+  systemd.user.services.ssh-agent.Service.Environment = [
+    "SSH_ASKPASS=${config.home.sessionVariables.SSH_ASKPASS}"
+    "SSH_ASKPASS_REQUIRE=force"
+  ];
+
+  home.sessionVariables = {
+    # https://wiki.archlinux.org/title/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases
+    SSH_ASKPASS = lib.getExe pkgs.kdePackages.ksshaskpass;
+    SSH_ASKPASS_REQUIRE = "prefer";
+    SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR}/${config.services.ssh-agent.socket}";
+  };
+
+  systemd.user.sessionVariables = config.home.sessionVariables;
 
   # services.ssh-tpm-agent.enable = true;
 }
