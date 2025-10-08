@@ -244,11 +244,14 @@
     "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBLpoKvsZDIQQLfgzJhe1jAQubBNxjydkj8UfdUPaSXqgfB02OypMOC1m5ZuJYcQIxox0I+4Z8xstFhYP6s8zKZwAAAAEc3NoOg=="
   ];
 
-  nix.settings.trusted-users = [
-    "dln"
-    "lsjostro"
-    "nixremote"
-  ];
+  nix.settings = {
+    secret-key-files = "/etc/nix/cache-priv-key.pem";
+    trusted-users = [
+      "dln"
+      "lsjostro"
+      "nixremote"
+    ];
+  };
 
   services.printing.enable = lib.mkForce true;
   services.printing.drivers = [ pkgs.brlaser ];
