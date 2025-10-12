@@ -11,6 +11,12 @@
   };
 
   home.packages = with pkgs; [
+    beets
+    essentia-extractor
+    picard
+    renameutils
+    rsgain
     stable.calibre
+    wrtag
   ];
 }
