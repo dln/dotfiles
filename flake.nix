@@ -4,12 +4,13 @@
   nixConfig = {
     substituters = [
       "https://cache-nixos-org.aarn.patagia.net/"
-      # "https://cache.nixos.org"
+      "https://nix.aarn.patagia.net"
     ];
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "nix.aarn.patagia.net:SQs7heV/yoZ8wb6G9eEKF09xaOvS+G4ezN0xojtCfhU="
       "nix-cache.aarn.patagia.net:MInX1LGRR7eGZqmq16CXY6f7248kFpmRuw0hNs7yCos="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
