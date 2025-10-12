@@ -148,7 +148,7 @@ in
             owner = "actionshrimp";
             repo = "direnv.nvim";
             rev = "main";
-            hash = "sha256-qx+mbZz2tzA8F7pEYD4eGjujvpPa4/KfO9M6oxKFnM0=";
+            hash = "sha256-p2im4nUV0n9HQsjCA9oGJvTADfKGlCEr/RYWGlUszuU=";
           };
         };
         type = "lua";
