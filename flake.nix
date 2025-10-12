@@ -3,9 +3,8 @@
 
   nixConfig = {
     substituters = [
-      "https://nix-cache-nixos.aarn.patagia.net/"
       "https://cache-nixos-org.aarn.patagia.net/"
-      "https://cache.nixos.org"
+      # "https://cache.nixos.org"
     ];
     extra-substituters = [
       "https://nix-community.cachix.org"
