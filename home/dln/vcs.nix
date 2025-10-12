@@ -23,6 +23,11 @@
         key = "/home/dln/.ssh/git_signing_key.pub";
       };
 
+      gerrit = {
+        default-remote = "origin";
+        default-remote-branch = "main";
+      };
+
       templates.git_push_bookmark = ''"dln/push-\" ++ change_id.short()'';
 
       templates.log_short = ''
@@ -101,6 +106,7 @@
           "builtin_log_oneline"
           "-r"
           "all()"
+          "--limit=35"
         ];
         d = [
           "diff"
