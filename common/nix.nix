@@ -21,7 +21,7 @@
         nix-path = config.nix.nixPath;
         substituters = [
           "https://nix.aarn.patagia.net/"
-          "https://cache-nixos-org.aarn.patagia.net/"
+          "https://cache.nixos.org/"
         ];
         trusted-public-keys = [
           "nix.aarn.patagia.net:SQs7heV/yoZ8wb6G9eEKF09xaOvS+G4ezN0xojtCfhU="

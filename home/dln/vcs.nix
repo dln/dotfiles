@@ -4,16 +4,16 @@
   ...
 }:
 {
-  programs.git = {
-    userName = "Daniel Lundin";
-    userEmail = "dln@arity.se";
+  programs.git.settings = {
+    user.name = "Daniel Lundin";
+    user.email = "dln@arity.se";
   };
 
   programs.jujutsu = {
     settings = {
       user = {
-        email = config.programs.git.userEmail;
-        name = config.programs.git.userName;
+        email = config.programs.git.settings.user.email;
+        name = config.programs.git.settings.user.name;
       };
 
       signing = {
