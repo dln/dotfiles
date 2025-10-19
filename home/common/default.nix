@@ -6,6 +6,7 @@
     ./devel.nix
     ./fish.nix
     ./ghostty.nix
+    ./helix.nix
     ./k8s.nix
     ./nix.nix
     ./nvim

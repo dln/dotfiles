@@ -12,7 +12,6 @@
     homeDirectory = "/home/dln";
     packages = with pkgs; [
       asciinema
-      helix
       ouch
       toolbox
     ];

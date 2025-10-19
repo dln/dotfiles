@@ -115,7 +115,7 @@ in
     enable = true;
     package = nvimWrapper;
 
-    defaultEditor = true;
+    defaultEditor = false;
     viAlias = true;
     vimAlias = true;
     withNodeJs = false;
