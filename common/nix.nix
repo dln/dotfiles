@@ -20,14 +20,14 @@
         # Workaround for https://github.com/NixOS/nix/issues/9574
         nix-path = config.nix.nixPath;
         substituters = [
-          "https://nix.aarn.patagia.net/"
           "https://cache.nixos.org/"
         ];
         trusted-public-keys = [
-          "nix.aarn.patagia.net:SQs7heV/yoZ8wb6G9eEKF09xaOvS+G4ezN0xojtCfhU="
+          # "nix.aarn.patagia.net:SQs7heV/yoZ8wb6G9eEKF09xaOvS+G4ezN0xojtCfhU="
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         ];
         extra-substituters = [
+         # "https://nix.aarn.patagia.net/"
           "https://nix-community.cachix.org"
         ];
         extra-trusted-public-keys = [
