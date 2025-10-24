@@ -10,6 +10,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./harmonia.nix
+    ./plasma.nix
     ./steam.nix
     ./woodpecker.nix
   ];

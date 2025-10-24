@@ -80,21 +80,23 @@
     ];
     gamescopeSession = {
       args = [
-        "--adaptive-sync"
-        "--hdr-enabled"
-        "--hdr-itm-enable"
-        "--hdr-itm-target-nits"
-        "700"
-        "--hdr-itm-sdr-nits"
-        "300"
-        "--hdr-sdr-content-nits"
-        "300"
+        # "-r"
+        # "120"
+        # "--adaptive-sync"
+        # "--hdr-enabled"
+        # "--hdr-itm-enable"
+        # "--hdr-itm-target-nits"
+        # "700"
+        # "--hdr-itm-sdr-nits"
+        # "300"
+        # "--hdr-sdr-content-nits"
+        # "300"
         "--prefer-vk-device"
         "1002:7550"
-        "--fullscreen"
-        "-O"
-        "DP-2"
+        # "-O"
+        # "DP-2"
         "--xwayland-count 2"
+        "--fullscreen"
         "-w"
         "3840"
         "-h"
@@ -103,8 +105,6 @@
         "3840"
         "-H"
         "2160"
-        "-r"
-        "120"
       ];
       enable = true;
       env = {
@@ -114,7 +114,6 @@
         PROTON_FSR4_UPGRADE = "1";
         STEAM_MULTIPLE_XWAYLANDS = "1";
         STEAM_GAMESCOPE_VRR_SUPPORTED = "1";
-
         STEAM_DISABLE_AUDIO_DEVICE_SWITCHING = "1";
         STEAM_GAMESCOPE_DYNAMIC_FPSLIMITER = "1";
         STEAM_GAMESCOPE_HAS_TEARING_SUPPORT = "1";
@@ -127,6 +126,7 @@
         VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
         WINE_CPU_TOPOLOGY = "8:0,1,2,3,4,5,6,7";
         WINEDLLOVERRIDES = "dxgi=n";
+        XDG_SEAT = "seat1";
       };
     };
   };
@@ -134,6 +134,7 @@
   environment.variables = {
     AMD_VULKAN_ICD = "RADV";
     PROTON_FSR4_UPGRADE = "1";
+    STEAM_MULTIPLE_XWAYLANDS = "1";
   };
 
   environment.systemPackages = with pkgs; [
@@ -148,6 +149,8 @@
 
   # Multiseat Configuration
   services.udev.extraRules = ''
+    SUBSYSTEM=="tty", KERNEL=="tty8", TAG+="seat", ENV{ID_SEAT}="seat1"
+
     # Grant render group access to DRM devices
     SUBSYSTEM=="drm", GROUP="video", MODE="0666"
     KERNEL=="renderD*", GROUP="render", MODE="0666"
@@ -165,10 +168,16 @@
     # SUBSYSTEM=="input", ATTRS{name}=="Microsoft X-Box One*", TAG+="seat", ENV{ID_SEAT}="seat1"
 
     # Seat assignment
-    # TAG=="seat", ENV{ID_FOR_SEAT}=="drm-pci-0000_03_00_0", ENV{ID_SEAT}="seat1"
-    # TAG=="seat", ENV{ID_FOR_SEAT}=="graphics-pci-0000_03_00_0", ENV{ID_SEAT}="seat1"
-    # TAG=="seat", ENV{ID_FOR_SEAT}=="sound-pci-0000_03_00_1", ENV{ID_SEAT}="seat1"
+    TAG=="seat", ENV{ID_FOR_SEAT}=="drm-pci-0000_03_00_0",  ENV{ID_SEAT}="seat1"
+    TAG=="seat", ENV{ID_FOR_SEAT}=="graphics-pci-0000_03_00_0", ENV{ID_SEAT}="seat1"
+    TAG=="seat", ENV{ID_FOR_SEAT}=="sound-pci-0000_03_00_1", ENV{ID_SEAT}="seat1"
+    TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_14_0-usb-0_5_4", ENV{ID_SEAT}="seat1"
   '';
+  #   TAG=="seat", ENV{ID_FOR_SEAT}=="drm-pci-0000_03_00_0", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
+  #   TAG=="seat", ENV{ID_FOR_SEAT}=="graphics-pci-0000_03_00_0", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
+  #   TAG=="seat", ENV{ID_FOR_SEAT}=="sound-pci-0000_03_00_1", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
+  #   TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_14_0-usb-0_5_4", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
+  # '';
 
   # User Configuration
   users.users.gamer = {
@@ -206,7 +215,7 @@
       HOME = "/home/gamer";
       USER = "gamer";
       XDG_RUNTIME_DIR = "/run/user/1003";
-      # XDG_SEAT = "seat1";
+      XDG_SEAT = "seat1";
     };
 
     serviceConfig = {
@@ -219,8 +228,8 @@
         "audio"
         "seat"
       ];
-      # ExecStart = "/run/current-system/sw/bin/start-gamescope-session";
-      ExecStart = "/run/current-system/sw/bin/steam-gamescope";
+      ExecStart = "/run/current-system/sw/bin/start-gamescope-session";
+      # ExecStart = "/run/current-system/sw/bin/steam-gamescope";
       Restart = "always";
       RestartSec = 10;
       RuntimeDirectory = "user-1003";
