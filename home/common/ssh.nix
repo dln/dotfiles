@@ -12,11 +12,11 @@
       PreferredAuthentications publickey
     '';
     matchBlocks."*" = {
-      addKeysToAgent = "yes";
+      # addKeysToAgent = "yes";
       compression = false;
-      controlMaster = "auto";
-      controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
-      controlPersist = "15m";
+      # controlMaster = "auto";
+      # controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
+      # controlPersist = "15m";
       forwardAgent = false;
       hashKnownHosts = false;
       serverAliveCountMax = 3;
