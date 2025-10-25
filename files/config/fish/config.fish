@@ -10,6 +10,13 @@ bind \e\[109\;5u execute # C-m in ghostty
 set fish_greeting
 set fish_emoji_width 2
 
+# SSH
+if set -q SSH_AUTH_SOCK; and set -q SSH_CLIENT_ID
+    mkdir -p "$HOME/.ssh/agent"
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/agent/agent-$SSH_CLIENT_ID"
+    set -gx SSH_AUTH_SOCK "$HOME/.ssh/agent/agent-$SSH_CLIENT_ID"
+end
+
 # Colors
 set fish_color_command --bold
 set fish_color_comment --italics --dim

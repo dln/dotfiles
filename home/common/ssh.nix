@@ -21,6 +21,7 @@
       hashKnownHosts = false;
       serverAliveCountMax = 3;
       serverAliveInterval = 0;
+      setEnv.SSH_CLIENT_ID = "%L";
       userKnownHostsFile = "~/.ssh/known_hosts";
     };
   };
@@ -35,7 +36,6 @@
     # https://wiki.archlinux.org/title/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases
     SSH_ASKPASS = lib.getExe pkgs.kdePackages.ksshaskpass;
     SSH_ASKPASS_REQUIRE = "prefer";
-    SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR}/${config.services.ssh-agent.socket}";
   };
 
   systemd.user.sessionVariables = config.home.sessionVariables;
