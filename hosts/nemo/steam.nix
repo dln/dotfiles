@@ -19,28 +19,11 @@
     };
   };
 
-  jovian = {
-    steam = {
-      enable = true;
-      autoStart = false; # Don't auto-start on boot
-      user = "gamer";
-      environment = {
-        DXVK_HDR = "1";
-        ENABLE_GAMESCOPE_WSI = "1";
-        ENABLE_HDR_WSI = "0";
-        PROTON_FSR4_UPGRADE = "1";
-        STEAM_MULTIPLE_XWAYLANDS = "1";
-      };
-    };
-    decky-loader.enable = false; # Disable for now
-  };
-
   programs.gamescope = {
     enable = true;
     # capSysNice = true;
     env = {
       DXVK_HDR = "1";
-      ENABLE_GAMESCOPE_WSI = "1";
       ENABLE_HDR_WSI = "0";
       PROTON_FSR4_UPGRADE = "1";
       STEAM_MULTIPLE_XWAYLANDS = "1";
@@ -109,7 +92,6 @@
       enable = true;
       env = {
         DXVK_HDR = "1";
-        ENABLE_GAMESCOPE_WSI = "1";
         ENABLE_HDR_WSI = "0";
         PROTON_FSR4_UPGRADE = "1";
         STEAM_MULTIPLE_XWAYLANDS = "1";
@@ -135,6 +117,22 @@
     AMD_VULKAN_ICD = "RADV";
     PROTON_FSR4_UPGRADE = "1";
     STEAM_MULTIPLE_XWAYLANDS = "1";
+    DXVK_HDR = "1";
+    ENABLE_HDR_WSI = "0";
+    STEAM_GAMESCOPE_VRR_SUPPORTED = "1";
+    STEAM_DISABLE_AUDIO_DEVICE_SWITCHING = "1";
+    STEAM_GAMESCOPE_DYNAMIC_FPSLIMITER = "1";
+    STEAM_GAMESCOPE_HAS_TEARING_SUPPORT = "1";
+    STEAM_GAMESCOPE_TEARING_SUPPORTED = "1";
+    STEAM_GAMESCOPE_FANCY_SCALING_SUPPORT = "1";
+    STEAM_GAMESCOPE_COLOR_MANAGED = "1";
+    STEAM_GAMESCOPE_VIRTUAL_WHITE = "1";
+    GAMESCOPE_NV12_COLORSPACE = "k_EStreamColorspace_BT601";
+    STEAM_GAMESCOPE_HDR_SUPPORTED = "1";
+    VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
+    WINE_CPU_TOPOLOGY = "8:0,1,2,3,4,5,6,7";
+    WINEDLLOVERRIDES = "dxgi=n";
+    XDG_SEAT = "seat1";
   };
 
   environment.systemPackages = with pkgs; [
@@ -171,13 +169,11 @@
     TAG=="seat", ENV{ID_FOR_SEAT}=="drm-pci-0000_03_00_0",  ENV{ID_SEAT}="seat1"
     TAG=="seat", ENV{ID_FOR_SEAT}=="graphics-pci-0000_03_00_0", ENV{ID_SEAT}="seat1"
     TAG=="seat", ENV{ID_FOR_SEAT}=="sound-pci-0000_03_00_1", ENV{ID_SEAT}="seat1"
+    # Microsoft Corp. Xbox Wireless Adapter for Windows
     TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_14_0-usb-0_5_4", ENV{ID_SEAT}="seat1"
+    # Logitech k400 wireless keyboard
+    TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_14_0-usb-0_9", ENV{ID_SEAT}="seat1"
   '';
-  #   TAG=="seat", ENV{ID_FOR_SEAT}=="drm-pci-0000_03_00_0", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
-  #   TAG=="seat", ENV{ID_FOR_SEAT}=="graphics-pci-0000_03_00_0", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
-  #   TAG=="seat", ENV{ID_FOR_SEAT}=="sound-pci-0000_03_00_1", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
-  #   TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_14_0-usb-0_5_4", TAG+="master-of-seat", ENV{ID_SEAT}="seat1"
-  # '';
 
   # User Configuration
   users.users.gamer = {
@@ -193,55 +189,6 @@
       "gamemode"
       "seat"
     ];
-  };
-
-  systemd.services.gaming = {
-    enable = false;
-
-    description = "Gamescope Session on seat1";
-    after = [
-      "graphical-session.target"
-      "user@1003.service"
-    ];
-    wants = [ "user@1003.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    environment = {
-      DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/1003/bus";
-      DRM_DEVICE = "/dev/dri/card1";
-      WLR_DRM_DEVICES = "/dev/dri/card1";
-      WLR_DRM_NO_ATOMIC = "1";
-      DXVK_HDR = "1";
-      HOME = "/home/gamer";
-      USER = "gamer";
-      XDG_RUNTIME_DIR = "/run/user/1003";
-      XDG_SEAT = "seat1";
-    };
-
-    serviceConfig = {
-      Type = "simple";
-      User = "gamer";
-      Group = "video";
-      SupplementaryGroups = [
-        "render"
-        "input"
-        "audio"
-        "seat"
-      ];
-      ExecStart = "/run/current-system/sw/bin/start-gamescope-session";
-      # ExecStart = "/run/current-system/sw/bin/steam-gamescope";
-      Restart = "always";
-      RestartSec = 10;
-      RuntimeDirectory = "user-1003";
-      RuntimeDirectoryMode = "0755";
-      PAMName = "login";
-      TTYPath = "/dev/tty8";
-      TTYReset = "yes";
-      TTYVHangup = "yes";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      StandardError = "journal";
-    };
   };
 
 }

@@ -9,7 +9,7 @@
     dynamic-wallpaper
     gimp3-with-plugins
     inkscape
-    libreoffice
+    # libreoffice # FIXME: Broken package
     moonlight-qt
     obsidian
     pavucontrol
