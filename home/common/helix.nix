@@ -11,7 +11,7 @@
       "!.jj"
     ];
     settings = {
-      theme = "alabaster";
+      theme = "ayu_dark";
       editor = {
         auto-pairs = false;
         color-modes = true;

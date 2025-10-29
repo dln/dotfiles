@@ -16,6 +16,7 @@
     ./utils.nix
     ./vcs.nix
     ./web.nix
+    ./zellij.nix
   ];
 
   options.patagia.desktop.enable = lib.mkEnableOption "Desktop environment";

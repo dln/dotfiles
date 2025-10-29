@@ -26,7 +26,7 @@
 
         shell-integration = "fish";
 
-        gtk-tabs-location = "hidden";
+        # gtk-tabs-location = "hidden";
         gtk-titlebar = false;
         gtk-titlebar-hide-when-maximized = true;
         window-decoration = "client";
@@ -51,6 +51,22 @@
           "alt+`=goto_split:previous"
           "ctrl+[=text:\\x1B"
           "super+enter=toggle_fullscreen"
+          "alt+1=unbind"
+          "alt+2=unbind"
+          "alt+3=unbind"
+          "alt+4=unbind"
+          "alt+5=unbind"
+          "alt+6=unbind"
+          "alt+7=unbind"
+          "alt+8=unbind"
+          "alt+digit_1=unbind"
+          "alt+digit_2=unbind"
+          "alt+digit_3=unbind"
+          "alt+digit_4=unbind"
+          "alt+digit_5=unbind"
+          "alt+digit_6=unbind"
+          "alt+digit_7=unbind"
+          "alt+digit_8=unbind"
         ];
       };
       themes = {

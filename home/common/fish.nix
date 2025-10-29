@@ -127,4 +127,6 @@
       xc = "fish_clipboard_copy";
     };
   };
+
+  home.shell.enableFishIntegration = true;
 }
