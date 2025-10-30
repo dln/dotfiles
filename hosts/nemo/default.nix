@@ -84,9 +84,9 @@
     enable32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
+      libva-vdpau-driver
       libvdpau-va-gl
       rocmPackages.clr.icd
-      vaapiVdpau
       vpl-gpu-rt
       vulkan-extension-layer
       vulkan-headers
