@@ -191,4 +191,27 @@
     ];
   };
 
+   systemd.user.services.steam = {
+    description = "Steam Client";
+
+    unitConfig = {
+      After = "graphical-session.target";
+      PartOf = "graphical-session.target";
+      ConditionUser = "gamer";  # Only run for the 'gamer' user
+    };
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.steam}/bin/steam -gamepadui";
+      Restart = "always";
+      RestartSec = 5;
+      Environment = [
+        "WAYLAND_DISPLAY=wayland-0"
+        "XDG_SESSION_TYPE=wayland"
+      ];
+    };
+
+    wantedBy = [ "default.target" ];
+  };
+
 }
