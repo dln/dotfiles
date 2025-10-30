@@ -51,12 +51,10 @@ in
         nerd-fonts.symbols-only
         noto-fonts
         noto-fonts-color-emoji
-        ubuntu_font_family
       ];
     };
 
     security.polkit.enable = true;
-    security.pam.services.swaylock = { };
 
     programs.ssh.enableAskPassword = true;
 
