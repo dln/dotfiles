@@ -9,7 +9,6 @@
     ./helix.nix
     ./k8s.nix
     ./nix.nix
-    ./nvim
     ./ragenix.nix
     ./scripts.nix
     ./ssh.nix

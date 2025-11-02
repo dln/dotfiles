@@ -38,14 +38,6 @@
         body = ''confirm "⚠ Really shutdown $(hostname)?" && command shutdown $argv'';
       };
 
-      e = {
-        description = "Open a file in already running nvim";
-        argumentNames = [ "file" ];
-        body = ''
-          nvim-remote --remote (readlink -f "$file")
-        '';
-      };
-
       jl.body = ''
         jj log --color=always --no-graph -T builtin_log_oneline -r 'all()' | fzf --ansi --reverse --wrap --preview 'jj show --tool=difftu {1}' --preview-window=down,70% --color=light
       '';

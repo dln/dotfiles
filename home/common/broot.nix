@@ -50,7 +50,7 @@
           leave_broot = true;
         }
         {
-          invocation = "nvim";
+          invocation = "hx";
           key = "enter";
           apply_to = "text_file";
           external = "edit {file}";
