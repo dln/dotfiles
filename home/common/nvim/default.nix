@@ -9,7 +9,7 @@ let
 
   nvimWrapper =
     let
-      nvimPackage = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      nvimPackage = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
     pkgs.symlinkJoin {
       name = "nvim-wrapper";

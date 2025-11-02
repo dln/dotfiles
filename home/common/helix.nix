@@ -27,6 +27,9 @@
 
         popup-border = "all";
       };
+      keys.normal = {
+        tab = [ "buffer_picker" ];
+      };
     };
 
     themes.alabaster = {

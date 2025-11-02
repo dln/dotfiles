@@ -37,7 +37,7 @@
         window-padding-x = 8;
         window-padding-y = 8;
         window-theme = "system";
-        theme = "light:PatagiaLight,dark:PatagiaDark";
+        theme = "light:PatagiaLight,dark:GitHub Dark High Contrast";
 
         background-blur = true;
         background-opacity = 0.9;
