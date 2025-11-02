@@ -10,13 +10,11 @@ bind \e\[109\;5u execute # C-m in ghostty
 set fish_greeting
 set fish_emoji_width 2
 
-echo "SSH_AUTH_SOCK: $SSH_AUTH_SOCK"
-echo "SSH_CLIENT_ID: $SSH_CLIENT_ID"
-
 # SSH
 if set -q SSH_AUTH_SOCK; and set -q SSH_CLIENT_ID
     set symlink "$HOME/.ssh/agent/agent-$SSH_CLIENT_ID"
-    if test "$SSH_AUTH_SOCK" != "$symlink"
+    # Only update if symlink doesn't exist or points to different target
+    if not test -e "$symlink"; or test (readlink "$symlink") != "$SSH_AUTH_SOCK"
         mkdir -p "$HOME/.ssh/agent"
         ln -sf "$SSH_AUTH_SOCK" "$symlink"
     end
