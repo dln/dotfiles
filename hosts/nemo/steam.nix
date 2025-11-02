@@ -19,17 +19,6 @@
     };
   };
 
-  programs.gamescope = {
-    enable = true;
-    # capSysNice = true;
-    env = {
-      DXVK_HDR = "1";
-      ENABLE_HDR_WSI = "0";
-      PROTON_FSR4_UPGRADE = "1";
-      STEAM_MULTIPLE_XWAYLANDS = "1";
-    };
-  };
-
   programs.steam = {
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
@@ -58,80 +47,22 @@
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      gamescope-wsi
       vulkan-loader
     ];
-    gamescopeSession = {
-      args = [
-        # "-r"
-        # "120"
-        # "--adaptive-sync"
-        # "--hdr-enabled"
-        # "--hdr-itm-enable"
-        # "--hdr-itm-target-nits"
-        # "700"
-        # "--hdr-itm-sdr-nits"
-        # "300"
-        # "--hdr-sdr-content-nits"
-        # "300"
-        "--prefer-vk-device"
-        "1002:7550"
-        # "-O"
-        # "DP-2"
-        "--xwayland-count 2"
-        "--fullscreen"
-        "-w"
-        "3840"
-        "-h"
-        "2160"
-        "-W"
-        "3840"
-        "-H"
-        "2160"
-      ];
-      enable = true;
-      env = {
-        DXVK_HDR = "1";
-        ENABLE_HDR_WSI = "0";
-        PROTON_FSR4_UPGRADE = "1";
-        STEAM_MULTIPLE_XWAYLANDS = "1";
-        STEAM_GAMESCOPE_VRR_SUPPORTED = "1";
-        STEAM_DISABLE_AUDIO_DEVICE_SWITCHING = "1";
-        STEAM_GAMESCOPE_DYNAMIC_FPSLIMITER = "1";
-        STEAM_GAMESCOPE_HAS_TEARING_SUPPORT = "1";
-        STEAM_GAMESCOPE_TEARING_SUPPORTED = "1";
-        STEAM_GAMESCOPE_FANCY_SCALING_SUPPORT = "1";
-        STEAM_GAMESCOPE_COLOR_MANAGED = "1";
-        STEAM_GAMESCOPE_VIRTUAL_WHITE = "1";
-        GAMESCOPE_NV12_COLORSPACE = "k_EStreamColorspace_BT601";
-        STEAM_GAMESCOPE_HDR_SUPPORTED = "1";
-        VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
-        WINE_CPU_TOPOLOGY = "8:0,1,2,3,4,5,6,7";
-        WINEDLLOVERRIDES = "dxgi=n";
-        XDG_SEAT = "seat1";
-      };
-    };
   };
 
   environment.variables = {
     AMD_VULKAN_ICD = "RADV";
-    PROTON_FSR4_UPGRADE = "1";
-    STEAM_MULTIPLE_XWAYLANDS = "1";
     DXVK_HDR = "1";
     ENABLE_HDR_WSI = "0";
-    STEAM_GAMESCOPE_VRR_SUPPORTED = "1";
-    STEAM_DISABLE_AUDIO_DEVICE_SWITCHING = "1";
-    STEAM_GAMESCOPE_DYNAMIC_FPSLIMITER = "1";
-    STEAM_GAMESCOPE_HAS_TEARING_SUPPORT = "1";
-    STEAM_GAMESCOPE_TEARING_SUPPORTED = "1";
-    STEAM_GAMESCOPE_FANCY_SCALING_SUPPORT = "1";
-    STEAM_GAMESCOPE_COLOR_MANAGED = "1";
-    STEAM_GAMESCOPE_VIRTUAL_WHITE = "1";
-    GAMESCOPE_NV12_COLORSPACE = "k_EStreamColorspace_BT601";
-    STEAM_GAMESCOPE_HDR_SUPPORTED = "1";
-    VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
-    WINE_CPU_TOPOLOGY = "8:0,1,2,3,4,5,6,7";
-    WINEDLLOVERRIDES = "dxgi=n";
+    PROTON_ENABLE_HDR = "1";
+    PROTON_ENABLE_WAYLAND = "1";
+    PROTON_FSR4_UPGRADE = "1";
+    SDL_VIDEODRIVER = "wayland";
+    STEAM_MULTIPLE_XWAYLANDS = "1";
+    # VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
+    # WINE_CPU_TOPOLOGY = "8:0,1,2,3,4,5,6,7";
+    # WINEDLLOVERRIDES = "dxgi=n";
     XDG_SEAT = "seat1";
   };
 
@@ -191,13 +122,13 @@
     ];
   };
 
-   systemd.user.services.steam = {
+  systemd.user.services.steam = {
     description = "Steam Client";
 
     unitConfig = {
       After = "graphical-session.target";
       PartOf = "graphical-session.target";
-      ConditionUser = "gamer";  # Only run for the 'gamer' user
+      ConditionUser = "gamer"; # Only run for the 'gamer' user
     };
 
     serviceConfig = {
