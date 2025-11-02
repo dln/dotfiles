@@ -26,10 +26,6 @@
 
         shell-integration = "fish";
 
-        # gtk-tabs-location = "hidden";
-        gtk-titlebar = false;
-        gtk-titlebar-hide-when-maximized = true;
-        window-decoration = "client";
         window-height = 42;
         window-width = 120;
         window-padding-balance = true;
@@ -39,8 +35,8 @@
         window-theme = "system";
         theme = "light:PatagiaLight,dark:GitHub Dark High Contrast";
 
-        background-blur = true;
-        background-opacity = 0.9;
+        # background-blur = true;
+        # background-opacity = 0.9;
 
         keybind = [
           "alt+shift+c=copy_to_clipboard"
