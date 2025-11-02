@@ -35,9 +35,6 @@
         window-theme = "system";
         theme = "light:PatagiaLight,dark:GitHub Dark High Contrast";
 
-        # background-blur = true;
-        # background-opacity = 0.9;
-
         keybind = [
           "alt+shift+c=copy_to_clipboard"
           "alt+shift+v=paste_from_clipboard"
