@@ -87,6 +87,7 @@
       libva-vdpau-driver
       libvdpau-va-gl
       rocmPackages.clr.icd
+      libva-vdpau-driver
       vpl-gpu-rt
       vulkan-extension-layer
       vulkan-headers
