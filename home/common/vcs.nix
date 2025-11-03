@@ -72,6 +72,16 @@
         looseCompression = 3;
         excludesfile = "~/.config/git/ignore";
       };
+      credential.helper = [
+        "cache --timeout 28800" # 8h cache
+        "${pkgs.git-credential-oauth}/bin/git-credential-oauth"
+      ];
+      credential."https://patagia.dev" = {
+        oauthClientId = "982e94ec-8261-4955-8b09-617582b22a75";
+        oauthScopes = "read_repository write_repository";
+        oauthAuthURL = "/login/oauth/authorize";
+        oauthTokenURL = "/login/oauth/access_token";
+      };
       fetch = {
         prune = true;
         prunetags = true;
@@ -128,6 +138,8 @@
       signByDefault = true;
     };
   };
+
+  programs.git-credential-oauth.enable = true;
 
   programs.jujutsu = {
     enable = true;
