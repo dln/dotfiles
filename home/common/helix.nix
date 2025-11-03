@@ -11,7 +11,7 @@
       "!.jj"
     ];
     settings = {
-      theme = "ayu_dark";
+      theme = "amberwood";
       editor = {
         auto-pairs = false;
         color-modes = true;
