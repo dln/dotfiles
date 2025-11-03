@@ -9,7 +9,6 @@
 
     settings = {
       default_layout = "compact";
-      default_mode = "locked";
       pane_frames = false;
       show_startup_tips = false;
 
@@ -34,7 +33,7 @@
           "bind \"Alt 8\"".GoToTab = 8;
           "bind \"Alt 9\"".GoToTab = 9;
           "bind \"Alt 0\"".GoToTab = 10;
-          "bind \"Alt f\"".ToggleFloatingPanes = { };
+          "bind \"Alt `\"".ToggleFloatingPanes = { };
           "bind \"Alt s\""."LaunchOrFocusPlugin \"file:~/.config/zellij/plugins/zsm.wasm\"" = {
             floating = true;
             move_to_focused_tab = true;

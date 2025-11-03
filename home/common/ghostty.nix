@@ -41,7 +41,6 @@
           "ctrl+i=text:\\x09"
           "ctrl+m=text:\\x0D"
           "ctrl+tab=goto_split:previous"
-          "alt+`=goto_split:previous"
           "ctrl+[=text:\\x1B"
           "super+enter=toggle_fullscreen"
           "alt+1=unbind"
