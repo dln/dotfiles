@@ -6,6 +6,8 @@
 
   programs.zellij = {
     enable = true;
+    enableFishIntegration = true;
+    attachExistingSession = true;
 
     settings = {
       default_layout = "compact";
@@ -14,8 +16,13 @@
 
       ui.pane_frames = {
         hide_session_name = true;
+        rounded_corners = true;
       };
       plugins = {
+        compact-bar = {
+          _props.location = "zellij:compact-bar";
+          tooltip = "Alt -";
+        };
         tab-bar.path = "tab-bar";
         status-bar.path = "status-bar";
         strider.path = "strider";
@@ -42,6 +49,10 @@
             LOAD_ZELLIJ_BINDINGS = true;
             floating = true;
           };
+          "unbind \"Alt f\"" = { };
+        };
+        "shared_except \"session\"" = {
+          "unbind \"Ctrl q\"" = { };
         };
       };
 
