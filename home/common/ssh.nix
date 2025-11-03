@@ -10,17 +10,19 @@
     enableDefaultConfig = false;
     extraConfig = ''
       PreferredAuthentications publickey
+      TCPKeepAlive true
     '';
     matchBlocks."*" = {
       # addKeysToAgent = "yes";
       compression = false;
+      # FIXME: broken until openssh package is fixed
       # controlMaster = "auto";
       # controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
       # controlPersist = "15m";
       forwardAgent = false;
       hashKnownHosts = false;
-      serverAliveCountMax = 3;
-      serverAliveInterval = 0;
+      serverAliveCountMax = 30;
+      serverAliveInterval = 10;
       setEnv.SSH_CLIENT_ID = "%L";
       userKnownHostsFile = "~/.ssh/known_hosts";
     };
