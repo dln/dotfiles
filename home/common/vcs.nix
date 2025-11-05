@@ -74,13 +74,22 @@
       };
       credential.helper = [
         "cache --timeout 28800" # 8h cache
-        "${pkgs.git-credential-oauth}/bin/git-credential-oauth"
+        "${pkgs.git-credential-oauth}/bin/git-credential-oauth -verbose -bearer"
       ];
       credential."https://patagia.dev" = {
         oauthClientId = "982e94ec-8261-4955-8b09-617582b22a75";
         oauthScopes = "read_repository write_repository";
         oauthAuthURL = "/login/oauth/authorize";
         oauthTokenURL = "/login/oauth/access_token";
+      };
+      credential."https://gerrit.patagia.dev" = {
+        oauthClientId = "gerrit";
+        oauthClientSecret = "gzEgO8EoaHnpthCaiTTtB6cag8lG79Is";
+        oauthScopes = "openid email";
+        oauthAuthURL = "https://idp.patagia.dev/realms/patagia-community/protocol/openid-connect/auth";
+        oauthTokenURL = "https://keycloak.patagia.net/realms/patagia-community/protocol/openid-connect/token";
+        # oauthAuthURL = "/login/oauth/authorize";
+        # oauthTokenURL = "/login/oauth/access_token";
       };
       fetch = {
         prune = true;
