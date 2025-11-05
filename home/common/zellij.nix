@@ -48,6 +48,7 @@
             floating = true;
           };
           "unbind \"Alt f\"" = { };
+          "unbind \"Ctrl p\"" = { };
         };
         "shared_except \"session\"" = {
           "unbind \"Ctrl q\"" = { };
