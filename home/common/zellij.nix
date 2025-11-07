@@ -41,6 +41,7 @@
           "bind \"Alt 9\"".GoToTab = 9;
           "bind \"Alt 0\"".GoToTab = 10;
           "bind \"Alt `\"".ToggleFloatingPanes = { };
+          "bind \"Alt Esc\"".ToggleFloatingPanes = { };
           "bind \"Alt s\""."LaunchOrFocusPlugin \"file:~/.config/zellij/plugins/zsm.wasm\"" = {
             floating = true;
             move_to_focused_tab = true;

@@ -10,6 +10,9 @@
     ./desktop.nix
   ];
 
+  programs.helix.settings.theme = lib.mkForce "alabaster";
+  programs.zellij.settings.theme = "iceberg-light";
+
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs; [
