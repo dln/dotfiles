@@ -51,7 +51,7 @@
 
   programs.nh = {
     enable = true;
-    clean.enable = true;
+    clean.enable = false;
     clean.extraArgs = "--keep-since 14d --keep 5";
   };
   programs.nix-ld.enable = true;
