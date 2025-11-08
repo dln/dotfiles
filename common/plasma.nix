@@ -14,16 +14,27 @@
 
   environment.systemPackages = with pkgs; [
     haruna
-    kdePackages.discover
+    kdePackages.filelight
     kdePackages.isoimagewriter
+    kdePackages.kaccounts-integration
+    kdePackages.kaccounts-providers
+    kdePackages.kaddressbook
+    kdePackages.kasts
+    kdePackages.kate
+    kdePackages.kauth
     kdePackages.kcalc
     kdePackages.kcharselect
     kdePackages.kclock
     kdePackages.kcolorchooser
     kdePackages.kdenlive
+    kdePackages.kdeplasma-addons
+    kdePackages.kontact
+    kdePackages.korganizer
+    kdePackages.kweather
     kdePackages.partitionmanager
+    kdePackages.plasma-browser-integration
     kdePackages.polkit-kde-agent-1
-    kdePackages.sddm-kcm
+    kdePackages.signond
     kdiff3
   ];
 
