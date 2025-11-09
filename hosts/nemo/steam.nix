@@ -109,6 +109,7 @@
   # User Configuration
   users.users.gamer = {
     isNormalUser = true;
+    home = "/games/gamer";
     uid = 1003;
     linger = true;
     extraGroups = [

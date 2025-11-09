@@ -69,6 +69,15 @@
     ];
   };
 
+  fileSystems."/games" = {
+    device = "/dev/disk/by-uuid/9c79c54c-90cd-4867-a423-9bc1b64acd84";
+    fsType = "btrfs";
+    options = [
+      "noatime"
+      "nodiratime"
+    ];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/2670-0FCA";
     fsType = "vfat";
