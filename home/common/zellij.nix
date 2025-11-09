@@ -6,9 +6,6 @@
 
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
-    attachExistingSession = true;
-
     settings = {
       default_layout = "compact";
       pane_frames = false;
