@@ -9,6 +9,7 @@
     ./helix.nix
     ./k8s.nix
     ./nix.nix
+    ./podman.nix
     ./ragenix.nix
     ./scripts.nix
     ./ssh.nix
