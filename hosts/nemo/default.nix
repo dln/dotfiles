@@ -237,17 +237,6 @@
     ];
   };
 
-  users.users.nixremote = {
-    name = "nixremote";
-    isSystemUser = true;
-    shell = pkgs.bashInteractive;
-    group = "nixremote";
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJjhHem/l3p/79Rqo3Wtk9ksxmt7Q/pkRdnXiNzP4Cf"
-    ];
-  };
-  users.groups.nixremote = { };
-
   nix.sshServe.enable = true;
   nix.sshServe.keys = [
     "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIIHMAEZx02kbHrEygyPQYStiXlrIe6EIqBCv7anIkL0pAAAABHNzaDo= dln@dinky"
@@ -261,7 +250,6 @@
     trusted-users = [
       "dln"
       "lsjostro"
-      "nixremote"
     ];
   };
 
