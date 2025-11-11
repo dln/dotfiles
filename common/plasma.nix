@@ -13,6 +13,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    google-chrome
     haruna
     kdePackages.filelight
     kdePackages.isoimagewriter
@@ -34,6 +35,8 @@
     kdePackages.partitionmanager
     kdePackages.plasma-browser-integration
     kdePackages.polkit-kde-agent-1
+    kdePackages.qtwebengine
+    kdePackages.qtwebview
     kdePackages.signond
     kdiff3
   ];
