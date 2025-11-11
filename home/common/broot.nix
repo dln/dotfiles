@@ -41,10 +41,10 @@
           leave_broot = true;
         }
         {
-          invocation = "edit";
+          invocation = "hx";
           key = "enter";
           shortcut = "e";
-          external = "edit {file}";
+          external = "hx {file}";
           apply_to = "text_file";
           from_shell = true;
           leave_broot = true;
@@ -53,7 +53,7 @@
           invocation = "hx";
           key = "enter";
           apply_to = "text_file";
-          external = "edit {file}";
+          external = "hx {file}";
           from_shell = true;
           leave_broot = true;
         }
