@@ -4,7 +4,8 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelPackages = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_zen;
+    kernelPackages =
+      inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_zen;
     initrd.systemd.enable = true;
 
     binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -24,11 +25,15 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
-      LC_ALL = "en_US.UTF-8";
-      LANG = "en_US.UTF-8";
+      LC_TIME = "sv_SE.UTF-8";
+      LC_NUMERIC = "sv_SE.UTF-8";
+      LC_MONETARY = "sv_SE.UTF-8";
+      LC_MEASUREMENT = "sv_SE.UTF-8";
+      LC_PAPER = "sv_SE.UTF-8";
     };
     supportedLocales = [
       "en_US.UTF-8/UTF-8"
+      "sv_SE.UTF-8/UTF-8"
     ];
   };
 
