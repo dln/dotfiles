@@ -66,7 +66,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   environment.systemPackages = with pkgs; [
-    mullvad-vpn
     tpm2-tools
   ];
 
@@ -181,7 +180,10 @@
     fallbackDns = [ "9.9.9.9" ];
   };
 
-  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad;
+  };
 
   security.tpm2 = {
     enable = true;
