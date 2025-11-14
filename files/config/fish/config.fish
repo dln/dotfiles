@@ -19,6 +19,8 @@ if set -q SSH_AUTH_SOCK; and set -q SSH_CLIENT_ID
         ln -sf "$SSH_AUTH_SOCK" "$symlink"
     end
     set -gx SSH_AUTH_SOCK "$symlink"
+else
+    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
 end
 
 # Colors

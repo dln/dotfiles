@@ -28,11 +28,25 @@
     };
   };
 
-  services.ssh-agent.enable = true;
-  systemd.user.services.ssh-agent.Service.Environment = [
-    "SSH_ASKPASS=${config.home.sessionVariables.SSH_ASKPASS}"
-    "SSH_ASKPASS_REQUIRE=force"
-  ];
+  services.ssh-agent = {
+    enable = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+  };
+
+  systemd.user.services.ssh-agent = {
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      Environment = [
+        "SSH_ASKPASS=${config.home.sessionVariables.SSH_ASKPASS}"
+        "SSH_ASKPASS_REQUIRE=force"
+      ];
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 3"; # Hack
+    };
+    Unit.After = [
+      "graphical-session.target"
+    ];
+  };
 
   home.sessionVariables = {
     # https://wiki.archlinux.org/title/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases
