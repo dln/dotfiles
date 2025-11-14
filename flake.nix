@@ -4,7 +4,6 @@
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?shallow=true";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05?shallow=true";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable?shallow=true";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable?shallow=true";
 
     nix-index-database.url = "github:nix-community/nix-index-database?shallow=true";
@@ -23,7 +22,6 @@
       nix-index-database,
       nixpkgs,
       nixpkgs-stable,
-      nixpkgs-unstable,
       home-manager,
       ragenix,
       ...
@@ -50,7 +48,7 @@
       mkHome =
         modules:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.${system};
+          inherit pkgs;
           extraSpecialArgs = {
             inherit inputs outputs;
           };
