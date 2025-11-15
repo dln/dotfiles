@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./home.nix
@@ -9,6 +9,9 @@
     laptop.enable = true;
     oled.enable = true;
   };
+
+  programs.helix.settings.theme = lib.mkForce "alabaster";
+  programs.zellij.settings.theme = "iceberg-light";
 
   home.packages = with pkgs; [
     beets
