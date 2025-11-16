@@ -38,6 +38,17 @@
         body = ''confirm "⚠ Really shutdown $(hostname)?" && command shutdown $argv'';
       };
 
+      edit = {
+        description = "Open a file in already running helix and switch tab";
+        argumentNames = [ "file" ];
+        body = ''
+                  	zellij action go-to-tab-name -c edit
+                  	zellij action write 27 # send <Escape> key
+                  	zellij action write-chars ":open $1"
+                  	zellij action write 13 # send <Enter> key
+          	        '';
+      };
+
       jl.body = ''
         jj log --color=always --no-graph -T builtin_log_oneline -r 'all()' | fzf --ansi --reverse --wrap --preview 'jj show --tool=difftu {1}' --preview-window=down,70% --color=light
       '';
