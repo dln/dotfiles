@@ -7,6 +7,18 @@
 {
   services.desktopManager.plasma6.enable = true;
 
+  environment.plasma6.excludePackages = with pkgs; [
+    kdePackages.elisa
+    kdePackages.kdepim-runtime
+    kdePackages.kmahjongg
+    kdePackages.kmines
+    kdePackages.konversation
+    kdePackages.kpat
+    kdePackages.ksudoku
+    kdePackages.ktorrent
+    mpv
+  ];
+
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -15,6 +27,9 @@
   environment.systemPackages = with pkgs; [
     google-chrome
     haruna
+    kdePackages.bluedevil
+    kdePackages.bluez-qt
+    kdePackages.discover
     kdePackages.filelight
     kdePackages.isoimagewriter
     kdePackages.kaccounts-integration
@@ -29,11 +44,14 @@
     kdePackages.kcolorchooser
     kdePackages.kdenlive
     kdePackages.kdeplasma-addons
+    kdePackages.knewstuff
     kdePackages.kontact
     kdePackages.korganizer
+    kdePackages.ksystemlog
     kdePackages.kweather
     kdePackages.partitionmanager
     kdePackages.plasma-browser-integration
+    kdePackages.plasma-systemmonitor
     kdePackages.polkit-kde-agent-1
     kdePackages.qtwebengine
     kdePackages.qtwebview
