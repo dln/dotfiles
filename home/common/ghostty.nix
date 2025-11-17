@@ -9,6 +9,7 @@
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true;
+      clearDefaultKeybinds = true;
       settings = {
         font-size = 10;
         font-family = "Go Mono";
@@ -36,22 +37,12 @@
         keybind = [
           "alt+shift+c=copy_to_clipboard"
           "alt+shift+v=paste_from_clipboard"
-          "alt+1=unbind"
-          "alt+2=unbind"
-          "alt+3=unbind"
-          "alt+4=unbind"
-          "alt+5=unbind"
-          "alt+6=unbind"
-          "alt+7=unbind"
-          "alt+8=unbind"
-          "alt+digit_1=unbind"
-          "alt+digit_2=unbind"
-          "alt+digit_3=unbind"
-          "alt+digit_4=unbind"
-          "alt+digit_5=unbind"
-          "alt+digit_6=unbind"
-          "alt+digit_7=unbind"
-          "alt+digit_8=unbind"
+          "ctrl+shift+c=copy_to_clipboard"
+          "ctrl+shift+v=paste_from_clipboard"
+          "ctrl+-=decrease_font_size:1"
+          "ctrl++=increase_font_size:1"
+          "ctrl+equal=increase_font_size:1"
+          "ctrl+0=reset_font_size"
         ];
       };
     };
