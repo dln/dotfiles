@@ -1,7 +1,12 @@
 { inputs, ... }:
 {
 
-  additions = final: _prev: import ../pkgs final.pkgs;
+  additions =
+    final: prev:
+    import ../pkgs final.pkgs
+    // {
+      zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+    };
 
   modifications = final: prev: {
   };

@@ -1,4 +1,3 @@
-default_layout "devel"
 keybinds {
 	shared {
 		bind "Alt /" {
@@ -56,26 +55,4 @@ keybinds {
 		unbind "Ctrl q"
 	}
 }
-pane_frames false
-plugins {
-	compact-bar location="zellij:compact-bar" {
-		tooltip "Alt -"
-	}
-	status-bar {
-		path "status-bar"
-	}
-	strider {
-		path "strider"
-	}
-	tab-bar {
-		path "tab-bar"
-	}
-}
-show_startup_tips false
-theme "iceberg-light"
-ui {
-	pane_frames {
-		hide_session_name true
-		rounded_corners true
-	}
-}
+

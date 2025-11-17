@@ -14,6 +14,8 @@
     ragenix.url = "github:yaxitech/ragenix";
     run0-sudo-shim.url = "github:lordgrimmauld/run0-sudo-shim";
     run0-sudo-shim.inputs.nixpkgs.follows = "nixpkgs";
+
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs =
@@ -24,6 +26,7 @@
       nixpkgs-stable,
       home-manager,
       ragenix,
+      zjstatus,
       ...
     }:
     let

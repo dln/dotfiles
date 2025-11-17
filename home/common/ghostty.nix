@@ -27,10 +27,10 @@
 
         shell-integration = "fish";
 
-        window-padding-balance = true;
+        # window-padding-balance = true;
         window-padding-color = "extend";
         window-padding-x = 8;
-        window-padding-y = 8;
+        window-padding-y = 0;
         window-theme = "system";
         theme = "light:GitHub Light High Contrast,dark:GitHub Dark High Contrast";
 
