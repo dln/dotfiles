@@ -8,6 +8,7 @@
     enable = true;
     extraConfig = builtins.readFile ./zellij.config.kdl;
     layouts = {
+      devel = ./zellij.layout.devel.kdl;
       zsm = ./zellij.layout.zsm.kdl;
     };
   };

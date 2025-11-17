@@ -1,4 +1,4 @@
-default_layout "compact"
+default_layout "devel"
 keybinds {
 	shared {
 		bind "Alt /" {
