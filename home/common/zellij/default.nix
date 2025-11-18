@@ -37,10 +37,10 @@
                 location = "file:${pkgs.zjstatus}/bin/zjstatus.wasm";
                 border_enabled = false;
                 hide_frame_for_single_pane = true;
-                format_left = "#[reverse]{mode} {command_hostname}";
-                format_center = "#[reverse]{session}:{tabs}";
-                format_right = "#[reverse]{datetime}";
-                format_space = "#[reverse]";
+                format_left = "#[fg=#777777,reverse]{mode} {command_hostname}";
+                format_center = "#[fg=#777777,reverse]{session}:{tabs}";
+                format_right = "#[fg=#777777,reverse]{datetime}";
+                format_space = "#[fg=#777777,reverse]";
 
                 mode_normal = "  ";
                 mode_locked = "  ";
@@ -52,14 +52,14 @@
                 mode_move = " 󰆾 ";
 
                 tab_normal = "";
-                tab_active = "#[reverse,bold]{index}";
+                tab_active = "#[fg=#777777,reverse,bold]{index}";
 
                 command_hostname_command = "hostname -s";
-                command_hostname_format = "#[reverse]{stdout}";
+                command_hostname_format = "#[fg=#777777,reverse]{stdout}";
                 command_hostname_rendermode = "static";
                 command_hostname_interval = "0";
 
-                datetime = "#[reverse,italic] {format}";
+                datetime = "#[fg=#777777,reverse,italic] {format}";
                 datetime_format = "%R";
                 datetime_timezone = "Europe/Stockholm";
               };
