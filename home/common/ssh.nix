@@ -15,10 +15,9 @@
     matchBlocks."*" = {
       # addKeysToAgent = "yes";
       compression = false;
-      # FIXME: broken until openssh package is fixed
-      # controlMaster = "auto";
-      # controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
-      # controlPersist = "15m";
+      controlMaster = "auto";
+      controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
+      controlPersist = "15m";
       forwardAgent = false;
       hashKnownHosts = false;
       serverAliveCountMax = 30;
