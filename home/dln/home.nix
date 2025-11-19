@@ -43,7 +43,7 @@
     ];
   };
 
-  programs.ssh.matchBlocks = {
+  programs.ssh.matchBlocks = rec {
     devel = {
       hostname = "10.1.100.20";
       forwardAgent = true;
@@ -67,6 +67,11 @@
           host.port = 8484;
         }
       ];
+    };
+
+    devel-ext = devel // {
+      hostname = "158.174.115.186";
+      port = 8080;
     };
   };
 
