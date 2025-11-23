@@ -11,17 +11,15 @@ set fish_greeting
 set fish_emoji_width 2
 
 # SSH
-if set -q SSH_AUTH_SOCK; and set -q SSH_CLIENT_ID
-    set symlink "$HOME/.ssh/agent/agent-$SSH_CLIENT_ID"
-    # Only update if symlink doesn't exist or points to different target
-    if not test -e "$symlink"; or test (readlink "$symlink") != "$SSH_AUTH_SOCK"
-        mkdir -p "$HOME/.ssh/agent"
-        ln -sf "$SSH_AUTH_SOCK" "$symlink"
+set socket "$XDG_RUNTIME_DIR/ssh-agent"
+if set -q SSH_AUTH_SOCK
+    if test "$SSH_AUTH_SOCK" != "$socket"
+        ln -sf "$SSH_AUTH_SOCK" "$socket"
     end
-    set -gx SSH_AUTH_SOCK "$symlink"
 else
-    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
+    ln -sf ssh-agent.local "$socket"
 end
+set -x SSH_AUTH_SOCK "$socket"
 
 # Colors
 set fish_color_command --bold

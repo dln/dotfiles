@@ -172,7 +172,6 @@
   services.openssh = {
     enable = true;
     settings = {
-      AcceptEnv = "SSH_CLIENT_ID";
       PasswordAuthentication = false;
       PermitRootLogin = "no";
       StreamLocalBindUnlink = true;

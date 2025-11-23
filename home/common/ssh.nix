@@ -22,7 +22,6 @@
       hashKnownHosts = false;
       serverAliveCountMax = 30;
       serverAliveInterval = 10;
-      setEnv.SSH_CLIENT_ID = "%L";
       userKnownHostsFile = "~/.ssh/known_hosts";
     };
   };
@@ -31,6 +30,7 @@
     enable = true;
     enableBashIntegration = false;
     enableFishIntegration = false;
+    socket = "ssh-agent.local";
   };
 
   systemd.user.services.ssh-agent = {
