@@ -28,7 +28,7 @@
         default-remote-branch = "main";
       };
 
-      templates.git_push_bookmark = ''"dln/push-\" ++ change_id.short()'';
+      templates.git_push_bookmark = "'dln/push-' ++ change_id.short()";
 
       templates.log_short = ''
         if(root,
