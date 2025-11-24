@@ -16,8 +16,12 @@
         name = config.programs.git.settings.user.name;
       };
 
+      git = {
+        sign-on-push = true;
+      };
+
       signing = {
-        behavior = "own";
+        behavior = "drop";
         backend = "ssh";
         backends.ssh.allowed-signers = "/home/dln/.ssh/authorized_keys";
         key = "/home/dln/.ssh/git_signing_key.pub";
