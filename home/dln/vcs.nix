@@ -80,7 +80,7 @@
       aliases = {
         l = [
           "log"
-          "--limit=25"
+          "--limit=15"
           "-T"
           "builtin_log_comfortable"
           "-r"
@@ -92,7 +92,7 @@
           "builtin_log_oneline"
           "-r"
           "all()"
-          "--limit=35"
+          "--limit=15"
         ];
         d = [
           "diff"
