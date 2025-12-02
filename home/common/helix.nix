@@ -10,8 +10,46 @@
     ignores = [
       "!.jj"
     ];
+    languages = {
+
+      language = [
+        {
+          name = "nix";
+          formatter = {
+            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+            args = [
+              "--filename"
+              "%{buffer_name}"
+            ];
+          };
+          auto-format = true;
+          language-servers = [ "nil" ];
+        }
+        {
+          name = "rust";
+          auto-format = true;
+        }
+        {
+          name = "starlark";
+          file-types = [
+            "bzl"
+            "bazel"
+            "star"
+            { glob = "BUILD"; }
+            { glob = "BUILD.*"; }
+            { glob = "WORKSPACE"; }
+          ];
+          formatter = {
+            command = "buildifier";
+            args = [ "-" ];
+          };
+          auto-format = true;
+          language-servers = [ "starpls" ];
+        }
+      ];
+
+    };
     settings = {
-      theme = "amberwood";
       editor = {
         auto-pairs = false;
         color-modes = true;
