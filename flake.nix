@@ -3,7 +3,7 @@
 
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?shallow=true";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05?shallow=true";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11?shallow=true";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable?shallow=true";
 
     nix-index-database.url = "github:nix-community/nix-index-database?shallow=true";
