@@ -23,28 +23,6 @@
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
-    extraPackages = with pkgs; [
-      gamescope
-      gamescope-wsi
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
-      libpng
-      libpulseaudio
-      libvorbis
-      stdenv.cc.cc.lib
-      libkrb5
-      keyutils
-      # Where gamescope-session looks for "Exit to Desktop" when -steamos3 is provided
-      (writeShellScriptBin "steamos-session-select" ''
-        /usr/bin/env steam -shutdown
-      '')
-      (writeScriptBin "steamos-polkit-helpers/steamos-update" ''
-        #!${pkgs.stdenv.shell}
-        exit 7
-      '')
-    ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
       vulkan-loader
@@ -52,14 +30,15 @@
   };
 
   environment.variables = {
-    AMD_VULKAN_ICD = "RADV";
+    # AMD_VULKAN_ICD = "RADV";
     DXVK_HDR = "1";
-    ENABLE_HDR_WSI = "0";
+    ENABLE_HDR_WSI = "1";
     PROTON_ENABLE_HDR = "1";
     PROTON_ENABLE_WAYLAND = "1";
     PROTON_FSR4_UPGRADE = "1";
-    SDL_VIDEODRIVER = "wayland";
-    STEAM_MULTIPLE_XWAYLANDS = "1";
+    # SDL_VIDEODRIVER = "wayland";
+    # STEAM_MULTIPLE_XWAYLANDS = "1";
+
     # VKD3D_SWAPCHAIN_LATENCY_FRAMES = "3";
     # WINE_CPU_TOPOLOGY = "8:0,1,2,3,4,5,6,7";
     # WINEDLLOVERRIDES = "dxgi=n";

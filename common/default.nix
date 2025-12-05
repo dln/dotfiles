@@ -8,6 +8,5 @@
     ./plasma.nix
     ./plymouth.nix
     ./podman.nix
-    ./steam.nix
   ];
 }

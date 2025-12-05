@@ -46,9 +46,9 @@
     kernelParams = [
       "mitigations=off"
       # "amdgpu.abmlevel=0"
-      "radeon.si_support=0" 
-      "radeon.cik_support=0" 
-      "amdgpu.si_support=1" 
+      "radeon.si_support=0"
+      "radeon.cik_support=0"
+      "amdgpu.si_support=1"
       "amdgpu.cik_support=1"
     ];
   };
@@ -131,6 +131,11 @@
 
   # Enable the xone driver
   hardware.xone.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    settings.General.Experimental = true;
+  };
 
   swapDevices = [ ];
 

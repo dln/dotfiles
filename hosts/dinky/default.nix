@@ -217,6 +217,10 @@
 
   programs.steam = {
     enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+      vulkan-loader
+    ];
   };
 
   services.power-profiles-daemon.enable = true;
