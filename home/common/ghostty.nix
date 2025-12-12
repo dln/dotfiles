@@ -27,10 +27,13 @@
 
         shell-integration = "fish";
 
+        window-height = 42;
+        window-width = 110;
         # window-padding-balance = true;
         window-padding-color = "extend";
         window-padding-x = 8;
         window-padding-y = 0;
+        window-subtitle = "working-directory";
         window-theme = "system";
         theme = "light:GitHub Light High Contrast,dark:GitHub Dark High Contrast";
 
@@ -43,28 +46,8 @@
           "ctrl++=increase_font_size:1"
           "ctrl+equal=increase_font_size:1"
           "ctrl+0=reset_font_size"
+          "global:ctrl+grave_accent=toggle_quick_terminal"
         ];
-      };
-    };
-
-    xdg.desktopEntries = {
-      ghostty-devel = {
-        categories = [
-          "System"
-          "TerminalEmulator"
-        ];
-        exec = ''
-          ${lib.getExe pkgs.ghostty} --class=com.mitchellh.ghostty --class=com.mitchellh.ghostty-devel --command="${lib.getExe pkgs.openssh} -t devel" --initial-command="${lib.getExe pkgs.openssh} -t devel"
-        '';
-        genericName = "Ghostty (devel)";
-        icon = "com.mitchellh.ghostty";
-        name = "Ghostty (devel)";
-        settings = {
-          StartupWMClass = "com.mitchellh.ghostty-devel";
-          TryExec = "ghostty";
-        };
-        terminal = false;
-        type = "Application";
       };
     };
 
