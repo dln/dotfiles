@@ -13,7 +13,6 @@
     moonlight-qt
     obsidian
     pavucontrol
-    plexamp
     thunderbird
   ];
 

@@ -203,11 +203,21 @@
 
   environment.systemPackages = with pkgs; [
     ffado
+    (pkgs.kodi-wayland.withPackages (
+      kodiPkgs: with kodiPkgs; [
+        youtube
+        invidious
+        jellyfin
+        plex-for-kodi
+        steam-launcher
+      ]
+    ))
     libcamera
     lact
     lm_sensors
     pam_rssh
     openconnect
+    plex-htpc
     tpm2-tools
     v4l-utils
   ];
