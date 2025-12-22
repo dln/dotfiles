@@ -51,6 +51,18 @@
       "amdgpu.si_support=1"
       "amdgpu.cik_support=1"
     ];
+    kernelPatches = [
+      {
+        # See: https://gitlab.freedesktop.org/drm/amd/-/issues/4773
+        name = "amdgpu-fix-issue-4773";
+        patch = ./0001-amdgpu-Add-CH7218-PCON-to-the-VRR-whitelist.patch;
+      }
+      {
+        # See: https://gitlab.freedesktop.org/drm/amd/-/issues/4773
+        name = "amdgpu-hdmi-vrr";
+        patch = ./hdmi-vrr.patch;
+      }
+    ];
   };
 
   fileSystems."/" = {
