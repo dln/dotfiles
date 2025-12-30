@@ -2,7 +2,6 @@
   description = "NixOS configuration";
 
   inputs = {
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?shallow=true";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11?shallow=true";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable?shallow=true";
 
