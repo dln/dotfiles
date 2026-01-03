@@ -5,7 +5,7 @@
     age-plugin-fido2-hmac
     age-plugin-tpm
     comma
-    dogdns
+    doggo
     file
     just
     nix-output-monitor
