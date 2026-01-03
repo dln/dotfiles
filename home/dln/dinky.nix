@@ -14,11 +14,6 @@
   programs.zellij.settings.theme = "iceberg-light";
 
   home.packages = with pkgs; [
-    beets
-    essentia-extractor
-    picard
-    renameutils
-    rsgain
     stable.calibre
     wrtag
   ];
