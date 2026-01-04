@@ -15,7 +15,8 @@
         font-family = "Go Mono";
         font-synthetic-style = false;
 
-        adjust-cell-height = 6;
+        # adjust-cell-height = 6;
+        adjust-cell-height = 3;
         adjust-font-baseline = 1;
         adjust-cursor-thickness = 4;
         adjust-underline-position = 3;
@@ -49,6 +50,46 @@
           "global:ctrl+grave_accent=toggle_quick_terminal"
         ];
       };
+    };
+
+    xdg.configFile."ghostty/dark-config".text = ''
+      adjust-cell-height = 2
+      adjust-cursor-thickness = 4
+      adjust-font-baseline = 1
+      adjust-underline-position = 3
+      adjust-underline-thickness = -1
+      font-family = Berkeley Mono SemiCondensed
+      font-size = 12
+      font-synthetic-style = false
+      keybind = clear
+      keybind = alt+shift+c=copy_to_clipboard
+      keybind = alt+shift+v=paste_from_clipboard
+      keybind = ctrl+shift+c=copy_to_clipboard
+      keybind = ctrl+shift+v=paste_from_clipboard
+      keybind = ctrl+-=decrease_font_size:1
+      keybind = ctrl++=increase_font_size:1
+      keybind = ctrl+equal=increase_font_size:1
+      keybind = ctrl+0=reset_font_size
+      mouse-hide-while-typing = true
+      shell-integration = fish
+      theme = GitHub Dark High Contrast
+      window-padding-color = extend
+      window-padding-x = 8
+      window-padding-y = 0
+      window-subtitle = working-directory
+      window-theme = system
+    '';
+
+    xdg.desktopEntries.ghostty-dark = {
+      name = "Ghostty (Dark)";
+      genericName = "Terminal Emulator";
+      exec = "ghostty --config-default-files=false --config-file=${config.xdg.configHome}/ghostty/dark-config";
+      icon = "com.mitchellh.ghostty";
+      terminal = false;
+      categories = [
+        "System"
+        "TerminalEmulator"
+      ];
     };
 
   };
