@@ -73,7 +73,7 @@
           nh
           nil
           nixd
-          nixfmt-rfc-style
+          nixfmt
           (inputs.ragenix.packages.${system}.default.override { plugins = [ age-plugin-tpm ]; })
           rage
         ];
