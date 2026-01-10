@@ -4,19 +4,107 @@
 }:
 {
 
+  xdg.configFile."vale/.vale.ini".text = ''
+    MinAlertLevel = suggestion
+    # StylesPath = styles
+    # Packages = Google, write-good
+
+    [asciidoctor]
+    experimental = YES
+    attribute-missing = drop
+
+    [*.{adoc,md,rst}]
+    BasedOnStyles = Vale
+    #, Google, write-good
+  '';
+
   programs.helix = {
     enable = true;
+    extraPackages = with pkgs; [
+      nixd
+      nixfmt
+      taplo
+      asciidoctor
+      vale
+      (pkgs.hunspell.withDicts (dicts: [
+        dicts.en_GB-ize
+        dicts.en_US
+        dicts.sv_SE
+      ]))
+      vscode-langservers-extracted
+      typescript-language-server
+      yaml-language-server
+      typescript
+      nodePackages.prettier
+      bash-language-server
+      marksman
+      tinymist
+      go
+      gotools
+      gopls
+    ];
     defaultEditor = true;
     ignores = [
       "!.jj"
     ];
     languages = {
 
+      grammar = [
+        {
+          name = "asciidoc";
+          source = {
+            git = "https://github.com/dln/tree-sitter-asciidoc.git";
+            rev = "a89ef31e104c990cce9d203dd5430daec21036a9";
+            subpath = "tree-sitter-asciidoc";
+          };
+        }
+        {
+          name = "asciidoc_inline";
+          source = {
+            git = "https://github.com/dln/tree-sitter-asciidoc.git";
+            rev = "a89ef31e104c990cce9d203dd5430daec21036a9";
+            subpath = "tree-sitter-asciidoc_inline";
+          };
+        }
+      ];
+
+      language-server.vale-ls.command = "${pkgs.vale-ls}/bin/vale-ls";
       language = [
+        {
+          name = "asciidoc";
+          language-id = "asciidoc";
+          language-servers = [ "vale-ls" ];
+          scope = "source.adoc";
+          injection-regex = "adoc";
+          file-types = [ "adoc" ];
+          comment-tokens = [ "//" ];
+          block-comment-tokens = [
+            {
+              start = "////";
+              end = "////";
+            }
+          ];
+          grammar = "asciidoc";
+        }
+        {
+          name = "asciidoc_inline";
+          language-id = "asciidoc_inline";
+          scope = "source.asciidoc_inline";
+          injection-regex = "asciidoc_inline";
+          file-types = [ ];
+          comment-tokens = [ "//" ];
+          block-comment-tokens = [
+            {
+              start = "////";
+              end = "////";
+            }
+          ];
+          grammar = "asciidoc_inline";
+        }
         {
           name = "nix";
           formatter = {
-            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+            command = "${pkgs.nixfmt}/bin/nixfmt";
             args = [
               "--filename"
               "%{buffer_name}"
