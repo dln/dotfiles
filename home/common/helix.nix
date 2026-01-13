@@ -156,6 +156,7 @@
       keys.normal = {
         tab = [ "buffer_picker" ];
       };
+      theme = "wolf-alabaster-light-bg";
     };
 
     themes.alabaster = {
@@ -278,5 +279,20 @@
         gray = "#777777";
       };
     };
+  };
+
+  xdg.configFile."helix/themes/wolf-alabaster-dark.toml".source = builtins.fetchurl {
+    url = "https://github.com/wolf/alabaster-for-helix/raw/refs/heads/main/helix/dot-config/helix/themes/wolf-alabaster-dark.toml";
+    sha256 = "sha256:0l7d65nz2phhd19m89y0v466k859rvndlpx7rh7y8dpf2ajh6m7x";
+  };
+
+  xdg.configFile."helix/themes/wolf-alabaster-light.toml".source = builtins.fetchurl {
+    url = "https://github.com/wolf/alabaster-for-helix/raw/refs/heads/main/helix/dot-config/helix/themes/wolf-alabaster-light.toml";
+    sha256 = "sha256:1xdkcx2szf2w3ydg1alv444kkppczkc9kfbn0qgnzcqrcanigkqw";
+  };
+
+  xdg.configFile."helix/themes/wolf-alabaster-light-bg.toml".source = builtins.fetchurl {
+    url = "https://github.com/wolf/alabaster-for-helix/raw/refs/heads/main/helix/dot-config/helix/themes/wolf-alabaster-light-bg.toml";
+    sha256 = "sha256:1kh0aw6m18ijn6gcfzpfd9ddwwsr2kj5d108jpp6433l4jmwxm62";
   };
 }

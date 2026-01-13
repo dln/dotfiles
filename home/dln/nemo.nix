@@ -10,7 +10,6 @@
     ./desktop.nix
   ];
 
-  programs.helix.settings.theme = lib.mkForce "alabaster";
   programs.zellij.settings.theme = "iceberg-light";
   # programs.zellij.settings.theme = "ayu_dark";
 
