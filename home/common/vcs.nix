@@ -13,13 +13,18 @@
 
   home.packages = with pkgs; [
     diffedit3
-    difftastic
     git-get
     git-graph
     lazyjj
     mergiraf
     tea
   ];
+
+  programs.difftastic = {
+    enable = true;
+    options = {
+    };
+  };
 
   programs.delta = {
     enable = true;
@@ -213,7 +218,7 @@
       '';
 
       ui = {
-        "default-command" = [ "s" ];
+        "default-command" = [ "ui" ];
         pager = "delta";
       };
 
@@ -253,11 +258,14 @@
         ];
         d = [
           "diff"
-          "--tool=difft"
         ];
         dd = [
           "diff"
           "--git"
+        ];
+        dt = [
+          "diff"
+          "--tool=difft"
         ];
         du = [
           "diff"
@@ -343,6 +351,14 @@
             fg = "default";
             underline = true;
           };
+          diff_green = {
+            fg = "black";
+            bg = "#e9fdda";
+          };
+          diff_red = {
+            fg = "black";
+            bg = "#fddada";
+          };
         in
         {
           "error" = bold;
@@ -361,14 +377,14 @@
 
           "diff file_header" = bold;
           "diff hunk_header" = "cyan";
-          "diff removed" = "red";
-          "diff removed token" = "red";
-          "diff added" = "green";
-          "diff added token" = "green";
+          "diff removed" = diff_red;
+          "diff removed token" = diff_red;
+          "diff added" = diff_green;
+          "diff added token" = diff_green;
           "diff modified" = "cyan";
           "diff untracked" = "blue";
           "diff renamed" = "cyan";
-          "diff copied" = "green";
+          "diff copied" = diff_green;
           "diff access-denied" = {
             bg = "red";
           };
