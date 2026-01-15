@@ -7,6 +7,7 @@
     ./fish.nix
     ./ghostty.nix
     ./helix.nix
+    ./home.nix
     ./k8s.nix
     ./nix.nix
     ./podman.nix

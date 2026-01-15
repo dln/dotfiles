@@ -85,8 +85,8 @@
       };
 
       homeConfigurations = {
-        "dln@dinky" = mkHome [ ./home/dln/dinky.nix ];
-        "dln@nemo" = mkHome [ ./home/dln/nemo.nix ];
+        "dln@dinky" = mkHome [ ./home/dinky.nix ];
+        "dln@nemo" = mkHome [ ./home/nemo.nix ];
       };
     };
 }

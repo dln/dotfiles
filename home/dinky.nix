@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ./home.nix
     ./desktop.nix
   ];
 

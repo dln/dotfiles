@@ -12,17 +12,48 @@
       PreferredAuthentications publickey
       TCPKeepAlive true
     '';
-    matchBlocks."*" = {
-      # addKeysToAgent = "yes";
-      compression = false;
-      controlMaster = "auto";
-      controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
-      controlPersist = "15m";
-      forwardAgent = false;
-      hashKnownHosts = false;
-      serverAliveCountMax = 30;
-      serverAliveInterval = 10;
-      userKnownHostsFile = "~/.ssh/known_hosts";
+    matchBlocks = rec {
+      "*" = {
+        # addKeysToAgent = "yes";
+        compression = false;
+        controlMaster = "auto";
+        controlPath = "\${XDG_RUNTIME_DIR}/ssh_control:%h:%p:%r";
+        controlPersist = "15m";
+        forwardAgent = false;
+        hashKnownHosts = false;
+        serverAliveCountMax = 30;
+        serverAliveInterval = 10;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+      };
+      devel = {
+        hostname = "10.1.100.20";
+        forwardAgent = true;
+        localForwards = [
+          {
+            bind.address = "localhost";
+            bind.port = 8000;
+            host.address = "localhost";
+            host.port = 8000;
+          }
+          {
+            bind.address = "localhost";
+            bind.port = 8080;
+            host.address = "localhost";
+            host.port = 8080;
+          }
+          {
+            bind.address = "localhost";
+            bind.port = 8484;
+            host.address = "localhost";
+            host.port = 8484;
+          }
+        ];
+      };
+
+      devel-ext = devel // {
+        hostname = "158.174.115.186";
+        port = 8080;
+      };
     };
   };
 
