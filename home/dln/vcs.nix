@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -117,6 +118,12 @@
           "trunk()"
 
         ];
+        ui = [
+          "util"
+          "exec"
+          "--"
+          "lazyjj"
+        ];
         s = [
           "util"
           "exec"
@@ -132,7 +139,7 @@
             if [ -n "$1" ]; then
               jj diff --tool=difft -r "$@"
             else
-              jj log -T builtin_log_comfortable -r '(main..@) | (main..@)-'
+              jj log -T builtin_log_oneline -r '(main..@) | (main..@)-' -n 15
             fi
           ''
           ""
@@ -300,4 +307,10 @@
     };
   };
 
+  home.packages = [ pkgs.lazyjj ];
+  programs.jujutsu.settings.lazyjj = {
+    highlight-color = "#daf1fd";
+    layout = "vertical";
+    layout-percent = 30;
+  };
 }
