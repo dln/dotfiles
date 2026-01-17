@@ -15,6 +15,7 @@ let
 
   secrets = {
     "codestral_api_key" = [ ];
+    "forgejo_runner_token_nemo" = [ hosts.nemo ];
     "harmonia_signing_key" = [ hosts.nemo ];
   };
 in

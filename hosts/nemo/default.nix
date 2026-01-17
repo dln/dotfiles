@@ -9,6 +9,7 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    ./forgejo-runner.nix
     ./harmonia.nix
     ./plasma.nix
     ./steam.nix
