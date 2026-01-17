@@ -60,6 +60,11 @@
       }
       {
         # See: https://gitlab.freedesktop.org/drm/amd/-/issues/4773
+        name = "amdgpu-fix-issue-4773-v2";
+        patch = ./v2-0001-drm-amd-display-Add-PCON-VRR-whitelist-override.patch;
+      }
+      {
+        # See: https://gitlab.freedesktop.org/drm/amd/-/issues/4773
         name = "amdgpu-hdmi-vrr";
         patch = ./hdmi-vrr.patch;
       }
