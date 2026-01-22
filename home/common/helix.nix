@@ -283,12 +283,12 @@
 
   xdg.configFile."helix/themes/wolf-alabaster-dark.toml".source = builtins.fetchurl {
     url = "https://github.com/wolf/alabaster-for-helix/raw/refs/heads/main/helix/dot-config/helix/themes/wolf-alabaster-dark.toml";
-    sha256 = "sha256:0l7d65nz2phhd19m89y0v466k859rvndlpx7rh7y8dpf2ajh6m7x";
+    sha256 = "sha256:0x99k0w6gkmsql12z2j1qrwly1q9rf2kz7b5sn8nmap8d0cacg5s";
   };
 
   xdg.configFile."helix/themes/wolf-alabaster-light.toml".source = builtins.fetchurl {
     url = "https://github.com/wolf/alabaster-for-helix/raw/refs/heads/main/helix/dot-config/helix/themes/wolf-alabaster-light.toml";
-    sha256 = "sha256:1xdkcx2szf2w3ydg1alv444kkppczkc9kfbn0qgnzcqrcanigkqw";
+    sha256 = "sha256:0388m2pzzsm75ybyypprkx7m7wb7b5s2vym8rn88k6z8n8635m5a";
   };
 
   xdg.configFile."helix/themes/wolf-alabaster-light-bg.toml".source = builtins.fetchurl {
