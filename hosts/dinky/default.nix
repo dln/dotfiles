@@ -74,8 +74,6 @@
 
   services.udev.packages = [ pkgs.nitrokey-udev-rules ];
 
-  programs.adb.enable = true;
-
   networking = {
     hostName = "dinky";
     domain = "aarn.patagia.net";
@@ -195,8 +193,6 @@
     isNormalUser = true;
     description = "Daniel Lundin";
     extraGroups = [
-      "adbusers"
-      "dialout"
       "lp"
       "nitrokey"
       "tss"
