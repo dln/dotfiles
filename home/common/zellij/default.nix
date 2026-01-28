@@ -86,6 +86,51 @@
             { tab._props.name = "4"; }
             { tab._props.name = "5"; }
           ];
+
+          swap_floating_layout = {
+            _children = [
+              {
+                floating_panes = {
+                  _props.max_panes = 1;
+                  _children = [
+                    {
+                      pane = {
+                        x = "5%";
+                        y = "5%";
+                        width = "90%";
+                        height = "90%";
+                      };
+                    }
+                  ];
+                };
+              }
+
+              {
+                floating_panes = {
+                  _props.max_panes = 2;
+                  _children = [
+                    {
+                      pane = {
+                        x = "4%";
+                        y = "5%";
+                        width = "45%";
+                        height = "90%";
+                      };
+                    }
+
+                    {
+                      pane = {
+                        x = "51%";
+                        y = "5%";
+                        width = "45%";
+                        height = "90%";
+                      };
+                    }
+                  ];
+                };
+              }
+            ];
+          };
         };
       };
 
@@ -98,6 +143,8 @@
               floating = true;
               move_to_focused_tab = true;
               default_layout = "devel";
+              show_resurrectable_sessions = true;
+              base_paths = "~/src|/home/dln/src";
             };
           };
         };

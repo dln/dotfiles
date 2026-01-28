@@ -40,6 +40,9 @@ keybinds {
 			LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zsm.wasm" {
 				floating true
 				move_to_focused_tab true
+                default_layout "devel"
+                show_resurrectable_sessions true
+	            base_paths "~/src|/home/dln/src"
 			}
 		}
 		unbind "Alt f"
