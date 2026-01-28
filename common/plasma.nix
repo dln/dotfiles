@@ -43,7 +43,6 @@
     kdePackages.kcharselect
     kdePackages.kclock
     kdePackages.kcolorchooser
-    kdePackages.kdenlive
     kdePackages.kdeplasma-addons
     kdePackages.knewstuff
     kdePackages.kontact
