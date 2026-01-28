@@ -52,6 +52,7 @@
       "amdgpu.si_support=1"
       "amdgpu.cik_support=1"
     ];
+    loader.grub.configurationLimit = 3;
   };
 
   fileSystems."/" = {
