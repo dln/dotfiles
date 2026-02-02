@@ -71,4 +71,10 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Compat
+  system.activationScripts.text = ''
+    ln -sf ${pkgs.coreutils}/bin/true /bin/true
+  '';
+
 }
