@@ -25,7 +25,7 @@
       WOODPECKER_BACKEND = "docker";
       WOODPECKER_SERVER = "10.1.100.10:8300"; # forgejo-1
       WOODPECKER_MAX_WORKFLOWS = "5";
-      WOODPECKER_BACKEND_DOCKER_VOLUMES = "/nix:/mnt/nix:ro";
+      WOODPECKER_BACKEND_DOCKER_VOLUMES = "/etc/ssl/certs:/etc/ssl/certs:ro,/nix:/mnt/nix:ro,/var/lib/woodpecker-agent/nemo-patagia/cache:/cache";
     };
     environmentFile = [
       "/etc/woodpecker/woodpecker-agent.env"
