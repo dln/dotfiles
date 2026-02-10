@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   boot = {
@@ -72,9 +77,14 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Compat
-  system.activationScripts.text = ''
-    ln -sf ${pkgs.coreutils}/bin/true /bin/true
-  '';
+  # Compat kludge
+  system.activationScripts.text =
+    let
+      binaries = builtins.attrNames (builtins.readDir "${pkgs.coreutils}/bin");
+      mkLink = name: ''
+        ln -sf ${lib.getExe' pkgs.coreutils name} /bin/${name}
+      '';
+    in
+    lib.concatMapStrings mkLink binaries;
 
 }
