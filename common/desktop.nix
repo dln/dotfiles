@@ -28,6 +28,7 @@ in
         defaultFonts = {
           monospace = [
             "Berkeley Mono"
+            "Noto Color Emoji"
             "Symbols Nerd Font Mono"
           ];
           serif = [
@@ -38,7 +39,10 @@ in
             "Inter"
             "Symbols Nerd Font"
           ];
-          emoji = [ "Symbols Nerd Font Mono" ];
+          emoji = [
+            "Noto Color Emoji"
+            "Symbols Nerd Font"
+          ];
         };
         hinting.enable = true;
         hinting.style = "slight";
@@ -48,6 +52,7 @@ in
         go-font
         inter
         liberation_ttf
+        maple-mono.variable
         monaspace
         nerd-fonts.symbols-only
         noto-fonts
