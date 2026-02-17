@@ -77,14 +77,49 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Compat kludge
+  # Compat kludge (FIXME: remove once we get proper sandboxing in bazel)
   system.activationScripts.text =
     let
-      binaries = builtins.attrNames (builtins.readDir "${pkgs.coreutils}/bin");
-      mkLink = name: ''
-        ln -sf ${lib.getExe' pkgs.coreutils name} /bin/${name}
-      '';
+      coreutilsBinaries =
+        let
+          names = builtins.attrNames (builtins.readDir "${pkgs.coreutils}/bin");
+        in
+        map (name: {
+          inherit name;
+          pkg = pkgs.coreutils;
+        }) names;
+
+      explicitBinaries = [
+        {
+          pkg = pkgs.findutils;
+          name = "find";
+        }
+        {
+          pkg = pkgs.findutils;
+          name = "xargs";
+        }
+        {
+          pkg = pkgs.gnugrep;
+          name = "grep";
+        }
+        {
+          pkg = pkgs.gnused;
+          name = "sed";
+        }
+        {
+          pkg = pkgs.gawk;
+          name = "awk";
+        }
+      ];
+
+      allBinaries = coreutilsBinaries ++ explicitBinaries;
+
+      mkLink =
+        { name, pkg }:
+        ''
+          ln -sf ${lib.getExe' pkg name} /bin/${name}
+        '';
     in
-    lib.concatMapStrings mkLink binaries;
+    lib.concatMapStrings mkLink allBinaries;
 
 }
