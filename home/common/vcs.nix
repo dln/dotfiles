@@ -323,6 +323,11 @@
         ];
       };
 
+      "fileset-aliases" = {
+        "LOCK" = "**/Cargo.lock | **/package-lock.json | **/uv.lock | **/flake.lock | MODULE.bazel.lock";
+        "not:x" = "~x";
+      };
+
       "revset-aliases" = {
         "immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()";
         # Prevent rewriting commits on main@origin and commits authored by other users;
