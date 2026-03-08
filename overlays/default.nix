@@ -5,7 +5,7 @@
     final: prev:
     import ../pkgs final.pkgs
     // {
-      zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+      zjstatus = inputs.zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
     };
 
   modifications = final: prev: {

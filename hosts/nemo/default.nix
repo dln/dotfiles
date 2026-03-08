@@ -168,12 +168,14 @@
 
   services.resolved = {
     enable = true;
-    domains = [
-      "patagia.net"
-      "aarn.patagia.net"
-    ];
-    llmnr = "false";
-    fallbackDns = [ "9.9.9.9" ];
+    settings.Resolve = {
+      Domains = [
+        "patagia.net"
+        "aarn.patagia.net"
+      ];
+      LLMNR = "false";
+      FallbackDns = [ "9.9.9.9" ];
+    };
   };
 
   services.openssh = {
@@ -332,5 +334,5 @@
     };
   };
 
-  system.stateVersion = "24.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "25.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }

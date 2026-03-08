@@ -13,7 +13,7 @@
     };
   };
 
-  services.harmonia = {
+  services.harmonia.cache = {
     enable = true;
     settings = {
       priority = 20;
