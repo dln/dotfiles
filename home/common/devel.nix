@@ -13,8 +13,4 @@
   ];
 
   programs.distrobox.enable = true;
-
-  home.sessionVariables = {
-    GOPROXY = "https://athena.patagia.net";
-  };
 }
