@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     age-plugin-fido2-hmac
     age-plugin-tpm
-    bazelisk
     comma
     doggo
     file

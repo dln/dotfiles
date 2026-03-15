@@ -1,0 +1,35 @@
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
+let
+  llvm = pkgs.llvmPackages_22;
+in
+{
+  environment.systemPackages = with pkgs; [
+    bazelisk
+    bison
+    comma
+    curl
+    devenv
+    doggo
+    file
+    flex
+    glibc
+    gnumake
+    gnutar
+    just
+    linuxHeaders
+    llvm.bintools
+    llvm.clang
+    llvm.clang-tools
+    llvm.lld
+    llvm.lldb
+    llvm.llvm
+    nix-output-monitor
+    openssl
+    python3
+  ];
+}
