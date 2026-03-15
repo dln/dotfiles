@@ -2,6 +2,11 @@
   pkgs,
   ...
 }:
+let
+  helixPkg =
+    (builtins.getFlake "github:helix-editor/helix/c10406510aacb0b83efdbe6ec806c80fc0f4611f")
+    .packages.${pkgs.system}.default;
+in
 {
 
   xdg.configFile."vale/.vale.ini".text = ''
@@ -20,11 +25,23 @@
 
   programs.helix = {
     enable = true;
+    package = helixPkg;
     extraPackages = with pkgs; [
+      asciidoctor
+      bash-language-server
+      go
+      gopls
+      gotools
+      marksman
       nixd
       nixfmt
+      nls
+      nodePackages.prettier
+      starpls
       taplo
-      asciidoctor
+      tinymist
+      typescript
+      typescript-language-server
       vale
       (pkgs.hunspell.withDicts (dicts: [
         dicts.en_GB-ize
@@ -32,16 +49,7 @@
         dicts.sv_SE
       ]))
       vscode-langservers-extracted
-      typescript-language-server
       yaml-language-server
-      typescript
-      nodePackages.prettier
-      bash-language-server
-      marksman
-      tinymist
-      go
-      gotools
-      gopls
     ];
     defaultEditor = true;
     ignores = [
