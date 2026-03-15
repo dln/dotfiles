@@ -91,6 +91,10 @@
 
       explicitBinaries = [
         {
+          pkg = pkgs.bash;
+          name = "bash";
+        }
+        {
           pkg = pkgs.findutils;
           name = "find";
         }
