@@ -1,12 +1,14 @@
 { inputs, ... }:
 {
 
-  additions =
+  additions = (
     final: prev:
     import ../pkgs final.pkgs
     // {
       zjstatus = inputs.zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
-    };
+    }
+    // (import ./sendspin-cli.nix final prev)
+  );
 
   modifications = final: prev: {
   };

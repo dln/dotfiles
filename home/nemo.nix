@@ -33,4 +33,21 @@
     rsgain
     wrtag
   ];
+
+  # Sendspin
+  systemd.user.services.sendspin-user-kontoret =
+    let
+      name = "Kontoret";
+      id = "kontoret";
+    in
+    {
+      Unit.Description = "sendspin player";
+      Unit.After = [
+        "graphical-session.target"
+      ];
+      Install.WantedBy = [ "graphical-session.target" ];
+      Service = {
+        ExecStart = ''${pkgs.sendspin-cli}/bin/sendspin daemon --id ${id} --name ${name} --audio-device "pipewire" --audio-format flac:96000:24:2 --static-delay-ms -20 --port 8926'';
+      };
+    };
 }
