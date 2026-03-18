@@ -2,6 +2,7 @@
 bind \cd delete-char # No exit on C-d
 bind \cg __zoxide_zi_repaint
 bind \cJ forward-char
+bind \cl 'clear; commandline -f repaint'
 bind \cn history-prefix-search-forward
 bind \cp history-prefix-search-backward
 bind \e\[109\;5u execute # C-m in ghostty
