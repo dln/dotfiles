@@ -6,6 +6,7 @@ bind \cl 'clear; commandline -f repaint'
 bind \cn history-prefix-search-forward
 bind \cp history-prefix-search-backward
 bind \e\[109\;5u execute # C-m in ghostty
+bind \ep 'begin; zellij action dump-screen -f /tmp/term.$USER.out; fish_clipboard_copy < /tmp/term.$USER.out; end'
 
 # Settings
 set fish_greeting
